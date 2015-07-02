@@ -15,7 +15,6 @@ media/catalog/category/
 media/wysiwyg/
 .idea
 app/etc/local.xml
-/.htaccess
 /tmp/**
 /nbproject
 resource_config.json
