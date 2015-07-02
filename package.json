@@ -1,0 +1,26 @@
+{
+  "name": "magento",
+  "version": "1.0.0",
+  "description": "Shipping Shop",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eshleebien/shipment-magento.git"
+  },
+  "author": "hello@esh.ph, jon.jonathancepeda@gmail.com, p.laguador@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eshleebien/shipment-magento/issues"
+  },
+  "homepage": "https://github.com/eshleebien/shipment-magento"
+}

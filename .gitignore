@@ -18,3 +18,5 @@ app/etc/local.xml
 /tmp/**
 /nbproject
 resource_config.json
+node_modules
+.DS_STORE
