@@ -1,4 +1,348 @@
-<div>
-	Jon do the sample page here.
-	
+<link rel="stylesheet" type="text/css" href="skin/frontend/rb/default/css/def-normal.css">
+<link rel="stylesheet" type="text/css" href="skin/frontend/rb/default/css/def-style.css">
+<link rel="stylesheet" href="skin/frontend/rb/default/css/animation.css">
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+<script>
+    if (/mobile/i.test(navigator.userAgent)) document.documentElement.className += ' w-mobile';
+</script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(14.5515512, 121.0438436);
+  var mapOptions = {
+    zoom: 18,
+    center: myLatlng
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">King David</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>King David</b> Fineries produces unique and bespoke vapor cocktails that are catered to the most discerning of palates and cannot be found anywhere.</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Uluru (Ayers Rock)'
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<div class="slidersection">
+    <div class="sp-slideshow">
+        <input id="button-1" type="radio" name="radio-set" class="sp-selector-1" checked="checked" />
+        <label for="button-1" class="button-label-1"></label>
+
+        <input id="button-2" type="radio" name="radio-set" class="sp-selector-2" />
+        <label for="button-2" class="button-label-2"></label>
+
+        <input id="button-3" type="radio" name="radio-set" class="sp-selector-3" />
+        <label for="button-3" class="button-label-3"></label>
+
+        <input id="button-4" type="radio" name="radio-set" class="sp-selector-4" />
+        <label for="button-4" class="button-label-4"></label>
+
+        <input id="button-5" type="radio" name="radio-set" class="sp-selector-5" />
+        <label for="button-5" class="button-label-5"></label>
+
+        <label for="button-1" class="sp-arrow sp-a1"></label>
+        <label for="button-2" class="sp-arrow sp-a2"></label>
+        <label for="button-3" class="sp-arrow sp-a3"></label>
+        <label for="button-4" class="sp-arrow sp-a4"></label>
+        <label for="button-5" class="sp-arrow sp-a5"></label>
+
+        <div class="sp-content">
+          <div class="sp-parallax-bg"></div>
+          <ul class="sp-slider clearfix">
+            <li><img src="../../../../../../../skin/frontend/rb/default/images/slider/slider1.jpg" alt="image01" /></li>
+            <li><img src="../../../../../../../skin/frontend/rb/default/images/slider/slider2.jpg" alt="image02" /></li>
+            <li><img src="../../../../../../../skin/frontend/rb/default/images/slider/slider3.jpg" alt="image03" /></li>
+            <li><img src="../../../../../../../skin/frontend/rb/default/images/slider/slider4.jpg" alt="image04" /></li>
+            <li><img src="../../../../../../../skin/frontend/rb/default/images/slider/slider5.png" alt="image05" /></li>
+          </ul>
+        </div>
+    </div>
 </div>
+  <div class="about-parlex" id="about">
+    <section class="parlex7-back">
+      <div class="w-container">
+        <div id="about-animation">
+        <div class="wrap">
+          <div class="about">
+            <h1 class="about-heading">ABOUT</h1>
+            <div class="about-text">WHO WE ARE ?</div>
+            <div class="sepreater"></div>
+          </div>
+          <p class="about-des">King David Fineries produces unique and bespoke vapor cocktails that are catered to the most discerning of palates and cannot be found anywhere.
+          </p>
+          <img class="about-img" src="../../../../../../../skin/frontend/rb/default/images/vapes.jpg"
+          alt="52de15aa5d3566c14300015e_about.png">
+        </div>
+      </div>
+      </div>
+    </section>
+</div>
+
+<section class="service-parlex" id="product">
+    <section class="parlex-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="service-combo">
+            <div class="services">
+              <h1 class="service-heading">Products</h1>
+              <div class="services-text">WHAT DO WE HAVE?</div>
+              <div class="sepreater service"></div>
+            </div>
+            <div class="services-text">“ THE FIRST AND ONLY COCKTAIL E-LIQUID PRODUCT IN THE PHILIPPINES ”
+              <br>SELECT PRODUCT BY CLICKING THE IMAGE</div>
+            <div class="w-row">
+              <div class="w-col w-col-3 services-column">
+                <div class="service-icon">
+                  <img src="../../../../../../../skin/frontend/rb/default/images/products/orange_vape.png">
+                </div>
+                <h4 class="service-head">Orange Flavor</h4>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="service-icon">
+                  <img src="../../../../../../../skin/frontend/rb/default/images/products/grapes_vape.png">
+                </div>
+                <h4 class="service-head">Grapes Flavor</h4>
+              </div>
+              <div class="w-col w-col-3">
+                                <div class="service-icon">
+                  <img src="../../../../../../../skin/frontend/rb/default/images/products/mint_vape.png">
+                </div>
+                <h4 class="service-head">Mint Flavor</h4>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="service-icon">
+                  <img src="../../../../../../../skin/frontend/rb/default/images/products/strawberry_vape.png">
+                </div>
+                <h4 class="service-head">Strawberry Vape</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>
+
+<div class="process-parlex">
+    <div class="parlex2-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="process">
+            <h1 class="our-process-heading">OUR PROCESS</h1>
+            <div class="sepreater"></div>
+          </div>
+          <div class="process-text">
+            <div class="process-text">Our process is straight forward, simple, &amp; successful.</div>
+            <div class="w-row">
+              <div class="w-col w-col-3">
+                <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+                   <a href="#set-1" class="hi-icon hi-icon-locked">Security</a>
+                </div>
+                <h4 class="our-process-sys">BRAINSTORM</h4>
+                <p class="process-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo
+                  cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+          <a href="#set-1" class="hi-icon hi-icon-mobile">Mobile</a>
+        </div>
+                <h4 class="our-process-sys">PLAN</h4>
+                <p class="process-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo
+                  cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+          <a href="#set-1" class="hi-icon hi-icon-screen">Desktop</a>
+        </div>
+                <h4 class="our-process-sys">DESIGN</h4>
+                <p class="process-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo
+                  cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+          <a href="#set-1" class="hi-icon hi-icon-earth">Partners</a>
+        </div>
+                <h4 class="our-process-sys">DEVELOP</h4>
+                <p class="process-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo
+                  cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  <div class="portfolio-parlex" id="visitors">
+    <div class="parlex3-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="portfolio">
+            <h1 class="portfolio-heading">The Visitors</h1>
+            <div class="portfolio-text">OUR WORK</div>
+            <div class="sepreater"></div>
+          </div>
+          <p class="porfolio-paragraph">THE BEST RESULTS ARE OBTAINED BY TASKING THE RIGHT PEOPLE TO THE RIGHT PROJECT
+            <br>We do what we love. Our clients love what we do.</p>
+            <div class="container demo-1">
+      <ul class="grid cs-style-1">
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/engineer.jpg" alt="img01">
+            <figcaption>
+              <h3>Engineers</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/glass.jpg" alt="img02">
+            <figcaption>
+              <h3>Glass</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/vapes.jpg" alt="img04">
+            <figcaption>
+              <h3>Vapes</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/team.jpg" alt="img05">
+            <figcaption>
+              <h3>Team</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/vapes.jpg" alt="img03">
+            <figcaption>
+              <h3>Vapes</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/vape_liquor.jpg" alt="img06">
+            <figcaption>
+              <h3>Vape</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/vape_liquid.jpg" alt="img06">
+            <figcaption>
+              <h3>Vape</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/vape.jpg" alt="img06">
+            <figcaption>
+              <h3>Vape</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="../../../../../../../skin/frontend/rb/default/images/vapes.jpg" alt="img06">
+            <figcaption>
+              <h3>Vape</h3>
+              <span></span>
+              <a href="#">Take a look</a>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div><!-- /container -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-parlex" id="contact">
+    <div class="parlex8-back">
+      <div class="w-container">
+      <div id="map-canvas" class="w-widget w-widget-map contac-map" ></div>
+      <div class="w-container">
+        <div class="w-row contact-col">
+          <div class="w-col w-col-4 contact-col1">
+            <div>
+                      <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+                       <a href="#set-5" class="hi-icon hi-icon-earth">Partners</a>
+                    </div>
+              <h4 class="contact-col-head">Visit Us</h4>
+            </div>
+            <div>
+              <div class="contact-col-text">4K Bellagio 3, Bonifacio Global City, Taguig City </div>
+            </div>
+          </div>
+          <div class="w-col w-col-4 contact-col2">
+            <div>
+               <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+                       <a href="#set-5" class="hi-icon hi-icon-mail">Partners</a>
+                    </div>
+              <h4 class="contact-col-head">Mail us</h4>
+            </div>
+            <div>
+              <div class="contact-col-text">general: abc@xyz.com
+                <br>support: abc@xyz.com</div>
+            </div>
+          </div>
+          <div class="w-col w-col-4 contact-col3">
+            <div>
+              <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+                       <a href="#set-5" class="hi-icon hi-icon-mobile">Partners</a>
+                    </div>
+              <h4 class="contact-col-head">Call Us</h4>
+            </div>
+            <div>
+              <div class="contact-col-text-bar-last">P: (999) 999-9999
+                <br>F: (999) 999-9999</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
