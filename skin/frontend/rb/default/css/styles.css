@@ -1292,7 +1292,6 @@ a.button:hover {
 .main-container,
 .footer-container {
   position: relative;
-  max-width: 1260px;
   margin: 0 auto;
   padding: 15px;
 }
@@ -1302,11 +1301,16 @@ a.button:hover {
   display: table;
   clear: both;
 }
+.main-container {
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
 
 @media only screen and (min-width: 480px) {
   .main-container,
   .footer-container {
-    padding: 30px;
   }
 }
 .footer-container {
@@ -2049,7 +2053,6 @@ span.weee {
 }
 
 .std ul {
-  list-style: disc outside;
   margin-bottom: 1.5em;
 }
 
