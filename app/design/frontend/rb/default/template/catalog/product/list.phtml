@@ -126,12 +126,12 @@
                     //data: return data from server
                     if (data.indexOf('was added to your shopping cart.')) {
                         jQuery("#messages_product_view").html('<ul class="messages"><li class="success-msg"><ul><li><span>' + prodName + ' was added to your shopping cart.</span></li></ul></li></ul>');
+                        jQuery("#messages_product_view").delay(5000).fadeOut();
                     }
                     var start = data.indexOf('<!-- Cart -->'),
                         end = data.indexOf('<!-- End Cart -->');
                     data = data.substr(start + 13, end - start - 13);
                     jQuery(".header-minicart").html(data);
-                    console.log('butaw', data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) 
                 {
