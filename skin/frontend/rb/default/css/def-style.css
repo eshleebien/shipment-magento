@@ -359,7 +359,7 @@ a:active {
     display: none;
     opacity: 0.8;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 998;
     background: transparent url(../images/slider/arrows.png) no-repeat;
     -webkit-transition: opacity linear 0.3s;
     -moz-transition: opacity linear 0.3s;
@@ -556,17 +556,18 @@ input.sp-selector-5:checked ~ .sp-content .sp-slider > li:nth-child(5){
 }
 .slidersection {
   display: block;
-  padding-top: 80px;
+  padding-top: 17px;
   background: rgba(255, 255, 255, 0);
 }
 .logo {
   margin-top: 0px;
-  width: 110px;
 }
 .menu-li {
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: 700;
+  -webkit-transition:all 0.2s ease;
+  transition:all 0.2s ease;
 }
 .menu-li:hover {
   border-top-style: none;
