@@ -39,6 +39,7 @@
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
+    <div id="messages_product_view"><ul class="messages"><li class="success-msg"></li></ul></div>
 <div class="category-products">
     <?php echo $this->getToolbarHtml() ?>
     <?php // List mode ?>
@@ -87,7 +88,16 @@
                     </div>
                     <div class="product-secondary">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
-                            <p class="action"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                            <p class="action">
+                                <!--hack -->
+                                <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                                    <?php if(!$_product->isGrouped()): ?>
+                                        <label for="qty"><?php echo $this->__('Qty') ?>:</label>
+                                        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo ($this->getMinimalQty($_product)?$this->getMinimalQty($_product):1) ?>" />
+                                    <?php endif; ?>
+                                    <button type="button" onclick="newSubmit('<?php echo $_product->getName() ?>','product_addtocart_form_<?php echo $_product->getId()?>', '<?php echo $this->getAddToCartUrl($_product) ?>' )"><span><span><span><?php echo $this->__('Add to Cart') ?></span></span></span></button>
+                                </form>
+                            </p>
                         <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                             <p class="action"><a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
                         <?php else: ?>
@@ -191,3 +201,42 @@ if ($this->getChild('after')) {
     }
 }
 ?>
+
+<script type="text/javascript">
+    function newSubmit (prodName, formId, formAction) {
+        //callback handler for form submit
+        console.log('formid', formId);
+        jQuery("#" + formId).submit(function(e)
+        {
+            var postData = jQuery(this).serializeArray();
+            var formURL = jQuery(this).attr("action");
+            jQuery.ajax(
+            {
+                url : formURL,
+                type: "POST",
+                data : postData,
+                success:function(data, textStatus, jqXHR) 
+                {
+                    //data: return data from server
+                    if (data.indexOf('was added to your shopping cart.')) {
+                        jQuery("#messages_product_view").html('<ul class="messages"><li class="success-msg"><ul><li><span>' + prodName + ' was added to your shopping cart.</span></li></ul></li></ul>');
+                    }
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+                    data = data.substr(start + 13, end - start - 13);
+                    jQuery(".header-minicart").html(data);
+                    console.log('butaw', data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) 
+                {
+                    //if fails      
+                    console.log('error', errorThrown);
+                }
+            });
+            e.preventDefault(); //STOP default action
+            e.unbind(); //unbind. to stop multiple form submit.
+        });
+         
+        jQuery("#" + formId).submit(); //Submit  the FORM
+    }
+</script>
