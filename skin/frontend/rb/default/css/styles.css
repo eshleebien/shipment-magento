@@ -9258,6 +9258,7 @@ div.paypal-logo span > img {
  * ============================================ */
 .header-minicart {
   display: inline-block;
+  margin-top: 10px;
 }
 @media only screen and (max-width: 770px) {
   .header-minicart {
