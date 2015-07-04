@@ -57,7 +57,7 @@
                             </div>
                         </nav>
                         <div class="w-nav-button">
-                           <div class="header-minicart" onclick="pushActive(this);">
+                           <div class="header-minicart" onclick="pushActive();">
                                 <!-- Cart -->
                                     <?php echo $this->getChildHtml('minicart_head'); ?>
                                 <!-- End Cart -->
@@ -85,8 +85,7 @@
 function activate(th) {
     jQuery('.w-icon-nav-menu').toggleClass('active');
 }
-function pushActive(t){
-    console.log(t);
+function pushActive(){
     jQuery('.w-nav-button').find('#header-cart').toggleClass('skip-active');
 }
 
