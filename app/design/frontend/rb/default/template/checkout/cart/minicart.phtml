@@ -74,6 +74,10 @@
             	data: jQuery("#update_item_" + id).serialize(),
             	success: function(data) {
             		jQuery(".count").text(parseInt(jQuery(".count").text()) + num);
+            		var start = data.indexOf('<!-- sub total -->'),
+                        end = data.indexOf('<!-- end sub total -->');
+                    data = data.substr(start + 18, end - start - 18);
+                    jQuery("#subtotal_hack").html(data);
             		jQuery('#loader').hide();
             	},
             	error: function(data) {
