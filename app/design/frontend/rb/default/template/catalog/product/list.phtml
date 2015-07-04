@@ -52,14 +52,14 @@
               <div class="sepreater service"></div>
             </div>
             <div class="services-text">“ THE FIRST AND ONLY COCKTAIL E-LIQUID PRODUCT IN THE PHILIPPINES ”
-              <br>SELECT PRODUCT BY CLICKING THE IMAGE</div>
+            </div>
 
             <div class="w-row">
                 <?php // List mode ?>
                 <?php if($this->getMode()!='grid'): ?>
                 <?php $_iterator = 0; ?>
                 <?php foreach ($_productCollection as $_product): ?>
-                <div class="w-col w-col-3 services-column">
+                <div class="w-col w-col-3 services-column" id="divid-<?php echo $_product->getId(); ?>" > 
                     <div class="service-icon">
                         <?php // Product Image ?>
                         <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
@@ -85,6 +85,7 @@
                                             <label for="qty" hidden><?php echo $this->__('Qty') ?>:</label>
                                             <input hidden type="text" name="qty" id="qty" maxlength="12" value="<?php echo ($this->getMinimalQty($_product)?$this->getMinimalQty($_product):1) ?>" />
                                         <?php endif; ?>
+                                        <button type="button" onclick="showModal('divid-<?php echo $_product->getId(); ?>')" class='info-button-details'><span><?php echo $this->__('Details') ?></span></button>
                                         <button type="button" class='info-button' onclick="newSubmit('<?php echo $_product->getName() ?>','product_addtocart_form_<?php echo $_product->getId()?>', '<?php echo $this->getAddToCartUrl($_product) ?>' )"><span><?php echo $this->__('Add to Cart') ?></span></button>
                                     </form>
                             <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
@@ -93,7 +94,6 @@
                                 <p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                             <?php endif; ?>
                     </div>
-                    
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -107,9 +107,29 @@
 </section>
     <?php endif; ?>
 <?php endif; ?>
-
-
+<div id="service-modal">
+    <div class="head">
+        <div id="title"></div>
+        <div class="close">
+            <button onclick="close_modal()">x</button>
+        </div>
+    </div>
+    <div class="img">
+        <img />
+    </div>
+    <div class ="details">
+        <div id="description"></div>
+        <div id="price-tag"></div>
+    </div>
+</div>
+<div id="overlay" onclick="close_modal()"></div>
 <script type="text/javascript">
+    function close_modal() {
+        $("#service-modal").removeClass('show');
+        $("#service-modal").addClass('hide');
+        $("#overlay").removeClass('show');
+        $("#overlay").addClass('hide');
+    }
     function newSubmit (prodName, formId, formAction) {
         //callback handler for form submit
         console.log('formid', formId);
@@ -146,4 +166,21 @@
          
         jQuery("#" + formId).submit(); //Submit  the FORM
     }
+    function showModal(id) {
+        var imgSrc = $('#'+id).find(".product-image-size").attr('src'),
+            title = $('#'+id).find(".service-head").html(),
+            description = $('#'+id).find(".description").html(),
+            price = $('#'+id).find(".price").find(".price").html();
+            console.log(price);
+
+        $("#service-modal").find(".img").find('img').attr('src',imgSrc);
+        $("#service-modal").find(".head").find('#title').html(title);
+        $("#service-modal").find(".details").find('#description').html('"'+description+'"');
+        $("#service-modal").find(".details").find('#price-tag').html(price);
+        $("#overlay").removeClass('hide');
+        $("#overlay").addClass('show');
+        $("#service-modal").removeClass('hide');
+        $("#service-modal").addClass('show');
+    }
+    
 </script>

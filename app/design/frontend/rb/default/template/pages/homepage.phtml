@@ -17,7 +17,7 @@ function initialize() {
   var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">King David</h1>'+
+      '<h1 id="firstHeading" class="firstHeading" style="color:#414141;">King David</h1>'+
       '<div id="bodyContent">'+
       '<p><b>King David</b> Fineries produces unique and bespoke vapor cocktails that are catered to the most discerning of palates and cannot be found anywhere.</p>'+
       '</div>'+
@@ -33,7 +33,7 @@ function initialize() {
       title: 'Uluru (Ayers Rock)'
   });
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
+    //infowindow.open(map,marker);
   });
 }
 

@@ -56,8 +56,5 @@ jQuery(document).ready(function(){
       });
   });
 });
-jQuery('html, body').stop().animate({
-     'scrollTop': jQuerytarget.offset().top
-}, 900, 'swing');
 
 
