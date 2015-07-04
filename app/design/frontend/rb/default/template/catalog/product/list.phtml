@@ -126,10 +126,10 @@
 <div id="overlay" onclick="close_modal()"></div>
 <script type="text/javascript">
     function close_modal() {
-        $("#service-modal").removeClass('show');
-        $("#service-modal").addClass('hide');
-        $("#overlay").removeClass('show');
-        $("#overlay").addClass('hide');
+        jQuery("#service-modal").removeClass('show');
+        jQuery("#service-modal").addClass('hide');
+        jQuery("#overlay").removeClass('show');
+        jQuery("#overlay").addClass('hide');
     }
     function newSubmit (prodName, formId, formAction) {
         //callback handler for form submit
@@ -168,20 +168,20 @@
         jQuery("#" + formId).submit(); //Submit  the FORM
     }
     function showModal(id) {
-        var imgSrc = $('#'+id).find(".product-image-size").attr('src'),
-            title = $('#'+id).find(".service-head").html(),
-            description = $('#'+id).find(".long-description").html(),
-            price = $('#'+id).find(".price").find(".price").html();
+        var imgSrc = jQuery('#'+id).find(".product-image-size").attr('src'),
+            title = jQuery('#'+id).find(".service-head").html(),
+            description = jQuery('#'+id).find(".long-description").html(),
+            price = jQuery('#'+id).find(".price").find(".price").html();
             console.log(price);
 
-        $("#service-modal").find(".img").find('img').attr('src',imgSrc);
-        $("#service-modal").find(".head").find('#title').html(title);
-        $("#service-modal").find(".details").find('#description').html('"'+description+'"');
-        $("#service-modal").find(".details").find('#price-tag').html(price);
-        $("#overlay").removeClass('hide');
-        $("#overlay").addClass('show');
-        $("#service-modal").removeClass('hide');
-        $("#service-modal").addClass('show');
+        jQuery("#service-modal").find(".img").find('img').attr('src',imgSrc);
+        jQuery("#service-modal").find(".head").find('#title').html(title);
+        jQuery("#service-modal").find(".details").find('#description').html('"'+description+'"');
+        jQuery("#service-modal").find(".details").find('#price-tag').html(price);
+        jQuery("#overlay").removeClass('hide');
+        jQuery("#overlay").addClass('show');
+        jQuery("#service-modal").removeClass('hide');
+        jQuery("#service-modal").addClass('show');
     }
     
 </script>
