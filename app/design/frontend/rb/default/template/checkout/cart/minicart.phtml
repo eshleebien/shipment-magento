@@ -63,22 +63,27 @@
 	function changeItemQuantity( id , num ) {
         var qty_id = "qinput-" + id;
         var currentVal = parseInt( jQuery("#" + qty_id).val() );
-        jQuery('#loader').show();
+        jQuery('#not-mob-cart #loader').show();
+        jQuery('#mob-cart #loader').show();
         if ( currentVal != NaN )
         {
         console.log('asdasd');
-            jQuery("#" + qty_id).val(currentVal + num);
+            jQuery("#not-mob-cart #" + qty_id).val(currentVal + num);
+            jQuery("#mob-cart #" + qty_id).val(currentVal + num);
             jQuery.ajax({
             	type: "POST",
             	url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
             	data: jQuery("#update_item_" + id).serialize(),
             	success: function(data) {
-            		jQuery(".count").text(parseInt(jQuery(".count").text()) + num);
+            		jQuery("#not-mob-cart .count").text(parseInt(jQuery("#not-mob-cart .count").text()) + num);
+                    jQuery("#mob-cart .count").text(parseInt(jQuery("#mob-cart .count").text()) + num);
             		var start = data.indexOf('<!-- sub total -->'),
                         end = data.indexOf('<!-- end sub total -->');
                     data = data.substr(start + 18, end - start - 18);
-                    jQuery("#subtotal_hack").html(data);
-            		jQuery('#loader').hide();
+                    jQuery("#not-mob-cart #subtotal_hack").html(data);
+                    jQuery("#mob-cart #subtotal_hack").html(data);
+            		jQuery('#not-mob-cart #loader').hide();
+                    jQuery('#mob-cart #loader').hide();
             	},
             	error: function(data) {
             		console.log('erere');
