@@ -31,15 +31,6 @@ CREATE TABLE `shop_admin_assert` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_admin_assert`
---
-
-LOCK TABLES `shop_admin_assert` WRITE;
-/*!40000 ALTER TABLE `shop_admin_assert` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_admin_assert` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_admin_role`
 --
 
@@ -57,18 +48,8 @@ CREATE TABLE `shop_admin_role` (
   PRIMARY KEY (`role_id`),
   KEY `IDX_SHOP_ADMIN_ROLE_PARENT_ID_SORT_ORDER` (`parent_id`,`sort_order`),
   KEY `IDX_SHOP_ADMIN_ROLE_TREE_LEVEL` (`tree_level`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Admin Role Table';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Admin Role Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_admin_role`
---
-
-LOCK TABLES `shop_admin_role` WRITE;
-/*!40000 ALTER TABLE `shop_admin_role` DISABLE KEYS */;
-INSERT INTO `shop_admin_role` VALUES (1,0,1,1,'G',0,'Administrators'),(2,1,2,0,'U',1,'Eshlee'),(3,1,2,0,'U',2,'Jonathan');
-/*!40000 ALTER TABLE `shop_admin_role` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_admin_rule`
@@ -91,16 +72,6 @@ CREATE TABLE `shop_admin_rule` (
   CONSTRAINT `FK_SHOP_ADMIN_RULE_ROLE_ID_SHOP_ADMIN_ROLE_ROLE_ID` FOREIGN KEY (`role_id`) REFERENCES `shop_admin_role` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Admin Rule Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_admin_rule`
---
-
-LOCK TABLES `shop_admin_rule` WRITE;
-/*!40000 ALTER TABLE `shop_admin_rule` DISABLE KEYS */;
-INSERT INTO `shop_admin_rule` VALUES (1,1,'all',NULL,0,'G','allow');
-/*!40000 ALTER TABLE `shop_admin_rule` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_admin_user`
@@ -127,18 +98,8 @@ CREATE TABLE `shop_admin_user` (
   `rp_token_created_at` timestamp NULL DEFAULT NULL COMMENT 'Reset Password Link Token Creation Date',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `UNQ_SHOP_ADMIN_USER_USERNAME` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Admin User Table';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Admin User Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_admin_user`
---
-
-LOCK TABLES `shop_admin_user` WRITE;
-/*!40000 ALTER TABLE `shop_admin_user` DISABLE KEYS */;
-INSERT INTO `shop_admin_user` VALUES (1,'Eshlee','Romero','hello@esh.ph','eshleebien','38dfc063b993faccf5b2d9eb1673511a:nATZEwHiFh9Nzhk3xopF5OuTZyjy71tY','2015-07-01 04:30:25','2015-07-01 04:30:25','2015-07-01 05:32:29',3,0,1,'N;',NULL,NULL),(2,'Jonathan','Cepeda','jon.jonathan@gmail.com','jon','95fdae6278c141066bcd26592db7b1d1:zIRFl6YLAFYJ3vSHOW9ll0sU4mLrk4S2','2015-07-01 05:34:33','2015-07-01 05:34:33','2015-07-01 07:20:17',2,0,1,'N;',NULL,NULL);
-/*!40000 ALTER TABLE `shop_admin_user` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_adminnotification_inbox`
@@ -160,18 +121,8 @@ CREATE TABLE `shop_adminnotification_inbox` (
   KEY `IDX_SHOP_ADMINNOTIFICATION_INBOX_SEVERITY` (`severity`),
   KEY `IDX_SHOP_ADMINNOTIFICATION_INBOX_IS_READ` (`is_read`),
   KEY `IDX_SHOP_ADMINNOTIFICATION_INBOX_IS_REMOVE` (`is_remove`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COMMENT='Adminnotification Inbox';
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8 COMMENT='Adminnotification Inbox';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_adminnotification_inbox`
---
-
-LOCK TABLES `shop_adminnotification_inbox` WRITE;
-/*!40000 ALTER TABLE `shop_adminnotification_inbox` DISABLE KEYS */;
-INSERT INTO `shop_adminnotification_inbox` VALUES (1,4,'2008-07-24 21:24:40','Magento 1.1 Production Version Now Available','We are thrilled to announce the availability of the production release of Magento 1.1. Read more about the release in the Magento Blog.','http://www.magentocommerce.com/blog/comments/magento-11-is-here-1/',0,0),(2,4,'2008-08-01 21:30:16','Updated iPhone Theme is now available','Updated iPhone theme for Magento 1.1 is now available on Magento Connect and for upgrade through your Magento Connect Manager.','http://www.magentocommerce.com/blog/comments/updated-iphone-theme-for-magento-11-is-now-available/',0,0),(3,3,'2008-08-01 21:40:27','Magento version 1.1.2 is now available','Magento version 1.1.2 is now available for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-version-112-is-now-available/',0,0),(4,3,'2008-08-13 13:51:46','Magento version 1.1.3 is now available','Magento version 1.1.3 is now available','http://www.magentocommerce.com/blog/comments/magento-version-113-is-now-available/',0,0),(5,1,'2008-09-02 17:10:31','Magento Version 1.1.4 Security Update Now Available','Magento 1.1.4 Security Update Now Available. If you are using Magento version 1.1.x, we highly recommend upgrading to this version as soon as possible.','http://www.magentocommerce.com/blog/comments/magento-version-114-security-update/',0,0),(6,3,'2008-09-15 18:09:54','Magento version 1.1.5 Now Available','Magento version 1.1.5 Now Available.\n\nThis release includes many bug fixes, a new category manager and a new skin for the default Magento theme.','http://www.magentocommerce.com/blog/comments/magento-version-115-now-available/',0,0),(7,3,'2008-09-17 16:18:35','Magento version 1.1.6 Now Available','Magento version 1.1.6 Now Available.\n\nThis version includes bug fixes for Magento 1.1.x that are listed in the release notes section.','http://www.magentocommerce.com/blog/comments/magento-version-116-now-available/',0,0),(8,4,'2008-11-07 20:46:42','Reminder: Change Magento`s default phone numbers and callouts before site launch','Before launching your Magento store, please remember to change Magento`s default phone numbers that appear in email templates, callouts, templates, etc.','',0,0),(9,3,'2008-11-19 22:31:12','Magento version 1.1.7 Now Available','Magento version 1.1.7 Now Available.\n\nThis version includes over 350 issue resolutions for Magento 1.1.x that are listed in the release notes section, and new functionality that includes:\n\n-Google Website Optimizer integration\n-Google Base integration\n-Scheduled DB logs cleaning option','http://www.magentocommerce.com/blog/comments/magento-version-117-now-available/',0,0),(10,3,'2008-11-26 18:24:50','Magento Version 1.1.8 Now Available','Magento version 1.1.8 now available.\n\nThis version includes some issue resolutions for Magento 1.1.x that are listed in the release notes section.','http://www.magentocommerce.com/blog/comments/magento-version-118-now-available/',0,0),(11,3,'2008-12-30 04:45:59','Magento version 1.2.0 is now available for download and upgrade','We are extremely happy to announce the availability of Magento version 1.2.0 for download and upgrade.\n\nThis version includes numerous issue resolutions for Magento version 1.1.x and some highly requested new features such as:\n\n    * Support for Downloadable/Digital Products. \n    * Added Layered Navigation to site search result page.\n    * Improved site search to utilize MySQL fulltext search\n    * Added support for fixed-taxes on product level.\n    * Upgraded Zend Framework to the latest stable version 1.7.2','http://www.magentocommerce.com/blog/comments/magento-version-120-is-now-available/',0,0),(12,2,'2008-12-30 18:59:22','Magento version 1.2.0.1 now available','Magento version 1.2.0.1 now available.This version includes some issue resolutions for Magento 1.2.x that are listed in the release notes section.','http://www.magentocommerce.com/blog/comments/magento-version-1201-available/',0,0),(13,2,'2009-01-12 17:41:49','Magento version 1.2.0.2 now available','Magento version 1.2.0.2 is now available for download and upgrade. This version includes an issue resolutions for Magento version 1.2.0.x as listed in the release notes.','http://www.magentocommerce.com/blog/comments/magento-version-1202-now-available/',0,0),(14,3,'2009-01-23 21:25:56','Magento version 1.2.0.3 now available','Magento version 1.2.0.3 is now available for download and upgrade. This version includes issue resolutions for Magento version 1.2.0.x as listed in the release notes.','http://www.magentocommerce.com/blog/comments/magento-version-1203-now-available/',0,0),(15,3,'2009-02-02 18:57:00','Magento version 1.2.1 is now available for download and upgrade','We are happy to announce the availability of Magento version 1.2.1 for download and upgrade.\n\nThis version includes some issue resolutions for Magento version 1.2.x. A full list of items included in this release can be found on the release notes page.','http://www.magentocommerce.com/blog/comments/magento-version-121-now-available/',0,0),(16,3,'2009-02-23 21:45:47','Magento version 1.2.1.1 now available','Magento version 1.2.1.1 now available.This version includes some issue resolutions for Magento 1.2.x that are listed in the release notes section.','http://www.magentocommerce.com/blog/comments/magento-version-1211-now-available/',0,0),(17,3,'2009-02-26 22:39:24','CSRF Attack Prevention','We have just posted a blog entry about a hypothetical CSRF attack on a Magento admin panel. Please read the post to find out if your Magento installation is at risk at http://www.magentocommerce.com/blog/comments/csrf-vulnerabilities-in-web-application-and-how-to-avoid-them-in-magento/','http://www.magentocommerce.com/blog/comments/csrf-vulnerabilities-in-web-application-and-how-to-avoid-them-in-magento/',0,0),(18,2,'2009-03-03 20:03:58','Magento version 1.2.1.2 now available','Magento version 1.2.1.2 is now available for download and upgrade.\nThis version includes some updates to improve admin security as described in the release notes page.','http://www.magentocommerce.com/blog/comments/magento-version-1212-now-available/',0,0),(19,3,'2009-03-30 22:22:40','Magento version 1.3.0 now available','Magento version 1.3.0 is now available for download and upgrade. This version includes numerous issue resolutions for Magento version 1.2.x and new features as described on the release notes page.','http://www.magentocommerce.com/blog/comments/magento-version-130-is-now-available/',0,0),(20,3,'2009-04-18 00:06:02','Magento version 1.3.1 now available','Magento version 1.3.1 is now available for download and upgrade. This version includes some issue resolutions for Magento version 1.3.x and new features such as Checkout By Amazon and Amazon Flexible Payment. To see a full list of updates please check the release notes page.','http://www.magentocommerce.com/blog/comments/magento-version-131-now-available/',0,0),(21,3,'2009-05-19 18:31:21','Magento version 1.3.1.1 now available','Magento version 1.3.1.1 is now available for download and upgrade. This version includes some issue resolutions for Magento version 1.3.x and a security update for Magento installations that run on multiple domains or sub-domains. If you are running Magento with multiple domains or sub-domains we highly recommend upgrading to this version.','http://www.magentocommerce.com/blog/comments/magento-version-1311-now-available/',0,0),(22,3,'2009-05-29 18:54:06','Magento version 1.3.2 now available','This version includes some improvements and issue resolutions for version 1.3.x that are listed on the release notes page. also included is a Beta version of the Compile module.','http://www.magentocommerce.com/blog/comments/magento-version-132-now-available/',0,0),(23,3,'2009-06-01 15:32:52','Magento version 1.3.2.1 now available','Magento version 1.3.2.1 now available for download and upgrade.\n\nThis release solves an issue for users running Magento with PHP 5.2.0, and changes to index.php to support the new Compiler Module.','http://www.magentocommerce.com/blog/comments/magento-version-1321-now-available/',0,0),(24,3,'2009-07-01 21:21:44','Magento version 1.3.2.2 now available','Magento version 1.3.2.2 is now available for download and upgrade.\n\nThis release includes issue resolution for Magento version 1.3.x. To see a full list of changes please visit the release notes page http://www.magentocommerce.com/download/release_notes.','http://www.magentocommerce.com/blog/comments/magento-version-1322-now-available/',0,0),(25,3,'2009-07-23 02:48:54','Magento version 1.3.2.3 now available','Magento version 1.3.2.3 is now available for download and upgrade.\n\nThis release includes issue resolution for Magento version 1.3.x. We recommend to upgrade to this version if PayPal payment modules are in use. To see a full list of changes please visit the release notes page http://www.magentocommerce.com/download/release_notes.','http://www.magentocommerce.com/blog/comments/magento-version-1323-now-available/',0,0),(26,4,'2009-08-28 14:26:28','PayPal is updating Payflow Pro and Website Payments Pro (Payflow Edition) UK.','If you are using Payflow Pro and/or Website Payments Pro (Payflow Edition) UK.  payment methods, you will need to update the URLâ€˜s in your Magento Administrator Panel in order to process transactions after September 1, 2009. Full details are available here: http://www.magentocommerce.com/wiki/paypal_payflow_changes','http://www.magentocommerce.com/wiki/paypal_payflow_changes',0,0),(27,2,'2009-09-23 16:16:49','Magento Version 1.3.2.4 Security Update','Magento Version 1.3.2.4 is now available. This version includes a security updates for Magento 1.3.x that solves possible XSS vulnerability issue on customer registration page and is available through SVN, Download Page and through the Magento Connect Manager.','http://www.magentocommerce.com/blog/comments/magento-version-1324-security-update/',0,0),(28,4,'2009-09-25 10:57:54','Magento Preview Version 1.4.0.0-alpha2 is now available','We are happy to announce the availability of Magento Preview Version 1.4.0.0-alpha2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-alpha2-now-available/',0,0),(29,4,'2009-10-06 20:55:40','Magento Preview Version 1.4.0.0-alpha3 is now available','We are happy to announce the availability of Magento Preview Version 1.4.0.0-alpha3 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-alpha3-now-available/',0,0),(30,4,'2009-12-08 20:30:36','Magento Preview Version 1.4.0.0-beta1 is now available','We are happy to announce the availability of Magento Preview Version 1.4.0.0-beta1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-beta1-now-available/',0,0),(31,4,'2009-12-31 06:22:12','Magento Preview Version 1.4.0.0-rc1 is now available','We are happy to announce the availability of Magento Preview Version 1.4.0.0-rc1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-rc1-now-available/',0,0),(32,4,'2010-02-13 00:39:53','Magento CE Version 1.4.0.0 Stable is now available','We are excited to announce the availability of Magento CE Version 1.4.0.0 Stable for upgrade and download.','http://bit.ly/c53rpK',0,0),(33,3,'2010-02-19 23:39:36','Magento CE Version 1.4.0.1 Stable is now available','Magento CE 1.4.0.1 Stable is now available for upgrade and download.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1401-stable-now-available/',0,0),(34,4,'2010-04-23 16:09:03','Magento Version CE 1.3.3.0 Stable - Now Available With Support for 3-D Secure','Based on community requests, we are excited to announce the release of Magento CE 1.3.3.0-Stable with support for 3-D Secure. This release is intended for Magento merchants using version 1.3.x, who want to add support for 3-D Secure.','http://www.magentocommerce.com/blog/comments/magento-version-ce-1330-stable-now-available-with-support-for-3-d-secure/',0,0),(35,4,'2010-05-31 13:20:21','Announcing the Launch of Magento Mobile','The Magento team is pleased to announce the launch of Magento mobile, a new product that will allow Magento merchants to easily create branded, native mobile storefront applications that are deeply integrated with Magentoâ€™s market-leading eCommerce platform. The product includes a new administrative manager, a native iPhone app that is fully customizable, and a service where Magento manages the submission and maintenance process for the iTunes App Store.\n\nLearn more by visiting the Magento mobile product page and sign-up to be the first to launch a native mobile commerce app, fully integrated with Magento.','http://www.magentocommerce.com/product/mobile',0,0),(36,4,'2010-06-10 16:08:08','Magento CE Version 1.4.1.0 Stable is now available','We are excited to announce the availability of Magento CE Version 1.4.1.0 Stable for upgrade and download. Some of the highlights of this release include: Enhanced PayPal integration (more info to follow), Change of Database structure of the Sales module to no longer use EAV, and much more.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1410-stable-now-available/',0,0),(37,4,'2010-07-26 17:37:34','Magento CE Version 1.4.1.1 Stable is now available','We are excited to announce the availability of Magento CE Version 1.4.1.1 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1411-stable-now-available/',0,0),(38,4,'2010-07-28 01:12:12','Magento CE Version 1.4.2.0-beta1 Preview Release Now Available','This release gives a preview of the new Magento Connect Manager.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1420-beta1-now-available/',0,0),(39,4,'2010-07-28 16:15:01','Magento CE Version 1.4.1.1 Patch Available','As some users experienced issues with upgrading to CE 1.4.1.1 through PEAR channels we provided a patch for it that is available on our blog http://www.magentocommerce.com/blog/comments/magento-ce-version-1411-stable-patch/','http://www.magentocommerce.com/blog/comments/magento-ce-version-1411-stable-patch/',0,0),(40,4,'2010-10-11 20:13:25','Magento Mobile is now live!','Magento Mobile is now live! Signup today to have your own native iPhone mobile-shopping app in iTunes for the holiday season! Learn more at http://www.magentomobile.com/','http://www.magentomobile.com/',0,0),(41,4,'2010-11-08 18:52:06','Magento CE Version 1.4.2.0-RC1 Preview Release Now Available','We are happy to announce the availability of Magento Preview Version 1.4.2.0-RC1 for download.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1420-rc1-now-available/',0,0),(42,4,'2010-12-02 17:33:00','Magento CE Version 1.4.2.0-RC2 Preview Release Now Available','We are happy to announce the availability of Magento Preview Version 1.4.2.0-RC2 for download.','http://www.magentocommerce.com/blog/comments/magento-preview-version-1420-rc2-now-available/',0,0),(43,4,'2010-12-08 19:29:55','Magento CE Version 1.4.2.0 Stable is now available','We are excited to announce the availability of Magento CE Version 1.4.2.0 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1420-stable-now-available/',0,0),(44,4,'2010-12-17 20:23:55','Magento Preview Version CE 1.5.0.0-alpha1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.5.0.0-alpha1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1500-alpha1-now-available/',0,0),(45,4,'2010-12-29 20:51:08','Magento Preview Version CE 1.5.0.0-alpha2 is now available','We are happy to announce the availability of Magento Preview Version CE 1.5.0.0-alpha2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1500-alpha2-now-available/',0,0),(46,4,'2011-01-13 21:35:36','Magento Preview Version CE 1.5.0.0-beta1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.5.0.0-beta1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1500-beta1-now-available/',0,0),(47,4,'2011-01-21 18:19:09','Magento Preview Version CE 1.5.0.0-beta2 is now available','We are happy to announce the availability of Magento Preview Version CE 1.5.0.0-beta2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1500-beta2-now-available/',0,0),(48,4,'2011-01-27 18:27:57','Magento Preview Version CE 1.5.0.0-rc1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.5.0.0-rc1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1500-rc1-now-available/',0,0),(49,4,'2011-02-03 18:56:33','Magento Preview Version CE 1.5.0.0-rc2 is now available','We are happy to announce the availability of Magento Preview Version CE 1.5.0.0-rc2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1500-rc2-now-available/',0,0),(50,4,'2011-02-08 16:43:23','Magento CE Version 1.5.0.0 Stable is now available','We are excited to announce the availability of Magento CE Version 1.5.0.0 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-community-professional-and-enterprise-editions-releases-now-availab/',0,0),(51,4,'2011-02-09 20:42:57','Magento CE 1.5.0.1 stable Now Available','We are excited to announce the availability of Magento CE Version 1.5.0.1 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-1501-stable-now-available/',0,0),(52,4,'2011-03-18 16:15:45','Magento CE 1.5.1.0-beta1 Now Available','We are happy to announce the availability of Magento Preview Version CE 1.5.1.0-beta1 for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1510-beta1-now-available/',0,0),(53,4,'2011-03-31 14:43:02','Magento CE 1.5.1.0-rc1 Now Available','We are happy to announce the availability of Magento Preview Version CE 1.5.1.0-rc1 for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1510-rc1-now-available/',0,0),(54,4,'2011-04-26 15:21:07','Magento CE 1.5.1.0-stable Now Available','We are excited to announce the availability of Magento CE Version 1.5.1.0 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1510-stable-now-available/',0,0),(55,4,'2011-05-26 15:33:23','Magento Preview Version CE 1.6.0.0-alpha1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.6.0.0-alpha1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1600-alpha1-now-available/',0,0),(56,4,'2011-06-15 14:12:08','Magento Preview Version CE 1.6.0.0-beta1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.6.0.0-beta1for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1600-beta1-now-available/',0,0),(57,4,'2011-06-30 15:03:58','Magento Preview Version CE 1.6.0.0-rc1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.6.0.0-rc1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1600-rc1-now-available/',0,0),(58,4,'2011-07-11 15:07:39','Magento Preview Version CE 1.6.0.0-rc2 is now available','We are happy to announce the availability of Magento Preview Version CE 1.6.0.0-rc2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1600-rc2-now-available/',0,0),(59,4,'2011-08-19 13:58:31','Magento CE 1.6.0.0-stable Now Available','We are excited to announce the availability of Magento CE Version 1.6.0.0 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1600-stable-now-available/',0,0),(60,4,'2011-09-16 21:31:26','Magento Preview Version CE 1.6.1.0-beta1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.6.1.0-beta1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1610-beta1-now-available/',0,0),(61,4,'2011-09-29 11:44:10','Magento Preview Version CE 1.6.1.0-rc1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.6.1.0-rc1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1610-rc1-now-available/',0,0),(62,4,'2011-10-19 13:50:05','Magento CE 1.6.1.0-stable Now Available','We are excited to announce the availability of Magento CE Version 1.6.1.0 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1610-stable-now-available/',0,0),(63,4,'2011-12-30 14:39:35','Magento Preview Version CE 1.7.0.0-alpha1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.7.0.0-alpha1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1700-alpha1-now-available/',0,0),(64,4,'2012-01-11 14:24:20','Magento CE 1.6.2.0-stable Now Available','We are excited to announce the availability of Magento CE Version 1.6.2.0 Stable for download and upgrade.','http://www.magentocommerce.com/blog/comments/magento-ce-version-1620-stable-now-available/',0,0),(65,4,'2012-03-02 16:54:12','Magento Preview Version CE 1.7.0.0-beta1 is now available','We are happy to announce the availability of Magento Preview Version CE 1.7.0.0-beta1 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1700-beta1-now-available/',0,0),(66,4,'2012-04-23 06:02:40','Magento Community Preview Version CE 1.7.0.0-RC1 has been released!','Learn more about the exciting new features and updates in this release and how you can take it for a test drive. As this is a preview version, we need to stress that it\'s likely unstable and that we DON\'T recommend that you use it in any production environment just yet.','http://www.magentocommerce.com/blog/comments/magento-preview-version-ce-1700-rc1-now-available/',0,0),(67,4,'2012-05-11 01:46:54','Magento Community 1.7 and Magento Enterprise 1.12 now available!','Learn more about the exciting new features and updates in these releases.','http://www.magentocommerce.com/blog/comments/magento-enterprise-112-and-community-17-now-available/',0,0),(68,4,'2012-06-20 10:54:07','Magento Community Edition 1.7.0.1 now available! ','We have just released an updated version of Magento Community Edition, version 1.7.0.1. This update delivers new, minor functionality and fixes for some potential security vulnerabilities.','http://www.magentocommerce.com/blog/comments/magento-community-edition-1701-released/',0,0),(69,4,'2012-07-05 11:21:43','Important Security Update - Zend Platform Vulnerability','We have recently learned of a serious vulnerability in the Zend platform on which Magento is built. Learn more and access a patch that addresses this issue. ','http://www.magentocommerce.com/blog/comments/important-security-update-zend-platform-vulnerability/',0,0),(70,4,'2012-11-19 12:27:42','Wrap up more holiday sales with financing','Give your customers up to 6 months financing. You get paid right away with Bill Me Later, a PayPal service. It’s a great way to extend financing in time for the holidays. Learn More.','http://www.magentocommerce.com/paypal/billmelater?utm_source=CEMessaging&utm_medium=copy&utm_content=sixmonths&utm_campaign=BML',0,0),(71,4,'2012-12-07 03:22:30','Increase Your Sales With PayPal','Magento merchants using PayPal Express Checkout can help increase their sales on average 18%. It is one simple thing you can do right now to help boost your sales. Learn more.','http://www.magentocommerce.com/add-paypal?utm_source=CEModule&utm_medium=copy&utm_content=18&utm_campaign=choosepaypal',0,0),(72,4,'2013-01-15 14:02:07','Imagine 2013 Registration is Now Open!','Join 1500 merchants, partners, developers and enthusiasts from 35+ countries around the world for Magento’s premier global conference! Collaborate, learn, network and get inspired by the future of eCommerce. Tickets will sell out fast! April 8th – 10th in Las Vegas.','https://registration.imagineecommerce.com/',0,0),(73,4,'2013-02-12 09:53:42','Get More eCommerce Power with Magento Enterprise','Limited time offer: Get a free, customized evaluation of your Community Edition site from a Magento Solution Partner. This evaluation gives you a clear look at the numerous benefits you can achieve by upgrading to Enterprise Edition. ','http://www.magentocommerce.com/community-to-enterprise?utm_source=CEMM&utm_medium=copy&utm_campaign=CE2EE',0,0),(74,2,'2013-09-27 09:28:13','Magento Community Edition 1.8.0.0 - now available for download!','Get tax, security, performance, and many other improvements. \n\nLearn more at http://www.magentocommerce.com/blog/comments/magento-community-edition-one-eight-now-available/ ','http://www.magentocommerce.com/blog/comments/magento-community-edition-one-eight-now-available/',0,0),(75,4,'2013-12-11 07:35:06','Magento Community Edition 1.8.1.0 is here!','This new version offers significant tax calculation, product quality, and security enhancements. Be sure to carefully review the upgrade instructions before starting. More information is available at http://www.magentocommerce.com/blog/comments/magento-community-edition-1810-is-here/','http://www.magentocommerce.com/blog/comments/magento-community-edition-1810-is-here/',0,0),(76,4,'2013-12-12 15:24:39','Important Magento Community Edition Patch','A security patch is available for Magento Community Edition 1.4.0.0 through 1.7.0.2; the issue has been fixed in Magento Community Edition 1.8.0.0 and later. It resolves a vulnerability discovered through our quarterly penetration testing process and has not been reported by merchants. We encourage all merchants to apply the patch in their next regularly scheduled maintenance cycle. The patch is available at http://www.magentocommerce.com/download in the Magento Community Edition Patches section.','http://www.magentocommerce.com/download',0,0),(77,4,'2014-01-21 10:34:48','PHP 5.4 Patch Now Available','Magento is advancing its platform and making development more efficient by adding support for PHP 5.4. Patches are available for download at www.magentocommerce.com/download and you can learn more about this update in our blog post at http://www.magentocommerce.com/blog/comments/magento-now-supports-php-54 .','http://www.magentocommerce.com/blog/comments/magento-now-supports-php-54',0,0),(78,4,'2014-02-20 09:51:46','Discover Card Validation Patch Available','A patch that resolves an issue with validating Discover credit cards is now available for download at http://www.magentocommerce.com/download. More information on the patch is available in the Magento Knowledge Base at http://www.magentocommerce.com/knowledge-base/entry/discover-card-validation','http://www.magentocommerce.com/knowledge-base/entry/discover-card-validation ',0,0),(79,4,'2014-03-04 07:12:26','Learn How to Quickly Increase Sales on Your Site','Adding the PayPal Express Checkout button to your checkout page can help increase sales 18% on average. It’s fast and easy and you can do it right now to boost sales. Express Checkout is already seamlessly integrated into Community Edition.','http://magento.com/paypal/CE_Express_Checkout_NA?utm_source=messagemodule&utm_medium=message&utm_campaign=Ceexpresscheckout',0,0),(80,4,'2014-05-13 08:46:11','Magento Community Edition 1.9 is now available!','It accelerates your entry into the mobile commerce space by slashing the time and cost of getting a mobile device-friendly responsive site.  And a new Bill Me Later payment option helps boost your sales. Visit http://magento.com/blog/magento-news/magento-enables-responsive-sites-half-time to learn more.','http://magento.com/blog/magento-news/magento-enables-responsive-sites-half-time',0,0),(81,4,'2014-10-07 20:55:06','It’s still not too late: Boost your 2014 Holiday sales today.','See results in as little as one week with eBay Enterprise Display and 2 business days with eBay Enterprise Affiliate. DID YOU KNOW: Get access to over 128 million highly qualified shoppers on eBay.com with eBay Enterprise Display. And the average retail client using product retargeting sees a $10 to $1 ROI on retargeting spend during Q4. With the eBay Enterprise Affiliate Network, get access to over 200,000 active network publishers across 30+ verticals, and only pay when a customer makes a purchase (Affiliate Network is only available in the U.S. & Canada).  GET STARTED TODAY by visiting www.ebayenterprise.com/turbochargesales','http://www.ebayenterprise.com/turbochargesales',0,0),(82,4,'2014-11-12 11:03:26','Important: PayPal Users Must Discontinue Using SSL 3.0 By December 3, 2014','To address a vulnerability with the SSL 3.0 security protocol, PayPal and other payment gateways will be disabling SSL 3.0 support. Merchants must upgrade to Transport Layer Service (TLS) by December 3, 2014 to avoid PayPal payment operation failures. Learn more about what you need to do at https://devblog.paypal.com/poodle-ssl-3-0-vulnerability/','https://devblog.paypal.com/poodle-ssl-3-0-vulnerability/',0,0),(83,4,'2014-11-24 15:25:21','Magento Community Edition 1.9.1 is available!','Magento Community Edition 1.9.1 empowers merchants to deliver compelling shopping experiences by offering enhanced responsive design capabilities, new swatches to display product variations, and improved performance through support for MySQL 5.6 and PHP 5.5. It also includes support for Google Universal Analytics and over 70 product improvements. Find out more at http://magento.com/blog/magento-news/magento-community-edition-191-now-available-download','http://magento.com/blog/magento-news/magento-community-edition-191-now-available-download',0,0),(84,4,'2015-01-22 09:47:08','Join Us at Imagine Commerce 2015 - April 20-22 at the Wynn Las Vegas','Join Magento, eBay Enterprise, and over 2,000 merchants, developers, and eCommerce experts at the premier Commerce event of the year. With three days of cutting-edge keynote presentations, special technical programs, dynamic breakout sessions, and incredible networking opportunities, Imagine Commerce 2015 will educate, enrich, and inspire you to take your business to new heights. Register now at http://imagine2015.magento.com/.','http://imagine2015.magento.com/',0,0),(85,1,'2015-04-16 08:17:07','Critical Reminder: Download and install Magento security patches.  Download now.','Download and implement 2 important security patches (SUPEE-5344 and SUPEE-1533) from the Magento Community Edition download page (https://www.magentocommerce.com/products/downloads/magento/).  If you have not done so already, download and install 2 previously-released patches that prevent an attacker from remotely executing code on Magento software.  These issues affect all versions of Magento Community Edition.  A press release from Check Point Software Technologies in the coming days will make one of these issues widely known, possibly alerting hackers who may try to exploit it.  Ensure the patches are in place as a preventative measure before the issue is publicized.','https://www.magentocommerce.com/products/downloads/magento/ ',0,0),(86,1,'2015-04-19 14:37:00','Second Reminder: Download and install Magento critical security patches now.','If you have not done so already, download and install 2 previously-released security patches (SUPEE-5344 and SUPEE-1533) from the Magento Community Edition download page (https://www.magentocommerce.com/products/downloads/magento/).  These security issues affect all versions of Magento Community Edition and enable an attacker to remotely execute code on Magento software. A press release from Check Point Software Technologies tomorrow  will make one of these issues widely known, possibly alerting hackers who may try to exploit it.  Ensure the patches are in place as a preventative measure before the issue is publicized.','https://www.magentocommerce.com/products/downloads/magento/',0,0),(87,1,'2015-04-23 11:43:31','Urgent: Immediately install Magento critical security patches','It is critical for you to download and install 2 previously-released security patches (SUPEE-5344 and SUPEE-1533) from the Magento Community Edition download page (https://www.magentocommerce.com/products/downloads/magento/).  Please do this immediately, as Check Point Software Technologies has published a technical description of how they discovered the issue, which we feel might serve as a tutorial for implementing an attack against your website. ','https://www.magentocommerce.com/products/downloads/magento/',0,0),(88,1,'2015-05-14 16:34:01','Important: New Magento Security Patch - Install it Now','It is important for you to download and install a new security patch (SUPEE-5994) from the Magento Community Edition download page (https://www.magentocommerce.com/products/downloads/magento/).  Please apply this critical update immediately to help protect your site from exposure to multiple security vulnerabilities impacting all versions of the Magento Community Edition software. Please note that this patch should be installed in addition to the recent Shoplift patch (SUPEE-5344).','https://www.magentocommerce.com/products/downloads/magento/',0,0);
-/*!40000 ALTER TABLE `shop_adminnotification_inbox` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_api2_acl_attribute`
@@ -193,15 +144,6 @@ CREATE TABLE `shop_api2_acl_attribute` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_api2_acl_attribute`
---
-
-LOCK TABLES `shop_api2_acl_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_api2_acl_attribute` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api2_acl_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_api2_acl_role`
 --
 
@@ -218,16 +160,6 @@ CREATE TABLE `shop_api2_acl_role` (
   KEY `IDX_SHOP_API2_ACL_ROLE_UPDATED_AT` (`updated_at`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Api2 Global ACL Roles';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_api2_acl_role`
---
-
-LOCK TABLES `shop_api2_acl_role` WRITE;
-/*!40000 ALTER TABLE `shop_api2_acl_role` DISABLE KEYS */;
-INSERT INTO `shop_api2_acl_role` VALUES (1,'2015-07-01 12:29:39',NULL,'Guest'),(2,'2015-07-01 12:29:39',NULL,'Customer');
-/*!40000 ALTER TABLE `shop_api2_acl_role` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_api2_acl_rule`
@@ -248,15 +180,6 @@ CREATE TABLE `shop_api2_acl_rule` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_api2_acl_rule`
---
-
-LOCK TABLES `shop_api2_acl_rule` WRITE;
-/*!40000 ALTER TABLE `shop_api2_acl_rule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api2_acl_rule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_api2_acl_user`
 --
 
@@ -274,15 +197,6 @@ CREATE TABLE `shop_api2_acl_user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_api2_acl_user`
---
-
-LOCK TABLES `shop_api2_acl_user` WRITE;
-/*!40000 ALTER TABLE `shop_api2_acl_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api2_acl_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_api_assert`
 --
 
@@ -296,15 +210,6 @@ CREATE TABLE `shop_api_assert` (
   PRIMARY KEY (`assert_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api ACL Asserts';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_api_assert`
---
-
-LOCK TABLES `shop_api_assert` WRITE;
-/*!40000 ALTER TABLE `shop_api_assert` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api_assert` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_api_role`
@@ -326,15 +231,6 @@ CREATE TABLE `shop_api_role` (
   KEY `IDX_SHOP_API_ROLE_TREE_LEVEL` (`tree_level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api ACL Roles';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_api_role`
---
-
-LOCK TABLES `shop_api_role` WRITE;
-/*!40000 ALTER TABLE `shop_api_role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api_role` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_api_rule`
@@ -359,15 +255,6 @@ CREATE TABLE `shop_api_rule` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_api_rule`
---
-
-LOCK TABLES `shop_api_rule` WRITE;
-/*!40000 ALTER TABLE `shop_api_rule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api_rule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_api_session`
 --
 
@@ -383,15 +270,6 @@ CREATE TABLE `shop_api_session` (
   CONSTRAINT `FK_SHOP_API_SESSION_USER_ID_SHOP_API_USER_USER_ID` FOREIGN KEY (`user_id`) REFERENCES `shop_api_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api Sessions';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_api_session`
---
-
-LOCK TABLES `shop_api_session` WRITE;
-/*!40000 ALTER TABLE `shop_api_session` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api_session` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_api_user`
@@ -417,15 +295,6 @@ CREATE TABLE `shop_api_user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_api_user`
---
-
-LOCK TABLES `shop_api_user` WRITE;
-/*!40000 ALTER TABLE `shop_api_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_api_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_captcha_log`
 --
 
@@ -440,15 +309,6 @@ CREATE TABLE `shop_captcha_log` (
   PRIMARY KEY (`type`,`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Count Login Attempts';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_captcha_log`
---
-
-LOCK TABLES `shop_captcha_log` WRITE;
-/*!40000 ALTER TABLE `shop_captcha_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_captcha_log` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_anc_categs_index_idx`
@@ -466,15 +326,6 @@ CREATE TABLE `shop_catalog_category_anc_categs_index_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_anc_categs_index_idx`
---
-
-LOCK TABLES `shop_catalog_category_anc_categs_index_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_categs_index_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_categs_index_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_anc_categs_index_tmp`
 --
 
@@ -488,15 +339,6 @@ CREATE TABLE `shop_catalog_category_anc_categs_index_tmp` (
   KEY `IDX_SHOP_CATALOG_CATEGORY_ANC_CATEGS_INDEX_TMP_PATH_CATEGORY_ID` (`path`,`category_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Category Anchor Indexer Temp Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_anc_categs_index_tmp`
---
-
-LOCK TABLES `shop_catalog_category_anc_categs_index_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_categs_index_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_categs_index_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_anc_products_index_idx`
@@ -514,15 +356,6 @@ CREATE TABLE `shop_catalog_category_anc_products_index_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_anc_products_index_idx`
---
-
-LOCK TABLES `shop_catalog_category_anc_products_index_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_products_index_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_products_index_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_anc_products_index_tmp`
 --
 
@@ -536,15 +369,6 @@ CREATE TABLE `shop_catalog_category_anc_products_index_tmp` (
   KEY `IDX_SHOP_CAT_CTGR_ANC_PRDS_IDX_TMP_CTGR_ID_PRD_ID_POSITION` (`category_id`,`product_id`,`position`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Category Anchor Product Indexer Temp Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_anc_products_index_tmp`
---
-
-LOCK TABLES `shop_catalog_category_anc_products_index_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_products_index_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_anc_products_index_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_entity`
@@ -569,16 +393,6 @@ CREATE TABLE `shop_catalog_category_entity` (
   KEY `IDX_SHOP_CATALOG_CATEGORY_ENTITY_PATH_ENTITY_ID` (`path`,`entity_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Catalog Category Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_entity`
---
-
-LOCK TABLES `shop_catalog_category_entity` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_entity` DISABLE KEYS */;
-INSERT INTO `shop_catalog_category_entity` VALUES (1,3,0,0,'2015-01-07 04:29:43','2015-07-01 04:29:43','1',0,0,1),(2,3,3,1,'2015-07-01 04:29:43','2015-07-01 04:29:43','1/2',1,1,0);
-/*!40000 ALTER TABLE `shop_catalog_category_entity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_entity_datetime`
@@ -606,15 +420,6 @@ CREATE TABLE `shop_catalog_category_entity_datetime` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_entity_datetime`
---
-
-LOCK TABLES `shop_catalog_category_entity_datetime` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_datetime` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_datetime` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_entity_decimal`
 --
 
@@ -638,15 +443,6 @@ CREATE TABLE `shop_catalog_category_entity_decimal` (
   CONSTRAINT `FK_SHOP_CAT_CTGR_ENTT_DEC_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Category Decimal Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_entity_decimal`
---
-
-LOCK TABLES `shop_catalog_category_entity_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_decimal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_entity_int`
@@ -674,16 +470,6 @@ CREATE TABLE `shop_catalog_category_entity_int` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_entity_int`
---
-
-LOCK TABLES `shop_catalog_category_entity_int` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_int` DISABLE KEYS */;
-INSERT INTO `shop_catalog_category_entity_int` VALUES (1,3,67,0,1,1),(2,3,67,1,1,1),(3,3,42,0,2,1),(4,3,67,0,2,1),(5,3,42,1,2,1),(6,3,67,1,2,1);
-/*!40000 ALTER TABLE `shop_catalog_category_entity_int` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_entity_text`
 --
 
@@ -709,16 +495,6 @@ CREATE TABLE `shop_catalog_category_entity_text` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_entity_text`
---
-
-LOCK TABLES `shop_catalog_category_entity_text` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_text` DISABLE KEYS */;
-INSERT INTO `shop_catalog_category_entity_text` VALUES (1,3,65,0,1,NULL),(2,3,65,1,1,NULL),(3,3,65,0,2,NULL),(4,3,65,1,2,NULL);
-/*!40000 ALTER TABLE `shop_catalog_category_entity_text` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_entity_varchar`
 --
 
@@ -742,16 +518,6 @@ CREATE TABLE `shop_catalog_category_entity_varchar` (
   CONSTRAINT `FK_SHOP_CAT_CTGR_ENTT_VCHR_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Catalog Category Varchar Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_entity_varchar`
---
-
-LOCK TABLES `shop_catalog_category_entity_varchar` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_entity_varchar` DISABLE KEYS */;
-INSERT INTO `shop_catalog_category_entity_varchar` VALUES (1,3,41,0,1,'Root Catalog'),(2,3,41,1,1,'Root Catalog'),(3,3,43,1,1,'root-catalog'),(4,3,41,0,2,'Default Category'),(5,3,41,1,2,'Default Category'),(6,3,49,1,2,'PRODUCTS'),(7,3,43,1,2,'default-category');
-/*!40000 ALTER TABLE `shop_catalog_category_entity_varchar` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_flat_store_1`
@@ -806,16 +572,6 @@ CREATE TABLE `shop_catalog_category_flat_store_1` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_flat_store_1`
---
-
-LOCK TABLES `shop_catalog_category_flat_store_1` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_flat_store_1` DISABLE KEYS */;
-INSERT INTO `shop_catalog_category_flat_store_1` VALUES (1,0,'2015-01-07 04:29:43','2015-07-01 04:29:43','1',0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,'Root Catalog',NULL,NULL,'root-catalog',NULL),(2,1,'2015-07-01 04:29:43','2015-07-01 04:29:43','1/2',1,1,0,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'PRODUCTS',NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,'Default Category',NULL,NULL,'default-category',NULL);
-/*!40000 ALTER TABLE `shop_catalog_category_flat_store_1` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_product`
 --
 
@@ -832,15 +588,6 @@ CREATE TABLE `shop_catalog_category_product` (
   CONSTRAINT `FK_SHOP_CAT_CTGR_PRD_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product To Category Linkage Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_product`
---
-
-LOCK TABLES `shop_catalog_category_product` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_product` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_product_index`
@@ -866,16 +613,6 @@ CREATE TABLE `shop_catalog_category_product_index` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_product_index`
---
-
-LOCK TABLES `shop_catalog_category_product_index` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index` DISABLE KEYS */;
-INSERT INTO `shop_catalog_category_product_index` VALUES (2,1,0,0,1,4);
-/*!40000 ALTER TABLE `shop_catalog_category_product_index` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_product_index_enbl_idx`
 --
 
@@ -891,15 +628,6 @@ CREATE TABLE `shop_catalog_category_product_index_enbl_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_product_index_enbl_idx`
---
-
-LOCK TABLES `shop_catalog_category_product_index_enbl_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_enbl_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_enbl_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_product_index_enbl_tmp`
 --
 
@@ -913,15 +641,6 @@ CREATE TABLE `shop_catalog_category_product_index_enbl_tmp` (
   KEY `IDX_SHOP_CAT_CTGR_PRD_IDX_ENBL_TMP_PRD_ID_VISIBILITY` (`product_id`,`visibility`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Category Product Enabled Indexer Temp Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_product_index_enbl_tmp`
---
-
-LOCK TABLES `shop_catalog_category_product_index_enbl_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_enbl_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_enbl_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_category_product_index_idx`
@@ -942,15 +661,6 @@ CREATE TABLE `shop_catalog_category_product_index_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_category_product_index_idx`
---
-
-LOCK TABLES `shop_catalog_category_product_index_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_category_product_index_tmp`
 --
 
@@ -967,15 +677,6 @@ CREATE TABLE `shop_catalog_category_product_index_tmp` (
   KEY `IDX_SHOP_CAT_CTGR_PRD_IDX_TMP_PRD_ID_CTGR_ID_STORE_ID` (`product_id`,`category_id`,`store_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Category Product Indexer Temp Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_category_product_index_tmp`
---
-
-LOCK TABLES `shop_catalog_category_product_index_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_category_product_index_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_compare_item`
@@ -1001,15 +702,6 @@ CREATE TABLE `shop_catalog_compare_item` (
   CONSTRAINT `FK_SHOP_CAT_CMP_ITEM_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Compare Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_compare_item`
---
-
-LOCK TABLES `shop_catalog_compare_item` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_compare_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_compare_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_eav_attribute`
@@ -1046,16 +738,6 @@ CREATE TABLE `shop_catalog_eav_attribute` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_eav_attribute`
---
-
-LOCK TABLES `shop_catalog_eav_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_eav_attribute` DISABLE KEYS */;
-INSERT INTO `shop_catalog_eav_attribute` VALUES (41,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(42,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(43,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(44,NULL,0,1,0,0,0,0,1,0,0,0,0,1,NULL,0,0,1,0),(45,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(46,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(47,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(48,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(49,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(50,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(51,NULL,1,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(52,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(53,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(54,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(55,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(56,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(57,NULL,0,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(58,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(59,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(60,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(61,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(62,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(63,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(64,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(65,'adminhtml/catalog_category_helper_sortby_available',0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(66,'adminhtml/catalog_category_helper_sortby_default',0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(67,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(68,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(69,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(70,'adminhtml/catalog_category_helper_pricestep',0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(71,NULL,0,1,1,0,0,0,0,0,0,1,1,1,NULL,1,0,0,0),(72,NULL,0,1,1,0,1,0,1,0,0,0,0,1,NULL,1,0,1,0),(73,NULL,0,1,1,0,1,0,1,0,0,1,0,1,NULL,1,0,1,0),(74,NULL,1,1,1,0,1,0,0,0,0,0,0,1,NULL,1,0,0,0),(75,NULL,2,1,1,1,0,0,0,0,0,1,1,1,'simple,configurable,virtual,bundle,downloadable',1,0,0,0),(76,NULL,2,1,0,0,0,0,0,0,0,1,0,1,'simple,configurable,virtual,bundle,downloadable',0,0,0,0),(77,NULL,2,1,0,0,0,0,0,0,0,1,0,1,'simple,configurable,virtual,bundle,downloadable',0,0,0,0),(78,NULL,2,1,0,0,0,0,0,0,0,1,0,1,'simple,configurable,virtual,bundle,downloadable',0,0,0,0),(79,NULL,2,1,0,0,0,0,0,0,0,0,0,1,'virtual,downloadable',0,0,0,0),(80,NULL,1,1,0,0,0,0,0,0,0,0,0,1,'simple,bundle',0,0,0,0),(81,NULL,1,1,1,1,1,0,0,0,0,0,0,1,'simple',1,0,0,0),(82,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(83,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(84,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(85,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(86,NULL,0,1,0,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(87,NULL,0,1,0,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(88,NULL,1,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(89,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(90,NULL,2,1,0,0,0,0,0,0,0,0,0,1,'simple,configurable,virtual,bundle,downloadable',0,0,0,0),(91,NULL,2,1,0,0,0,0,0,0,0,0,0,1,'simple,configurable,virtual,bundle,downloadable',0,0,0,0),(92,NULL,1,1,1,1,1,0,0,0,0,0,0,1,'simple',1,0,0,0),(93,NULL,2,1,0,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(94,NULL,2,1,0,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(95,NULL,1,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(96,NULL,2,1,1,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(97,NULL,0,1,0,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(98,NULL,0,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(99,NULL,0,0,0,0,0,0,0,0,0,0,0,1,'simple,configurable,virtual,bundle,downloadable',0,0,0,0),(100,NULL,1,1,0,0,0,0,0,0,0,0,0,0,'simple,virtual',0,0,0,0),(101,NULL,1,1,0,0,0,0,0,0,0,0,0,0,'simple,virtual',0,0,0,0),(102,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(103,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(104,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(105,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(106,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(107,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(108,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(109,NULL,0,1,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(110,NULL,1,0,0,0,0,0,0,0,0,1,0,1,NULL,0,0,0,0),(111,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(112,NULL,0,0,0,0,0,0,0,0,0,1,0,0,NULL,0,0,0,0),(113,NULL,0,0,0,0,0,0,0,0,0,1,0,0,NULL,0,0,0,0),(114,NULL,0,0,0,0,0,0,0,0,0,1,0,0,NULL,0,0,0,0),(115,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(116,NULL,1,0,0,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0),(117,NULL,2,1,0,0,0,0,0,0,0,0,0,0,'simple,configurable,bundle,grouped',0,0,0,0),(118,'adminhtml/catalog_product_helper_form_msrp_enabled',2,1,0,0,0,0,0,0,0,1,0,1,'simple,bundle,configurable,virtual,downloadable',0,0,0,0),(119,'adminhtml/catalog_product_helper_form_msrp_price',2,1,0,0,0,0,0,0,0,1,0,1,'simple,bundle,configurable,virtual,downloadable',0,0,0,0),(120,NULL,2,1,0,0,0,0,0,0,0,1,0,1,'simple,bundle,configurable,virtual,downloadable',0,0,0,0),(121,NULL,2,1,1,0,0,0,0,0,0,1,0,1,'simple,configurable,virtual,downloadable,bundle',1,0,0,0),(122,'giftmessage/adminhtml_product_helper_form_config',1,1,0,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0),(123,NULL,1,0,0,0,0,0,0,0,0,1,0,0,'bundle',0,0,0,0),(124,NULL,1,0,0,0,0,0,0,0,0,0,0,0,'bundle',0,0,0,0),(125,NULL,1,0,0,0,0,0,0,0,0,1,0,0,'bundle',0,0,0,0),(126,NULL,1,1,0,0,0,0,0,0,0,1,0,0,'bundle',0,0,0,0),(127,NULL,1,0,0,0,0,0,0,0,0,1,0,0,'bundle',0,0,0,0),(128,NULL,1,0,0,0,0,0,0,0,0,1,0,0,'downloadable',0,0,0,0),(129,NULL,0,0,0,0,0,0,0,0,0,0,0,0,'downloadable',0,0,0,0),(130,NULL,0,0,0,0,0,0,0,0,0,0,0,0,'downloadable',0,0,0,0),(131,NULL,1,0,0,0,0,0,0,0,0,1,0,0,'downloadable',0,0,0,0);
-/*!40000 ALTER TABLE `shop_catalog_eav_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_bundle_option`
 --
 
@@ -1075,15 +757,6 @@ CREATE TABLE `shop_catalog_product_bundle_option` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_bundle_option`
---
-
-LOCK TABLES `shop_catalog_product_bundle_option` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_option` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_bundle_option_value`
 --
 
@@ -1100,15 +773,6 @@ CREATE TABLE `shop_catalog_product_bundle_option_value` (
   CONSTRAINT `FK_SHOP_CAT_PRD_BNDL_OPT_VAL_OPT_ID_SHOP_CAT_PRD_BNDL_OPT_OPT_ID` FOREIGN KEY (`option_id`) REFERENCES `shop_catalog_product_bundle_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Bundle Option Value';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_bundle_option_value`
---
-
-LOCK TABLES `shop_catalog_product_bundle_option_value` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_option_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_option_value` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_bundle_price_index`
@@ -1131,15 +795,6 @@ CREATE TABLE `shop_catalog_product_bundle_price_index` (
   CONSTRAINT `FK_SHOP_CAT_PRD_BNDL_PRICE_IDX_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Bundle Price Index';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_bundle_price_index`
---
-
-LOCK TABLES `shop_catalog_product_bundle_price_index` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_price_index` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_price_index` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_bundle_selection`
@@ -1168,15 +823,6 @@ CREATE TABLE `shop_catalog_product_bundle_selection` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_bundle_selection`
---
-
-LOCK TABLES `shop_catalog_product_bundle_selection` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_selection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_selection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_bundle_selection_price`
 --
 
@@ -1196,15 +842,6 @@ CREATE TABLE `shop_catalog_product_bundle_selection_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_bundle_selection_price`
---
-
-LOCK TABLES `shop_catalog_product_bundle_selection_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_selection_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_selection_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_bundle_stock_index`
 --
 
@@ -1220,15 +857,6 @@ CREATE TABLE `shop_catalog_product_bundle_stock_index` (
   PRIMARY KEY (`entity_id`,`website_id`,`stock_id`,`option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Bundle Stock Index';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_bundle_stock_index`
---
-
-LOCK TABLES `shop_catalog_product_bundle_stock_index` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_stock_index` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_bundle_stock_index` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_enabled_index`
@@ -1247,15 +875,6 @@ CREATE TABLE `shop_catalog_product_enabled_index` (
   CONSTRAINT `FK_SHOP_CAT_PRD_ENABLED_IDX_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Visibility Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_enabled_index`
---
-
-LOCK TABLES `shop_catalog_product_enabled_index` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_enabled_index` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_enabled_index` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity`
@@ -1280,18 +899,8 @@ CREATE TABLE `shop_catalog_product_entity` (
   KEY `IDX_SHOP_CATALOG_PRODUCT_ENTITY_SKU` (`sku`),
   CONSTRAINT `FK_6A6CF5AB3DAA6683BCCEDA5B509022BD` FOREIGN KEY (`entity_type_id`) REFERENCES `shop_eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_ATTR_SET_ID_SHOP_EAV_ATTR_SET_ATTR_SET_ID` FOREIGN KEY (`attribute_set_id`) REFERENCES `shop_eav_attribute_set` (`attribute_set_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Table';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity`
---
-
-LOCK TABLES `shop_catalog_product_entity` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_entity` VALUES (1,4,4,'simple','k',0,0,'2015-07-01 04:37:27','2015-07-01 04:37:27');
-/*!40000 ALTER TABLE `shop_catalog_product_entity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_datetime`
@@ -1315,18 +924,8 @@ CREATE TABLE `shop_catalog_product_entity_datetime` (
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_DTIME_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_DTIME_ENTT_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_DTIME_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Datetime Attribute Backend Table';
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Datetime Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_datetime`
---
-
-LOCK TABLES `shop_catalog_product_entity_datetime` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_datetime` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_entity_datetime` VALUES (1,4,93,0,1,NULL),(2,4,94,0,1,NULL),(3,4,77,0,1,NULL),(4,4,78,0,1,NULL),(5,4,104,0,1,NULL),(6,4,105,0,1,NULL);
-/*!40000 ALTER TABLE `shop_catalog_product_entity_datetime` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_decimal`
@@ -1350,18 +949,8 @@ CREATE TABLE `shop_catalog_product_entity_decimal` (
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_DEC_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_DEC_ENTT_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_DEC_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Decimal Attribute Backend Table';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Decimal Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_decimal`
---
-
-LOCK TABLES `shop_catalog_product_entity_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_decimal` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_entity_decimal` VALUES (1,4,80,0,1,12.0000),(2,4,75,0,1,10.0000),(3,4,76,0,1,NULL),(4,4,120,0,1,NULL);
-/*!40000 ALTER TABLE `shop_catalog_product_entity_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_gallery`
@@ -1390,15 +979,6 @@ CREATE TABLE `shop_catalog_product_entity_gallery` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_entity_gallery`
---
-
-LOCK TABLES `shop_catalog_product_entity_gallery` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_gallery` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_gallery` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_entity_group_price`
 --
 
@@ -1424,15 +1004,6 @@ CREATE TABLE `shop_catalog_product_entity_group_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_entity_group_price`
---
-
-LOCK TABLES `shop_catalog_product_entity_group_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_group_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_group_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_entity_int`
 --
 
@@ -1454,18 +1025,8 @@ CREATE TABLE `shop_catalog_product_entity_int` (
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_INT_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_INT_ENTT_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_INT_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Integer Attribute Backend Table';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Integer Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_int`
---
-
-LOCK TABLES `shop_catalog_product_entity_int` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_int` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_entity_int` VALUES (1,4,96,0,1,1),(2,4,102,0,1,4),(3,4,121,0,1,0),(4,4,100,0,1,0);
-/*!40000 ALTER TABLE `shop_catalog_product_entity_int` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_media_gallery`
@@ -1484,17 +1045,8 @@ CREATE TABLE `shop_catalog_product_entity_media_gallery` (
   KEY `IDX_SHOP_CATALOG_PRODUCT_ENTITY_MEDIA_GALLERY_ENTITY_ID` (`entity_id`),
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_MDA_GLR_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_MDA_GLR_ENTT_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Media Gallery Attribute Backend Table';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Media Gallery Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_media_gallery`
---
-
-LOCK TABLES `shop_catalog_product_entity_media_gallery` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_media_gallery` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_media_gallery` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_media_gallery_value`
@@ -1515,15 +1067,6 @@ CREATE TABLE `shop_catalog_product_entity_media_gallery_value` (
   CONSTRAINT `FK_DDEC9C3DCA176C0CDD5DC2896BAFA1BE` FOREIGN KEY (`value_id`) REFERENCES `shop_catalog_product_entity_media_gallery` (`value_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Media Gallery Attribute Value Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_media_gallery_value`
---
-
-LOCK TABLES `shop_catalog_product_entity_media_gallery_value` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_media_gallery_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_media_gallery_value` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_text`
@@ -1547,18 +1090,8 @@ CREATE TABLE `shop_catalog_product_entity_text` (
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_TEXT_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_TEXT_ENTT_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_TEXT_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Text Attribute Backend Table';
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Text Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_text`
---
-
-LOCK TABLES `shop_catalog_product_entity_text` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_text` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_entity_text` VALUES (1,4,72,0,1,'This is a bottle with a twist'),(2,4,73,0,1,'With a twist inside a bottle'),(3,4,83,0,1,NULL),(4,4,106,0,1,NULL);
-/*!40000 ALTER TABLE `shop_catalog_product_entity_text` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_entity_tier_price`
@@ -1587,15 +1120,6 @@ CREATE TABLE `shop_catalog_product_entity_tier_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_entity_tier_price`
---
-
-LOCK TABLES `shop_catalog_product_entity_tier_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_tier_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_tier_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_entity_varchar`
 --
 
@@ -1617,18 +1141,8 @@ CREATE TABLE `shop_catalog_product_entity_varchar` (
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_VCHR_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_VCHR_ENTT_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_ENTT_VCHR_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Varchar Attribute Backend Table';
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Varchar Attribute Backend Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_entity_varchar`
---
-
-LOCK TABLES `shop_catalog_product_entity_varchar` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_entity_varchar` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_entity_varchar` VALUES (1,4,71,0,1,'Botelya'),(2,4,97,0,1,'botelya'),(3,4,117,0,1,NULL),(4,4,118,0,1,'2'),(5,4,119,0,1,'4'),(6,4,82,0,1,NULL),(7,4,84,0,1,NULL),(8,4,85,0,1,'no_selection'),(9,4,86,0,1,'no_selection'),(10,4,87,0,1,'no_selection'),(11,4,103,0,1,NULL),(12,4,107,0,1,NULL),(13,4,109,0,1,'container1'),(14,4,122,0,1,NULL),(15,4,98,1,1,'botelya.html'),(16,4,98,0,1,'botelya.html');
-/*!40000 ALTER TABLE `shop_catalog_product_entity_varchar` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_flat_1`
@@ -1689,15 +1203,6 @@ CREATE TABLE `shop_catalog_product_flat_1` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_flat_1`
---
-
-LOCK TABLES `shop_catalog_product_flat_1` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_flat_1` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_flat_1` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_eav`
 --
 
@@ -1719,15 +1224,6 @@ CREATE TABLE `shop_catalog_product_index_eav` (
   CONSTRAINT `FK_SHOP_CAT_PRD_IDX_EAV_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product EAV Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_eav`
---
-
-LOCK TABLES `shop_catalog_product_index_eav` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_eav_decimal`
@@ -1753,15 +1249,6 @@ CREATE TABLE `shop_catalog_product_index_eav_decimal` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_eav_decimal`
---
-
-LOCK TABLES `shop_catalog_product_index_eav_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_decimal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_eav_decimal_idx`
 --
 
@@ -1780,15 +1267,6 @@ CREATE TABLE `shop_catalog_product_index_eav_decimal_idx` (
   KEY `IDX_SHOP_CATALOG_PRODUCT_INDEX_EAV_DECIMAL_IDX_VALUE` (`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product EAV Decimal Indexer Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_eav_decimal_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_eav_decimal_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_decimal_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_decimal_idx` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_eav_decimal_tmp`
@@ -1811,15 +1289,6 @@ CREATE TABLE `shop_catalog_product_index_eav_decimal_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_eav_decimal_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_eav_decimal_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_decimal_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_decimal_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_eav_idx`
 --
 
@@ -1838,15 +1307,6 @@ CREATE TABLE `shop_catalog_product_index_eav_idx` (
   KEY `IDX_SHOP_CATALOG_PRODUCT_INDEX_EAV_IDX_VALUE` (`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product EAV Indexer Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_eav_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_eav_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_idx` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_eav_tmp`
@@ -1869,15 +1329,6 @@ CREATE TABLE `shop_catalog_product_index_eav_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_eav_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_eav_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_eav_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_group_price`
 --
 
@@ -1897,15 +1348,6 @@ CREATE TABLE `shop_catalog_product_index_group_price` (
   CONSTRAINT `FK_SHOP_CAT_PRD_IDX_GROUP_PRICE_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Group Price Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_group_price`
---
-
-LOCK TABLES `shop_catalog_product_index_group_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_group_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_group_price` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price`
@@ -1937,15 +1379,6 @@ CREATE TABLE `shop_catalog_product_index_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price`
---
-
-LOCK TABLES `shop_catalog_product_index_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_bundle_idx`
 --
 
@@ -1974,15 +1407,6 @@ CREATE TABLE `shop_catalog_product_index_price_bundle_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_bundle_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_bundle_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_bundle_opt_idx`
 --
 
@@ -2004,15 +1428,6 @@ CREATE TABLE `shop_catalog_product_index_price_bundle_opt_idx` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`,`option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Index Price Bundle Opt Idx';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_bundle_opt_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_bundle_opt_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_opt_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_opt_idx` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_bundle_opt_tmp`
@@ -2038,15 +1453,6 @@ CREATE TABLE `shop_catalog_product_index_price_bundle_opt_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_bundle_opt_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_bundle_opt_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_opt_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_opt_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_bundle_sel_idx`
 --
 
@@ -2069,15 +1475,6 @@ CREATE TABLE `shop_catalog_product_index_price_bundle_sel_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_bundle_sel_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_bundle_sel_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_sel_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_sel_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_bundle_sel_tmp`
 --
 
@@ -2098,15 +1495,6 @@ CREATE TABLE `shop_catalog_product_index_price_bundle_sel_tmp` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`,`option_id`,`selection_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Product Index Price Bundle Sel Tmp';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_bundle_sel_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_bundle_sel_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_sel_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_sel_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_bundle_tmp`
@@ -2137,15 +1525,6 @@ CREATE TABLE `shop_catalog_product_index_price_bundle_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_bundle_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_bundle_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_bundle_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_cfg_opt_agr_idx`
 --
 
@@ -2163,15 +1542,6 @@ CREATE TABLE `shop_catalog_product_index_price_cfg_opt_agr_idx` (
   PRIMARY KEY (`parent_id`,`child_id`,`customer_group_id`,`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Indexer Config Option Aggregate Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_cfg_opt_agr_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_cfg_opt_agr_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_agr_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_agr_idx` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_cfg_opt_agr_tmp`
@@ -2193,15 +1563,6 @@ CREATE TABLE `shop_catalog_product_index_price_cfg_opt_agr_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_cfg_opt_agr_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_cfg_opt_agr_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_agr_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_agr_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_cfg_opt_idx`
 --
 
@@ -2219,15 +1580,6 @@ CREATE TABLE `shop_catalog_product_index_price_cfg_opt_idx` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Indexer Config Option Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_cfg_opt_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_cfg_opt_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_idx` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_cfg_opt_tmp`
@@ -2249,15 +1601,6 @@ CREATE TABLE `shop_catalog_product_index_price_cfg_opt_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_cfg_opt_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_cfg_opt_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_cfg_opt_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_downlod_idx`
 --
 
@@ -2275,15 +1618,6 @@ CREATE TABLE `shop_catalog_product_index_price_downlod_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_downlod_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_downlod_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_downlod_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_downlod_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_downlod_tmp`
 --
 
@@ -2299,15 +1633,6 @@ CREATE TABLE `shop_catalog_product_index_price_downlod_tmp` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Temporary Indexer Table for price of downloadable products';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_downlod_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_downlod_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_downlod_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_downlod_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_final_idx`
@@ -2334,15 +1659,6 @@ CREATE TABLE `shop_catalog_product_index_price_final_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_final_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_final_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_final_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_final_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_final_tmp`
 --
 
@@ -2365,15 +1681,6 @@ CREATE TABLE `shop_catalog_product_index_price_final_tmp` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Indexer Final Temp Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_final_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_final_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_final_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_final_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_idx`
@@ -2401,15 +1708,6 @@ CREATE TABLE `shop_catalog_product_index_price_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_opt_agr_idx`
 --
 
@@ -2428,15 +1726,6 @@ CREATE TABLE `shop_catalog_product_index_price_opt_agr_idx` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`,`option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Indexer Option Aggregate Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_opt_agr_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_opt_agr_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_agr_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_agr_idx` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_opt_agr_tmp`
@@ -2459,15 +1748,6 @@ CREATE TABLE `shop_catalog_product_index_price_opt_agr_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_opt_agr_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_opt_agr_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_agr_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_agr_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_opt_idx`
 --
 
@@ -2487,15 +1767,6 @@ CREATE TABLE `shop_catalog_product_index_price_opt_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_opt_idx`
---
-
-LOCK TABLES `shop_catalog_product_index_price_opt_idx` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_price_opt_tmp`
 --
 
@@ -2513,15 +1784,6 @@ CREATE TABLE `shop_catalog_product_index_price_opt_tmp` (
   PRIMARY KEY (`entity_id`,`customer_group_id`,`website_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Catalog Product Price Indexer Option Temp Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_price_opt_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_opt_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_opt_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_index_price_tmp`
@@ -2549,15 +1811,6 @@ CREATE TABLE `shop_catalog_product_index_price_tmp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_price_tmp`
---
-
-LOCK TABLES `shop_catalog_product_index_price_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_price_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_tier_price`
 --
 
@@ -2579,15 +1832,6 @@ CREATE TABLE `shop_catalog_product_index_tier_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_index_tier_price`
---
-
-LOCK TABLES `shop_catalog_product_index_tier_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_tier_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_index_tier_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_index_website`
 --
 
@@ -2603,16 +1847,6 @@ CREATE TABLE `shop_catalog_product_index_website` (
   CONSTRAINT `FK_SHOP_CAT_PRD_IDX_WS_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Website Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_index_website`
---
-
-LOCK TABLES `shop_catalog_product_index_website` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_index_website` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_index_website` VALUES (1,'2015-07-01',1);
-/*!40000 ALTER TABLE `shop_catalog_product_index_website` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_link`
@@ -2634,17 +1868,8 @@ CREATE TABLE `shop_catalog_product_link` (
   CONSTRAINT `FK_4F00A6E79E796B3C831D6718CB6FE7DC` FOREIGN KEY (`link_type_id`) REFERENCES `shop_catalog_product_link_type` (`link_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_LNK_LNKED_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`linked_product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_LNK_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product To Product Linkage Table';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Catalog Product To Product Linkage Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_link`
---
-
-LOCK TABLES `shop_catalog_product_link` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_link` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_link` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_link_attribute`
@@ -2663,16 +1888,6 @@ CREATE TABLE `shop_catalog_product_link_attribute` (
   CONSTRAINT `FK_D601266C489CC67E365515F821EDD026` FOREIGN KEY (`link_type_id`) REFERENCES `shop_catalog_product_link_type` (`link_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Attribute Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_link_attribute`
---
-
-LOCK TABLES `shop_catalog_product_link_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_link_attribute` VALUES (1,1,'position','int'),(2,3,'position','int'),(3,3,'qty','decimal'),(4,4,'position','int'),(5,5,'position','int');
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_link_attribute_decimal`
@@ -2696,15 +1911,6 @@ CREATE TABLE `shop_catalog_product_link_attribute_decimal` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_link_attribute_decimal`
---
-
-LOCK TABLES `shop_catalog_product_link_attribute_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute_decimal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_link_attribute_int`
 --
 
@@ -2722,17 +1928,8 @@ CREATE TABLE `shop_catalog_product_link_attribute_int` (
   KEY `IDX_SHOP_CATALOG_PRODUCT_LINK_ATTRIBUTE_INT_LINK_ID` (`link_id`),
   CONSTRAINT `FK_9C6D47568598C26054153AE2FAC53F39` FOREIGN KEY (`product_link_attribute_id`) REFERENCES `shop_catalog_product_link_attribute` (`product_link_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CAT_PRD_LNK_ATTR_INT_LNK_ID_SHOP_CAT_PRD_LNK_LNK_ID` FOREIGN KEY (`link_id`) REFERENCES `shop_catalog_product_link` (`link_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Integer Attribute Table';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Integer Attribute Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_link_attribute_int`
---
-
-LOCK TABLES `shop_catalog_product_link_attribute_int` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute_int` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute_int` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_link_attribute_varchar`
@@ -2756,15 +1953,6 @@ CREATE TABLE `shop_catalog_product_link_attribute_varchar` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_link_attribute_varchar`
---
-
-LOCK TABLES `shop_catalog_product_link_attribute_varchar` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute_varchar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_link_attribute_varchar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_link_type`
 --
 
@@ -2777,16 +1965,6 @@ CREATE TABLE `shop_catalog_product_link_type` (
   PRIMARY KEY (`link_type_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Catalog Product Link Type Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_link_type`
---
-
-LOCK TABLES `shop_catalog_product_link_type` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_link_type` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_link_type` VALUES (1,'relation'),(3,'super'),(4,'up_sell'),(5,'cross_sell');
-/*!40000 ALTER TABLE `shop_catalog_product_link_type` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_option`
@@ -2813,15 +1991,6 @@ CREATE TABLE `shop_catalog_product_option` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_option`
---
-
-LOCK TABLES `shop_catalog_product_option` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_option` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_option_price`
 --
 
@@ -2844,15 +2013,6 @@ CREATE TABLE `shop_catalog_product_option_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_option_price`
---
-
-LOCK TABLES `shop_catalog_product_option_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_option_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_option_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_option_title`
 --
 
@@ -2872,15 +2032,6 @@ CREATE TABLE `shop_catalog_product_option_title` (
   CONSTRAINT `FK_SHOP_CAT_PRD_OPT_TTL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Option Title Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_option_title`
---
-
-LOCK TABLES `shop_catalog_product_option_title` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_option_title` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_option_title` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_option_type_price`
@@ -2905,15 +2056,6 @@ CREATE TABLE `shop_catalog_product_option_type_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_option_type_price`
---
-
-LOCK TABLES `shop_catalog_product_option_type_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_option_type_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_option_type_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_option_type_title`
 --
 
@@ -2935,15 +2077,6 @@ CREATE TABLE `shop_catalog_product_option_type_title` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_option_type_title`
---
-
-LOCK TABLES `shop_catalog_product_option_type_title` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_option_type_title` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_option_type_title` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_option_type_value`
 --
 
@@ -2960,15 +2093,6 @@ CREATE TABLE `shop_catalog_product_option_type_value` (
   CONSTRAINT `FK_SHOP_CAT_PRD_OPT_TYPE_VAL_OPT_ID_SHOP_CAT_PRD_OPT_OPT_ID` FOREIGN KEY (`option_id`) REFERENCES `shop_catalog_product_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Option Type Value Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_option_type_value`
---
-
-LOCK TABLES `shop_catalog_product_option_type_value` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_option_type_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_option_type_value` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_relation`
@@ -2988,15 +2112,6 @@ CREATE TABLE `shop_catalog_product_relation` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_relation`
---
-
-LOCK TABLES `shop_catalog_product_relation` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_relation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_relation` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_super_attribute`
 --
 
@@ -3014,15 +2129,6 @@ CREATE TABLE `shop_catalog_product_super_attribute` (
   CONSTRAINT `FK_SHOP_CAT_PRD_SPR_ATTR_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Super Attribute Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_super_attribute`
---
-
-LOCK TABLES `shop_catalog_product_super_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_super_attribute` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_super_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_super_attribute_label`
@@ -3045,15 +2151,6 @@ CREATE TABLE `shop_catalog_product_super_attribute_label` (
   CONSTRAINT `FK_SHOP_CAT_PRD_SPR_ATTR_LBL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Product Super Attribute Label Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalog_product_super_attribute_label`
---
-
-LOCK TABLES `shop_catalog_product_super_attribute_label` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_super_attribute_label` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_super_attribute_label` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalog_product_super_attribute_pricing`
@@ -3079,15 +2176,6 @@ CREATE TABLE `shop_catalog_product_super_attribute_pricing` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_super_attribute_pricing`
---
-
-LOCK TABLES `shop_catalog_product_super_attribute_pricing` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_super_attribute_pricing` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_super_attribute_pricing` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_super_link`
 --
 
@@ -3108,15 +2196,6 @@ CREATE TABLE `shop_catalog_product_super_link` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_super_link`
---
-
-LOCK TABLES `shop_catalog_product_super_link` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_super_link` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalog_product_super_link` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalog_product_website`
 --
 
@@ -3134,16 +2213,6 @@ CREATE TABLE `shop_catalog_product_website` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalog_product_website`
---
-
-LOCK TABLES `shop_catalog_product_website` WRITE;
-/*!40000 ALTER TABLE `shop_catalog_product_website` DISABLE KEYS */;
-INSERT INTO `shop_catalog_product_website` VALUES (1,1);
-/*!40000 ALTER TABLE `shop_catalog_product_website` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_cataloginventory_stock`
 --
 
@@ -3156,16 +2225,6 @@ CREATE TABLE `shop_cataloginventory_stock` (
   PRIMARY KEY (`stock_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_cataloginventory_stock`
---
-
-LOCK TABLES `shop_cataloginventory_stock` WRITE;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock` DISABLE KEYS */;
-INSERT INTO `shop_cataloginventory_stock` VALUES (1,'Default');
-/*!40000 ALTER TABLE `shop_cataloginventory_stock` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_cataloginventory_stock_item`
@@ -3206,18 +2265,8 @@ CREATE TABLE `shop_cataloginventory_stock_item` (
   KEY `IDX_SHOP_CATALOGINVENTORY_STOCK_ITEM_STOCK_ID` (`stock_id`),
   CONSTRAINT `FK_SHOP_CATINV_STOCK_ITEM_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CATINV_STOCK_ITEM_STOCK_ID_SHOP_CATINV_STOCK_STOCK_ID` FOREIGN KEY (`stock_id`) REFERENCES `shop_cataloginventory_stock` (`stock_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock Item';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_cataloginventory_stock_item`
---
-
-LOCK TABLES `shop_cataloginventory_stock_item` WRITE;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_item` DISABLE KEYS */;
-INSERT INTO `shop_cataloginventory_stock_item` VALUES (1,1,1,0.0000,0.0000,1,0,0,1,1.0000,1,0.0000,1,0,'2015-07-01 04:37:27',NULL,1,0,1,1,1,0.0000,1,0,0);
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_cataloginventory_stock_status`
@@ -3242,16 +2291,6 @@ CREATE TABLE `shop_cataloginventory_stock_status` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_cataloginventory_stock_status`
---
-
-LOCK TABLES `shop_cataloginventory_stock_status` WRITE;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_status` DISABLE KEYS */;
-INSERT INTO `shop_cataloginventory_stock_status` VALUES (1,1,1,0.0000,0);
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_status` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_cataloginventory_stock_status_idx`
 --
 
@@ -3271,15 +2310,6 @@ CREATE TABLE `shop_cataloginventory_stock_status_idx` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_cataloginventory_stock_status_idx`
---
-
-LOCK TABLES `shop_cataloginventory_stock_status_idx` WRITE;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_status_idx` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_status_idx` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_cataloginventory_stock_status_tmp`
 --
 
@@ -3297,15 +2327,6 @@ CREATE TABLE `shop_cataloginventory_stock_status_tmp` (
   KEY `IDX_SHOP_CATALOGINVENTORY_STOCK_STATUS_TMP_WEBSITE_ID` (`website_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COMMENT='Cataloginventory Stock Status Indexer Tmp';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_cataloginventory_stock_status_tmp`
---
-
-LOCK TABLES `shop_cataloginventory_stock_status_tmp` WRITE;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_status_tmp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_cataloginventory_stock_status_tmp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalogrule`
@@ -3336,15 +2357,6 @@ CREATE TABLE `shop_catalogrule` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalogrule`
---
-
-LOCK TABLES `shop_catalogrule` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalogrule_affected_product`
 --
 
@@ -3356,15 +2368,6 @@ CREATE TABLE `shop_catalogrule_affected_product` (
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CatalogRule Affected Product';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalogrule_affected_product`
---
-
-LOCK TABLES `shop_catalogrule_affected_product` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule_affected_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule_affected_product` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalogrule_customer_group`
@@ -3383,15 +2386,6 @@ CREATE TABLE `shop_catalogrule_customer_group` (
   CONSTRAINT `FK_SHOP_CATRULE_CSTR_GROUP_RULE_ID_SHOP_CATRULE_RULE_ID` FOREIGN KEY (`rule_id`) REFERENCES `shop_catalogrule` (`rule_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog Rules To Customer Groups Relations';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalogrule_customer_group`
---
-
-LOCK TABLES `shop_catalogrule_customer_group` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule_customer_group` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule_customer_group` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalogrule_group_website`
@@ -3413,15 +2407,6 @@ CREATE TABLE `shop_catalogrule_group_website` (
   CONSTRAINT `FK_SHOP_CATRULE_GROUP_WS_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CatalogRule Group Website';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalogrule_group_website`
---
-
-LOCK TABLES `shop_catalogrule_group_website` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule_group_website` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule_group_website` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalogrule_product`
@@ -3460,15 +2445,6 @@ CREATE TABLE `shop_catalogrule_product` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalogrule_product`
---
-
-LOCK TABLES `shop_catalogrule_product` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule_product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalogrule_product_price`
 --
 
@@ -3496,15 +2472,6 @@ CREATE TABLE `shop_catalogrule_product_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalogrule_product_price`
---
-
-LOCK TABLES `shop_catalogrule_product_price` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule_product_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule_product_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalogrule_website`
 --
 
@@ -3523,15 +2490,6 @@ CREATE TABLE `shop_catalogrule_website` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalogrule_website`
---
-
-LOCK TABLES `shop_catalogrule_website` WRITE;
-/*!40000 ALTER TABLE `shop_catalogrule_website` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogrule_website` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalogsearch_fulltext`
 --
 
@@ -3546,17 +2504,8 @@ CREATE TABLE `shop_catalogsearch_fulltext` (
   PRIMARY KEY (`fulltext_id`),
   UNIQUE KEY `UNQ_SHOP_CATALOGSEARCH_FULLTEXT_PRODUCT_ID_STORE_ID` (`product_id`,`store_id`),
   FULLTEXT KEY `FTI_SHOP_CATALOGSEARCH_FULLTEXT_DATA_INDEX` (`data_index`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Catalog search result table';
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='Catalog search result table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalogsearch_fulltext`
---
-
-LOCK TABLES `shop_catalogsearch_fulltext` WRITE;
-/*!40000 ALTER TABLE `shop_catalogsearch_fulltext` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogsearch_fulltext` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_catalogsearch_query`
@@ -3586,16 +2535,6 @@ CREATE TABLE `shop_catalogsearch_query` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_catalogsearch_query`
---
-
-LOCK TABLES `shop_catalogsearch_query` WRITE;
-/*!40000 ALTER TABLE `shop_catalogsearch_query` DISABLE KEYS */;
-INSERT INTO `shop_catalogsearch_query` VALUES (1,'botelya',0,2,NULL,NULL,1,1,1,1,'2015-07-01 04:38:32'),(2,'bote',0,1,NULL,NULL,1,1,1,1,'2015-07-01 04:38:36'),(3,'bot',0,1,NULL,NULL,1,1,1,1,'2015-07-01 04:38:42');
-/*!40000 ALTER TABLE `shop_catalogsearch_query` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_catalogsearch_result`
 --
 
@@ -3613,15 +2552,6 @@ CREATE TABLE `shop_catalogsearch_result` (
   CONSTRAINT `FK_SHOP_CATSRCH_RESULT_QR_ID_SHOP_CATSRCH_QR_QR_ID` FOREIGN KEY (`query_id`) REFERENCES `shop_catalogsearch_query` (`query_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog search result table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_catalogsearch_result`
---
-
-LOCK TABLES `shop_catalogsearch_result` WRITE;
-/*!40000 ALTER TABLE `shop_catalogsearch_result` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_catalogsearch_result` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_checkout_agreement`
@@ -3643,15 +2573,6 @@ CREATE TABLE `shop_checkout_agreement` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_checkout_agreement`
---
-
-LOCK TABLES `shop_checkout_agreement` WRITE;
-/*!40000 ALTER TABLE `shop_checkout_agreement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_checkout_agreement` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_checkout_agreement_store`
 --
 
@@ -3667,15 +2588,6 @@ CREATE TABLE `shop_checkout_agreement_store` (
   CONSTRAINT `FK_SHOP_CHKT_AGRT_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Checkout Agreement Store';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_checkout_agreement_store`
---
-
-LOCK TABLES `shop_checkout_agreement_store` WRITE;
-/*!40000 ALTER TABLE `shop_checkout_agreement_store` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_checkout_agreement_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_cms_block`
@@ -3697,16 +2609,6 @@ CREATE TABLE `shop_cms_block` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_cms_block`
---
-
-LOCK TABLES `shop_cms_block` WRITE;
-/*!40000 ALTER TABLE `shop_cms_block` DISABLE KEYS */;
-INSERT INTO `shop_cms_block` VALUES (1,'Footer Links','footer_links','\n<ul>\n    <li><a href=\"{{store direct_url=\"about-magento-demo-store\"}}\">About Us</a></li>\n    <li><a href=\"{{store direct_url=\"customer-service\"}}\">Customer Service</a></li>\n<li class=\"last privacy\"><a href=\"{{store direct_url=\"privacy-policy-cookie-restriction-mode\"}}\">Privacy Policy</a></li>\r\n</ul>','2015-07-01 04:29:41','2015-07-01 04:29:41',1),(2,'Footer Links Company','footer_links_company','\n<div class=\"links\">\n    <div class=\"block-title\">\n        <strong><span>Company</span></strong>\n    </div>\n    <ul>\n        <li><a href=\"{{store url=\"\"}}about-magento-demo-store/\">About Us</a></li>\n        <li><a href=\"{{store url=\"\"}}contacts/\">Contact Us</a></li>\n        <li><a href=\"{{store url=\"\"}}customer-service/\">Customer Service</a></li>\n        <li><a href=\"{{store url=\"\"}}privacy-policy-cookie-restriction-mode/\">Privacy Policy</a></li>\n    </ul>\n</div>','2015-07-01 04:29:41','2015-07-01 04:29:41',1),(3,'Cookie restriction notice','cookie_restriction_notice_block','<p>This website requires cookies to provide all of its features. For more information on what data is contained in the cookies, please see our <a href=\"{{store direct_url=\"privacy-policy-cookie-restriction-mode\"}}\">Privacy Policy page</a>. To accept cookies from this site, please click the Allow button below.</p>','2015-07-01 04:29:41','2015-07-01 04:29:41',1);
-/*!40000 ALTER TABLE `shop_cms_block` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_cms_block_store`
 --
 
@@ -3722,16 +2624,6 @@ CREATE TABLE `shop_cms_block_store` (
   CONSTRAINT `FK_SHOP_CMS_BLOCK_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Block To Store Linkage Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_cms_block_store`
---
-
-LOCK TABLES `shop_cms_block_store` WRITE;
-/*!40000 ALTER TABLE `shop_cms_block_store` DISABLE KEYS */;
-INSERT INTO `shop_cms_block_store` VALUES (1,0),(2,0),(3,0);
-/*!40000 ALTER TABLE `shop_cms_block_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_cms_page`
@@ -3765,16 +2657,6 @@ CREATE TABLE `shop_cms_page` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_cms_page`
---
-
-LOCK TABLES `shop_cms_page` WRITE;
-/*!40000 ALTER TABLE `shop_cms_page` DISABLE KEYS */;
-INSERT INTO `shop_cms_page` VALUES (1,'404 Not Found 1','two_columns_right','Page keywords','Page description','no-route',NULL,'\n<div class=\"page-title\"><h1>Whoops, our bad...</h1></div>\n<dl>\n    <dt>The page you requested was not found, and we have a fine guess why.</dt>\n    <dd>\n        <ul class=\"disc\">\n            <li>If you typed the URL directly, please make sure the spelling is correct.</li>\n            <li>If you clicked on a link to get here, the link is outdated.</li>\n        </ul>\n    </dd>\n</dl>\n<dl>\n    <dt>What can you do?</dt>\n    <dd>Have no fear, help is near! There are many ways you can get back on track with Magento Store.</dd>\n    <dd>\n        <ul class=\"disc\">\n            <li><a href=\"#\" onclick=\"history.go(-1); return false;\">Go back</a> to the previous page.</li>\n            <li>Use the search bar at the top of the page to search for your products.</li>\n            <li>Follow these links to get you back on track!<br /><a href=\"{{store url=\"\"}}\">Store Home</a>\n            <span class=\"separator\">|</span> <a href=\"{{store url=\"customer/account\"}}\">My Account</a></li>\n        </ul>\n    </dd>\n</dl>\n','2015-07-01 04:29:41','2015-07-01 04:29:41',1,0,NULL,NULL,NULL,NULL,NULL,NULL),(2,'Home page','one_column',NULL,NULL,'home',NULL,'<div class=\"page-title\">\r\n<h2>Home Page s</h2>\r\n</div>','2015-07-01 04:29:41','2015-07-01 07:22:48',1,0,'<!--<reference name=\"content\">\r\n        <block type=\"catalog/product_new\" name=\"home.catalog.product.new\" alias=\"product_new\" template=\"catalog/product/new.phtml\" after=\"cms_page\">\r\n            <action method=\"addPriceBlockType\">\r\n                <type>bundle</type>\r\n                <block>bundle/catalog_product_price</block>\r\n                <template>bundle/catalog/product/price.phtml</template>\r\n            </action>\r\n        </block>\r\n        <block type=\"reports/product_viewed\" name=\"home.reports.product.viewed\" alias=\"product_viewed\" template=\"reports/home_product_viewed.phtml\" after=\"product_new\">\r\n            <action method=\"addPriceBlockType\">\r\n                <type>bundle</type>\r\n                <block>bundle/catalog_product_price</block>\r\n                <template>bundle/catalog/product/price.phtml</template>\r\n            </action>\r\n        </block>\r\n        <block type=\"reports/product_compared\" name=\"home.reports.product.compared\" template=\"reports/home_product_compared.phtml\" after=\"product_viewed\">\r\n            <action method=\"addPriceBlockType\">\r\n                <type>bundle</type>\r\n                <block>bundle/catalog_product_price</block>\r\n                <template>bundle/catalog/product/price.phtml</template>\r\n            </action>\r\n        </block>\r\n    </reference>\r\n    <reference name=\"right\">\r\n        <action method=\"unsetChild\"><alias>right.reports.product.viewed</alias></action>\r\n        <action method=\"unsetChild\"><alias>right.reports.product.compared</alias></action>\r\n    </reference>-->',NULL,NULL,NULL,NULL,NULL),(3,'About Us','two_columns_right',NULL,NULL,'about-magento-demo-store',NULL,'\n<div class=\"page-title\">\n    <h1>About Magento Store</h1>\n</div>\n<div class=\"col3-set\">\n<div class=\"col-1\"><p style=\"line-height:1.2em;\"><small>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nMorbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec,\ntempus vitae, iaculis semper, pede.</small></p>\n<p style=\"color:#888; font:1.2em/1.4em georgia, serif;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nMorbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis,\nporta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta.</p></div>\n<div class=\"col-2\">\n<p><strong style=\"color:#de036f;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus.\nDuis lobortis. Nulla nec velit.</strong></p>\n<p>Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper.\nPhasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada\nfames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac,\ntempus nec, tempor nec, justo. </p>\n<p>Maecenas ullamcorper, odio vel tempus egestas, dui orci faucibus orci, sit amet aliquet lectus dolor et quam.\nPellentesque consequat luctus purus. Nunc et risus. Etiam a nibh. Phasellus dignissim metus eget nisi.\nVestibulum sapien dolor, aliquet nec, porta ac, malesuada a, libero. Praesent feugiat purus eget est.\nNulla facilisi. Vestibulum tincidunt sapien eu velit. Mauris purus. Maecenas eget mauris eu orci accumsan feugiat.\nPellentesque eget velit. Nunc tincidunt.</p></div>\n<div class=\"col-3\">\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper </p>\n<p><strong style=\"color:#de036f;\">Maecenas ullamcorper, odio vel tempus egestas, dui orci faucibus orci,\nsit amet aliquet lectus dolor et quam. Pellentesque consequat luctus purus.</strong></p>\n<p>Nunc et risus. Etiam a nibh. Phasellus dignissim metus eget nisi.</p>\n<div class=\"divider\"></div>\n<p>To all of you, from all of us at Magento Store - Thank you and Happy eCommerce!</p>\n<p style=\"line-height:1.2em;\"><strong style=\"font:italic 2em Georgia, serif;\">John Doe</strong><br />\n<small>Some important guy</small></p></div>\n</div>','2015-07-01 04:29:41','2015-07-01 04:29:41',1,0,NULL,NULL,NULL,NULL,NULL,NULL),(4,'Customer Service','three_columns',NULL,NULL,'customer-service',NULL,'<div class=\"page-title\">\n<h1>Customer Service</h1>\n</div>\n<ul class=\"disc\">\n<li><a href=\"#answer1\">Shipping &amp; Delivery</a></li>\n<li><a href=\"#answer2\">Privacy &amp; Security</a></li>\n<li><a href=\"#answer3\">Returns &amp; Replacements</a></li>\n<li><a href=\"#answer4\">Ordering</a></li>\n<li><a href=\"#answer5\">Payment, Pricing &amp; Promotions</a></li>\n<li><a href=\"#answer6\">Viewing Orders</a></li>\n<li><a href=\"#answer7\">Updating Account Information</a></li>\n</ul>\n<dl>\n<dt id=\"answer1\">Shipping &amp; Delivery</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer2\">Privacy &amp; Security</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer3\">Returns &amp; Replacements</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer4\">Ordering</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer5\">Payment, Pricing &amp; Promotions</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\nPellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\njusto.</dd>\n<dt id=\"answer6\">Viewing Orders</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\nMauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\nCras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\nfaucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\n Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\n justo.</dd>\n<dt id=\"answer7\">Updating Account Information</dt>\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit.\n Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.\n Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in,\n faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa.\n Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec,\n justo.</dd>\n</dl>','2015-07-01 04:29:41','2015-07-01 04:29:41',1,0,NULL,NULL,NULL,NULL,NULL,NULL),(5,'Enable Cookies','one_column',NULL,NULL,'enable-cookies',NULL,'<div class=\"std\">\n    <ul class=\"messages\">\n        <li class=\"notice-msg\">\n            <ul>\n                <li>Please enable cookies in your web browser to continue.</li>\n            </ul>\n        </li>\n    </ul>\n    <div class=\"page-title\">\n        <h1><a name=\"top\"></a>What are Cookies?</h1>\n    </div>\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website.\n    On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically\n    whenever you visit our site so that we can personalize your experience and provide you with better service.\n    We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes.\n     If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase\n     or take advantage of certain features of our website, such as storing items in your Shopping Cart or\n     receiving personalized recommendations. As a result, we strongly encourage you to configure your web\n     browser to accept cookies from our website.</p>\n    <h2 class=\"subtitle\">Enabling Cookies</h2>\n    <ul class=\"disc\">\n        <li><a href=\"#ie7\">Internet Explorer 7.x</a></li>\n        <li><a href=\"#ie6\">Internet Explorer 6.x</a></li>\n        <li><a href=\"#firefox\">Mozilla/Firefox</a></li>\n        <li><a href=\"#opera\">Opera 7.x</a></li>\n    </ul>\n    <h3><a name=\"ie7\"></a>Internet Explorer 7.x</h3>\n    <ol>\n        <li>\n            <p>Start Internet Explorer</p>\n        </li>\n        <li>\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-1.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click the <strong>Privacy</strong> tab</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-2.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click the <strong>Advanced</strong> button</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-3.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>,\n            put another check mark in the <strong>Always accept session cookies </strong>box</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-4.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click <strong>OK</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-5.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click <strong>OK</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie7-6.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Restart Internet Explore</p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n    <h3><a name=\"ie6\"></a>Internet Explorer 6.x</h3>\n    <ol>\n        <li>\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\n            <p><img src=\"{{skin url=\"images/cookies/ie6-1.gif\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Click on the <strong>Privacy</strong> tab</p>\n        </li>\n        <li>\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>)\n            under <strong>Settings</strong>. Click <strong>OK</strong></p>\n            <p><img src=\"{{skin url=\"images/cookies/ie6-2.gif\"}}\" alt=\"\" /></p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n    <h3><a name=\"firefox\"></a>Mozilla/Firefox</h3>\n    <ol>\n        <li>\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\n            <p><img src=\"{{skin url=\"images/cookies/firefox.png\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>Expand the <strong>Cookies</strong> section</p>\n        </li>\n        <li>\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\n        </li>\n        <li>\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n    <h3><a name=\"opera\"></a>Opera 7.x</h3>\n    <ol>\n        <li>\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\n        </li>\n        <li>\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\n            <p><img src=\"{{skin url=\"images/cookies/opera.png\"}}\" alt=\"\" /></p>\n        </li>\n        <li>\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong>\n            should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\n        </li>\n        <li>\n            <p>Save changes by clicking <strong>Ok</strong></p>\n        </li>\n    </ol>\n    <p class=\"a-top\"><a href=\"#top\">Back to Top</a></p>\n</div>\n','2015-07-01 04:29:41','2015-07-01 04:29:41',1,0,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Privacy Policy','one_column',NULL,NULL,'privacy-policy-cookie-restriction-mode','Privacy Policy','<p style=\"color: #ff0000; font-weight: bold; font-size: 13px\">\n    Please replace this text with you Privacy Policy.\n    Please add any additional cookies your website uses below (e.g., Google Analytics)\n</p>\n<p>\n    This privacy policy sets out how {{config path=\"general/store_information/name\"}} uses and protects any information\n    that you give {{config path=\"general/store_information/name\"}} when you use this website.\n    {{config path=\"general/store_information/name\"}} is committed to ensuring that your privacy is protected.\n    Should we ask you to provide certain information by which you can be identified when using this website,\n    then you can be assured that it will only be used in accordance with this privacy statement.\n    {{config path=\"general/store_information/name\"}} may change this policy from time to time by updating this page.\n    You should check this page from time to time to ensure that you are happy with any changes.\n</p>\n<h2>What we collect</h2>\n<p>We may collect the following information:</p>\n<ul>\n    <li>name</li>\n    <li>contact information including email address</li>\n    <li>demographic information such as postcode, preferences and interests</li>\n    <li>other information relevant to customer surveys and/or offers</li>\n</ul>\n<p>\n    For the exhaustive list of cookies we collect see the <a href=\"#list\">List of cookies we collect</a> section.\n</p>\n<h2>What we do with the information we gather</h2>\n<p>\n    We require this information to understand your needs and provide you with a better service,\n    and in particular for the following reasons:\n</p>\n<ul>\n    <li>Internal record keeping.</li>\n    <li>We may use the information to improve our products and services.</li>\n    <li>\n        We may periodically send promotional emails about new products, special offers or other information which we\n        think you may find interesting using the email address which you have provided.\n    </li>\n    <li>\n        From time to time, we may also use your information to contact you for market research purposes.\n        We may contact you by email, phone, fax or mail. We may use the information to customise the website\n        according to your interests.\n    </li>\n</ul>\n<h2>Security</h2>\n<p>\n    We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure,\n    we have put in place suitable physical, electronic and managerial procedures to safeguard and secure\n    the information we collect online.\n</p>\n<h2>How we use cookies</h2>\n<p>\n    A cookie is a small file which asks permission to be placed on your computer\'s hard drive.\n    Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit\n    a particular site. Cookies allow web applications to respond to you as an individual. The web application\n    can tailor its operations to your needs, likes and dislikes by gathering and remembering information about\n    your preferences.\n</p>\n<p>\n    We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page traffic\n    and improve our website in order to tailor it to customer needs. We only use this information for statistical\n    analysis purposes and then the data is removed from the system.\n</p>\n<p>\n    Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful\n    and which you do not. A cookie in no way gives us access to your computer or any information about you,\n    other than the data you choose to share with us. You can choose to accept or decline cookies.\n    Most web browsers automatically accept cookies, but you can usually modify your browser setting\n    to decline cookies if you prefer. This may prevent you from taking full advantage of the website.\n</p>\n<h2>Links to other websites</h2>\n<p>\n    Our website may contain links to other websites of interest. However, once you have used these links\n    to leave our site, you should note that we do not have any control over that other website.\n    Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst\n    visiting such sites and such sites are not governed by this privacy statement.\n    You should exercise caution and look at the privacy statement applicable to the website in question.\n</p>\n<h2>Controlling your personal information</h2>\n<p>You may choose to restrict the collection or use of your personal information in the following ways:</p>\n<ul>\n    <li>\n        whenever you are asked to fill in a form on the website, look for the box that you can click to indicate\n        that you do not want the information to be used by anybody for direct marketing purposes\n    </li>\n    <li>\n        if you have previously agreed to us using your personal information for direct marketing purposes,\n        you may change your mind at any time by writing to or emailing us at\n        {{config path=\"trans_email/ident_general/email\"}}\n    </li>\n</ul>\n<p>\n    We will not sell, distribute or lease your personal information to third parties unless we have your permission\n    or are required by law to do so. We may use your personal information to send you promotional information\n    about third parties which we think you may find interesting if you tell us that you wish this to happen.\n</p>\n<p>\n    You may request details of personal information which we hold about you under the Data Protection Act 1998.\n    A small fee will be payable. If you would like a copy of the information held on you please write to\n    {{config path=\"general/store_information/address\"}}.\n</p>\n<p>\n    If you believe that any information we are holding on you is incorrect or incomplete,\n    please write to or email us as soon as possible, at the above address.\n    We will promptly correct any information found to be incorrect.\n</p>\n<h2><a name=\"list\"></a>List of cookies we collect</h2>\n<p>The table below lists the cookies we collect and what information they store.</p>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>COOKIE name</th>\n            <th>COOKIE Description</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <th>CART</th>\n            <td>The association with your shopping cart.</td>\n        </tr>\n        <tr>\n            <th>CATEGORY_INFO</th>\n            <td>Stores the category info on the page, that allows to display pages more quickly.</td>\n        </tr>\n        <tr>\n            <th>COMPARE</th>\n            <td>The items that you have in the Compare Products list.</td>\n        </tr>\n        <tr>\n            <th>CURRENCY</th>\n            <td>Your preferred currency</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER</th>\n            <td>An encrypted version of your customer id with the store.</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER_AUTH</th>\n            <td>An indicator if you are currently logged into the store.</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER_INFO</th>\n            <td>An encrypted version of the customer group you belong to.</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER_SEGMENT_IDS</th>\n            <td>Stores the Customer Segment ID</td>\n        </tr>\n        <tr>\n            <th>EXTERNAL_NO_CACHE</th>\n            <td>A flag, which indicates whether caching is disabled or not.</td>\n        </tr>\n        <tr>\n            <th>FRONTEND</th>\n            <td>You sesssion ID on the server.</td>\n        </tr>\n        <tr>\n            <th>GUEST-VIEW</th>\n            <td>Allows guests to edit their orders.</td>\n        </tr>\n        <tr>\n            <th>LAST_CATEGORY</th>\n            <td>The last category you visited.</td>\n        </tr>\n        <tr>\n            <th>LAST_PRODUCT</th>\n            <td>The most recent product you have viewed.</td>\n        </tr>\n        <tr>\n            <th>NEWMESSAGE</th>\n            <td>Indicates whether a new message has been received.</td>\n        </tr>\n        <tr>\n            <th>NO_CACHE</th>\n            <td>Indicates whether it is allowed to use cache.</td>\n        </tr>\n        <tr>\n            <th>PERSISTENT_SHOPPING_CART</th>\n            <td>A link to information about your cart and viewing history if you have asked the site.</td>\n        </tr>\n        <tr>\n            <th>POLL</th>\n            <td>The ID of any polls you have recently voted in.</td>\n        </tr>\n        <tr>\n            <th>POLLN</th>\n            <td>Information on what polls you have voted on.</td>\n        </tr>\n        <tr>\n            <th>RECENTLYCOMPARED</th>\n            <td>The items that you have recently compared.            </td>\n        </tr>\n        <tr>\n            <th>STF</th>\n            <td>Information on products you have emailed to friends.</td>\n        </tr>\n        <tr>\n            <th>STORE</th>\n            <td>The store view or language you have selected.</td>\n        </tr>\n        <tr>\n            <th>USER_ALLOWED_SAVE_COOKIE</th>\n            <td>Indicates whether a customer allowed to use cookies.</td>\n        </tr>\n        <tr>\n            <th>VIEWED_PRODUCT_IDS</th>\n            <td>The products that you have recently viewed.</td>\n        </tr>\n        <tr>\n            <th>WISHLIST</th>\n            <td>An encrypted list of products added to your Wishlist.</td>\n        </tr>\n        <tr>\n            <th>WISHLIST_CNT</th>\n            <td>The number of items in your Wishlist.</td>\n        </tr>\n    </tbody>\n</table>','2015-07-01 04:29:41','2015-07-01 04:29:41',1,0,NULL,NULL,NULL,NULL,NULL,NULL),(8,'Sample Page','one_column',NULL,NULL,'sample-page','This is a sample page','Hello i am sample page','2015-07-01 04:56:25','2015-07-01 04:56:25',1,0,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `shop_cms_page` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_cms_page_store`
 --
 
@@ -3790,16 +2672,6 @@ CREATE TABLE `shop_cms_page_store` (
   CONSTRAINT `FK_SHOP_CMS_PAGE_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Page To Store Linkage Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_cms_page_store`
---
-
-LOCK TABLES `shop_cms_page_store` WRITE;
-/*!40000 ALTER TABLE `shop_cms_page_store` DISABLE KEYS */;
-INSERT INTO `shop_cms_page_store` VALUES (1,0),(3,0),(4,0),(5,0),(6,0),(2,1),(8,1);
-/*!40000 ALTER TABLE `shop_cms_page_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_cache`
@@ -3820,15 +2692,6 @@ CREATE TABLE `shop_core_cache` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_cache`
---
-
-LOCK TABLES `shop_core_cache` WRITE;
-/*!40000 ALTER TABLE `shop_core_cache` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_cache` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_cache_option`
 --
 
@@ -3841,16 +2704,6 @@ CREATE TABLE `shop_core_cache_option` (
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache Options';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_cache_option`
---
-
-LOCK TABLES `shop_core_cache_option` WRITE;
-/*!40000 ALTER TABLE `shop_core_cache_option` DISABLE KEYS */;
-INSERT INTO `shop_core_cache_option` VALUES ('block_html',1),('collections',1),('config',1),('config_api',1),('config_api2',1),('eav',1),('layout',1),('translate',1);
-/*!40000 ALTER TABLE `shop_core_cache_option` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_cache_tag`
@@ -3868,15 +2721,6 @@ CREATE TABLE `shop_core_cache_tag` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_cache_tag`
---
-
-LOCK TABLES `shop_core_cache_tag` WRITE;
-/*!40000 ALTER TABLE `shop_core_cache_tag` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_cache_tag` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_config_data`
 --
 
@@ -3891,18 +2735,8 @@ CREATE TABLE `shop_core_config_data` (
   `value` text COMMENT 'Config Value',
   PRIMARY KEY (`config_id`),
   UNIQUE KEY `UNQ_SHOP_CORE_CONFIG_DATA_SCOPE_SCOPE_ID_PATH` (`scope`,`scope_id`,`path`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='Config Data';
+) ENGINE=InnoDB AUTO_INCREMENT=606 DEFAULT CHARSET=utf8 COMMENT='Config Data';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_config_data`
---
-
-LOCK TABLES `shop_core_config_data` WRITE;
-/*!40000 ALTER TABLE `shop_core_config_data` DISABLE KEYS */;
-INSERT INTO `shop_core_config_data` VALUES (1,'default',0,'general/region/display_all','1'),(2,'default',0,'general/region/state_required','AT,CA,CH,DE,EE,ES,FI,FR,LT,LV,RO,US'),(3,'default',0,'catalog/category/root_id','2'),(4,'default',0,'payment/paypal_express/skip_order_review_step','1'),(5,'default',0,'payment/payflow_link/mobile_optimized','1'),(6,'default',0,'payment/payflow_advanced/mobile_optimized','1'),(7,'default',0,'payment/hosted_pro/mobile_optimized','1'),(8,'default',0,'web/seo/use_rewrites','1'),(9,'default',0,'admin/dashboard/enable_charts','1'),(10,'default',0,'web/unsecure/base_url','http://local.ship.net/'),(11,'default',0,'web/secure/base_url','http://local.ship.net/'),(12,'default',0,'general/locale/code','en_US'),(13,'default',0,'general/locale/timezone','America/Santa_Isabel'),(14,'default',0,'currency/options/base','USD'),(15,'default',0,'currency/options/default','USD'),(16,'default',0,'currency/options/allow','USD');
-/*!40000 ALTER TABLE `shop_core_config_data` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_email_queue`
@@ -3923,17 +2757,8 @@ CREATE TABLE `shop_core_email_queue` (
   `processed_at` timestamp NULL DEFAULT NULL COMMENT 'Finish Time',
   PRIMARY KEY (`message_id`),
   KEY `2B883A40C37D010EE28AC0D3088629CF` (`entity_id`,`entity_type`,`event_type`,`message_body_hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Email Queue';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Email Queue';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_email_queue`
---
-
-LOCK TABLES `shop_core_email_queue` WRITE;
-/*!40000 ALTER TABLE `shop_core_email_queue` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_email_queue` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_email_queue_recipients`
@@ -3953,17 +2778,8 @@ CREATE TABLE `shop_core_email_queue_recipients` (
   KEY `IDX_SHOP_CORE_EMAIL_QUEUE_RECIPIENTS_RECIPIENT_EMAIL` (`recipient_email`),
   KEY `IDX_SHOP_CORE_EMAIL_QUEUE_RECIPIENTS_EMAIL_TYPE` (`email_type`),
   CONSTRAINT `FK_9DC25CB63CE1A2A6A8F7E813614B3747` FOREIGN KEY (`message_id`) REFERENCES `shop_core_email_queue` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Email Queue';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Email Queue';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_email_queue_recipients`
---
-
-LOCK TABLES `shop_core_email_queue_recipients` WRITE;
-/*!40000 ALTER TABLE `shop_core_email_queue_recipients` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_email_queue_recipients` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_email_template`
@@ -3993,15 +2809,6 @@ CREATE TABLE `shop_core_email_template` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_email_template`
---
-
-LOCK TABLES `shop_core_email_template` WRITE;
-/*!40000 ALTER TABLE `shop_core_email_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_email_template` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_flag`
 --
 
@@ -4018,16 +2825,6 @@ CREATE TABLE `shop_core_flag` (
   KEY `IDX_SHOP_CORE_FLAG_LAST_UPDATE` (`last_update`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Flag';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_flag`
---
-
-LOCK TABLES `shop_core_flag` WRITE;
-/*!40000 ALTER TABLE `shop_core_flag` DISABLE KEYS */;
-INSERT INTO `shop_core_flag` VALUES (1,'admin_notification_survey',0,'a:1:{s:13:\"survey_viewed\";b:1;}','2015-07-01 04:30:26'),(2,'catalog_product_flat',0,'a:2:{s:8:\"is_built\";b:1;s:16:\"is_store_built_1\";b:1;}','2015-07-01 04:32:39');
-/*!40000 ALTER TABLE `shop_core_flag` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_layout_link`
@@ -4052,15 +2849,6 @@ CREATE TABLE `shop_core_layout_link` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_layout_link`
---
-
-LOCK TABLES `shop_core_layout_link` WRITE;
-/*!40000 ALTER TABLE `shop_core_layout_link` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_layout_link` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_layout_update`
 --
 
@@ -4078,15 +2866,6 @@ CREATE TABLE `shop_core_layout_update` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_layout_update`
---
-
-LOCK TABLES `shop_core_layout_update` WRITE;
-/*!40000 ALTER TABLE `shop_core_layout_update` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_layout_update` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_resource`
 --
 
@@ -4102,16 +2881,6 @@ CREATE TABLE `shop_core_resource` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_resource`
---
-
-LOCK TABLES `shop_core_resource` WRITE;
-/*!40000 ALTER TABLE `shop_core_resource` DISABLE KEYS */;
-INSERT INTO `shop_core_resource` VALUES ('adminnotification_setup','1.6.0.0','1.6.0.0'),('admin_setup','1.6.1.1','1.6.1.1'),('api2_setup','1.0.0.0','1.0.0.0'),('api_setup','1.6.0.1','1.6.0.1'),('backup_setup','1.6.0.0','1.6.0.0'),('bundle_setup','1.6.0.0.1','1.6.0.0.1'),('captcha_setup','1.7.0.0.0','1.7.0.0.0'),('catalogindex_setup','1.6.0.0','1.6.0.0'),('cataloginventory_setup','1.6.0.0.2','1.6.0.0.2'),('catalogrule_setup','1.6.0.3','1.6.0.3'),('catalogsearch_setup','1.8.2.0','1.8.2.0'),('catalog_setup','1.6.0.0.19','1.6.0.0.19'),('checkout_setup','1.6.0.0','1.6.0.0'),('cms_setup','1.6.0.0.2','1.6.0.0.2'),('compiler_setup','1.6.0.0','1.6.0.0'),('contacts_setup','1.6.0.0','1.6.0.0'),('core_setup','1.6.0.6','1.6.0.6'),('cron_setup','1.6.0.0','1.6.0.0'),('customer_setup','1.6.2.0.3','1.6.2.0.3'),('dataflow_setup','1.6.0.0','1.6.0.0'),('directory_setup','1.6.0.2','1.6.0.2'),('downloadable_setup','1.6.0.0.2','1.6.0.0.2'),('eav_setup','1.6.0.1','1.6.0.1'),('giftmessage_setup','1.6.0.0','1.6.0.0'),('googleanalytics_setup','1.6.0.0','1.6.0.0'),('importexport_setup','1.6.0.2','1.6.0.2'),('index_setup','1.6.0.0','1.6.0.0'),('log_setup','1.6.1.0','1.6.1.0'),('moneybookers_setup','1.6.0.0','1.6.0.0'),('newsletter_setup','1.6.0.2','1.6.0.2'),('oauth_setup','1.0.0.0','1.0.0.0'),('paygate_setup','1.6.0.0','1.6.0.0'),('payment_setup','1.6.0.0','1.6.0.0'),('paypaluk_setup','1.6.0.0','1.6.0.0'),('paypal_setup','1.6.0.6','1.6.0.6'),('persistent_setup','1.0.0.0','1.0.0.0'),('poll_setup','1.6.0.0','1.6.0.0'),('productalert_setup','1.6.0.0','1.6.0.0'),('rating_setup','1.6.0.0','1.6.0.0'),('reports_setup','1.6.0.0.1','1.6.0.0.1'),('review_setup','1.6.0.0','1.6.0.0'),('salesrule_setup','1.6.0.3','1.6.0.3'),('sales_setup','1.6.0.8','1.6.0.8'),('sendfriend_setup','1.6.0.0','1.6.0.0'),('shipping_setup','1.6.0.0','1.6.0.0'),('sitemap_setup','1.6.0.0','1.6.0.0'),('tag_setup','1.6.0.0','1.6.0.0'),('tax_setup','1.6.0.4','1.6.0.4'),('usa_setup','1.6.0.3','1.6.0.3'),('weee_setup','1.6.0.0','1.6.0.0'),('widget_setup','1.6.0.0','1.6.0.0'),('wishlist_setup','1.6.0.0','1.6.0.0');
-/*!40000 ALTER TABLE `shop_core_resource` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_session`
 --
 
@@ -4125,16 +2894,6 @@ CREATE TABLE `shop_core_session` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Database Sessions Storage';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_session`
---
-
-LOCK TABLES `shop_core_session` WRITE;
-/*!40000 ALTER TABLE `shop_core_session` DISABLE KEYS */;
-INSERT INTO `shop_core_session` VALUES ('cej0ip0tdut59tui0oji5tp490',1435761453,'core|a:6:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:15:\"just_voted_poll\";b:0;s:12:\"visitor_data\";a:16:{s:0:\"\";N;s:11:\"server_addr\";i:3232300551;s:11:\"remote_addr\";i:3232300546;s:11:\"http_secure\";b:0;s:9:\"http_host\";s:14:\"local.ship.net\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";s:20:\"http_accept_language\";s:14:\"en-US,en;q=0.8\";s:19:\"http_accept_charset\";s:0:\"\";s:11:\"request_uri\";s:1:\"/\";s:10:\"session_id\";s:26:\"cej0ip0tdut59tui0oji5tp490\";s:12:\"http_referer\";s:22:\"http://local.ship.net/\";s:14:\"first_visit_at\";s:19:\"2015-07-01 12:49:35\";s:14:\"is_new_visitor\";b:0;s:13:\"last_visit_at\";s:19:\"2015-07-01 13:37:33\";s:10:\"visitor_id\";s:1:\"2\";s:11:\"last_url_id\";s:2:\"31\";}s:8:\"last_url\";s:38:\"http://local.ship.net/cms/index/index/\";s:9:\"_form_key\";s:16:\"jugJzEWzZ7K6bGSI\";}customer_base|a:4:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:19:\"wishlist_item_count\";i:0;s:15:\"before_auth_url\";s:45:\"http://local.ship.net/customer/account/index/\";}checkout|a:2:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}catalog|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:27:\"catalog_compare_items_count\";i:0;}reports|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:28:\"product_index_compared_count\";i:0;s:26:\"product_index_viewed_count\";i:0;}'),('ddo7fhtipsjfq12i9uncl395c3',1435767131,'core|a:5:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:15:\"just_voted_poll\";b:0;s:12:\"visitor_data\";a:16:{s:0:\"\";N;s:11:\"server_addr\";i:2130706433;s:11:\"remote_addr\";i:2130706433;s:11:\"http_secure\";b:0;s:9:\"http_host\";s:14:\"local.ship.net\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";s:20:\"http_accept_language\";s:5:\"en-us\";s:19:\"http_accept_charset\";s:0:\"\";s:11:\"request_uri\";s:1:\"/\";s:10:\"session_id\";s:26:\"ddo7fhtipsjfq12i9uncl395c3\";s:12:\"http_referer\";s:0:\"\";s:14:\"first_visit_at\";s:19:\"2015-07-01 15:12:11\";s:14:\"is_new_visitor\";b:0;s:13:\"last_visit_at\";s:19:\"2015-07-01 15:12:11\";s:10:\"visitor_id\";s:1:\"3\";s:11:\"last_url_id\";s:2:\"32\";}s:8:\"last_url\";s:38:\"http://local.ship.net/cms/index/index/\";}customer_base|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:19:\"wishlist_item_count\";i:0;}checkout|a:2:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}catalog|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:27:\"catalog_compare_items_count\";i:0;}reports|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:28:\"product_index_compared_count\";i:0;s:26:\"product_index_viewed_count\";i:0;}'),('gh0omlicol9nf2dt1hrb1k4531',1435757962,'core|a:6:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:15:\"just_voted_poll\";b:0;s:12:\"visitor_data\";a:16:{s:0:\"\";N;s:11:\"server_addr\";i:2130706433;s:11:\"remote_addr\";i:2130706433;s:11:\"http_secure\";b:0;s:9:\"http_host\";s:14:\"local.ship.net\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";s:20:\"http_accept_language\";s:5:\"en-us\";s:19:\"http_accept_charset\";s:0:\"\";s:11:\"request_uri\";s:26:\"/catalog/product/view/id/1\";s:10:\"session_id\";s:26:\"gh0omlicol9nf2dt1hrb1k4531\";s:12:\"http_referer\";s:0:\"\";s:14:\"first_visit_at\";s:19:\"2015-07-01 12:31:09\";s:14:\"is_new_visitor\";b:0;s:13:\"last_visit_at\";s:19:\"2015-07-01 12:39:22\";s:10:\"visitor_id\";s:1:\"1\";s:11:\"last_url_id\";s:2:\"22\";}s:8:\"last_url\";s:48:\"http://local.ship.net/catalog/product/view/id/1/\";s:9:\"_form_key\";s:16:\"rQJ1IdtnomxGaUhv\";}customer_base|a:4:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:19:\"wishlist_item_count\";i:0;s:15:\"before_auth_url\";s:45:\"http://local.ship.net/customer/account/index/\";}checkout|a:2:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}catalog|a:4:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:27:\"catalog_compare_items_count\";i:0;s:22:\"last_viewed_product_id\";s:1:\"1\";}reports|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:28:\"product_index_compared_count\";i:0;s:26:\"product_index_viewed_count\";i:1;}tag|a:2:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}store_default|a:1:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}}'),('khilds38q9vd08pqos0lu9q2p0',1435759302,'core|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:9:\"_form_key\";s:16:\"FqtLwjmMrwQMq8wT\";s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}adminhtml|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:6:\"locale\";s:5:\"en_US\";s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";O:31:\"Mage_Core_Model_Message_Success\":6:{s:8:\"\0*\0_type\";s:7:\"success\";s:8:\"\0*\0_code\";s:26:\"1 cache type(s) refreshed.\";s:9:\"\0*\0_class\";s:0:\"\";s:10:\"\0*\0_method\";s:0:\"\";s:14:\"\0*\0_identifier\";N;s:12:\"\0*\0_isSticky\";b:0;}}}admin|a:4:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:9:\"127.0.0.1\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:116:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3\";}s:23:\"sync_process_stop_watch\";b:0;s:4:\"user\";O:21:\"Mage_Admin_Model_User\":17:{s:15:\"\0*\0_eventPrefix\";s:10:\"admin_user\";s:8:\"\0*\0_role\";N;s:25:\"\0*\0_hasAvailableResources\";b:1;s:15:\"\0*\0_eventObject\";s:6:\"object\";s:16:\"\0*\0_resourceName\";s:10:\"admin/user\";s:12:\"\0*\0_resource\";N;s:26:\"\0*\0_resourceCollectionName\";s:21:\"admin/user_collection\";s:12:\"\0*\0_cacheTag\";b:0;s:19:\"\0*\0_dataSaveAllowed\";b:1;s:15:\"\0*\0_isObjectNew\";N;s:8:\"\0*\0_data\";a:15:{s:7:\"user_id\";s:1:\"1\";s:9:\"firstname\";s:6:\"Eshlee\";s:8:\"lastname\";s:6:\"Romero\";s:5:\"email\";s:12:\"hello@esh.ph\";s:8:\"username\";s:10:\"eshleebien\";s:8:\"password\";s:65:\"38dfc063b993faccf5b2d9eb1673511a:nATZEwHiFh9Nzhk3xopF5OuTZyjy71tY\";s:7:\"created\";s:19:\"2015-07-01 12:30:25\";s:8:\"modified\";s:19:\"2015-07-01 12:30:25\";s:7:\"logdate\";s:19:\"2015-07-01 13:32:29\";s:6:\"lognum\";s:1:\"3\";s:15:\"reload_acl_flag\";s:1:\"0\";s:9:\"is_active\";s:1:\"1\";s:5:\"extra\";N;s:8:\"rp_token\";N;s:19:\"rp_token_created_at\";N;}s:18:\"\0*\0_hasDataChanges\";b:0;s:12:\"\0*\0_origData\";a:15:{s:7:\"user_id\";s:1:\"1\";s:9:\"firstname\";s:6:\"Eshlee\";s:8:\"lastname\";s:6:\"Romero\";s:5:\"email\";s:12:\"hello@esh.ph\";s:8:\"username\";s:10:\"eshleebien\";s:8:\"password\";s:65:\"38dfc063b993faccf5b2d9eb1673511a:nATZEwHiFh9Nzhk3xopF5OuTZyjy71tY\";s:7:\"created\";s:19:\"2015-07-01 12:30:25\";s:8:\"modified\";s:19:\"2015-07-01 12:30:25\";s:7:\"logdate\";s:19:\"2015-07-01 13:32:29\";s:6:\"lognum\";s:1:\"3\";s:15:\"reload_acl_flag\";s:1:\"0\";s:9:\"is_active\";s:1:\"1\";s:5:\"extra\";N;s:8:\"rp_token\";N;s:19:\"rp_token_created_at\";N;}s:15:\"\0*\0_idFieldName\";s:7:\"user_id\";s:13:\"\0*\0_isDeleted\";b:0;s:16:\"\0*\0_oldFieldsMap\";a:0:{}s:17:\"\0*\0_syncFieldsMap\";a:0:{}}s:3:\"acl\";O:20:\"Mage_Admin_Model_Acl\":6:{s:16:\"\0*\0_roleRegistry\";O:34:\"Mage_Admin_Model_Acl_Role_Registry\":1:{s:9:\"\0*\0_roles\";a:2:{s:2:\"G1\";a:3:{s:8:\"instance\";O:31:\"Mage_Admin_Model_Acl_Role_Group\":1:{s:10:\"\0*\0_roleId\";s:2:\"G1\";}s:7:\"parents\";a:0:{}s:8:\"children\";a:1:{s:2:\"U1\";O:30:\"Mage_Admin_Model_Acl_Role_User\":1:{s:10:\"\0*\0_roleId\";s:2:\"U1\";}}}s:2:\"U1\";a:3:{s:8:\"instance\";r:90;s:7:\"parents\";a:1:{s:2:\"G1\";r:86;}s:8:\"children\";a:0:{}}}}s:13:\"\0*\0_resources\";a:197:{s:3:\"all\";a:3:{s:8:\"instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:3:\"all\";}s:6:\"parent\";N;s:8:\"children\";a:0:{}}s:5:\"admin\";a:3:{s:8:\"instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:5:\"admin\";}s:6:\"parent\";N;s:8:\"children\";a:11:{s:15:\"admin/dashboard\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/dashboard\";}s:12:\"admin/system\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:12:\"admin/system\";}s:19:\"admin/global_search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/global_search\";}s:9:\"admin/cms\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:9:\"admin/cms\";}s:14:\"admin/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/customer\";}s:13:\"admin/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:13:\"admin/catalog\";}s:11:\"admin/promo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:11:\"admin/promo\";}s:11:\"admin/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:11:\"admin/sales\";}s:12:\"admin/report\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:12:\"admin/report\";}s:16:\"admin/newsletter\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/newsletter\";}s:16:\"admin/page_cache\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/page_cache\";}}}s:15:\"admin/dashboard\";a:3:{s:8:\"instance\";r:108;s:6:\"parent\";r:104;s:8:\"children\";a:0:{}}s:12:\"admin/system\";a:3:{s:8:\"instance\";r:110;s:6:\"parent\";r:104;s:8:\"children\";a:16:{s:16:\"admin/system/acl\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/system/acl\";}s:18:\"admin/system/store\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/store\";}s:19:\"admin/system/design\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/system/design\";}s:19:\"admin/system/config\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/system/config\";}s:21:\"admin/system/currency\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/system/currency\";}s:27:\"admin/system/email_template\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/email_template\";}s:21:\"admin/system/variable\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/system/variable\";}s:22:\"admin/system/myaccount\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/myaccount\";}s:18:\"admin/system/tools\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/tools\";}s:20:\"admin/system/convert\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/system/convert\";}s:18:\"admin/system/cache\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/cache\";}s:23:\"admin/system/extensions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/extensions\";}s:30:\"admin/system/adminnotification\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/adminnotification\";}s:18:\"admin/system/index\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/index\";}s:27:\"admin/system/order_statuses\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/order_statuses\";}s:16:\"admin/system/api\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/system/api\";}}}s:16:\"admin/system/acl\";a:3:{s:8:\"instance\";r:138;s:6:\"parent\";r:110;s:8:\"children\";a:2:{s:22:\"admin/system/acl/roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/acl/roles\";}s:22:\"admin/system/acl/users\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/acl/users\";}}}s:22:\"admin/system/acl/roles\";a:3:{s:8:\"instance\";r:174;s:6:\"parent\";r:138;s:8:\"children\";a:0:{}}s:22:\"admin/system/acl/users\";a:3:{s:8:\"instance\";r:176;s:6:\"parent\";r:138;s:8:\"children\";a:0:{}}s:18:\"admin/system/store\";a:3:{s:8:\"instance\";r:140;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:19:\"admin/system/design\";a:3:{s:8:\"instance\";r:142;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:19:\"admin/system/config\";a:3:{s:8:\"instance\";r:144;s:6:\"parent\";r:110;s:8:\"children\";a:38:{s:27:\"admin/system/config/general\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/general\";}s:23:\"admin/system/config/web\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/web\";}s:26:\"admin/system/config/design\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/design\";}s:26:\"admin/system/config/system\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/system\";}s:28:\"admin/system/config/advanced\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/advanced\";}s:31:\"admin/system/config/trans_email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/config/trans_email\";}s:23:\"admin/system/config/dev\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/dev\";}s:28:\"admin/system/config/currency\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/currency\";}s:30:\"admin/system/config/sendfriend\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/sendfriend\";}s:25:\"admin/system/config/admin\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/admin\";}s:23:\"admin/system/config/cms\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/cms\";}s:28:\"admin/system/config/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/customer\";}s:27:\"admin/system/config/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/catalog\";}s:27:\"admin/system/config/payment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/payment\";}s:36:\"admin/system/config/payment_services\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/system/config/payment_services\";}s:25:\"admin/system/config/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/sales\";}s:31:\"admin/system/config/sales_email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/config/sales_email\";}s:29:\"admin/system/config/sales_pdf\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/config/sales_pdf\";}s:36:\"admin/system/config/cataloginventory\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/system/config/cataloginventory\";}s:28:\"admin/system/config/shipping\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/shipping\";}s:28:\"admin/system/config/carriers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/carriers\";}s:25:\"admin/system/config/promo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/promo\";}s:28:\"admin/system/config/checkout\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/checkout\";}s:26:\"admin/system/config/paypal\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/paypal\";}s:27:\"admin/system/config/reports\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/reports\";}s:26:\"admin/system/config/google\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/google\";}s:23:\"admin/system/config/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/tax\";}s:28:\"admin/system/config/wishlist\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/wishlist\";}s:28:\"admin/system/config/contacts\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/contacts\";}s:27:\"admin/system/config/sitemap\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/sitemap\";}s:23:\"admin/system/config/rss\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/rss\";}s:23:\"admin/system/config/api\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/api\";}s:25:\"admin/system/config/oauth\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/oauth\";}s:34:\"admin/system/config/configswatches\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/config/configswatches\";}s:30:\"admin/system/config/newsletter\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/newsletter\";}s:32:\"admin/system/config/downloadable\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/config/downloadable\";}s:30:\"admin/system/config/persistent\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/persistent\";}s:32:\"admin/system/config/moneybookers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/config/moneybookers\";}}}s:27:\"admin/system/config/general\";a:3:{s:8:\"instance\";r:198;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/web\";a:3:{s:8:\"instance\";r:200;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/design\";a:3:{s:8:\"instance\";r:202;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/system\";a:3:{s:8:\"instance\";r:204;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/advanced\";a:3:{s:8:\"instance\";r:206;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:31:\"admin/system/config/trans_email\";a:3:{s:8:\"instance\";r:208;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/dev\";a:3:{s:8:\"instance\";r:210;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/currency\";a:3:{s:8:\"instance\";r:212;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/sendfriend\";a:3:{s:8:\"instance\";r:214;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/admin\";a:3:{s:8:\"instance\";r:216;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/cms\";a:3:{s:8:\"instance\";r:218;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/customer\";a:3:{s:8:\"instance\";r:220;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/catalog\";a:3:{s:8:\"instance\";r:222;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/payment\";a:3:{s:8:\"instance\";r:224;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:36:\"admin/system/config/payment_services\";a:3:{s:8:\"instance\";r:226;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/sales\";a:3:{s:8:\"instance\";r:228;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:31:\"admin/system/config/sales_email\";a:3:{s:8:\"instance\";r:230;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:29:\"admin/system/config/sales_pdf\";a:3:{s:8:\"instance\";r:232;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:36:\"admin/system/config/cataloginventory\";a:3:{s:8:\"instance\";r:234;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/shipping\";a:3:{s:8:\"instance\";r:236;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/carriers\";a:3:{s:8:\"instance\";r:238;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/promo\";a:3:{s:8:\"instance\";r:240;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/checkout\";a:3:{s:8:\"instance\";r:242;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/paypal\";a:3:{s:8:\"instance\";r:244;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/reports\";a:3:{s:8:\"instance\";r:246;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/google\";a:3:{s:8:\"instance\";r:248;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/tax\";a:3:{s:8:\"instance\";r:250;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/wishlist\";a:3:{s:8:\"instance\";r:252;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/contacts\";a:3:{s:8:\"instance\";r:254;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/sitemap\";a:3:{s:8:\"instance\";r:256;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/rss\";a:3:{s:8:\"instance\";r:258;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/api\";a:3:{s:8:\"instance\";r:260;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/oauth\";a:3:{s:8:\"instance\";r:262;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:34:\"admin/system/config/configswatches\";a:3:{s:8:\"instance\";r:264;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/newsletter\";a:3:{s:8:\"instance\";r:266;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:32:\"admin/system/config/downloadable\";a:3:{s:8:\"instance\";r:268;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/persistent\";a:3:{s:8:\"instance\";r:270;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:32:\"admin/system/config/moneybookers\";a:3:{s:8:\"instance\";r:272;s:6:\"parent\";r:144;s:8:\"children\";a:0:{}}s:21:\"admin/system/currency\";a:3:{s:8:\"instance\";r:146;s:6:\"parent\";r:110;s:8:\"children\";a:2:{s:27:\"admin/system/currency/rates\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/currency/rates\";}s:29:\"admin/system/currency/symbols\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/currency/symbols\";}}}s:27:\"admin/system/currency/rates\";a:3:{s:8:\"instance\";r:430;s:6:\"parent\";r:146;s:8:\"children\";a:0:{}}s:29:\"admin/system/currency/symbols\";a:3:{s:8:\"instance\";r:432;s:6:\"parent\";r:146;s:8:\"children\";a:0:{}}s:27:\"admin/system/email_template\";a:3:{s:8:\"instance\";r:148;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:21:\"admin/system/variable\";a:3:{s:8:\"instance\";r:150;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:22:\"admin/system/myaccount\";a:3:{s:8:\"instance\";r:152;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:18:\"admin/system/tools\";a:3:{s:8:\"instance\";r:154;s:6:\"parent\";r:110;s:8:\"children\";a:2:{s:25:\"admin/system/tools/backup\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/tools/backup\";}s:27:\"admin/system/tools/compiler\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/tools/compiler\";}}}s:25:\"admin/system/tools/backup\";a:3:{s:8:\"instance\";r:458;s:6:\"parent\";r:154;s:8:\"children\";a:1:{s:34:\"admin/system/tools/backup/rollback\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/tools/backup/rollback\";}}}s:34:\"admin/system/tools/backup/rollback\";a:3:{s:8:\"instance\";r:466;s:6:\"parent\";r:458;s:8:\"children\";a:0:{}}s:27:\"admin/system/tools/compiler\";a:3:{s:8:\"instance\";r:460;s:6:\"parent\";r:154;s:8:\"children\";a:0:{}}s:20:\"admin/system/convert\";a:3:{s:8:\"instance\";r:156;s:6:\"parent\";r:110;s:8:\"children\";a:4:{s:24:\"admin/system/convert/gui\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/system/convert/gui\";}s:29:\"admin/system/convert/profiles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/convert/profiles\";}s:27:\"admin/system/convert/import\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/convert/import\";}s:27:\"admin/system/convert/export\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/convert/export\";}}}s:24:\"admin/system/convert/gui\";a:3:{s:8:\"instance\";r:480;s:6:\"parent\";r:156;s:8:\"children\";a:0:{}}s:29:\"admin/system/convert/profiles\";a:3:{s:8:\"instance\";r:482;s:6:\"parent\";r:156;s:8:\"children\";a:0:{}}s:27:\"admin/system/convert/import\";a:3:{s:8:\"instance\";r:484;s:6:\"parent\";r:156;s:8:\"children\";a:0:{}}s:27:\"admin/system/convert/export\";a:3:{s:8:\"instance\";r:486;s:6:\"parent\";r:156;s:8:\"children\";a:0:{}}s:18:\"admin/system/cache\";a:3:{s:8:\"instance\";r:158;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:23:\"admin/system/extensions\";a:3:{s:8:\"instance\";r:160;s:6:\"parent\";r:110;s:8:\"children\";a:2:{s:29:\"admin/system/extensions/local\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/extensions/local\";}s:30:\"admin/system/extensions/custom\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/extensions/custom\";}}}s:29:\"admin/system/extensions/local\";a:3:{s:8:\"instance\";r:512;s:6:\"parent\";r:160;s:8:\"children\";a:0:{}}s:30:\"admin/system/extensions/custom\";a:3:{s:8:\"instance\";r:514;s:6:\"parent\";r:160;s:8:\"children\";a:0:{}}s:30:\"admin/system/adminnotification\";a:3:{s:8:\"instance\";r:162;s:6:\"parent\";r:110;s:8:\"children\";a:4:{s:43:\"admin/system/adminnotification/show_toolbar\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:43:\"admin/system/adminnotification/show_toolbar\";}s:40:\"admin/system/adminnotification/show_list\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:40:\"admin/system/adminnotification/show_list\";}s:43:\"admin/system/adminnotification/mark_as_read\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:43:\"admin/system/adminnotification/mark_as_read\";}s:37:\"admin/system/adminnotification/remove\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/system/adminnotification/remove\";}}}s:43:\"admin/system/adminnotification/show_toolbar\";a:3:{s:8:\"instance\";r:528;s:6:\"parent\";r:162;s:8:\"children\";a:0:{}}s:40:\"admin/system/adminnotification/show_list\";a:3:{s:8:\"instance\";r:530;s:6:\"parent\";r:162;s:8:\"children\";a:0:{}}s:43:\"admin/system/adminnotification/mark_as_read\";a:3:{s:8:\"instance\";r:532;s:6:\"parent\";r:162;s:8:\"children\";a:0:{}}s:37:\"admin/system/adminnotification/remove\";a:3:{s:8:\"instance\";r:534;s:6:\"parent\";r:162;s:8:\"children\";a:0:{}}s:18:\"admin/system/index\";a:3:{s:8:\"instance\";r:164;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:27:\"admin/system/order_statuses\";a:3:{s:8:\"instance\";r:166;s:6:\"parent\";r:110;s:8:\"children\";a:0:{}}s:16:\"admin/system/api\";a:3:{s:8:\"instance\";r:168;s:6:\"parent\";r:110;s:8:\"children\";a:7:{s:22:\"admin/system/api/users\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/api/users\";}s:22:\"admin/system/api/roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/api/roles\";}s:25:\"admin/system/api/consumer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/api/consumer\";}s:33:\"admin/system/api/authorizedTokens\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/system/api/authorizedTokens\";}s:34:\"admin/system/api/oauth_admin_token\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/api/oauth_admin_token\";}s:27:\"admin/system/api/rest_roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/api/rest_roles\";}s:32:\"admin/system/api/rest_attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/rest_attributes\";}}}s:22:\"admin/system/api/users\";a:3:{s:8:\"instance\";r:564;s:6:\"parent\";r:168;s:8:\"children\";a:0:{}}s:22:\"admin/system/api/roles\";a:3:{s:8:\"instance\";r:566;s:6:\"parent\";r:168;s:8:\"children\";a:0:{}}s:25:\"admin/system/api/consumer\";a:3:{s:8:\"instance\";r:568;s:6:\"parent\";r:168;s:8:\"children\";a:2:{s:30:\"admin/system/api/consumer/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/api/consumer/edit\";}s:32:\"admin/system/api/consumer/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/consumer/delete\";}}}s:30:\"admin/system/api/consumer/edit\";a:3:{s:8:\"instance\";r:590;s:6:\"parent\";r:568;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/consumer/delete\";a:3:{s:8:\"instance\";r:592;s:6:\"parent\";r:568;s:8:\"children\";a:0:{}}s:33:\"admin/system/api/authorizedTokens\";a:3:{s:8:\"instance\";r:570;s:6:\"parent\";r:168;s:8:\"children\";a:0:{}}s:34:\"admin/system/api/oauth_admin_token\";a:3:{s:8:\"instance\";r:572;s:6:\"parent\";r:168;s:8:\"children\";a:0:{}}s:27:\"admin/system/api/rest_roles\";a:3:{s:8:\"instance\";r:574;s:6:\"parent\";r:168;s:8:\"children\";a:3:{s:31:\"admin/system/api/rest_roles/add\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/api/rest_roles/add\";}s:32:\"admin/system/api/rest_roles/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/rest_roles/edit\";}s:34:\"admin/system/api/rest_roles/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/api/rest_roles/delete\";}}}s:31:\"admin/system/api/rest_roles/add\";a:3:{s:8:\"instance\";r:614;s:6:\"parent\";r:574;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/rest_roles/edit\";a:3:{s:8:\"instance\";r:616;s:6:\"parent\";r:574;s:8:\"children\";a:0:{}}s:34:\"admin/system/api/rest_roles/delete\";a:3:{s:8:\"instance\";r:618;s:6:\"parent\";r:574;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/rest_attributes\";a:3:{s:8:\"instance\";r:576;s:6:\"parent\";r:168;s:8:\"children\";a:1:{s:37:\"admin/system/api/rest_attributes/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/system/api/rest_attributes/edit\";}}}s:37:\"admin/system/api/rest_attributes/edit\";a:3:{s:8:\"instance\";r:636;s:6:\"parent\";r:576;s:8:\"children\";a:0:{}}s:19:\"admin/global_search\";a:3:{s:8:\"instance\";r:112;s:6:\"parent\";r:104;s:8:\"children\";a:0:{}}s:9:\"admin/cms\";a:3:{s:8:\"instance\";r:114;s:6:\"parent\";r:104;s:8:\"children\";a:5:{s:15:\"admin/cms/block\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/cms/block\";}s:14:\"admin/cms/page\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/cms/page\";}s:23:\"admin/cms/media_gallery\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/cms/media_gallery\";}s:14:\"admin/cms/poll\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/cms/poll\";}s:25:\"admin/cms/widget_instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/cms/widget_instance\";}}}s:15:\"admin/cms/block\";a:3:{s:8:\"instance\";r:650;s:6:\"parent\";r:114;s:8:\"children\";a:0:{}}s:14:\"admin/cms/page\";a:3:{s:8:\"instance\";r:652;s:6:\"parent\";r:114;s:8:\"children\";a:2:{s:19:\"admin/cms/page/save\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/cms/page/save\";}s:21:\"admin/cms/page/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/cms/page/delete\";}}}s:19:\"admin/cms/page/save\";a:3:{s:8:\"instance\";r:668;s:6:\"parent\";r:652;s:8:\"children\";a:0:{}}s:21:\"admin/cms/page/delete\";a:3:{s:8:\"instance\";r:670;s:6:\"parent\";r:652;s:8:\"children\";a:0:{}}s:23:\"admin/cms/media_gallery\";a:3:{s:8:\"instance\";r:654;s:6:\"parent\";r:114;s:8:\"children\";a:0:{}}s:14:\"admin/cms/poll\";a:3:{s:8:\"instance\";r:656;s:6:\"parent\";r:114;s:8:\"children\";a:0:{}}s:25:\"admin/cms/widget_instance\";a:3:{s:8:\"instance\";r:658;s:6:\"parent\";r:114;s:8:\"children\";a:0:{}}s:14:\"admin/customer\";a:3:{s:8:\"instance\";r:116;s:6:\"parent\";r:104;s:8:\"children\";a:3:{s:20:\"admin/customer/group\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/customer/group\";}s:21:\"admin/customer/manage\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/customer/manage\";}s:21:\"admin/customer/online\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/customer/online\";}}}s:20:\"admin/customer/group\";a:3:{s:8:\"instance\";r:696;s:6:\"parent\";r:116;s:8:\"children\";a:0:{}}s:21:\"admin/customer/manage\";a:3:{s:8:\"instance\";r:698;s:6:\"parent\";r:116;s:8:\"children\";a:0:{}}s:21:\"admin/customer/online\";a:3:{s:8:\"instance\";r:700;s:6:\"parent\";r:116;s:8:\"children\";a:0:{}}s:13:\"admin/catalog\";a:3:{s:8:\"instance\";r:118;s:6:\"parent\";r:104;s:8:\"children\";a:9:{s:24:\"admin/catalog/attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/attributes\";}s:24:\"admin/catalog/categories\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/categories\";}s:22:\"admin/catalog/products\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/catalog/products\";}s:31:\"admin/catalog/update_attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/catalog/update_attributes\";}s:24:\"admin/catalog/urlrewrite\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/urlrewrite\";}s:20:\"admin/catalog/search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/catalog/search\";}s:29:\"admin/catalog/reviews_ratings\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/catalog/reviews_ratings\";}s:17:\"admin/catalog/tag\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/catalog/tag\";}s:21:\"admin/catalog/sitemap\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/catalog/sitemap\";}}}s:24:\"admin/catalog/attributes\";a:3:{s:8:\"instance\";r:718;s:6:\"parent\";r:118;s:8:\"children\";a:2:{s:35:\"admin/catalog/attributes/attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:35:\"admin/catalog/attributes/attributes\";}s:29:\"admin/catalog/attributes/sets\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/catalog/attributes/sets\";}}}s:35:\"admin/catalog/attributes/attributes\";a:3:{s:8:\"instance\";r:740;s:6:\"parent\";r:718;s:8:\"children\";a:0:{}}s:29:\"admin/catalog/attributes/sets\";a:3:{s:8:\"instance\";r:742;s:6:\"parent\";r:718;s:8:\"children\";a:0:{}}s:24:\"admin/catalog/categories\";a:3:{s:8:\"instance\";r:720;s:6:\"parent\";r:118;s:8:\"children\";a:0:{}}s:22:\"admin/catalog/products\";a:3:{s:8:\"instance\";r:722;s:6:\"parent\";r:118;s:8:\"children\";a:0:{}}s:31:\"admin/catalog/update_attributes\";a:3:{s:8:\"instance\";r:724;s:6:\"parent\";r:118;s:8:\"children\";a:0:{}}s:24:\"admin/catalog/urlrewrite\";a:3:{s:8:\"instance\";r:726;s:6:\"parent\";r:118;s:8:\"children\";a:0:{}}s:20:\"admin/catalog/search\";a:3:{s:8:\"instance\";r:728;s:6:\"parent\";r:118;s:8:\"children\";a:0:{}}s:29:\"admin/catalog/reviews_ratings\";a:3:{s:8:\"instance\";r:730;s:6:\"parent\";r:118;s:8:\"children\";a:2:{s:37:\"admin/catalog/reviews_ratings/reviews\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/catalog/reviews_ratings/reviews\";}s:37:\"admin/catalog/reviews_ratings/ratings\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/catalog/reviews_ratings/ratings\";}}}s:37:\"admin/catalog/reviews_ratings/reviews\";a:3:{s:8:\"instance\";r:776;s:6:\"parent\";r:730;s:8:\"children\";a:2:{s:41:\"admin/catalog/reviews_ratings/reviews/all\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:41:\"admin/catalog/reviews_ratings/reviews/all\";}s:45:\"admin/catalog/reviews_ratings/reviews/pending\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:45:\"admin/catalog/reviews_ratings/reviews/pending\";}}}s:41:\"admin/catalog/reviews_ratings/reviews/all\";a:3:{s:8:\"instance\";r:784;s:6:\"parent\";r:776;s:8:\"children\";a:0:{}}s:45:\"admin/catalog/reviews_ratings/reviews/pending\";a:3:{s:8:\"instance\";r:786;s:6:\"parent\";r:776;s:8:\"children\";a:0:{}}s:37:\"admin/catalog/reviews_ratings/ratings\";a:3:{s:8:\"instance\";r:778;s:6:\"parent\";r:730;s:8:\"children\";a:0:{}}s:17:\"admin/catalog/tag\";a:3:{s:8:\"instance\";r:732;s:6:\"parent\";r:118;s:8:\"children\";a:2:{s:21:\"admin/catalog/tag/all\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/catalog/tag/all\";}s:25:\"admin/catalog/tag/pending\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/catalog/tag/pending\";}}}s:21:\"admin/catalog/tag/all\";a:3:{s:8:\"instance\";r:804;s:6:\"parent\";r:732;s:8:\"children\";a:0:{}}s:25:\"admin/catalog/tag/pending\";a:3:{s:8:\"instance\";r:806;s:6:\"parent\";r:732;s:8:\"children\";a:0:{}}s:21:\"admin/catalog/sitemap\";a:3:{s:8:\"instance\";r:734;s:6:\"parent\";r:118;s:8:\"children\";a:0:{}}s:11:\"admin/promo\";a:3:{s:8:\"instance\";r:120;s:6:\"parent\";r:104;s:8:\"children\";a:2:{s:19:\"admin/promo/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/promo/catalog\";}s:17:\"admin/promo/quote\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/promo/quote\";}}}s:19:\"admin/promo/catalog\";a:3:{s:8:\"instance\";r:824;s:6:\"parent\";r:120;s:8:\"children\";a:0:{}}s:17:\"admin/promo/quote\";a:3:{s:8:\"instance\";r:826;s:6:\"parent\";r:120;s:8:\"children\";a:0:{}}s:11:\"admin/sales\";a:3:{s:8:\"instance\";r:122;s:6:\"parent\";r:104;s:8:\"children\";a:9:{s:17:\"admin/sales/order\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/sales/order\";}s:19:\"admin/sales/invoice\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/sales/invoice\";}s:20:\"admin/sales/shipment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/sales/shipment\";}s:22:\"admin/sales/creditmemo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/sales/creditmemo\";}s:24:\"admin/sales/transactions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/sales/transactions\";}s:29:\"admin/sales/recurring_profile\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/recurring_profile\";}s:29:\"admin/sales/billing_agreement\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/billing_agreement\";}s:29:\"admin/sales/checkoutagreement\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/checkoutagreement\";}s:15:\"admin/sales/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/sales/tax\";}}}s:17:\"admin/sales/order\";a:3:{s:8:\"instance\";r:840;s:6:\"parent\";r:122;s:8:\"children\";a:1:{s:25:\"admin/sales/order/actions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/sales/order/actions\";}}}s:25:\"admin/sales/order/actions\";a:3:{s:8:\"instance\";r:862;s:6:\"parent\";r:840;s:8:\"children\";a:15:{s:32:\"admin/sales/order/actions/create\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/create\";}s:30:\"admin/sales/order/actions/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/view\";}s:31:\"admin/sales/order/actions/email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/sales/order/actions/email\";}s:33:\"admin/sales/order/actions/reorder\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/reorder\";}s:30:\"admin/sales/order/actions/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/edit\";}s:32:\"admin/sales/order/actions/cancel\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/cancel\";}s:40:\"admin/sales/order/actions/review_payment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:40:\"admin/sales/order/actions/review_payment\";}s:33:\"admin/sales/order/actions/capture\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/capture\";}s:33:\"admin/sales/order/actions/invoice\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/invoice\";}s:36:\"admin/sales/order/actions/creditmemo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/sales/order/actions/creditmemo\";}s:30:\"admin/sales/order/actions/hold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/hold\";}s:32:\"admin/sales/order/actions/unhold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/unhold\";}s:30:\"admin/sales/order/actions/ship\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/ship\";}s:33:\"admin/sales/order/actions/comment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/comment\";}s:32:\"admin/sales/order/actions/emails\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/emails\";}}}s:32:\"admin/sales/order/actions/create\";a:3:{s:8:\"instance\";r:868;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/view\";a:3:{s:8:\"instance\";r:870;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:31:\"admin/sales/order/actions/email\";a:3:{s:8:\"instance\";r:872;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/reorder\";a:3:{s:8:\"instance\";r:874;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/edit\";a:3:{s:8:\"instance\";r:876;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/cancel\";a:3:{s:8:\"instance\";r:878;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:40:\"admin/sales/order/actions/review_payment\";a:3:{s:8:\"instance\";r:880;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/capture\";a:3:{s:8:\"instance\";r:882;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/invoice\";a:3:{s:8:\"instance\";r:884;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:36:\"admin/sales/order/actions/creditmemo\";a:3:{s:8:\"instance\";r:886;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/hold\";a:3:{s:8:\"instance\";r:888;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/unhold\";a:3:{s:8:\"instance\";r:890;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/ship\";a:3:{s:8:\"instance\";r:892;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/comment\";a:3:{s:8:\"instance\";r:894;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/emails\";a:3:{s:8:\"instance\";r:896;s:6:\"parent\";r:862;s:8:\"children\";a:0:{}}s:19:\"admin/sales/invoice\";a:3:{s:8:\"instance\";r:842;s:6:\"parent\";r:122;s:8:\"children\";a:0:{}}s:20:\"admin/sales/shipment\";a:3:{s:8:\"instance\";r:844;s:6:\"parent\";r:122;s:8:\"children\";a:0:{}}s:22:\"admin/sales/creditmemo\";a:3:{s:8:\"instance\";r:846;s:6:\"parent\";r:122;s:8:\"children\";a:0:{}}s:24:\"admin/sales/transactions\";a:3:{s:8:\"instance\";r:848;s:6:\"parent\";r:122;s:8:\"children\";a:1:{s:30:\"admin/sales/transactions/fetch\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/transactions/fetch\";}}}s:30:\"admin/sales/transactions/fetch\";a:3:{s:8:\"instance\";r:974;s:6:\"parent\";r:848;s:8:\"children\";a:0:{}}s:29:\"admin/sales/recurring_profile\";a:3:{s:8:\"instance\";r:850;s:6:\"parent\";r:122;s:8:\"children\";a:0:{}}s:29:\"admin/sales/billing_agreement\";a:3:{s:8:\"instance\";r:852;s:6:\"parent\";r:122;s:8:\"children\";a:1:{s:37:\"admin/sales/billing_agreement/actions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/sales/billing_agreement/actions\";}}}s:37:\"admin/sales/billing_agreement/actions\";a:3:{s:8:\"instance\";r:988;s:6:\"parent\";r:852;s:8:\"children\";a:3:{s:42:\"admin/sales/billing_agreement/actions/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:42:\"admin/sales/billing_agreement/actions/view\";}s:44:\"admin/sales/billing_agreement/actions/manage\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:44:\"admin/sales/billing_agreement/actions/manage\";}s:41:\"admin/sales/billing_agreement/actions/use\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:41:\"admin/sales/billing_agreement/actions/use\";}}}s:42:\"admin/sales/billing_agreement/actions/view\";a:3:{s:8:\"instance\";r:994;s:6:\"parent\";r:988;s:8:\"children\";a:0:{}}s:44:\"admin/sales/billing_agreement/actions/manage\";a:3:{s:8:\"instance\";r:996;s:6:\"parent\";r:988;s:8:\"children\";a:0:{}}s:41:\"admin/sales/billing_agreement/actions/use\";a:3:{s:8:\"instance\";r:998;s:6:\"parent\";r:988;s:8:\"children\";a:0:{}}s:29:\"admin/sales/checkoutagreement\";a:3:{s:8:\"instance\";r:854;s:6:\"parent\";r:122;s:8:\"children\";a:0:{}}s:15:\"admin/sales/tax\";a:3:{s:8:\"instance\";r:856;s:6:\"parent\";r:122;s:8:\"children\";a:5:{s:32:\"admin/sales/tax/classes_customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/tax/classes_customer\";}s:31:\"admin/sales/tax/classes_product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/sales/tax/classes_product\";}s:29:\"admin/sales/tax/import_export\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/tax/import_export\";}s:21:\"admin/sales/tax/rates\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/sales/tax/rates\";}s:21:\"admin/sales/tax/rules\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/sales/tax/rules\";}}}s:32:\"admin/sales/tax/classes_customer\";a:3:{s:8:\"instance\";r:1020;s:6:\"parent\";r:856;s:8:\"children\";a:0:{}}s:31:\"admin/sales/tax/classes_product\";a:3:{s:8:\"instance\";r:1022;s:6:\"parent\";r:856;s:8:\"children\";a:0:{}}s:29:\"admin/sales/tax/import_export\";a:3:{s:8:\"instance\";r:1024;s:6:\"parent\";r:856;s:8:\"children\";a:0:{}}s:21:\"admin/sales/tax/rates\";a:3:{s:8:\"instance\";r:1026;s:6:\"parent\";r:856;s:8:\"children\";a:0:{}}s:21:\"admin/sales/tax/rules\";a:3:{s:8:\"instance\";r:1028;s:6:\"parent\";r:856;s:8:\"children\";a:0:{}}s:12:\"admin/report\";a:3:{s:8:\"instance\";r:124;s:6:\"parent\";r:104;s:8:\"children\";a:8:{s:22:\"admin/report/salesroot\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/report/salesroot\";}s:21:\"admin/report/shopcart\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/report/shopcart\";}s:21:\"admin/report/products\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/report/products\";}s:22:\"admin/report/customers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/report/customers\";}s:19:\"admin/report/review\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/report/review\";}s:17:\"admin/report/tags\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/report/tags\";}s:19:\"admin/report/search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/report/search\";}s:23:\"admin/report/statistics\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/report/statistics\";}}}s:22:\"admin/report/salesroot\";a:3:{s:8:\"instance\";r:1054;s:6:\"parent\";r:124;s:8:\"children\";a:7:{s:48:\"admin/report/salesroot/paypal_settlement_reports\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:48:\"admin/report/salesroot/paypal_settlement_reports\";}s:28:\"admin/report/salesroot/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/salesroot/sales\";}s:26:\"admin/report/salesroot/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/salesroot/tax\";}s:31:\"admin/report/salesroot/shipping\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/shipping\";}s:31:\"admin/report/salesroot/invoiced\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/invoiced\";}s:31:\"admin/report/salesroot/refunded\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/refunded\";}s:30:\"admin/report/salesroot/coupons\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/report/salesroot/coupons\";}}}s:48:\"admin/report/salesroot/paypal_settlement_reports\";a:3:{s:8:\"instance\";r:1074;s:6:\"parent\";r:1054;s:8:\"children\";a:2:{s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";}s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";}}}s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";a:3:{s:8:\"instance\";r:1092;s:6:\"parent\";r:1074;s:8:\"children\";a:0:{}}s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";a:3:{s:8:\"instance\";r:1094;s:6:\"parent\";r:1074;s:8:\"children\";a:0:{}}s:28:\"admin/report/salesroot/sales\";a:3:{s:8:\"instance\";r:1076;s:6:\"parent\";r:1054;s:8:\"children\";a:0:{}}s:26:\"admin/report/salesroot/tax\";a:3:{s:8:\"instance\";r:1078;s:6:\"parent\";r:1054;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/shipping\";a:3:{s:8:\"instance\";r:1080;s:6:\"parent\";r:1054;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/invoiced\";a:3:{s:8:\"instance\";r:1082;s:6:\"parent\";r:1054;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/refunded\";a:3:{s:8:\"instance\";r:1084;s:6:\"parent\";r:1054;s:8:\"children\";a:0:{}}s:30:\"admin/report/salesroot/coupons\";a:3:{s:8:\"instance\";r:1086;s:6:\"parent\";r:1054;s:8:\"children\";a:0:{}}s:21:\"admin/report/shopcart\";a:3:{s:8:\"instance\";r:1056;s:6:\"parent\";r:124;s:8:\"children\";a:2:{s:29:\"admin/report/shopcart/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/shopcart/product\";}s:31:\"admin/report/shopcart/abandoned\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/shopcart/abandoned\";}}}s:29:\"admin/report/shopcart/product\";a:3:{s:8:\"instance\";r:1132;s:6:\"parent\";r:1056;s:8:\"children\";a:0:{}}s:31:\"admin/report/shopcart/abandoned\";a:3:{s:8:\"instance\";r:1134;s:6:\"parent\";r:1056;s:8:\"children\";a:0:{}}s:21:\"admin/report/products\";a:3:{s:8:\"instance\";r:1058;s:6:\"parent\";r:124;s:8:\"children\";a:5:{s:33:\"admin/report/products/bestsellers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/report/products/bestsellers\";}s:26:\"admin/report/products/sold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/products/sold\";}s:28:\"admin/report/products/viewed\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/products/viewed\";}s:30:\"admin/report/products/lowstock\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/report/products/lowstock\";}s:31:\"admin/report/products/downloads\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/products/downloads\";}}}s:33:\"admin/report/products/bestsellers\";a:3:{s:8:\"instance\";r:1148;s:6:\"parent\";r:1058;s:8:\"children\";a:0:{}}s:26:\"admin/report/products/sold\";a:3:{s:8:\"instance\";r:1150;s:6:\"parent\";r:1058;s:8:\"children\";a:0:{}}s:28:\"admin/report/products/viewed\";a:3:{s:8:\"instance\";r:1152;s:6:\"parent\";r:1058;s:8:\"children\";a:0:{}}s:30:\"admin/report/products/lowstock\";a:3:{s:8:\"instance\";r:1154;s:6:\"parent\";r:1058;s:8:\"children\";a:0:{}}s:31:\"admin/report/products/downloads\";a:3:{s:8:\"instance\";r:1156;s:6:\"parent\";r:1058;s:8:\"children\";a:0:{}}s:22:\"admin/report/customers\";a:3:{s:8:\"instance\";r:1060;s:6:\"parent\";r:124;s:8:\"children\";a:3:{s:31:\"admin/report/customers/accounts\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/customers/accounts\";}s:29:\"admin/report/customers/totals\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/customers/totals\";}s:29:\"admin/report/customers/orders\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/customers/orders\";}}}s:31:\"admin/report/customers/accounts\";a:3:{s:8:\"instance\";r:1182;s:6:\"parent\";r:1060;s:8:\"children\";a:0:{}}s:29:\"admin/report/customers/totals\";a:3:{s:8:\"instance\";r:1184;s:6:\"parent\";r:1060;s:8:\"children\";a:0:{}}s:29:\"admin/report/customers/orders\";a:3:{s:8:\"instance\";r:1186;s:6:\"parent\";r:1060;s:8:\"children\";a:0:{}}s:19:\"admin/report/review\";a:3:{s:8:\"instance\";r:1062;s:6:\"parent\";r:124;s:8:\"children\";a:2:{s:28:\"admin/report/review/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/review/customer\";}s:27:\"admin/report/review/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/report/review/product\";}}}s:28:\"admin/report/review/customer\";a:3:{s:8:\"instance\";r:1204;s:6:\"parent\";r:1062;s:8:\"children\";a:0:{}}s:27:\"admin/report/review/product\";a:3:{s:8:\"instance\";r:1206;s:6:\"parent\";r:1062;s:8:\"children\";a:0:{}}s:17:\"admin/report/tags\";a:3:{s:8:\"instance\";r:1064;s:6:\"parent\";r:124;s:8:\"children\";a:3:{s:26:\"admin/report/tags/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/tags/customer\";}s:25:\"admin/report/tags/popular\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/report/tags/popular\";}s:25:\"admin/report/tags/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/report/tags/product\";}}}s:26:\"admin/report/tags/customer\";a:3:{s:8:\"instance\";r:1220;s:6:\"parent\";r:1064;s:8:\"children\";a:0:{}}s:25:\"admin/report/tags/popular\";a:3:{s:8:\"instance\";r:1222;s:6:\"parent\";r:1064;s:8:\"children\";a:0:{}}s:25:\"admin/report/tags/product\";a:3:{s:8:\"instance\";r:1224;s:6:\"parent\";r:1064;s:8:\"children\";a:0:{}}s:19:\"admin/report/search\";a:3:{s:8:\"instance\";r:1066;s:6:\"parent\";r:124;s:8:\"children\";a:0:{}}s:23:\"admin/report/statistics\";a:3:{s:8:\"instance\";r:1068;s:6:\"parent\";r:124;s:8:\"children\";a:0:{}}s:16:\"admin/newsletter\";a:3:{s:8:\"instance\";r:126;s:6:\"parent\";r:104;s:8:\"children\";a:4:{s:24:\"admin/newsletter/problem\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/newsletter/problem\";}s:22:\"admin/newsletter/queue\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/newsletter/queue\";}s:27:\"admin/newsletter/subscriber\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/newsletter/subscriber\";}s:25:\"admin/newsletter/template\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/newsletter/template\";}}}s:24:\"admin/newsletter/problem\";a:3:{s:8:\"instance\";r:1250;s:6:\"parent\";r:126;s:8:\"children\";a:0:{}}s:22:\"admin/newsletter/queue\";a:3:{s:8:\"instance\";r:1252;s:6:\"parent\";r:126;s:8:\"children\";a:0:{}}s:27:\"admin/newsletter/subscriber\";a:3:{s:8:\"instance\";r:1254;s:6:\"parent\";r:126;s:8:\"children\";a:0:{}}s:25:\"admin/newsletter/template\";a:3:{s:8:\"instance\";r:1256;s:6:\"parent\";r:126;s:8:\"children\";a:0:{}}s:16:\"admin/page_cache\";a:3:{s:8:\"instance\";r:128;s:6:\"parent\";r:104;s:8:\"children\";a:0:{}}}s:17:\"\0*\0_isAllowedRole\";r:90;s:21:\"\0*\0_isAllowedResource\";r:144;s:22:\"\0*\0_isAllowedPrivilege\";N;s:9:\"\0*\0_rules\";a:2:{s:12:\"allResources\";a:2:{s:8:\"allRoles\";a:2:{s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:9:\"TYPE_DENY\";s:6:\"assert\";N;}s:13:\"byPrivilegeId\";a:0:{}}s:8:\"byRoleId\";a:1:{s:2:\"G1\";a:2:{s:13:\"byPrivilegeId\";a:0:{}s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:10:\"TYPE_ALLOW\";s:6:\"assert\";N;}}}}s:12:\"byResourceId\";a:1:{s:3:\"all\";a:1:{s:8:\"byRoleId\";a:1:{s:2:\"G1\";a:2:{s:13:\"byPrivilegeId\";a:0:{}s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:10:\"TYPE_ALLOW\";s:6:\"assert\";N;}}}}}}}}'),('q01372p5jje2uvt73acm02sfa5',1435767770,'core|a:5:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:15:\"just_voted_poll\";b:0;s:12:\"visitor_data\";a:16:{s:0:\"\";N;s:11:\"server_addr\";i:3232300551;s:11:\"remote_addr\";i:3232300546;s:11:\"http_secure\";b:0;s:9:\"http_host\";s:14:\"local.ship.net\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";s:20:\"http_accept_language\";s:14:\"en-US,en;q=0.8\";s:19:\"http_accept_charset\";s:0:\"\";s:11:\"request_uri\";s:1:\"/\";s:10:\"session_id\";s:26:\"q01372p5jje2uvt73acm02sfa5\";s:12:\"http_referer\";s:0:\"\";s:14:\"first_visit_at\";s:19:\"2015-07-01 15:19:42\";s:14:\"is_new_visitor\";b:0;s:13:\"last_visit_at\";s:19:\"2015-07-01 15:22:50\";s:10:\"visitor_id\";s:1:\"4\";s:11:\"last_url_id\";s:2:\"36\";}s:8:\"last_url\";s:38:\"http://local.ship.net/cms/index/index/\";}customer_base|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:19:\"wishlist_item_count\";i:0;}checkout|a:2:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}catalog|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}s:27:\"catalog_compare_items_count\";i:0;}reports|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:28:\"product_index_compared_count\";i:0;s:26:\"product_index_viewed_count\";i:0;}'),('qqfj8qfa9admh268jh9q29fq77',1435759217,'core|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:9:\"_form_key\";s:16:\"tODXrwJlXX5wksHD\";s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}adminhtml|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:6:\"locale\";s:5:\"en_US\";s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";O:29:\"Mage_Core_Model_Message_Error\":6:{s:8:\"\0*\0_type\";s:5:\"error\";s:8:\"\0*\0_code\";s:30:\"Invalid User Name or Password.\";s:9:\"\0*\0_class\";s:0:\"\";s:10:\"\0*\0_method\";s:0:\"\";s:14:\"\0*\0_identifier\";N;s:12:\"\0*\0_isSticky\";b:0;}}}admin|a:4:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:23:\"sync_process_stop_watch\";b:0;s:4:\"user\";O:21:\"Mage_Admin_Model_User\":17:{s:15:\"\0*\0_eventPrefix\";s:10:\"admin_user\";s:8:\"\0*\0_role\";N;s:25:\"\0*\0_hasAvailableResources\";b:1;s:15:\"\0*\0_eventObject\";s:6:\"object\";s:16:\"\0*\0_resourceName\";s:10:\"admin/user\";s:12:\"\0*\0_resource\";N;s:26:\"\0*\0_resourceCollectionName\";s:21:\"admin/user_collection\";s:12:\"\0*\0_cacheTag\";b:0;s:19:\"\0*\0_dataSaveAllowed\";b:1;s:15:\"\0*\0_isObjectNew\";N;s:8:\"\0*\0_data\";a:15:{s:7:\"user_id\";s:1:\"2\";s:9:\"firstname\";s:8:\"Jonathan\";s:8:\"lastname\";s:6:\"Cepeda\";s:5:\"email\";s:22:\"jon.jonathan@gmail.com\";s:8:\"username\";s:3:\"jon\";s:8:\"password\";s:65:\"95fdae6278c141066bcd26592db7b1d1:zIRFl6YLAFYJ3vSHOW9ll0sU4mLrk4S2\";s:7:\"created\";s:19:\"2015-07-01 13:34:33\";s:8:\"modified\";s:19:\"2015-07-01 13:34:33\";s:7:\"logdate\";s:19:\"2015-07-01 13:35:39\";s:6:\"lognum\";s:1:\"1\";s:15:\"reload_acl_flag\";s:1:\"0\";s:9:\"is_active\";s:1:\"1\";s:5:\"extra\";N;s:8:\"rp_token\";N;s:19:\"rp_token_created_at\";N;}s:18:\"\0*\0_hasDataChanges\";b:0;s:12:\"\0*\0_origData\";a:15:{s:7:\"user_id\";s:1:\"2\";s:9:\"firstname\";s:8:\"Jonathan\";s:8:\"lastname\";s:6:\"Cepeda\";s:5:\"email\";s:22:\"jon.jonathan@gmail.com\";s:8:\"username\";s:3:\"jon\";s:8:\"password\";s:65:\"95fdae6278c141066bcd26592db7b1d1:zIRFl6YLAFYJ3vSHOW9ll0sU4mLrk4S2\";s:7:\"created\";s:19:\"2015-07-01 13:34:33\";s:8:\"modified\";s:19:\"2015-07-01 13:34:33\";s:7:\"logdate\";s:19:\"2015-07-01 13:35:39\";s:6:\"lognum\";s:1:\"1\";s:15:\"reload_acl_flag\";s:1:\"0\";s:9:\"is_active\";s:1:\"1\";s:5:\"extra\";N;s:8:\"rp_token\";N;s:19:\"rp_token_created_at\";N;}s:15:\"\0*\0_idFieldName\";s:7:\"user_id\";s:13:\"\0*\0_isDeleted\";b:0;s:16:\"\0*\0_oldFieldsMap\";a:0:{}s:17:\"\0*\0_syncFieldsMap\";a:0:{}}s:3:\"acl\";O:20:\"Mage_Admin_Model_Acl\":6:{s:16:\"\0*\0_roleRegistry\";O:34:\"Mage_Admin_Model_Acl_Role_Registry\":1:{s:9:\"\0*\0_roles\";a:3:{s:2:\"G1\";a:3:{s:8:\"instance\";O:31:\"Mage_Admin_Model_Acl_Role_Group\":1:{s:10:\"\0*\0_roleId\";s:2:\"G1\";}s:7:\"parents\";a:0:{}s:8:\"children\";a:2:{s:2:\"U1\";O:30:\"Mage_Admin_Model_Acl_Role_User\":1:{s:10:\"\0*\0_roleId\";s:2:\"U1\";}s:2:\"U2\";O:30:\"Mage_Admin_Model_Acl_Role_User\":1:{s:10:\"\0*\0_roleId\";s:2:\"U2\";}}}s:2:\"U1\";a:3:{s:8:\"instance\";r:90;s:7:\"parents\";a:1:{s:2:\"G1\";r:86;}s:8:\"children\";a:0:{}}s:2:\"U2\";a:3:{s:8:\"instance\";r:92;s:7:\"parents\";a:1:{s:2:\"G1\";r:86;}s:8:\"children\";a:0:{}}}}s:13:\"\0*\0_resources\";a:197:{s:3:\"all\";a:3:{s:8:\"instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:3:\"all\";}s:6:\"parent\";N;s:8:\"children\";a:0:{}}s:5:\"admin\";a:3:{s:8:\"instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:5:\"admin\";}s:6:\"parent\";N;s:8:\"children\";a:11:{s:15:\"admin/dashboard\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/dashboard\";}s:12:\"admin/system\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:12:\"admin/system\";}s:19:\"admin/global_search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/global_search\";}s:9:\"admin/cms\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:9:\"admin/cms\";}s:14:\"admin/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/customer\";}s:13:\"admin/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:13:\"admin/catalog\";}s:11:\"admin/promo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:11:\"admin/promo\";}s:11:\"admin/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:11:\"admin/sales\";}s:12:\"admin/report\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:12:\"admin/report\";}s:16:\"admin/newsletter\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/newsletter\";}s:16:\"admin/page_cache\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/page_cache\";}}}s:15:\"admin/dashboard\";a:3:{s:8:\"instance\";r:115;s:6:\"parent\";r:111;s:8:\"children\";a:0:{}}s:12:\"admin/system\";a:3:{s:8:\"instance\";r:117;s:6:\"parent\";r:111;s:8:\"children\";a:16:{s:16:\"admin/system/acl\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/system/acl\";}s:18:\"admin/system/store\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/store\";}s:19:\"admin/system/design\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/system/design\";}s:19:\"admin/system/config\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/system/config\";}s:21:\"admin/system/currency\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/system/currency\";}s:27:\"admin/system/email_template\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/email_template\";}s:21:\"admin/system/variable\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/system/variable\";}s:22:\"admin/system/myaccount\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/myaccount\";}s:18:\"admin/system/tools\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/tools\";}s:20:\"admin/system/convert\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/system/convert\";}s:18:\"admin/system/cache\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/cache\";}s:23:\"admin/system/extensions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/extensions\";}s:30:\"admin/system/adminnotification\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/adminnotification\";}s:18:\"admin/system/index\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/index\";}s:27:\"admin/system/order_statuses\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/order_statuses\";}s:16:\"admin/system/api\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/system/api\";}}}s:16:\"admin/system/acl\";a:3:{s:8:\"instance\";r:145;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:22:\"admin/system/acl/roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/acl/roles\";}s:22:\"admin/system/acl/users\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/acl/users\";}}}s:22:\"admin/system/acl/roles\";a:3:{s:8:\"instance\";r:181;s:6:\"parent\";r:145;s:8:\"children\";a:0:{}}s:22:\"admin/system/acl/users\";a:3:{s:8:\"instance\";r:183;s:6:\"parent\";r:145;s:8:\"children\";a:0:{}}s:18:\"admin/system/store\";a:3:{s:8:\"instance\";r:147;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:19:\"admin/system/design\";a:3:{s:8:\"instance\";r:149;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:19:\"admin/system/config\";a:3:{s:8:\"instance\";r:151;s:6:\"parent\";r:117;s:8:\"children\";a:38:{s:27:\"admin/system/config/general\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/general\";}s:23:\"admin/system/config/web\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/web\";}s:26:\"admin/system/config/design\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/design\";}s:26:\"admin/system/config/system\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/system\";}s:28:\"admin/system/config/advanced\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/advanced\";}s:31:\"admin/system/config/trans_email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/config/trans_email\";}s:23:\"admin/system/config/dev\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/dev\";}s:28:\"admin/system/config/currency\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/currency\";}s:30:\"admin/system/config/sendfriend\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/sendfriend\";}s:25:\"admin/system/config/admin\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/admin\";}s:23:\"admin/system/config/cms\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/cms\";}s:28:\"admin/system/config/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/customer\";}s:27:\"admin/system/config/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/catalog\";}s:27:\"admin/system/config/payment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/payment\";}s:36:\"admin/system/config/payment_services\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/system/config/payment_services\";}s:25:\"admin/system/config/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/sales\";}s:31:\"admin/system/config/sales_email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/config/sales_email\";}s:29:\"admin/system/config/sales_pdf\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/config/sales_pdf\";}s:36:\"admin/system/config/cataloginventory\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/system/config/cataloginventory\";}s:28:\"admin/system/config/shipping\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/shipping\";}s:28:\"admin/system/config/carriers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/carriers\";}s:25:\"admin/system/config/promo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/promo\";}s:28:\"admin/system/config/checkout\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/checkout\";}s:26:\"admin/system/config/paypal\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/paypal\";}s:27:\"admin/system/config/reports\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/reports\";}s:26:\"admin/system/config/google\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/google\";}s:23:\"admin/system/config/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/tax\";}s:28:\"admin/system/config/wishlist\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/wishlist\";}s:28:\"admin/system/config/contacts\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/contacts\";}s:27:\"admin/system/config/sitemap\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/sitemap\";}s:23:\"admin/system/config/rss\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/rss\";}s:23:\"admin/system/config/api\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/api\";}s:25:\"admin/system/config/oauth\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/oauth\";}s:34:\"admin/system/config/configswatches\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/config/configswatches\";}s:30:\"admin/system/config/newsletter\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/newsletter\";}s:32:\"admin/system/config/downloadable\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/config/downloadable\";}s:30:\"admin/system/config/persistent\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/persistent\";}s:32:\"admin/system/config/moneybookers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/config/moneybookers\";}}}s:27:\"admin/system/config/general\";a:3:{s:8:\"instance\";r:205;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/web\";a:3:{s:8:\"instance\";r:207;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/design\";a:3:{s:8:\"instance\";r:209;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/system\";a:3:{s:8:\"instance\";r:211;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/advanced\";a:3:{s:8:\"instance\";r:213;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:31:\"admin/system/config/trans_email\";a:3:{s:8:\"instance\";r:215;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/dev\";a:3:{s:8:\"instance\";r:217;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/currency\";a:3:{s:8:\"instance\";r:219;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/sendfriend\";a:3:{s:8:\"instance\";r:221;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/admin\";a:3:{s:8:\"instance\";r:223;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/cms\";a:3:{s:8:\"instance\";r:225;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/customer\";a:3:{s:8:\"instance\";r:227;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/catalog\";a:3:{s:8:\"instance\";r:229;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/payment\";a:3:{s:8:\"instance\";r:231;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:36:\"admin/system/config/payment_services\";a:3:{s:8:\"instance\";r:233;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/sales\";a:3:{s:8:\"instance\";r:235;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:31:\"admin/system/config/sales_email\";a:3:{s:8:\"instance\";r:237;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:29:\"admin/system/config/sales_pdf\";a:3:{s:8:\"instance\";r:239;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:36:\"admin/system/config/cataloginventory\";a:3:{s:8:\"instance\";r:241;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/shipping\";a:3:{s:8:\"instance\";r:243;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/carriers\";a:3:{s:8:\"instance\";r:245;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/promo\";a:3:{s:8:\"instance\";r:247;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/checkout\";a:3:{s:8:\"instance\";r:249;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/paypal\";a:3:{s:8:\"instance\";r:251;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/reports\";a:3:{s:8:\"instance\";r:253;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/google\";a:3:{s:8:\"instance\";r:255;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/tax\";a:3:{s:8:\"instance\";r:257;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/wishlist\";a:3:{s:8:\"instance\";r:259;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/contacts\";a:3:{s:8:\"instance\";r:261;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/sitemap\";a:3:{s:8:\"instance\";r:263;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/rss\";a:3:{s:8:\"instance\";r:265;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/api\";a:3:{s:8:\"instance\";r:267;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/oauth\";a:3:{s:8:\"instance\";r:269;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:34:\"admin/system/config/configswatches\";a:3:{s:8:\"instance\";r:271;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/newsletter\";a:3:{s:8:\"instance\";r:273;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:32:\"admin/system/config/downloadable\";a:3:{s:8:\"instance\";r:275;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/persistent\";a:3:{s:8:\"instance\";r:277;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:32:\"admin/system/config/moneybookers\";a:3:{s:8:\"instance\";r:279;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:21:\"admin/system/currency\";a:3:{s:8:\"instance\";r:153;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:27:\"admin/system/currency/rates\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/currency/rates\";}s:29:\"admin/system/currency/symbols\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/currency/symbols\";}}}s:27:\"admin/system/currency/rates\";a:3:{s:8:\"instance\";r:437;s:6:\"parent\";r:153;s:8:\"children\";a:0:{}}s:29:\"admin/system/currency/symbols\";a:3:{s:8:\"instance\";r:439;s:6:\"parent\";r:153;s:8:\"children\";a:0:{}}s:27:\"admin/system/email_template\";a:3:{s:8:\"instance\";r:155;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:21:\"admin/system/variable\";a:3:{s:8:\"instance\";r:157;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:22:\"admin/system/myaccount\";a:3:{s:8:\"instance\";r:159;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:18:\"admin/system/tools\";a:3:{s:8:\"instance\";r:161;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:25:\"admin/system/tools/backup\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/tools/backup\";}s:27:\"admin/system/tools/compiler\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/tools/compiler\";}}}s:25:\"admin/system/tools/backup\";a:3:{s:8:\"instance\";r:465;s:6:\"parent\";r:161;s:8:\"children\";a:1:{s:34:\"admin/system/tools/backup/rollback\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/tools/backup/rollback\";}}}s:34:\"admin/system/tools/backup/rollback\";a:3:{s:8:\"instance\";r:473;s:6:\"parent\";r:465;s:8:\"children\";a:0:{}}s:27:\"admin/system/tools/compiler\";a:3:{s:8:\"instance\";r:467;s:6:\"parent\";r:161;s:8:\"children\";a:0:{}}s:20:\"admin/system/convert\";a:3:{s:8:\"instance\";r:163;s:6:\"parent\";r:117;s:8:\"children\";a:4:{s:24:\"admin/system/convert/gui\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/system/convert/gui\";}s:29:\"admin/system/convert/profiles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/convert/profiles\";}s:27:\"admin/system/convert/import\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/convert/import\";}s:27:\"admin/system/convert/export\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/convert/export\";}}}s:24:\"admin/system/convert/gui\";a:3:{s:8:\"instance\";r:487;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:29:\"admin/system/convert/profiles\";a:3:{s:8:\"instance\";r:489;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:27:\"admin/system/convert/import\";a:3:{s:8:\"instance\";r:491;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:27:\"admin/system/convert/export\";a:3:{s:8:\"instance\";r:493;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:18:\"admin/system/cache\";a:3:{s:8:\"instance\";r:165;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:23:\"admin/system/extensions\";a:3:{s:8:\"instance\";r:167;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:29:\"admin/system/extensions/local\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/extensions/local\";}s:30:\"admin/system/extensions/custom\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/extensions/custom\";}}}s:29:\"admin/system/extensions/local\";a:3:{s:8:\"instance\";r:519;s:6:\"parent\";r:167;s:8:\"children\";a:0:{}}s:30:\"admin/system/extensions/custom\";a:3:{s:8:\"instance\";r:521;s:6:\"parent\";r:167;s:8:\"children\";a:0:{}}s:30:\"admin/system/adminnotification\";a:3:{s:8:\"instance\";r:169;s:6:\"parent\";r:117;s:8:\"children\";a:4:{s:43:\"admin/system/adminnotification/show_toolbar\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:43:\"admin/system/adminnotification/show_toolbar\";}s:40:\"admin/system/adminnotification/show_list\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:40:\"admin/system/adminnotification/show_list\";}s:43:\"admin/system/adminnotification/mark_as_read\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:43:\"admin/system/adminnotification/mark_as_read\";}s:37:\"admin/system/adminnotification/remove\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/system/adminnotification/remove\";}}}s:43:\"admin/system/adminnotification/show_toolbar\";a:3:{s:8:\"instance\";r:535;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:40:\"admin/system/adminnotification/show_list\";a:3:{s:8:\"instance\";r:537;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:43:\"admin/system/adminnotification/mark_as_read\";a:3:{s:8:\"instance\";r:539;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:37:\"admin/system/adminnotification/remove\";a:3:{s:8:\"instance\";r:541;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:18:\"admin/system/index\";a:3:{s:8:\"instance\";r:171;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:27:\"admin/system/order_statuses\";a:3:{s:8:\"instance\";r:173;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:16:\"admin/system/api\";a:3:{s:8:\"instance\";r:175;s:6:\"parent\";r:117;s:8:\"children\";a:7:{s:22:\"admin/system/api/users\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/api/users\";}s:22:\"admin/system/api/roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/api/roles\";}s:25:\"admin/system/api/consumer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/api/consumer\";}s:33:\"admin/system/api/authorizedTokens\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/system/api/authorizedTokens\";}s:34:\"admin/system/api/oauth_admin_token\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/api/oauth_admin_token\";}s:27:\"admin/system/api/rest_roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/api/rest_roles\";}s:32:\"admin/system/api/rest_attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/rest_attributes\";}}}s:22:\"admin/system/api/users\";a:3:{s:8:\"instance\";r:571;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:22:\"admin/system/api/roles\";a:3:{s:8:\"instance\";r:573;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:25:\"admin/system/api/consumer\";a:3:{s:8:\"instance\";r:575;s:6:\"parent\";r:175;s:8:\"children\";a:2:{s:30:\"admin/system/api/consumer/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/api/consumer/edit\";}s:32:\"admin/system/api/consumer/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/consumer/delete\";}}}s:30:\"admin/system/api/consumer/edit\";a:3:{s:8:\"instance\";r:597;s:6:\"parent\";r:575;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/consumer/delete\";a:3:{s:8:\"instance\";r:599;s:6:\"parent\";r:575;s:8:\"children\";a:0:{}}s:33:\"admin/system/api/authorizedTokens\";a:3:{s:8:\"instance\";r:577;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:34:\"admin/system/api/oauth_admin_token\";a:3:{s:8:\"instance\";r:579;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:27:\"admin/system/api/rest_roles\";a:3:{s:8:\"instance\";r:581;s:6:\"parent\";r:175;s:8:\"children\";a:3:{s:31:\"admin/system/api/rest_roles/add\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/api/rest_roles/add\";}s:32:\"admin/system/api/rest_roles/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/rest_roles/edit\";}s:34:\"admin/system/api/rest_roles/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/api/rest_roles/delete\";}}}s:31:\"admin/system/api/rest_roles/add\";a:3:{s:8:\"instance\";r:621;s:6:\"parent\";r:581;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/rest_roles/edit\";a:3:{s:8:\"instance\";r:623;s:6:\"parent\";r:581;s:8:\"children\";a:0:{}}s:34:\"admin/system/api/rest_roles/delete\";a:3:{s:8:\"instance\";r:625;s:6:\"parent\";r:581;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/rest_attributes\";a:3:{s:8:\"instance\";r:583;s:6:\"parent\";r:175;s:8:\"children\";a:1:{s:37:\"admin/system/api/rest_attributes/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/system/api/rest_attributes/edit\";}}}s:37:\"admin/system/api/rest_attributes/edit\";a:3:{s:8:\"instance\";r:643;s:6:\"parent\";r:583;s:8:\"children\";a:0:{}}s:19:\"admin/global_search\";a:3:{s:8:\"instance\";r:119;s:6:\"parent\";r:111;s:8:\"children\";a:0:{}}s:9:\"admin/cms\";a:3:{s:8:\"instance\";r:121;s:6:\"parent\";r:111;s:8:\"children\";a:5:{s:15:\"admin/cms/block\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/cms/block\";}s:14:\"admin/cms/page\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/cms/page\";}s:23:\"admin/cms/media_gallery\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/cms/media_gallery\";}s:14:\"admin/cms/poll\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/cms/poll\";}s:25:\"admin/cms/widget_instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/cms/widget_instance\";}}}s:15:\"admin/cms/block\";a:3:{s:8:\"instance\";r:657;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:14:\"admin/cms/page\";a:3:{s:8:\"instance\";r:659;s:6:\"parent\";r:121;s:8:\"children\";a:2:{s:19:\"admin/cms/page/save\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/cms/page/save\";}s:21:\"admin/cms/page/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/cms/page/delete\";}}}s:19:\"admin/cms/page/save\";a:3:{s:8:\"instance\";r:675;s:6:\"parent\";r:659;s:8:\"children\";a:0:{}}s:21:\"admin/cms/page/delete\";a:3:{s:8:\"instance\";r:677;s:6:\"parent\";r:659;s:8:\"children\";a:0:{}}s:23:\"admin/cms/media_gallery\";a:3:{s:8:\"instance\";r:661;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:14:\"admin/cms/poll\";a:3:{s:8:\"instance\";r:663;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:25:\"admin/cms/widget_instance\";a:3:{s:8:\"instance\";r:665;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:14:\"admin/customer\";a:3:{s:8:\"instance\";r:123;s:6:\"parent\";r:111;s:8:\"children\";a:3:{s:20:\"admin/customer/group\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/customer/group\";}s:21:\"admin/customer/manage\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/customer/manage\";}s:21:\"admin/customer/online\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/customer/online\";}}}s:20:\"admin/customer/group\";a:3:{s:8:\"instance\";r:703;s:6:\"parent\";r:123;s:8:\"children\";a:0:{}}s:21:\"admin/customer/manage\";a:3:{s:8:\"instance\";r:705;s:6:\"parent\";r:123;s:8:\"children\";a:0:{}}s:21:\"admin/customer/online\";a:3:{s:8:\"instance\";r:707;s:6:\"parent\";r:123;s:8:\"children\";a:0:{}}s:13:\"admin/catalog\";a:3:{s:8:\"instance\";r:125;s:6:\"parent\";r:111;s:8:\"children\";a:9:{s:24:\"admin/catalog/attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/attributes\";}s:24:\"admin/catalog/categories\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/categories\";}s:22:\"admin/catalog/products\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/catalog/products\";}s:31:\"admin/catalog/update_attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/catalog/update_attributes\";}s:24:\"admin/catalog/urlrewrite\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/urlrewrite\";}s:20:\"admin/catalog/search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/catalog/search\";}s:29:\"admin/catalog/reviews_ratings\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/catalog/reviews_ratings\";}s:17:\"admin/catalog/tag\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/catalog/tag\";}s:21:\"admin/catalog/sitemap\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/catalog/sitemap\";}}}s:24:\"admin/catalog/attributes\";a:3:{s:8:\"instance\";r:725;s:6:\"parent\";r:125;s:8:\"children\";a:2:{s:35:\"admin/catalog/attributes/attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:35:\"admin/catalog/attributes/attributes\";}s:29:\"admin/catalog/attributes/sets\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/catalog/attributes/sets\";}}}s:35:\"admin/catalog/attributes/attributes\";a:3:{s:8:\"instance\";r:747;s:6:\"parent\";r:725;s:8:\"children\";a:0:{}}s:29:\"admin/catalog/attributes/sets\";a:3:{s:8:\"instance\";r:749;s:6:\"parent\";r:725;s:8:\"children\";a:0:{}}s:24:\"admin/catalog/categories\";a:3:{s:8:\"instance\";r:727;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:22:\"admin/catalog/products\";a:3:{s:8:\"instance\";r:729;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:31:\"admin/catalog/update_attributes\";a:3:{s:8:\"instance\";r:731;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:24:\"admin/catalog/urlrewrite\";a:3:{s:8:\"instance\";r:733;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:20:\"admin/catalog/search\";a:3:{s:8:\"instance\";r:735;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:29:\"admin/catalog/reviews_ratings\";a:3:{s:8:\"instance\";r:737;s:6:\"parent\";r:125;s:8:\"children\";a:2:{s:37:\"admin/catalog/reviews_ratings/reviews\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/catalog/reviews_ratings/reviews\";}s:37:\"admin/catalog/reviews_ratings/ratings\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/catalog/reviews_ratings/ratings\";}}}s:37:\"admin/catalog/reviews_ratings/reviews\";a:3:{s:8:\"instance\";r:783;s:6:\"parent\";r:737;s:8:\"children\";a:2:{s:41:\"admin/catalog/reviews_ratings/reviews/all\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:41:\"admin/catalog/reviews_ratings/reviews/all\";}s:45:\"admin/catalog/reviews_ratings/reviews/pending\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:45:\"admin/catalog/reviews_ratings/reviews/pending\";}}}s:41:\"admin/catalog/reviews_ratings/reviews/all\";a:3:{s:8:\"instance\";r:791;s:6:\"parent\";r:783;s:8:\"children\";a:0:{}}s:45:\"admin/catalog/reviews_ratings/reviews/pending\";a:3:{s:8:\"instance\";r:793;s:6:\"parent\";r:783;s:8:\"children\";a:0:{}}s:37:\"admin/catalog/reviews_ratings/ratings\";a:3:{s:8:\"instance\";r:785;s:6:\"parent\";r:737;s:8:\"children\";a:0:{}}s:17:\"admin/catalog/tag\";a:3:{s:8:\"instance\";r:739;s:6:\"parent\";r:125;s:8:\"children\";a:2:{s:21:\"admin/catalog/tag/all\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/catalog/tag/all\";}s:25:\"admin/catalog/tag/pending\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/catalog/tag/pending\";}}}s:21:\"admin/catalog/tag/all\";a:3:{s:8:\"instance\";r:811;s:6:\"parent\";r:739;s:8:\"children\";a:0:{}}s:25:\"admin/catalog/tag/pending\";a:3:{s:8:\"instance\";r:813;s:6:\"parent\";r:739;s:8:\"children\";a:0:{}}s:21:\"admin/catalog/sitemap\";a:3:{s:8:\"instance\";r:741;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:11:\"admin/promo\";a:3:{s:8:\"instance\";r:127;s:6:\"parent\";r:111;s:8:\"children\";a:2:{s:19:\"admin/promo/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/promo/catalog\";}s:17:\"admin/promo/quote\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/promo/quote\";}}}s:19:\"admin/promo/catalog\";a:3:{s:8:\"instance\";r:831;s:6:\"parent\";r:127;s:8:\"children\";a:0:{}}s:17:\"admin/promo/quote\";a:3:{s:8:\"instance\";r:833;s:6:\"parent\";r:127;s:8:\"children\";a:0:{}}s:11:\"admin/sales\";a:3:{s:8:\"instance\";r:129;s:6:\"parent\";r:111;s:8:\"children\";a:9:{s:17:\"admin/sales/order\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/sales/order\";}s:19:\"admin/sales/invoice\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/sales/invoice\";}s:20:\"admin/sales/shipment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/sales/shipment\";}s:22:\"admin/sales/creditmemo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/sales/creditmemo\";}s:24:\"admin/sales/transactions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/sales/transactions\";}s:29:\"admin/sales/recurring_profile\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/recurring_profile\";}s:29:\"admin/sales/billing_agreement\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/billing_agreement\";}s:29:\"admin/sales/checkoutagreement\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/checkoutagreement\";}s:15:\"admin/sales/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/sales/tax\";}}}s:17:\"admin/sales/order\";a:3:{s:8:\"instance\";r:847;s:6:\"parent\";r:129;s:8:\"children\";a:1:{s:25:\"admin/sales/order/actions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/sales/order/actions\";}}}s:25:\"admin/sales/order/actions\";a:3:{s:8:\"instance\";r:869;s:6:\"parent\";r:847;s:8:\"children\";a:15:{s:32:\"admin/sales/order/actions/create\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/create\";}s:30:\"admin/sales/order/actions/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/view\";}s:31:\"admin/sales/order/actions/email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/sales/order/actions/email\";}s:33:\"admin/sales/order/actions/reorder\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/reorder\";}s:30:\"admin/sales/order/actions/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/edit\";}s:32:\"admin/sales/order/actions/cancel\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/cancel\";}s:40:\"admin/sales/order/actions/review_payment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:40:\"admin/sales/order/actions/review_payment\";}s:33:\"admin/sales/order/actions/capture\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/capture\";}s:33:\"admin/sales/order/actions/invoice\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/invoice\";}s:36:\"admin/sales/order/actions/creditmemo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/sales/order/actions/creditmemo\";}s:30:\"admin/sales/order/actions/hold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/hold\";}s:32:\"admin/sales/order/actions/unhold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/unhold\";}s:30:\"admin/sales/order/actions/ship\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/ship\";}s:33:\"admin/sales/order/actions/comment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/comment\";}s:32:\"admin/sales/order/actions/emails\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/emails\";}}}s:32:\"admin/sales/order/actions/create\";a:3:{s:8:\"instance\";r:875;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/view\";a:3:{s:8:\"instance\";r:877;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:31:\"admin/sales/order/actions/email\";a:3:{s:8:\"instance\";r:879;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/reorder\";a:3:{s:8:\"instance\";r:881;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/edit\";a:3:{s:8:\"instance\";r:883;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/cancel\";a:3:{s:8:\"instance\";r:885;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:40:\"admin/sales/order/actions/review_payment\";a:3:{s:8:\"instance\";r:887;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/capture\";a:3:{s:8:\"instance\";r:889;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/invoice\";a:3:{s:8:\"instance\";r:891;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:36:\"admin/sales/order/actions/creditmemo\";a:3:{s:8:\"instance\";r:893;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/hold\";a:3:{s:8:\"instance\";r:895;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/unhold\";a:3:{s:8:\"instance\";r:897;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/ship\";a:3:{s:8:\"instance\";r:899;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/comment\";a:3:{s:8:\"instance\";r:901;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/emails\";a:3:{s:8:\"instance\";r:903;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:19:\"admin/sales/invoice\";a:3:{s:8:\"instance\";r:849;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:20:\"admin/sales/shipment\";a:3:{s:8:\"instance\";r:851;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:22:\"admin/sales/creditmemo\";a:3:{s:8:\"instance\";r:853;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:24:\"admin/sales/transactions\";a:3:{s:8:\"instance\";r:855;s:6:\"parent\";r:129;s:8:\"children\";a:1:{s:30:\"admin/sales/transactions/fetch\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/transactions/fetch\";}}}s:30:\"admin/sales/transactions/fetch\";a:3:{s:8:\"instance\";r:981;s:6:\"parent\";r:855;s:8:\"children\";a:0:{}}s:29:\"admin/sales/recurring_profile\";a:3:{s:8:\"instance\";r:857;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:29:\"admin/sales/billing_agreement\";a:3:{s:8:\"instance\";r:859;s:6:\"parent\";r:129;s:8:\"children\";a:1:{s:37:\"admin/sales/billing_agreement/actions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/sales/billing_agreement/actions\";}}}s:37:\"admin/sales/billing_agreement/actions\";a:3:{s:8:\"instance\";r:995;s:6:\"parent\";r:859;s:8:\"children\";a:3:{s:42:\"admin/sales/billing_agreement/actions/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:42:\"admin/sales/billing_agreement/actions/view\";}s:44:\"admin/sales/billing_agreement/actions/manage\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:44:\"admin/sales/billing_agreement/actions/manage\";}s:41:\"admin/sales/billing_agreement/actions/use\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:41:\"admin/sales/billing_agreement/actions/use\";}}}s:42:\"admin/sales/billing_agreement/actions/view\";a:3:{s:8:\"instance\";r:1001;s:6:\"parent\";r:995;s:8:\"children\";a:0:{}}s:44:\"admin/sales/billing_agreement/actions/manage\";a:3:{s:8:\"instance\";r:1003;s:6:\"parent\";r:995;s:8:\"children\";a:0:{}}s:41:\"admin/sales/billing_agreement/actions/use\";a:3:{s:8:\"instance\";r:1005;s:6:\"parent\";r:995;s:8:\"children\";a:0:{}}s:29:\"admin/sales/checkoutagreement\";a:3:{s:8:\"instance\";r:861;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:15:\"admin/sales/tax\";a:3:{s:8:\"instance\";r:863;s:6:\"parent\";r:129;s:8:\"children\";a:5:{s:32:\"admin/sales/tax/classes_customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/tax/classes_customer\";}s:31:\"admin/sales/tax/classes_product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/sales/tax/classes_product\";}s:29:\"admin/sales/tax/import_export\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/tax/import_export\";}s:21:\"admin/sales/tax/rates\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/sales/tax/rates\";}s:21:\"admin/sales/tax/rules\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/sales/tax/rules\";}}}s:32:\"admin/sales/tax/classes_customer\";a:3:{s:8:\"instance\";r:1027;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:31:\"admin/sales/tax/classes_product\";a:3:{s:8:\"instance\";r:1029;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:29:\"admin/sales/tax/import_export\";a:3:{s:8:\"instance\";r:1031;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:21:\"admin/sales/tax/rates\";a:3:{s:8:\"instance\";r:1033;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:21:\"admin/sales/tax/rules\";a:3:{s:8:\"instance\";r:1035;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:12:\"admin/report\";a:3:{s:8:\"instance\";r:131;s:6:\"parent\";r:111;s:8:\"children\";a:8:{s:22:\"admin/report/salesroot\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/report/salesroot\";}s:21:\"admin/report/shopcart\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/report/shopcart\";}s:21:\"admin/report/products\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/report/products\";}s:22:\"admin/report/customers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/report/customers\";}s:19:\"admin/report/review\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/report/review\";}s:17:\"admin/report/tags\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/report/tags\";}s:19:\"admin/report/search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/report/search\";}s:23:\"admin/report/statistics\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/report/statistics\";}}}s:22:\"admin/report/salesroot\";a:3:{s:8:\"instance\";r:1061;s:6:\"parent\";r:131;s:8:\"children\";a:7:{s:48:\"admin/report/salesroot/paypal_settlement_reports\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:48:\"admin/report/salesroot/paypal_settlement_reports\";}s:28:\"admin/report/salesroot/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/salesroot/sales\";}s:26:\"admin/report/salesroot/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/salesroot/tax\";}s:31:\"admin/report/salesroot/shipping\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/shipping\";}s:31:\"admin/report/salesroot/invoiced\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/invoiced\";}s:31:\"admin/report/salesroot/refunded\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/refunded\";}s:30:\"admin/report/salesroot/coupons\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/report/salesroot/coupons\";}}}s:48:\"admin/report/salesroot/paypal_settlement_reports\";a:3:{s:8:\"instance\";r:1081;s:6:\"parent\";r:1061;s:8:\"children\";a:2:{s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";}s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";}}}s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";a:3:{s:8:\"instance\";r:1099;s:6:\"parent\";r:1081;s:8:\"children\";a:0:{}}s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";a:3:{s:8:\"instance\";r:1101;s:6:\"parent\";r:1081;s:8:\"children\";a:0:{}}s:28:\"admin/report/salesroot/sales\";a:3:{s:8:\"instance\";r:1083;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:26:\"admin/report/salesroot/tax\";a:3:{s:8:\"instance\";r:1085;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/shipping\";a:3:{s:8:\"instance\";r:1087;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/invoiced\";a:3:{s:8:\"instance\";r:1089;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/refunded\";a:3:{s:8:\"instance\";r:1091;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:30:\"admin/report/salesroot/coupons\";a:3:{s:8:\"instance\";r:1093;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:21:\"admin/report/shopcart\";a:3:{s:8:\"instance\";r:1063;s:6:\"parent\";r:131;s:8:\"children\";a:2:{s:29:\"admin/report/shopcart/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/shopcart/product\";}s:31:\"admin/report/shopcart/abandoned\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/shopcart/abandoned\";}}}s:29:\"admin/report/shopcart/product\";a:3:{s:8:\"instance\";r:1139;s:6:\"parent\";r:1063;s:8:\"children\";a:0:{}}s:31:\"admin/report/shopcart/abandoned\";a:3:{s:8:\"instance\";r:1141;s:6:\"parent\";r:1063;s:8:\"children\";a:0:{}}s:21:\"admin/report/products\";a:3:{s:8:\"instance\";r:1065;s:6:\"parent\";r:131;s:8:\"children\";a:5:{s:33:\"admin/report/products/bestsellers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/report/products/bestsellers\";}s:26:\"admin/report/products/sold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/products/sold\";}s:28:\"admin/report/products/viewed\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/products/viewed\";}s:30:\"admin/report/products/lowstock\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/report/products/lowstock\";}s:31:\"admin/report/products/downloads\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/products/downloads\";}}}s:33:\"admin/report/products/bestsellers\";a:3:{s:8:\"instance\";r:1155;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:26:\"admin/report/products/sold\";a:3:{s:8:\"instance\";r:1157;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:28:\"admin/report/products/viewed\";a:3:{s:8:\"instance\";r:1159;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:30:\"admin/report/products/lowstock\";a:3:{s:8:\"instance\";r:1161;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:31:\"admin/report/products/downloads\";a:3:{s:8:\"instance\";r:1163;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:22:\"admin/report/customers\";a:3:{s:8:\"instance\";r:1067;s:6:\"parent\";r:131;s:8:\"children\";a:3:{s:31:\"admin/report/customers/accounts\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/customers/accounts\";}s:29:\"admin/report/customers/totals\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/customers/totals\";}s:29:\"admin/report/customers/orders\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/customers/orders\";}}}s:31:\"admin/report/customers/accounts\";a:3:{s:8:\"instance\";r:1189;s:6:\"parent\";r:1067;s:8:\"children\";a:0:{}}s:29:\"admin/report/customers/totals\";a:3:{s:8:\"instance\";r:1191;s:6:\"parent\";r:1067;s:8:\"children\";a:0:{}}s:29:\"admin/report/customers/orders\";a:3:{s:8:\"instance\";r:1193;s:6:\"parent\";r:1067;s:8:\"children\";a:0:{}}s:19:\"admin/report/review\";a:3:{s:8:\"instance\";r:1069;s:6:\"parent\";r:131;s:8:\"children\";a:2:{s:28:\"admin/report/review/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/review/customer\";}s:27:\"admin/report/review/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/report/review/product\";}}}s:28:\"admin/report/review/customer\";a:3:{s:8:\"instance\";r:1211;s:6:\"parent\";r:1069;s:8:\"children\";a:0:{}}s:27:\"admin/report/review/product\";a:3:{s:8:\"instance\";r:1213;s:6:\"parent\";r:1069;s:8:\"children\";a:0:{}}s:17:\"admin/report/tags\";a:3:{s:8:\"instance\";r:1071;s:6:\"parent\";r:131;s:8:\"children\";a:3:{s:26:\"admin/report/tags/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/tags/customer\";}s:25:\"admin/report/tags/popular\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/report/tags/popular\";}s:25:\"admin/report/tags/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/report/tags/product\";}}}s:26:\"admin/report/tags/customer\";a:3:{s:8:\"instance\";r:1227;s:6:\"parent\";r:1071;s:8:\"children\";a:0:{}}s:25:\"admin/report/tags/popular\";a:3:{s:8:\"instance\";r:1229;s:6:\"parent\";r:1071;s:8:\"children\";a:0:{}}s:25:\"admin/report/tags/product\";a:3:{s:8:\"instance\";r:1231;s:6:\"parent\";r:1071;s:8:\"children\";a:0:{}}s:19:\"admin/report/search\";a:3:{s:8:\"instance\";r:1073;s:6:\"parent\";r:131;s:8:\"children\";a:0:{}}s:23:\"admin/report/statistics\";a:3:{s:8:\"instance\";r:1075;s:6:\"parent\";r:131;s:8:\"children\";a:0:{}}s:16:\"admin/newsletter\";a:3:{s:8:\"instance\";r:133;s:6:\"parent\";r:111;s:8:\"children\";a:4:{s:24:\"admin/newsletter/problem\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/newsletter/problem\";}s:22:\"admin/newsletter/queue\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/newsletter/queue\";}s:27:\"admin/newsletter/subscriber\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/newsletter/subscriber\";}s:25:\"admin/newsletter/template\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/newsletter/template\";}}}s:24:\"admin/newsletter/problem\";a:3:{s:8:\"instance\";r:1257;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:22:\"admin/newsletter/queue\";a:3:{s:8:\"instance\";r:1259;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:27:\"admin/newsletter/subscriber\";a:3:{s:8:\"instance\";r:1261;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:25:\"admin/newsletter/template\";a:3:{s:8:\"instance\";r:1263;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:16:\"admin/page_cache\";a:3:{s:8:\"instance\";r:135;s:6:\"parent\";r:111;s:8:\"children\";a:0:{}}}s:17:\"\0*\0_isAllowedRole\";r:92;s:21:\"\0*\0_isAllowedResource\";r:257;s:22:\"\0*\0_isAllowedPrivilege\";N;s:9:\"\0*\0_rules\";a:2:{s:12:\"allResources\";a:2:{s:8:\"allRoles\";a:2:{s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:9:\"TYPE_DENY\";s:6:\"assert\";N;}s:13:\"byPrivilegeId\";a:0:{}}s:8:\"byRoleId\";a:1:{s:2:\"G1\";a:2:{s:13:\"byPrivilegeId\";a:0:{}s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:10:\"TYPE_ALLOW\";s:6:\"assert\";N;}}}}s:12:\"byResourceId\";a:1:{s:3:\"all\";a:1:{s:8:\"byRoleId\";a:1:{s:2:\"G1\";a:2:{s:13:\"byPrivilegeId\";a:0:{}s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:10:\"TYPE_ALLOW\";s:6:\"assert\";N;}}}}}}}}'),('rrpes567esbk0vtceo1r0gtg66',1435767147,'core|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:9:\"_form_key\";s:16:\"EAmMjrLKAxCsTyvJ\";s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";N;}}adminhtml|a:3:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:6:\"locale\";s:5:\"en_US\";s:8:\"messages\";O:34:\"Mage_Core_Model_Message_Collection\":2:{s:12:\"\0*\0_messages\";a:0:{}s:20:\"\0*\0_lastAddedMessage\";O:31:\"Mage_Core_Model_Message_Success\":6:{s:8:\"\0*\0_type\";s:7:\"success\";s:8:\"\0*\0_code\";s:24:\"The page has been saved.\";s:9:\"\0*\0_class\";s:0:\"\";s:10:\"\0*\0_method\";s:0:\"\";s:14:\"\0*\0_identifier\";N;s:12:\"\0*\0_isSticky\";b:0;}}}admin|a:4:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}s:23:\"sync_process_stop_watch\";b:0;s:4:\"user\";O:21:\"Mage_Admin_Model_User\":17:{s:15:\"\0*\0_eventPrefix\";s:10:\"admin_user\";s:8:\"\0*\0_role\";N;s:25:\"\0*\0_hasAvailableResources\";b:1;s:15:\"\0*\0_eventObject\";s:6:\"object\";s:16:\"\0*\0_resourceName\";s:10:\"admin/user\";s:12:\"\0*\0_resource\";N;s:26:\"\0*\0_resourceCollectionName\";s:21:\"admin/user_collection\";s:12:\"\0*\0_cacheTag\";b:0;s:19:\"\0*\0_dataSaveAllowed\";b:1;s:15:\"\0*\0_isObjectNew\";N;s:8:\"\0*\0_data\";a:15:{s:7:\"user_id\";s:1:\"2\";s:9:\"firstname\";s:8:\"Jonathan\";s:8:\"lastname\";s:6:\"Cepeda\";s:5:\"email\";s:22:\"jon.jonathan@gmail.com\";s:8:\"username\";s:3:\"jon\";s:8:\"password\";s:65:\"95fdae6278c141066bcd26592db7b1d1:zIRFl6YLAFYJ3vSHOW9ll0sU4mLrk4S2\";s:7:\"created\";s:19:\"2015-07-01 13:34:33\";s:8:\"modified\";s:19:\"2015-07-01 13:34:33\";s:7:\"logdate\";s:19:\"2015-07-01 15:20:17\";s:6:\"lognum\";s:1:\"2\";s:15:\"reload_acl_flag\";s:1:\"0\";s:9:\"is_active\";s:1:\"1\";s:5:\"extra\";N;s:8:\"rp_token\";N;s:19:\"rp_token_created_at\";N;}s:18:\"\0*\0_hasDataChanges\";b:0;s:12:\"\0*\0_origData\";a:15:{s:7:\"user_id\";s:1:\"2\";s:9:\"firstname\";s:8:\"Jonathan\";s:8:\"lastname\";s:6:\"Cepeda\";s:5:\"email\";s:22:\"jon.jonathan@gmail.com\";s:8:\"username\";s:3:\"jon\";s:8:\"password\";s:65:\"95fdae6278c141066bcd26592db7b1d1:zIRFl6YLAFYJ3vSHOW9ll0sU4mLrk4S2\";s:7:\"created\";s:19:\"2015-07-01 13:34:33\";s:8:\"modified\";s:19:\"2015-07-01 13:34:33\";s:7:\"logdate\";s:19:\"2015-07-01 15:20:17\";s:6:\"lognum\";s:1:\"2\";s:15:\"reload_acl_flag\";s:1:\"0\";s:9:\"is_active\";s:1:\"1\";s:5:\"extra\";N;s:8:\"rp_token\";N;s:19:\"rp_token_created_at\";N;}s:15:\"\0*\0_idFieldName\";s:7:\"user_id\";s:13:\"\0*\0_isDeleted\";b:0;s:16:\"\0*\0_oldFieldsMap\";a:0:{}s:17:\"\0*\0_syncFieldsMap\";a:0:{}}s:3:\"acl\";O:20:\"Mage_Admin_Model_Acl\":6:{s:16:\"\0*\0_roleRegistry\";O:34:\"Mage_Admin_Model_Acl_Role_Registry\":1:{s:9:\"\0*\0_roles\";a:3:{s:2:\"G1\";a:3:{s:8:\"instance\";O:31:\"Mage_Admin_Model_Acl_Role_Group\":1:{s:10:\"\0*\0_roleId\";s:2:\"G1\";}s:7:\"parents\";a:0:{}s:8:\"children\";a:2:{s:2:\"U1\";O:30:\"Mage_Admin_Model_Acl_Role_User\":1:{s:10:\"\0*\0_roleId\";s:2:\"U1\";}s:2:\"U2\";O:30:\"Mage_Admin_Model_Acl_Role_User\":1:{s:10:\"\0*\0_roleId\";s:2:\"U2\";}}}s:2:\"U1\";a:3:{s:8:\"instance\";r:90;s:7:\"parents\";a:1:{s:2:\"G1\";r:86;}s:8:\"children\";a:0:{}}s:2:\"U2\";a:3:{s:8:\"instance\";r:92;s:7:\"parents\";a:1:{s:2:\"G1\";r:86;}s:8:\"children\";a:0:{}}}}s:13:\"\0*\0_resources\";a:197:{s:3:\"all\";a:3:{s:8:\"instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:3:\"all\";}s:6:\"parent\";N;s:8:\"children\";a:0:{}}s:5:\"admin\";a:3:{s:8:\"instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:5:\"admin\";}s:6:\"parent\";N;s:8:\"children\";a:11:{s:15:\"admin/dashboard\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/dashboard\";}s:12:\"admin/system\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:12:\"admin/system\";}s:19:\"admin/global_search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/global_search\";}s:9:\"admin/cms\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:9:\"admin/cms\";}s:14:\"admin/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/customer\";}s:13:\"admin/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:13:\"admin/catalog\";}s:11:\"admin/promo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:11:\"admin/promo\";}s:11:\"admin/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:11:\"admin/sales\";}s:12:\"admin/report\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:12:\"admin/report\";}s:16:\"admin/newsletter\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/newsletter\";}s:16:\"admin/page_cache\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/page_cache\";}}}s:15:\"admin/dashboard\";a:3:{s:8:\"instance\";r:115;s:6:\"parent\";r:111;s:8:\"children\";a:0:{}}s:12:\"admin/system\";a:3:{s:8:\"instance\";r:117;s:6:\"parent\";r:111;s:8:\"children\";a:16:{s:16:\"admin/system/acl\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/system/acl\";}s:18:\"admin/system/store\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/store\";}s:19:\"admin/system/design\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/system/design\";}s:19:\"admin/system/config\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/system/config\";}s:21:\"admin/system/currency\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/system/currency\";}s:27:\"admin/system/email_template\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/email_template\";}s:21:\"admin/system/variable\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/system/variable\";}s:22:\"admin/system/myaccount\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/myaccount\";}s:18:\"admin/system/tools\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/tools\";}s:20:\"admin/system/convert\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/system/convert\";}s:18:\"admin/system/cache\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/cache\";}s:23:\"admin/system/extensions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/extensions\";}s:30:\"admin/system/adminnotification\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/adminnotification\";}s:18:\"admin/system/index\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:18:\"admin/system/index\";}s:27:\"admin/system/order_statuses\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/order_statuses\";}s:16:\"admin/system/api\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:16:\"admin/system/api\";}}}s:16:\"admin/system/acl\";a:3:{s:8:\"instance\";r:145;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:22:\"admin/system/acl/roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/acl/roles\";}s:22:\"admin/system/acl/users\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/acl/users\";}}}s:22:\"admin/system/acl/roles\";a:3:{s:8:\"instance\";r:181;s:6:\"parent\";r:145;s:8:\"children\";a:0:{}}s:22:\"admin/system/acl/users\";a:3:{s:8:\"instance\";r:183;s:6:\"parent\";r:145;s:8:\"children\";a:0:{}}s:18:\"admin/system/store\";a:3:{s:8:\"instance\";r:147;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:19:\"admin/system/design\";a:3:{s:8:\"instance\";r:149;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:19:\"admin/system/config\";a:3:{s:8:\"instance\";r:151;s:6:\"parent\";r:117;s:8:\"children\";a:38:{s:27:\"admin/system/config/general\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/general\";}s:23:\"admin/system/config/web\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/web\";}s:26:\"admin/system/config/design\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/design\";}s:26:\"admin/system/config/system\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/system\";}s:28:\"admin/system/config/advanced\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/advanced\";}s:31:\"admin/system/config/trans_email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/config/trans_email\";}s:23:\"admin/system/config/dev\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/dev\";}s:28:\"admin/system/config/currency\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/currency\";}s:30:\"admin/system/config/sendfriend\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/sendfriend\";}s:25:\"admin/system/config/admin\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/admin\";}s:23:\"admin/system/config/cms\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/cms\";}s:28:\"admin/system/config/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/customer\";}s:27:\"admin/system/config/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/catalog\";}s:27:\"admin/system/config/payment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/payment\";}s:36:\"admin/system/config/payment_services\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/system/config/payment_services\";}s:25:\"admin/system/config/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/sales\";}s:31:\"admin/system/config/sales_email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/config/sales_email\";}s:29:\"admin/system/config/sales_pdf\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/config/sales_pdf\";}s:36:\"admin/system/config/cataloginventory\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/system/config/cataloginventory\";}s:28:\"admin/system/config/shipping\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/shipping\";}s:28:\"admin/system/config/carriers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/carriers\";}s:25:\"admin/system/config/promo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/promo\";}s:28:\"admin/system/config/checkout\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/checkout\";}s:26:\"admin/system/config/paypal\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/paypal\";}s:27:\"admin/system/config/reports\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/reports\";}s:26:\"admin/system/config/google\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/system/config/google\";}s:23:\"admin/system/config/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/tax\";}s:28:\"admin/system/config/wishlist\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/wishlist\";}s:28:\"admin/system/config/contacts\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/system/config/contacts\";}s:27:\"admin/system/config/sitemap\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/config/sitemap\";}s:23:\"admin/system/config/rss\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/rss\";}s:23:\"admin/system/config/api\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/system/config/api\";}s:25:\"admin/system/config/oauth\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/config/oauth\";}s:34:\"admin/system/config/configswatches\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/config/configswatches\";}s:30:\"admin/system/config/newsletter\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/newsletter\";}s:32:\"admin/system/config/downloadable\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/config/downloadable\";}s:30:\"admin/system/config/persistent\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/config/persistent\";}s:32:\"admin/system/config/moneybookers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/config/moneybookers\";}}}s:27:\"admin/system/config/general\";a:3:{s:8:\"instance\";r:205;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/web\";a:3:{s:8:\"instance\";r:207;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/design\";a:3:{s:8:\"instance\";r:209;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/system\";a:3:{s:8:\"instance\";r:211;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/advanced\";a:3:{s:8:\"instance\";r:213;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:31:\"admin/system/config/trans_email\";a:3:{s:8:\"instance\";r:215;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/dev\";a:3:{s:8:\"instance\";r:217;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/currency\";a:3:{s:8:\"instance\";r:219;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/sendfriend\";a:3:{s:8:\"instance\";r:221;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/admin\";a:3:{s:8:\"instance\";r:223;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/cms\";a:3:{s:8:\"instance\";r:225;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/customer\";a:3:{s:8:\"instance\";r:227;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/catalog\";a:3:{s:8:\"instance\";r:229;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/payment\";a:3:{s:8:\"instance\";r:231;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:36:\"admin/system/config/payment_services\";a:3:{s:8:\"instance\";r:233;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/sales\";a:3:{s:8:\"instance\";r:235;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:31:\"admin/system/config/sales_email\";a:3:{s:8:\"instance\";r:237;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:29:\"admin/system/config/sales_pdf\";a:3:{s:8:\"instance\";r:239;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:36:\"admin/system/config/cataloginventory\";a:3:{s:8:\"instance\";r:241;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/shipping\";a:3:{s:8:\"instance\";r:243;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/carriers\";a:3:{s:8:\"instance\";r:245;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/promo\";a:3:{s:8:\"instance\";r:247;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/checkout\";a:3:{s:8:\"instance\";r:249;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/paypal\";a:3:{s:8:\"instance\";r:251;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/reports\";a:3:{s:8:\"instance\";r:253;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:26:\"admin/system/config/google\";a:3:{s:8:\"instance\";r:255;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/tax\";a:3:{s:8:\"instance\";r:257;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/wishlist\";a:3:{s:8:\"instance\";r:259;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:28:\"admin/system/config/contacts\";a:3:{s:8:\"instance\";r:261;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:27:\"admin/system/config/sitemap\";a:3:{s:8:\"instance\";r:263;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/rss\";a:3:{s:8:\"instance\";r:265;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:23:\"admin/system/config/api\";a:3:{s:8:\"instance\";r:267;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:25:\"admin/system/config/oauth\";a:3:{s:8:\"instance\";r:269;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:34:\"admin/system/config/configswatches\";a:3:{s:8:\"instance\";r:271;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/newsletter\";a:3:{s:8:\"instance\";r:273;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:32:\"admin/system/config/downloadable\";a:3:{s:8:\"instance\";r:275;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:30:\"admin/system/config/persistent\";a:3:{s:8:\"instance\";r:277;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:32:\"admin/system/config/moneybookers\";a:3:{s:8:\"instance\";r:279;s:6:\"parent\";r:151;s:8:\"children\";a:0:{}}s:21:\"admin/system/currency\";a:3:{s:8:\"instance\";r:153;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:27:\"admin/system/currency/rates\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/currency/rates\";}s:29:\"admin/system/currency/symbols\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/currency/symbols\";}}}s:27:\"admin/system/currency/rates\";a:3:{s:8:\"instance\";r:437;s:6:\"parent\";r:153;s:8:\"children\";a:0:{}}s:29:\"admin/system/currency/symbols\";a:3:{s:8:\"instance\";r:439;s:6:\"parent\";r:153;s:8:\"children\";a:0:{}}s:27:\"admin/system/email_template\";a:3:{s:8:\"instance\";r:155;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:21:\"admin/system/variable\";a:3:{s:8:\"instance\";r:157;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:22:\"admin/system/myaccount\";a:3:{s:8:\"instance\";r:159;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:18:\"admin/system/tools\";a:3:{s:8:\"instance\";r:161;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:25:\"admin/system/tools/backup\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/tools/backup\";}s:27:\"admin/system/tools/compiler\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/tools/compiler\";}}}s:25:\"admin/system/tools/backup\";a:3:{s:8:\"instance\";r:465;s:6:\"parent\";r:161;s:8:\"children\";a:1:{s:34:\"admin/system/tools/backup/rollback\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/tools/backup/rollback\";}}}s:34:\"admin/system/tools/backup/rollback\";a:3:{s:8:\"instance\";r:473;s:6:\"parent\";r:465;s:8:\"children\";a:0:{}}s:27:\"admin/system/tools/compiler\";a:3:{s:8:\"instance\";r:467;s:6:\"parent\";r:161;s:8:\"children\";a:0:{}}s:20:\"admin/system/convert\";a:3:{s:8:\"instance\";r:163;s:6:\"parent\";r:117;s:8:\"children\";a:4:{s:24:\"admin/system/convert/gui\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/system/convert/gui\";}s:29:\"admin/system/convert/profiles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/convert/profiles\";}s:27:\"admin/system/convert/import\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/convert/import\";}s:27:\"admin/system/convert/export\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/convert/export\";}}}s:24:\"admin/system/convert/gui\";a:3:{s:8:\"instance\";r:487;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:29:\"admin/system/convert/profiles\";a:3:{s:8:\"instance\";r:489;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:27:\"admin/system/convert/import\";a:3:{s:8:\"instance\";r:491;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:27:\"admin/system/convert/export\";a:3:{s:8:\"instance\";r:493;s:6:\"parent\";r:163;s:8:\"children\";a:0:{}}s:18:\"admin/system/cache\";a:3:{s:8:\"instance\";r:165;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:23:\"admin/system/extensions\";a:3:{s:8:\"instance\";r:167;s:6:\"parent\";r:117;s:8:\"children\";a:2:{s:29:\"admin/system/extensions/local\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/system/extensions/local\";}s:30:\"admin/system/extensions/custom\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/extensions/custom\";}}}s:29:\"admin/system/extensions/local\";a:3:{s:8:\"instance\";r:519;s:6:\"parent\";r:167;s:8:\"children\";a:0:{}}s:30:\"admin/system/extensions/custom\";a:3:{s:8:\"instance\";r:521;s:6:\"parent\";r:167;s:8:\"children\";a:0:{}}s:30:\"admin/system/adminnotification\";a:3:{s:8:\"instance\";r:169;s:6:\"parent\";r:117;s:8:\"children\";a:4:{s:43:\"admin/system/adminnotification/show_toolbar\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:43:\"admin/system/adminnotification/show_toolbar\";}s:40:\"admin/system/adminnotification/show_list\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:40:\"admin/system/adminnotification/show_list\";}s:43:\"admin/system/adminnotification/mark_as_read\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:43:\"admin/system/adminnotification/mark_as_read\";}s:37:\"admin/system/adminnotification/remove\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/system/adminnotification/remove\";}}}s:43:\"admin/system/adminnotification/show_toolbar\";a:3:{s:8:\"instance\";r:535;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:40:\"admin/system/adminnotification/show_list\";a:3:{s:8:\"instance\";r:537;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:43:\"admin/system/adminnotification/mark_as_read\";a:3:{s:8:\"instance\";r:539;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:37:\"admin/system/adminnotification/remove\";a:3:{s:8:\"instance\";r:541;s:6:\"parent\";r:169;s:8:\"children\";a:0:{}}s:18:\"admin/system/index\";a:3:{s:8:\"instance\";r:171;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:27:\"admin/system/order_statuses\";a:3:{s:8:\"instance\";r:173;s:6:\"parent\";r:117;s:8:\"children\";a:0:{}}s:16:\"admin/system/api\";a:3:{s:8:\"instance\";r:175;s:6:\"parent\";r:117;s:8:\"children\";a:7:{s:22:\"admin/system/api/users\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/api/users\";}s:22:\"admin/system/api/roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/system/api/roles\";}s:25:\"admin/system/api/consumer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/system/api/consumer\";}s:33:\"admin/system/api/authorizedTokens\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/system/api/authorizedTokens\";}s:34:\"admin/system/api/oauth_admin_token\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/api/oauth_admin_token\";}s:27:\"admin/system/api/rest_roles\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/system/api/rest_roles\";}s:32:\"admin/system/api/rest_attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/rest_attributes\";}}}s:22:\"admin/system/api/users\";a:3:{s:8:\"instance\";r:571;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:22:\"admin/system/api/roles\";a:3:{s:8:\"instance\";r:573;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:25:\"admin/system/api/consumer\";a:3:{s:8:\"instance\";r:575;s:6:\"parent\";r:175;s:8:\"children\";a:2:{s:30:\"admin/system/api/consumer/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/system/api/consumer/edit\";}s:32:\"admin/system/api/consumer/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/consumer/delete\";}}}s:30:\"admin/system/api/consumer/edit\";a:3:{s:8:\"instance\";r:597;s:6:\"parent\";r:575;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/consumer/delete\";a:3:{s:8:\"instance\";r:599;s:6:\"parent\";r:575;s:8:\"children\";a:0:{}}s:33:\"admin/system/api/authorizedTokens\";a:3:{s:8:\"instance\";r:577;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:34:\"admin/system/api/oauth_admin_token\";a:3:{s:8:\"instance\";r:579;s:6:\"parent\";r:175;s:8:\"children\";a:0:{}}s:27:\"admin/system/api/rest_roles\";a:3:{s:8:\"instance\";r:581;s:6:\"parent\";r:175;s:8:\"children\";a:3:{s:31:\"admin/system/api/rest_roles/add\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/system/api/rest_roles/add\";}s:32:\"admin/system/api/rest_roles/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/system/api/rest_roles/edit\";}s:34:\"admin/system/api/rest_roles/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:34:\"admin/system/api/rest_roles/delete\";}}}s:31:\"admin/system/api/rest_roles/add\";a:3:{s:8:\"instance\";r:621;s:6:\"parent\";r:581;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/rest_roles/edit\";a:3:{s:8:\"instance\";r:623;s:6:\"parent\";r:581;s:8:\"children\";a:0:{}}s:34:\"admin/system/api/rest_roles/delete\";a:3:{s:8:\"instance\";r:625;s:6:\"parent\";r:581;s:8:\"children\";a:0:{}}s:32:\"admin/system/api/rest_attributes\";a:3:{s:8:\"instance\";r:583;s:6:\"parent\";r:175;s:8:\"children\";a:1:{s:37:\"admin/system/api/rest_attributes/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/system/api/rest_attributes/edit\";}}}s:37:\"admin/system/api/rest_attributes/edit\";a:3:{s:8:\"instance\";r:643;s:6:\"parent\";r:583;s:8:\"children\";a:0:{}}s:19:\"admin/global_search\";a:3:{s:8:\"instance\";r:119;s:6:\"parent\";r:111;s:8:\"children\";a:0:{}}s:9:\"admin/cms\";a:3:{s:8:\"instance\";r:121;s:6:\"parent\";r:111;s:8:\"children\";a:5:{s:15:\"admin/cms/block\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/cms/block\";}s:14:\"admin/cms/page\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/cms/page\";}s:23:\"admin/cms/media_gallery\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/cms/media_gallery\";}s:14:\"admin/cms/poll\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:14:\"admin/cms/poll\";}s:25:\"admin/cms/widget_instance\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/cms/widget_instance\";}}}s:15:\"admin/cms/block\";a:3:{s:8:\"instance\";r:657;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:14:\"admin/cms/page\";a:3:{s:8:\"instance\";r:659;s:6:\"parent\";r:121;s:8:\"children\";a:2:{s:19:\"admin/cms/page/save\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/cms/page/save\";}s:21:\"admin/cms/page/delete\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/cms/page/delete\";}}}s:19:\"admin/cms/page/save\";a:3:{s:8:\"instance\";r:675;s:6:\"parent\";r:659;s:8:\"children\";a:0:{}}s:21:\"admin/cms/page/delete\";a:3:{s:8:\"instance\";r:677;s:6:\"parent\";r:659;s:8:\"children\";a:0:{}}s:23:\"admin/cms/media_gallery\";a:3:{s:8:\"instance\";r:661;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:14:\"admin/cms/poll\";a:3:{s:8:\"instance\";r:663;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:25:\"admin/cms/widget_instance\";a:3:{s:8:\"instance\";r:665;s:6:\"parent\";r:121;s:8:\"children\";a:0:{}}s:14:\"admin/customer\";a:3:{s:8:\"instance\";r:123;s:6:\"parent\";r:111;s:8:\"children\";a:3:{s:20:\"admin/customer/group\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/customer/group\";}s:21:\"admin/customer/manage\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/customer/manage\";}s:21:\"admin/customer/online\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/customer/online\";}}}s:20:\"admin/customer/group\";a:3:{s:8:\"instance\";r:703;s:6:\"parent\";r:123;s:8:\"children\";a:0:{}}s:21:\"admin/customer/manage\";a:3:{s:8:\"instance\";r:705;s:6:\"parent\";r:123;s:8:\"children\";a:0:{}}s:21:\"admin/customer/online\";a:3:{s:8:\"instance\";r:707;s:6:\"parent\";r:123;s:8:\"children\";a:0:{}}s:13:\"admin/catalog\";a:3:{s:8:\"instance\";r:125;s:6:\"parent\";r:111;s:8:\"children\";a:9:{s:24:\"admin/catalog/attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/attributes\";}s:24:\"admin/catalog/categories\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/categories\";}s:22:\"admin/catalog/products\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/catalog/products\";}s:31:\"admin/catalog/update_attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/catalog/update_attributes\";}s:24:\"admin/catalog/urlrewrite\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/catalog/urlrewrite\";}s:20:\"admin/catalog/search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/catalog/search\";}s:29:\"admin/catalog/reviews_ratings\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/catalog/reviews_ratings\";}s:17:\"admin/catalog/tag\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/catalog/tag\";}s:21:\"admin/catalog/sitemap\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/catalog/sitemap\";}}}s:24:\"admin/catalog/attributes\";a:3:{s:8:\"instance\";r:725;s:6:\"parent\";r:125;s:8:\"children\";a:2:{s:35:\"admin/catalog/attributes/attributes\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:35:\"admin/catalog/attributes/attributes\";}s:29:\"admin/catalog/attributes/sets\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/catalog/attributes/sets\";}}}s:35:\"admin/catalog/attributes/attributes\";a:3:{s:8:\"instance\";r:747;s:6:\"parent\";r:725;s:8:\"children\";a:0:{}}s:29:\"admin/catalog/attributes/sets\";a:3:{s:8:\"instance\";r:749;s:6:\"parent\";r:725;s:8:\"children\";a:0:{}}s:24:\"admin/catalog/categories\";a:3:{s:8:\"instance\";r:727;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:22:\"admin/catalog/products\";a:3:{s:8:\"instance\";r:729;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:31:\"admin/catalog/update_attributes\";a:3:{s:8:\"instance\";r:731;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:24:\"admin/catalog/urlrewrite\";a:3:{s:8:\"instance\";r:733;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:20:\"admin/catalog/search\";a:3:{s:8:\"instance\";r:735;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:29:\"admin/catalog/reviews_ratings\";a:3:{s:8:\"instance\";r:737;s:6:\"parent\";r:125;s:8:\"children\";a:2:{s:37:\"admin/catalog/reviews_ratings/reviews\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/catalog/reviews_ratings/reviews\";}s:37:\"admin/catalog/reviews_ratings/ratings\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/catalog/reviews_ratings/ratings\";}}}s:37:\"admin/catalog/reviews_ratings/reviews\";a:3:{s:8:\"instance\";r:783;s:6:\"parent\";r:737;s:8:\"children\";a:2:{s:41:\"admin/catalog/reviews_ratings/reviews/all\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:41:\"admin/catalog/reviews_ratings/reviews/all\";}s:45:\"admin/catalog/reviews_ratings/reviews/pending\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:45:\"admin/catalog/reviews_ratings/reviews/pending\";}}}s:41:\"admin/catalog/reviews_ratings/reviews/all\";a:3:{s:8:\"instance\";r:791;s:6:\"parent\";r:783;s:8:\"children\";a:0:{}}s:45:\"admin/catalog/reviews_ratings/reviews/pending\";a:3:{s:8:\"instance\";r:793;s:6:\"parent\";r:783;s:8:\"children\";a:0:{}}s:37:\"admin/catalog/reviews_ratings/ratings\";a:3:{s:8:\"instance\";r:785;s:6:\"parent\";r:737;s:8:\"children\";a:0:{}}s:17:\"admin/catalog/tag\";a:3:{s:8:\"instance\";r:739;s:6:\"parent\";r:125;s:8:\"children\";a:2:{s:21:\"admin/catalog/tag/all\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/catalog/tag/all\";}s:25:\"admin/catalog/tag/pending\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/catalog/tag/pending\";}}}s:21:\"admin/catalog/tag/all\";a:3:{s:8:\"instance\";r:811;s:6:\"parent\";r:739;s:8:\"children\";a:0:{}}s:25:\"admin/catalog/tag/pending\";a:3:{s:8:\"instance\";r:813;s:6:\"parent\";r:739;s:8:\"children\";a:0:{}}s:21:\"admin/catalog/sitemap\";a:3:{s:8:\"instance\";r:741;s:6:\"parent\";r:125;s:8:\"children\";a:0:{}}s:11:\"admin/promo\";a:3:{s:8:\"instance\";r:127;s:6:\"parent\";r:111;s:8:\"children\";a:2:{s:19:\"admin/promo/catalog\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/promo/catalog\";}s:17:\"admin/promo/quote\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/promo/quote\";}}}s:19:\"admin/promo/catalog\";a:3:{s:8:\"instance\";r:831;s:6:\"parent\";r:127;s:8:\"children\";a:0:{}}s:17:\"admin/promo/quote\";a:3:{s:8:\"instance\";r:833;s:6:\"parent\";r:127;s:8:\"children\";a:0:{}}s:11:\"admin/sales\";a:3:{s:8:\"instance\";r:129;s:6:\"parent\";r:111;s:8:\"children\";a:9:{s:17:\"admin/sales/order\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/sales/order\";}s:19:\"admin/sales/invoice\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/sales/invoice\";}s:20:\"admin/sales/shipment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:20:\"admin/sales/shipment\";}s:22:\"admin/sales/creditmemo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/sales/creditmemo\";}s:24:\"admin/sales/transactions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/sales/transactions\";}s:29:\"admin/sales/recurring_profile\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/recurring_profile\";}s:29:\"admin/sales/billing_agreement\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/billing_agreement\";}s:29:\"admin/sales/checkoutagreement\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/checkoutagreement\";}s:15:\"admin/sales/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:15:\"admin/sales/tax\";}}}s:17:\"admin/sales/order\";a:3:{s:8:\"instance\";r:847;s:6:\"parent\";r:129;s:8:\"children\";a:1:{s:25:\"admin/sales/order/actions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/sales/order/actions\";}}}s:25:\"admin/sales/order/actions\";a:3:{s:8:\"instance\";r:869;s:6:\"parent\";r:847;s:8:\"children\";a:15:{s:32:\"admin/sales/order/actions/create\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/create\";}s:30:\"admin/sales/order/actions/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/view\";}s:31:\"admin/sales/order/actions/email\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/sales/order/actions/email\";}s:33:\"admin/sales/order/actions/reorder\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/reorder\";}s:30:\"admin/sales/order/actions/edit\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/edit\";}s:32:\"admin/sales/order/actions/cancel\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/cancel\";}s:40:\"admin/sales/order/actions/review_payment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:40:\"admin/sales/order/actions/review_payment\";}s:33:\"admin/sales/order/actions/capture\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/capture\";}s:33:\"admin/sales/order/actions/invoice\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/invoice\";}s:36:\"admin/sales/order/actions/creditmemo\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:36:\"admin/sales/order/actions/creditmemo\";}s:30:\"admin/sales/order/actions/hold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/hold\";}s:32:\"admin/sales/order/actions/unhold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/unhold\";}s:30:\"admin/sales/order/actions/ship\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/order/actions/ship\";}s:33:\"admin/sales/order/actions/comment\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/sales/order/actions/comment\";}s:32:\"admin/sales/order/actions/emails\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/order/actions/emails\";}}}s:32:\"admin/sales/order/actions/create\";a:3:{s:8:\"instance\";r:875;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/view\";a:3:{s:8:\"instance\";r:877;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:31:\"admin/sales/order/actions/email\";a:3:{s:8:\"instance\";r:879;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/reorder\";a:3:{s:8:\"instance\";r:881;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/edit\";a:3:{s:8:\"instance\";r:883;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/cancel\";a:3:{s:8:\"instance\";r:885;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:40:\"admin/sales/order/actions/review_payment\";a:3:{s:8:\"instance\";r:887;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/capture\";a:3:{s:8:\"instance\";r:889;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/invoice\";a:3:{s:8:\"instance\";r:891;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:36:\"admin/sales/order/actions/creditmemo\";a:3:{s:8:\"instance\";r:893;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/hold\";a:3:{s:8:\"instance\";r:895;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/unhold\";a:3:{s:8:\"instance\";r:897;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:30:\"admin/sales/order/actions/ship\";a:3:{s:8:\"instance\";r:899;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:33:\"admin/sales/order/actions/comment\";a:3:{s:8:\"instance\";r:901;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:32:\"admin/sales/order/actions/emails\";a:3:{s:8:\"instance\";r:903;s:6:\"parent\";r:869;s:8:\"children\";a:0:{}}s:19:\"admin/sales/invoice\";a:3:{s:8:\"instance\";r:849;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:20:\"admin/sales/shipment\";a:3:{s:8:\"instance\";r:851;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:22:\"admin/sales/creditmemo\";a:3:{s:8:\"instance\";r:853;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:24:\"admin/sales/transactions\";a:3:{s:8:\"instance\";r:855;s:6:\"parent\";r:129;s:8:\"children\";a:1:{s:30:\"admin/sales/transactions/fetch\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/sales/transactions/fetch\";}}}s:30:\"admin/sales/transactions/fetch\";a:3:{s:8:\"instance\";r:981;s:6:\"parent\";r:855;s:8:\"children\";a:0:{}}s:29:\"admin/sales/recurring_profile\";a:3:{s:8:\"instance\";r:857;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:29:\"admin/sales/billing_agreement\";a:3:{s:8:\"instance\";r:859;s:6:\"parent\";r:129;s:8:\"children\";a:1:{s:37:\"admin/sales/billing_agreement/actions\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:37:\"admin/sales/billing_agreement/actions\";}}}s:37:\"admin/sales/billing_agreement/actions\";a:3:{s:8:\"instance\";r:995;s:6:\"parent\";r:859;s:8:\"children\";a:3:{s:42:\"admin/sales/billing_agreement/actions/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:42:\"admin/sales/billing_agreement/actions/view\";}s:44:\"admin/sales/billing_agreement/actions/manage\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:44:\"admin/sales/billing_agreement/actions/manage\";}s:41:\"admin/sales/billing_agreement/actions/use\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:41:\"admin/sales/billing_agreement/actions/use\";}}}s:42:\"admin/sales/billing_agreement/actions/view\";a:3:{s:8:\"instance\";r:1001;s:6:\"parent\";r:995;s:8:\"children\";a:0:{}}s:44:\"admin/sales/billing_agreement/actions/manage\";a:3:{s:8:\"instance\";r:1003;s:6:\"parent\";r:995;s:8:\"children\";a:0:{}}s:41:\"admin/sales/billing_agreement/actions/use\";a:3:{s:8:\"instance\";r:1005;s:6:\"parent\";r:995;s:8:\"children\";a:0:{}}s:29:\"admin/sales/checkoutagreement\";a:3:{s:8:\"instance\";r:861;s:6:\"parent\";r:129;s:8:\"children\";a:0:{}}s:15:\"admin/sales/tax\";a:3:{s:8:\"instance\";r:863;s:6:\"parent\";r:129;s:8:\"children\";a:5:{s:32:\"admin/sales/tax/classes_customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:32:\"admin/sales/tax/classes_customer\";}s:31:\"admin/sales/tax/classes_product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/sales/tax/classes_product\";}s:29:\"admin/sales/tax/import_export\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/sales/tax/import_export\";}s:21:\"admin/sales/tax/rates\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/sales/tax/rates\";}s:21:\"admin/sales/tax/rules\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/sales/tax/rules\";}}}s:32:\"admin/sales/tax/classes_customer\";a:3:{s:8:\"instance\";r:1027;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:31:\"admin/sales/tax/classes_product\";a:3:{s:8:\"instance\";r:1029;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:29:\"admin/sales/tax/import_export\";a:3:{s:8:\"instance\";r:1031;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:21:\"admin/sales/tax/rates\";a:3:{s:8:\"instance\";r:1033;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:21:\"admin/sales/tax/rules\";a:3:{s:8:\"instance\";r:1035;s:6:\"parent\";r:863;s:8:\"children\";a:0:{}}s:12:\"admin/report\";a:3:{s:8:\"instance\";r:131;s:6:\"parent\";r:111;s:8:\"children\";a:8:{s:22:\"admin/report/salesroot\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/report/salesroot\";}s:21:\"admin/report/shopcart\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/report/shopcart\";}s:21:\"admin/report/products\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:21:\"admin/report/products\";}s:22:\"admin/report/customers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/report/customers\";}s:19:\"admin/report/review\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/report/review\";}s:17:\"admin/report/tags\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:17:\"admin/report/tags\";}s:19:\"admin/report/search\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:19:\"admin/report/search\";}s:23:\"admin/report/statistics\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:23:\"admin/report/statistics\";}}}s:22:\"admin/report/salesroot\";a:3:{s:8:\"instance\";r:1061;s:6:\"parent\";r:131;s:8:\"children\";a:7:{s:48:\"admin/report/salesroot/paypal_settlement_reports\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:48:\"admin/report/salesroot/paypal_settlement_reports\";}s:28:\"admin/report/salesroot/sales\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/salesroot/sales\";}s:26:\"admin/report/salesroot/tax\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/salesroot/tax\";}s:31:\"admin/report/salesroot/shipping\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/shipping\";}s:31:\"admin/report/salesroot/invoiced\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/invoiced\";}s:31:\"admin/report/salesroot/refunded\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/salesroot/refunded\";}s:30:\"admin/report/salesroot/coupons\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/report/salesroot/coupons\";}}}s:48:\"admin/report/salesroot/paypal_settlement_reports\";a:3:{s:8:\"instance\";r:1081;s:6:\"parent\";r:1061;s:8:\"children\";a:2:{s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";}s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";}}}s:53:\"admin/report/salesroot/paypal_settlement_reports/view\";a:3:{s:8:\"instance\";r:1099;s:6:\"parent\";r:1081;s:8:\"children\";a:0:{}}s:54:\"admin/report/salesroot/paypal_settlement_reports/fetch\";a:3:{s:8:\"instance\";r:1101;s:6:\"parent\";r:1081;s:8:\"children\";a:0:{}}s:28:\"admin/report/salesroot/sales\";a:3:{s:8:\"instance\";r:1083;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:26:\"admin/report/salesroot/tax\";a:3:{s:8:\"instance\";r:1085;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/shipping\";a:3:{s:8:\"instance\";r:1087;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/invoiced\";a:3:{s:8:\"instance\";r:1089;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:31:\"admin/report/salesroot/refunded\";a:3:{s:8:\"instance\";r:1091;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:30:\"admin/report/salesroot/coupons\";a:3:{s:8:\"instance\";r:1093;s:6:\"parent\";r:1061;s:8:\"children\";a:0:{}}s:21:\"admin/report/shopcart\";a:3:{s:8:\"instance\";r:1063;s:6:\"parent\";r:131;s:8:\"children\";a:2:{s:29:\"admin/report/shopcart/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/shopcart/product\";}s:31:\"admin/report/shopcart/abandoned\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/shopcart/abandoned\";}}}s:29:\"admin/report/shopcart/product\";a:3:{s:8:\"instance\";r:1139;s:6:\"parent\";r:1063;s:8:\"children\";a:0:{}}s:31:\"admin/report/shopcart/abandoned\";a:3:{s:8:\"instance\";r:1141;s:6:\"parent\";r:1063;s:8:\"children\";a:0:{}}s:21:\"admin/report/products\";a:3:{s:8:\"instance\";r:1065;s:6:\"parent\";r:131;s:8:\"children\";a:5:{s:33:\"admin/report/products/bestsellers\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:33:\"admin/report/products/bestsellers\";}s:26:\"admin/report/products/sold\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/products/sold\";}s:28:\"admin/report/products/viewed\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/products/viewed\";}s:30:\"admin/report/products/lowstock\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:30:\"admin/report/products/lowstock\";}s:31:\"admin/report/products/downloads\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/products/downloads\";}}}s:33:\"admin/report/products/bestsellers\";a:3:{s:8:\"instance\";r:1155;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:26:\"admin/report/products/sold\";a:3:{s:8:\"instance\";r:1157;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:28:\"admin/report/products/viewed\";a:3:{s:8:\"instance\";r:1159;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:30:\"admin/report/products/lowstock\";a:3:{s:8:\"instance\";r:1161;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:31:\"admin/report/products/downloads\";a:3:{s:8:\"instance\";r:1163;s:6:\"parent\";r:1065;s:8:\"children\";a:0:{}}s:22:\"admin/report/customers\";a:3:{s:8:\"instance\";r:1067;s:6:\"parent\";r:131;s:8:\"children\";a:3:{s:31:\"admin/report/customers/accounts\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:31:\"admin/report/customers/accounts\";}s:29:\"admin/report/customers/totals\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/customers/totals\";}s:29:\"admin/report/customers/orders\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:29:\"admin/report/customers/orders\";}}}s:31:\"admin/report/customers/accounts\";a:3:{s:8:\"instance\";r:1189;s:6:\"parent\";r:1067;s:8:\"children\";a:0:{}}s:29:\"admin/report/customers/totals\";a:3:{s:8:\"instance\";r:1191;s:6:\"parent\";r:1067;s:8:\"children\";a:0:{}}s:29:\"admin/report/customers/orders\";a:3:{s:8:\"instance\";r:1193;s:6:\"parent\";r:1067;s:8:\"children\";a:0:{}}s:19:\"admin/report/review\";a:3:{s:8:\"instance\";r:1069;s:6:\"parent\";r:131;s:8:\"children\";a:2:{s:28:\"admin/report/review/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:28:\"admin/report/review/customer\";}s:27:\"admin/report/review/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/report/review/product\";}}}s:28:\"admin/report/review/customer\";a:3:{s:8:\"instance\";r:1211;s:6:\"parent\";r:1069;s:8:\"children\";a:0:{}}s:27:\"admin/report/review/product\";a:3:{s:8:\"instance\";r:1213;s:6:\"parent\";r:1069;s:8:\"children\";a:0:{}}s:17:\"admin/report/tags\";a:3:{s:8:\"instance\";r:1071;s:6:\"parent\";r:131;s:8:\"children\";a:3:{s:26:\"admin/report/tags/customer\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:26:\"admin/report/tags/customer\";}s:25:\"admin/report/tags/popular\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/report/tags/popular\";}s:25:\"admin/report/tags/product\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/report/tags/product\";}}}s:26:\"admin/report/tags/customer\";a:3:{s:8:\"instance\";r:1227;s:6:\"parent\";r:1071;s:8:\"children\";a:0:{}}s:25:\"admin/report/tags/popular\";a:3:{s:8:\"instance\";r:1229;s:6:\"parent\";r:1071;s:8:\"children\";a:0:{}}s:25:\"admin/report/tags/product\";a:3:{s:8:\"instance\";r:1231;s:6:\"parent\";r:1071;s:8:\"children\";a:0:{}}s:19:\"admin/report/search\";a:3:{s:8:\"instance\";r:1073;s:6:\"parent\";r:131;s:8:\"children\";a:0:{}}s:23:\"admin/report/statistics\";a:3:{s:8:\"instance\";r:1075;s:6:\"parent\";r:131;s:8:\"children\";a:0:{}}s:16:\"admin/newsletter\";a:3:{s:8:\"instance\";r:133;s:6:\"parent\";r:111;s:8:\"children\";a:4:{s:24:\"admin/newsletter/problem\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:24:\"admin/newsletter/problem\";}s:22:\"admin/newsletter/queue\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:22:\"admin/newsletter/queue\";}s:27:\"admin/newsletter/subscriber\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:27:\"admin/newsletter/subscriber\";}s:25:\"admin/newsletter/template\";O:29:\"Mage_Admin_Model_Acl_Resource\":1:{s:14:\"\0*\0_resourceId\";s:25:\"admin/newsletter/template\";}}}s:24:\"admin/newsletter/problem\";a:3:{s:8:\"instance\";r:1257;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:22:\"admin/newsletter/queue\";a:3:{s:8:\"instance\";r:1259;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:27:\"admin/newsletter/subscriber\";a:3:{s:8:\"instance\";r:1261;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:25:\"admin/newsletter/template\";a:3:{s:8:\"instance\";r:1263;s:6:\"parent\";r:133;s:8:\"children\";a:0:{}}s:16:\"admin/page_cache\";a:3:{s:8:\"instance\";r:135;s:6:\"parent\";r:111;s:8:\"children\";a:0:{}}}s:17:\"\0*\0_isAllowedRole\";r:92;s:21:\"\0*\0_isAllowedResource\";r:151;s:22:\"\0*\0_isAllowedPrivilege\";N;s:9:\"\0*\0_rules\";a:2:{s:12:\"allResources\";a:2:{s:8:\"allRoles\";a:2:{s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:9:\"TYPE_DENY\";s:6:\"assert\";N;}s:13:\"byPrivilegeId\";a:0:{}}s:8:\"byRoleId\";a:1:{s:2:\"G1\";a:2:{s:13:\"byPrivilegeId\";a:0:{}s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:10:\"TYPE_ALLOW\";s:6:\"assert\";N;}}}}s:12:\"byResourceId\";a:1:{s:3:\"all\";a:1:{s:8:\"byRoleId\";a:1:{s:2:\"G1\";a:2:{s:13:\"byPrivilegeId\";a:0:{}s:13:\"allPrivileges\";a:2:{s:4:\"type\";s:10:\"TYPE_ALLOW\";s:6:\"assert\";N;}}}}}}}}store_admin|a:1:{s:23:\"_session_validator_data\";a:4:{s:11:\"remote_addr\";s:13:\"192.168.254.2\";s:8:\"http_via\";s:0:\"\";s:20:\"http_x_forwarded_for\";s:0:\"\";s:15:\"http_user_agent\";s:109:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36\";}}');
-/*!40000 ALTER TABLE `shop_core_session` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_store`
@@ -4162,16 +2921,6 @@ CREATE TABLE `shop_core_store` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_store`
---
-
-LOCK TABLES `shop_core_store` WRITE;
-/*!40000 ALTER TABLE `shop_core_store` DISABLE KEYS */;
-INSERT INTO `shop_core_store` VALUES (0,'admin',0,0,'Admin',0,1),(1,'default',1,1,'Default Store View',0,1);
-/*!40000 ALTER TABLE `shop_core_store` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_store_group`
 --
 
@@ -4190,16 +2939,6 @@ CREATE TABLE `shop_core_store_group` (
   CONSTRAINT `FK_SHOP_CORE_STORE_GROUP_WEBSITE_ID_SHOP_CORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Store Groups';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_store_group`
---
-
-LOCK TABLES `shop_core_store_group` WRITE;
-/*!40000 ALTER TABLE `shop_core_store_group` DISABLE KEYS */;
-INSERT INTO `shop_core_store_group` VALUES (0,0,'Default',0,0),(1,1,'Main Website Store',2,1);
-/*!40000 ALTER TABLE `shop_core_store_group` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_translate`
@@ -4221,15 +2960,6 @@ CREATE TABLE `shop_core_translate` (
   CONSTRAINT `FK_SHOP_CORE_TRANSLATE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Translations';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_translate`
---
-
-LOCK TABLES `shop_core_translate` WRITE;
-/*!40000 ALTER TABLE `shop_core_translate` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_translate` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_url_rewrite`
@@ -4260,18 +2990,8 @@ CREATE TABLE `shop_core_url_rewrite` (
   CONSTRAINT `FK_SHOP_CORE_URL_REWRITE_CTGR_ID_SHOP_CAT_CTGR_ENTT_ENTT_ID` FOREIGN KEY (`category_id`) REFERENCES `shop_catalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CORE_URL_REWRITE_PRD_ID_SHOP_CAT_CTGR_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_CORE_URL_REWRITE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Url Rewrites';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='Url Rewrites';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_url_rewrite`
---
-
-LOCK TABLES `shop_core_url_rewrite` WRITE;
-/*!40000 ALTER TABLE `shop_core_url_rewrite` DISABLE KEYS */;
-INSERT INTO `shop_core_url_rewrite` VALUES (1,1,'product/1','botelya.html','catalog/product/view/id/1',1,NULL,NULL,NULL,1);
-/*!40000 ALTER TABLE `shop_core_url_rewrite` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_variable`
@@ -4288,15 +3008,6 @@ CREATE TABLE `shop_core_variable` (
   UNIQUE KEY `UNQ_SHOP_CORE_VARIABLE_CODE` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Variables';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_variable`
---
-
-LOCK TABLES `shop_core_variable` WRITE;
-/*!40000 ALTER TABLE `shop_core_variable` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_variable` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_core_variable_value`
@@ -4321,15 +3032,6 @@ CREATE TABLE `shop_core_variable_value` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_core_variable_value`
---
-
-LOCK TABLES `shop_core_variable_value` WRITE;
-/*!40000 ALTER TABLE `shop_core_variable_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_core_variable_value` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_core_website`
 --
 
@@ -4349,16 +3051,6 @@ CREATE TABLE `shop_core_website` (
   KEY `IDX_SHOP_CORE_WEBSITE_DEFAULT_GROUP_ID` (`default_group_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Websites';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_core_website`
---
-
-LOCK TABLES `shop_core_website` WRITE;
-/*!40000 ALTER TABLE `shop_core_website` DISABLE KEYS */;
-INSERT INTO `shop_core_website` VALUES (0,'admin','Admin',0,0,0),(1,'base','Main Website',0,1,1);
-/*!40000 ALTER TABLE `shop_core_website` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_coupon_aggregated`
@@ -4390,15 +3082,6 @@ CREATE TABLE `shop_coupon_aggregated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_coupon_aggregated`
---
-
-LOCK TABLES `shop_coupon_aggregated` WRITE;
-/*!40000 ALTER TABLE `shop_coupon_aggregated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_coupon_aggregated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_coupon_aggregated_order`
 --
 
@@ -4423,15 +3106,6 @@ CREATE TABLE `shop_coupon_aggregated_order` (
   CONSTRAINT `FK_SHOP_COUPON_AGGRED_ORDER_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Coupon Aggregated Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_coupon_aggregated_order`
---
-
-LOCK TABLES `shop_coupon_aggregated_order` WRITE;
-/*!40000 ALTER TABLE `shop_coupon_aggregated_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_coupon_aggregated_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_coupon_aggregated_updated`
@@ -4463,15 +3137,6 @@ CREATE TABLE `shop_coupon_aggregated_updated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_coupon_aggregated_updated`
---
-
-LOCK TABLES `shop_coupon_aggregated_updated` WRITE;
-/*!40000 ALTER TABLE `shop_coupon_aggregated_updated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_coupon_aggregated_updated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_cron_schedule`
 --
 
@@ -4494,15 +3159,6 @@ CREATE TABLE `shop_cron_schedule` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_cron_schedule`
---
-
-LOCK TABLES `shop_cron_schedule` WRITE;
-/*!40000 ALTER TABLE `shop_cron_schedule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_cron_schedule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_address_entity`
 --
 
@@ -4523,15 +3179,6 @@ CREATE TABLE `shop_customer_address_entity` (
   CONSTRAINT `FK_SHOP_CSTR_ADDR_ENTT_PARENT_ID_SHOP_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`parent_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Address Entity';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_address_entity`
---
-
-LOCK TABLES `shop_customer_address_entity` WRITE;
-/*!40000 ALTER TABLE `shop_customer_address_entity` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_address_entity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_customer_address_entity_datetime`
@@ -4559,15 +3206,6 @@ CREATE TABLE `shop_customer_address_entity_datetime` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_address_entity_datetime`
---
-
-LOCK TABLES `shop_customer_address_entity_datetime` WRITE;
-/*!40000 ALTER TABLE `shop_customer_address_entity_datetime` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_address_entity_datetime` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_address_entity_decimal`
 --
 
@@ -4591,15 +3229,6 @@ CREATE TABLE `shop_customer_address_entity_decimal` (
   CONSTRAINT `FK_SHOP_CSTR_ADDR_ENTT_DEC_ENTT_ID_SHOP_CSTR_ADDR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_customer_address_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Address Entity Decimal';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_address_entity_decimal`
---
-
-LOCK TABLES `shop_customer_address_entity_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_customer_address_entity_decimal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_address_entity_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_customer_address_entity_int`
@@ -4627,15 +3256,6 @@ CREATE TABLE `shop_customer_address_entity_int` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_address_entity_int`
---
-
-LOCK TABLES `shop_customer_address_entity_int` WRITE;
-/*!40000 ALTER TABLE `shop_customer_address_entity_int` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_address_entity_int` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_address_entity_text`
 --
 
@@ -4658,15 +3278,6 @@ CREATE TABLE `shop_customer_address_entity_text` (
   CONSTRAINT `FK_SHOP_CSTR_ADDR_ENTT_TEXT_ENTT_ID_SHOP_CSTR_ADDR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_customer_address_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Address Entity Text';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_address_entity_text`
---
-
-LOCK TABLES `shop_customer_address_entity_text` WRITE;
-/*!40000 ALTER TABLE `shop_customer_address_entity_text` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_address_entity_text` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_customer_address_entity_varchar`
@@ -4694,15 +3305,6 @@ CREATE TABLE `shop_customer_address_entity_varchar` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_address_entity_varchar`
---
-
-LOCK TABLES `shop_customer_address_entity_varchar` WRITE;
-/*!40000 ALTER TABLE `shop_customer_address_entity_varchar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_address_entity_varchar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_eav_attribute`
 --
 
@@ -4724,16 +3326,6 @@ CREATE TABLE `shop_customer_eav_attribute` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_eav_attribute`
---
-
-LOCK TABLES `shop_customer_eav_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_customer_eav_attribute` DISABLE KEYS */;
-INSERT INTO `shop_customer_eav_attribute` VALUES (1,1,NULL,0,NULL,1,10,NULL),(2,0,NULL,0,NULL,1,0,NULL),(3,1,NULL,0,NULL,1,20,NULL),(4,0,NULL,0,NULL,0,30,NULL),(5,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,40,NULL),(6,0,NULL,0,NULL,0,50,NULL),(7,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,60,NULL),(8,0,NULL,0,NULL,0,70,NULL),(9,1,NULL,0,'a:1:{s:16:\"input_validation\";s:5:\"email\";}',1,80,NULL),(10,1,NULL,0,NULL,1,25,NULL),(11,0,'date',0,'a:1:{s:16:\"input_validation\";s:4:\"date\";}',0,90,NULL),(12,0,NULL,0,NULL,1,0,NULL),(13,0,NULL,0,NULL,1,0,NULL),(14,0,NULL,0,NULL,1,0,NULL),(15,0,NULL,0,'a:1:{s:15:\"max_text_length\";i:255;}',0,100,NULL),(16,0,NULL,0,NULL,1,0,NULL),(17,0,'datetime',0,NULL,0,0,NULL),(18,0,NULL,0,'a:0:{}',0,110,NULL),(19,0,NULL,0,NULL,0,10,NULL),(20,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,20,NULL),(21,0,NULL,0,NULL,0,30,NULL),(22,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,40,NULL),(23,0,NULL,0,NULL,0,50,NULL),(24,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,60,NULL),(25,1,NULL,2,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,70,NULL),(26,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,80,NULL),(27,1,NULL,0,NULL,1,90,NULL),(28,1,NULL,0,NULL,1,100,NULL),(29,1,NULL,0,NULL,1,100,NULL),(30,1,NULL,0,'a:0:{}',1,110,'customer/attribute_data_postcode'),(31,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,120,NULL),(32,1,NULL,0,'a:2:{s:15:\"max_text_length\";i:255;s:15:\"min_text_length\";i:1;}',1,130,NULL),(33,0,NULL,0,NULL,1,0,NULL),(34,0,NULL,0,'a:1:{s:16:\"input_validation\";s:4:\"date\";}',1,0,NULL),(35,1,NULL,0,NULL,1,28,NULL),(36,1,NULL,0,NULL,1,140,NULL),(37,0,NULL,0,NULL,1,0,NULL),(38,0,NULL,0,NULL,1,0,NULL),(39,0,NULL,0,NULL,1,0,NULL),(40,0,NULL,0,NULL,1,0,NULL);
-/*!40000 ALTER TABLE `shop_customer_eav_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_eav_attribute_website`
 --
 
@@ -4753,15 +3345,6 @@ CREATE TABLE `shop_customer_eav_attribute_website` (
   CONSTRAINT `FK_SHOP_CSTR_EAV_ATTR_WS_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Eav Attribute Website';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_eav_attribute_website`
---
-
-LOCK TABLES `shop_customer_eav_attribute_website` WRITE;
-/*!40000 ALTER TABLE `shop_customer_eav_attribute_website` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_eav_attribute_website` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_customer_entity`
@@ -4795,15 +3378,6 @@ CREATE TABLE `shop_customer_entity` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_entity`
---
-
-LOCK TABLES `shop_customer_entity` WRITE;
-/*!40000 ALTER TABLE `shop_customer_entity` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_entity` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_entity_datetime`
 --
 
@@ -4827,15 +3401,6 @@ CREATE TABLE `shop_customer_entity_datetime` (
   CONSTRAINT `FK_SHOP_CSTR_ENTT_DTIME_ENTT_ID_SHOP_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Entity Datetime';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_entity_datetime`
---
-
-LOCK TABLES `shop_customer_entity_datetime` WRITE;
-/*!40000 ALTER TABLE `shop_customer_entity_datetime` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_entity_datetime` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_customer_entity_decimal`
@@ -4863,15 +3428,6 @@ CREATE TABLE `shop_customer_entity_decimal` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_entity_decimal`
---
-
-LOCK TABLES `shop_customer_entity_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_customer_entity_decimal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_entity_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_entity_int`
 --
 
@@ -4897,15 +3453,6 @@ CREATE TABLE `shop_customer_entity_int` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_entity_int`
---
-
-LOCK TABLES `shop_customer_entity_int` WRITE;
-/*!40000 ALTER TABLE `shop_customer_entity_int` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_entity_int` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_entity_text`
 --
 
@@ -4928,15 +3475,6 @@ CREATE TABLE `shop_customer_entity_text` (
   CONSTRAINT `FK_SHOP_CSTR_ENTT_TEXT_ENTT_ID_SHOP_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Entity Text';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_entity_text`
---
-
-LOCK TABLES `shop_customer_entity_text` WRITE;
-/*!40000 ALTER TABLE `shop_customer_entity_text` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_entity_text` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_customer_entity_varchar`
@@ -4964,15 +3502,6 @@ CREATE TABLE `shop_customer_entity_varchar` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_entity_varchar`
---
-
-LOCK TABLES `shop_customer_entity_varchar` WRITE;
-/*!40000 ALTER TABLE `shop_customer_entity_varchar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_customer_entity_varchar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_form_attribute`
 --
 
@@ -4989,16 +3518,6 @@ CREATE TABLE `shop_customer_form_attribute` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_customer_form_attribute`
---
-
-LOCK TABLES `shop_customer_form_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_customer_form_attribute` DISABLE KEYS */;
-INSERT INTO `shop_customer_form_attribute` VALUES ('adminhtml_customer',1),('adminhtml_customer',3),('adminhtml_customer',4),('checkout_register',4),('customer_account_create',4),('customer_account_edit',4),('adminhtml_customer',5),('checkout_register',5),('customer_account_create',5),('customer_account_edit',5),('adminhtml_customer',6),('checkout_register',6),('customer_account_create',6),('customer_account_edit',6),('adminhtml_customer',7),('checkout_register',7),('customer_account_create',7),('customer_account_edit',7),('adminhtml_customer',8),('checkout_register',8),('customer_account_create',8),('customer_account_edit',8),('adminhtml_checkout',9),('adminhtml_customer',9),('checkout_register',9),('customer_account_create',9),('customer_account_edit',9),('adminhtml_checkout',10),('adminhtml_customer',10),('adminhtml_checkout',11),('adminhtml_customer',11),('checkout_register',11),('customer_account_create',11),('customer_account_edit',11),('adminhtml_checkout',15),('adminhtml_customer',15),('checkout_register',15),('customer_account_create',15),('customer_account_edit',15),('adminhtml_customer',17),('checkout_register',17),('customer_account_create',17),('customer_account_edit',17),('adminhtml_checkout',18),('adminhtml_customer',18),('checkout_register',18),('customer_account_create',18),('customer_account_edit',18),('adminhtml_customer_address',19),('customer_address_edit',19),('customer_register_address',19),('adminhtml_customer_address',20),('customer_address_edit',20),('customer_register_address',20),('adminhtml_customer_address',21),('customer_address_edit',21),('customer_register_address',21),('adminhtml_customer_address',22),('customer_address_edit',22),('customer_register_address',22),('adminhtml_customer_address',23),('customer_address_edit',23),('customer_register_address',23),('adminhtml_customer_address',24),('customer_address_edit',24),('customer_register_address',24),('adminhtml_customer_address',25),('customer_address_edit',25),('customer_register_address',25),('adminhtml_customer_address',26),('customer_address_edit',26),('customer_register_address',26),('adminhtml_customer_address',27),('customer_address_edit',27),('customer_register_address',27),('adminhtml_customer_address',28),('customer_address_edit',28),('customer_register_address',28),('adminhtml_customer_address',29),('customer_address_edit',29),('customer_register_address',29),('adminhtml_customer_address',30),('customer_address_edit',30),('customer_register_address',30),('adminhtml_customer_address',31),('customer_address_edit',31),('customer_register_address',31),('adminhtml_customer_address',32),('customer_address_edit',32),('customer_register_address',32),('adminhtml_customer',35),('adminhtml_customer_address',36),('customer_address_edit',36),('customer_register_address',36);
-/*!40000 ALTER TABLE `shop_customer_form_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_customer_group`
 --
 
@@ -5012,16 +3531,6 @@ CREATE TABLE `shop_customer_group` (
   PRIMARY KEY (`customer_group_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Customer Group';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_customer_group`
---
-
-LOCK TABLES `shop_customer_group` WRITE;
-/*!40000 ALTER TABLE `shop_customer_group` DISABLE KEYS */;
-INSERT INTO `shop_customer_group` VALUES (0,'NOT LOGGED IN',3),(1,'General',3),(2,'Wholesale',3),(3,'Retailer',3);
-/*!40000 ALTER TABLE `shop_customer_group` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_dataflow_batch`
@@ -5047,15 +3556,6 @@ CREATE TABLE `shop_dataflow_batch` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_dataflow_batch`
---
-
-LOCK TABLES `shop_dataflow_batch` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_batch` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_dataflow_batch` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_dataflow_batch_export`
 --
 
@@ -5072,15 +3572,6 @@ CREATE TABLE `shop_dataflow_batch_export` (
   CONSTRAINT `FK_2397D951734A0BC70EB0301A3C0A3864` FOREIGN KEY (`batch_id`) REFERENCES `shop_dataflow_batch` (`batch_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Dataflow Batch Export';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_dataflow_batch_export`
---
-
-LOCK TABLES `shop_dataflow_batch_export` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_batch_export` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_dataflow_batch_export` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_dataflow_batch_import`
@@ -5101,15 +3592,6 @@ CREATE TABLE `shop_dataflow_batch_import` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_dataflow_batch_import`
---
-
-LOCK TABLES `shop_dataflow_batch_import` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_batch_import` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_dataflow_batch_import` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_dataflow_import_data`
 --
 
@@ -5127,15 +3609,6 @@ CREATE TABLE `shop_dataflow_import_data` (
   CONSTRAINT `FK_SHOP_DATAFLOW_IMPORT_DATA_SESS_ID_SHOP_DATAFLOW_SESS_SESS_ID` FOREIGN KEY (`session_id`) REFERENCES `shop_dataflow_session` (`session_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Dataflow Import Data';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_dataflow_import_data`
---
-
-LOCK TABLES `shop_dataflow_import_data` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_import_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_dataflow_import_data` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_dataflow_profile`
@@ -5160,16 +3633,6 @@ CREATE TABLE `shop_dataflow_profile` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_dataflow_profile`
---
-
-LOCK TABLES `shop_dataflow_profile` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_profile` DISABLE KEYS */;
-INSERT INTO `shop_dataflow_profile` VALUES (1,'Export All Products','2015-07-01 04:29:41','2015-07-01 04:29:41','<action type=\"catalog/convert_adapter_product\" method=\"load\">\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n</action>\\r\\n\\r\\n<action type=\"catalog/convert_parser_product\" method=\"unparse\">\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_mapper_column\" method=\"map\">\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_parser_csv\" method=\"unparse\">\\r\\n    <var name=\"delimiter\"><![CDATA[,]]></var>\\r\\n    <var name=\"enclose\"><![CDATA[\"]]></var>\\r\\n    <var name=\"fieldnames\">true</var>\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_adapter_io\" method=\"save\">\\r\\n    <var name=\"type\">file</var>\\r\\n    <var name=\"path\">var/export</var>\\r\\n    <var name=\"filename\"><![CDATA[export_all_products.csv]]></var>\\r\\n</action>\\r\\n\\r\\n','a:5:{s:4:\"file\";a:7:{s:4:\"type\";s:4:\"file\";s:8:\"filename\";s:23:\"export_all_products.csv\";s:4:\"path\";s:10:\"var/export\";s:4:\"host\";s:0:\"\";s:4:\"user\";s:0:\"\";s:8:\"password\";s:0:\"\";s:7:\"passive\";s:0:\"\";}s:5:\"parse\";a:5:{s:4:\"type\";s:3:\"csv\";s:12:\"single_sheet\";s:0:\"\";s:9:\"delimiter\";s:1:\",\";s:7:\"enclose\";s:1:\"\"\";s:10:\"fieldnames\";s:4:\"true\";}s:3:\"map\";a:3:{s:14:\"only_specified\";s:0:\"\";s:7:\"product\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}s:8:\"customer\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}}s:7:\"product\";a:1:{s:6:\"filter\";a:8:{s:4:\"name\";s:0:\"\";s:3:\"sku\";s:0:\"\";s:4:\"type\";s:1:\"0\";s:13:\"attribute_set\";s:0:\"\";s:5:\"price\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:3:\"qty\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:10:\"visibility\";s:1:\"0\";s:6:\"status\";s:1:\"0\";}}s:8:\"customer\";a:1:{s:6:\"filter\";a:10:{s:9:\"firstname\";s:0:\"\";s:8:\"lastname\";s:0:\"\";s:5:\"email\";s:0:\"\";s:5:\"group\";s:1:\"0\";s:10:\"adressType\";s:15:\"default_billing\";s:9:\"telephone\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:0:\"\";s:6:\"region\";s:0:\"\";s:10:\"created_at\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}}}}','export','product',0,'file'),(2,'Export Product Stocks','2015-07-01 04:29:41','2015-07-01 04:29:41','<action type=\"catalog/convert_adapter_product\" method=\"load\">\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n</action>\\r\\n\\r\\n<action type=\"catalog/convert_parser_product\" method=\"unparse\">\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_mapper_column\" method=\"map\">\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_parser_csv\" method=\"unparse\">\\r\\n    <var name=\"delimiter\"><![CDATA[,]]></var>\\r\\n    <var name=\"enclose\"><![CDATA[\"]]></var>\\r\\n    <var name=\"fieldnames\">true</var>\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_adapter_io\" method=\"save\">\\r\\n    <var name=\"type\">file</var>\\r\\n    <var name=\"path\">var/export</var>\\r\\n    <var name=\"filename\"><![CDATA[export_all_products.csv]]></var>\\r\\n</action>\\r\\n\\r\\n','a:5:{s:4:\"file\";a:7:{s:4:\"type\";s:4:\"file\";s:8:\"filename\";s:25:\"export_product_stocks.csv\";s:4:\"path\";s:10:\"var/export\";s:4:\"host\";s:0:\"\";s:4:\"user\";s:0:\"\";s:8:\"password\";s:0:\"\";s:7:\"passive\";s:0:\"\";}s:5:\"parse\";a:5:{s:4:\"type\";s:3:\"csv\";s:12:\"single_sheet\";s:0:\"\";s:9:\"delimiter\";s:1:\",\";s:7:\"enclose\";s:1:\"\"\";s:10:\"fieldnames\";s:4:\"true\";}s:3:\"map\";a:3:{s:14:\"only_specified\";s:4:\"true\";s:7:\"product\";a:2:{s:2:\"db\";a:4:{i:1;s:5:\"store\";i:2;s:3:\"sku\";i:3;s:3:\"qty\";i:4;s:11:\"is_in_stock\";}s:4:\"file\";a:4:{i:1;s:5:\"store\";i:2;s:3:\"sku\";i:3;s:3:\"qty\";i:4;s:11:\"is_in_stock\";}}s:8:\"customer\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}}s:7:\"product\";a:1:{s:6:\"filter\";a:8:{s:4:\"name\";s:0:\"\";s:3:\"sku\";s:0:\"\";s:4:\"type\";s:1:\"0\";s:13:\"attribute_set\";s:0:\"\";s:5:\"price\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:3:\"qty\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:10:\"visibility\";s:1:\"0\";s:6:\"status\";s:1:\"0\";}}s:8:\"customer\";a:1:{s:6:\"filter\";a:10:{s:9:\"firstname\";s:0:\"\";s:8:\"lastname\";s:0:\"\";s:5:\"email\";s:0:\"\";s:5:\"group\";s:1:\"0\";s:10:\"adressType\";s:15:\"default_billing\";s:9:\"telephone\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:0:\"\";s:6:\"region\";s:0:\"\";s:10:\"created_at\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}}}}','export','product',0,'file'),(3,'Import All Products','2015-07-01 04:29:41','2015-07-01 04:29:41','<action type=\"dataflow/convert_parser_csv\" method=\"parse\">\\r\\n    <var name=\"delimiter\"><![CDATA[,]]></var>\\r\\n    <var name=\"enclose\"><![CDATA[\"]]></var>\\r\\n    <var name=\"fieldnames\">true</var>\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n    <var name=\"adapter\">catalog/convert_adapter_product</var>\\r\\n    <var name=\"method\">parse</var>\\r\\n</action>','a:5:{s:4:\"file\";a:7:{s:4:\"type\";s:4:\"file\";s:8:\"filename\";s:23:\"export_all_products.csv\";s:4:\"path\";s:10:\"var/export\";s:4:\"host\";s:0:\"\";s:4:\"user\";s:0:\"\";s:8:\"password\";s:0:\"\";s:7:\"passive\";s:0:\"\";}s:5:\"parse\";a:5:{s:4:\"type\";s:3:\"csv\";s:12:\"single_sheet\";s:0:\"\";s:9:\"delimiter\";s:1:\",\";s:7:\"enclose\";s:1:\"\"\";s:10:\"fieldnames\";s:4:\"true\";}s:3:\"map\";a:3:{s:14:\"only_specified\";s:0:\"\";s:7:\"product\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}s:8:\"customer\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}}s:7:\"product\";a:1:{s:6:\"filter\";a:8:{s:4:\"name\";s:0:\"\";s:3:\"sku\";s:0:\"\";s:4:\"type\";s:1:\"0\";s:13:\"attribute_set\";s:0:\"\";s:5:\"price\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:3:\"qty\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:10:\"visibility\";s:1:\"0\";s:6:\"status\";s:1:\"0\";}}s:8:\"customer\";a:1:{s:6:\"filter\";a:10:{s:9:\"firstname\";s:0:\"\";s:8:\"lastname\";s:0:\"\";s:5:\"email\";s:0:\"\";s:5:\"group\";s:1:\"0\";s:10:\"adressType\";s:15:\"default_billing\";s:9:\"telephone\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:0:\"\";s:6:\"region\";s:0:\"\";s:10:\"created_at\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}}}}','import','product',0,'interactive'),(4,'Import Product Stocks','2015-07-01 04:29:41','2015-07-01 04:29:41','<action type=\"dataflow/convert_parser_csv\" method=\"parse\">\\r\\n    <var name=\"delimiter\"><![CDATA[,]]></var>\\r\\n    <var name=\"enclose\"><![CDATA[\"]]></var>\\r\\n    <var name=\"fieldnames\">true</var>\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n    <var name=\"adapter\">catalog/convert_adapter_product</var>\\r\\n    <var name=\"method\">parse</var>\\r\\n</action>','a:5:{s:4:\"file\";a:7:{s:4:\"type\";s:4:\"file\";s:8:\"filename\";s:18:\"export_product.csv\";s:4:\"path\";s:10:\"var/export\";s:4:\"host\";s:0:\"\";s:4:\"user\";s:0:\"\";s:8:\"password\";s:0:\"\";s:7:\"passive\";s:0:\"\";}s:5:\"parse\";a:5:{s:4:\"type\";s:3:\"csv\";s:12:\"single_sheet\";s:0:\"\";s:9:\"delimiter\";s:1:\",\";s:7:\"enclose\";s:1:\"\"\";s:10:\"fieldnames\";s:4:\"true\";}s:3:\"map\";a:3:{s:14:\"only_specified\";s:0:\"\";s:7:\"product\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}s:8:\"customer\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}}s:7:\"product\";a:1:{s:6:\"filter\";a:8:{s:4:\"name\";s:0:\"\";s:3:\"sku\";s:0:\"\";s:4:\"type\";s:1:\"0\";s:13:\"attribute_set\";s:0:\"\";s:5:\"price\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:3:\"qty\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:10:\"visibility\";s:1:\"0\";s:6:\"status\";s:1:\"0\";}}s:8:\"customer\";a:1:{s:6:\"filter\";a:10:{s:9:\"firstname\";s:0:\"\";s:8:\"lastname\";s:0:\"\";s:5:\"email\";s:0:\"\";s:5:\"group\";s:1:\"0\";s:10:\"adressType\";s:15:\"default_billing\";s:9:\"telephone\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:0:\"\";s:6:\"region\";s:0:\"\";s:10:\"created_at\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}}}}','import','product',0,'interactive'),(5,'Export Customers','2015-07-01 04:29:41','2015-07-01 04:29:41','<action type=\"customer/convert_adapter_customer\" method=\"load\">\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n    <var name=\"filter/adressType\"><![CDATA[default_billing]]></var>\\r\\n</action>\\r\\n\\r\\n<action type=\"customer/convert_parser_customer\" method=\"unparse\">\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_mapper_column\" method=\"map\">\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_parser_csv\" method=\"unparse\">\\r\\n    <var name=\"delimiter\"><![CDATA[,]]></var>\\r\\n    <var name=\"enclose\"><![CDATA[\"]]></var>\\r\\n    <var name=\"fieldnames\">true</var>\\r\\n</action>\\r\\n\\r\\n<action type=\"dataflow/convert_adapter_io\" method=\"save\">\\r\\n    <var name=\"type\">file</var>\\r\\n    <var name=\"path\">var/export</var>\\r\\n    <var name=\"filename\"><![CDATA[export_customers.csv]]></var>\\r\\n</action>\\r\\n\\r\\n','a:5:{s:4:\"file\";a:7:{s:4:\"type\";s:4:\"file\";s:8:\"filename\";s:20:\"export_customers.csv\";s:4:\"path\";s:10:\"var/export\";s:4:\"host\";s:0:\"\";s:4:\"user\";s:0:\"\";s:8:\"password\";s:0:\"\";s:7:\"passive\";s:0:\"\";}s:5:\"parse\";a:5:{s:4:\"type\";s:3:\"csv\";s:12:\"single_sheet\";s:0:\"\";s:9:\"delimiter\";s:1:\",\";s:7:\"enclose\";s:1:\"\"\";s:10:\"fieldnames\";s:4:\"true\";}s:3:\"map\";a:3:{s:14:\"only_specified\";s:0:\"\";s:7:\"product\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}s:8:\"customer\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}}s:7:\"product\";a:1:{s:6:\"filter\";a:8:{s:4:\"name\";s:0:\"\";s:3:\"sku\";s:0:\"\";s:4:\"type\";s:1:\"0\";s:13:\"attribute_set\";s:0:\"\";s:5:\"price\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:3:\"qty\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:10:\"visibility\";s:1:\"0\";s:6:\"status\";s:1:\"0\";}}s:8:\"customer\";a:1:{s:6:\"filter\";a:10:{s:9:\"firstname\";s:0:\"\";s:8:\"lastname\";s:0:\"\";s:5:\"email\";s:0:\"\";s:5:\"group\";s:1:\"0\";s:10:\"adressType\";s:15:\"default_billing\";s:9:\"telephone\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:0:\"\";s:6:\"region\";s:0:\"\";s:10:\"created_at\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}}}}','export','customer',0,'file'),(6,'Import Customers','2015-07-01 04:29:41','2015-07-01 04:29:41','<action type=\"dataflow/convert_parser_csv\" method=\"parse\">\\r\\n    <var name=\"delimiter\"><![CDATA[,]]></var>\\r\\n    <var name=\"enclose\"><![CDATA[\"]]></var>\\r\\n    <var name=\"fieldnames\">true</var>\\r\\n    <var name=\"store\"><![CDATA[0]]></var>\\r\\n    <var name=\"adapter\">customer/convert_adapter_customer</var>\\r\\n    <var name=\"method\">parse</var>\\r\\n</action>','a:5:{s:4:\"file\";a:7:{s:4:\"type\";s:4:\"file\";s:8:\"filename\";s:19:\"export_customer.csv\";s:4:\"path\";s:10:\"var/export\";s:4:\"host\";s:0:\"\";s:4:\"user\";s:0:\"\";s:8:\"password\";s:0:\"\";s:7:\"passive\";s:0:\"\";}s:5:\"parse\";a:5:{s:4:\"type\";s:3:\"csv\";s:12:\"single_sheet\";s:0:\"\";s:9:\"delimiter\";s:1:\",\";s:7:\"enclose\";s:1:\"\"\";s:10:\"fieldnames\";s:4:\"true\";}s:3:\"map\";a:3:{s:14:\"only_specified\";s:0:\"\";s:7:\"product\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}s:8:\"customer\";a:2:{s:2:\"db\";a:0:{}s:4:\"file\";a:0:{}}}s:7:\"product\";a:1:{s:6:\"filter\";a:8:{s:4:\"name\";s:0:\"\";s:3:\"sku\";s:0:\"\";s:4:\"type\";s:1:\"0\";s:13:\"attribute_set\";s:0:\"\";s:5:\"price\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:3:\"qty\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}s:10:\"visibility\";s:1:\"0\";s:6:\"status\";s:1:\"0\";}}s:8:\"customer\";a:1:{s:6:\"filter\";a:10:{s:9:\"firstname\";s:0:\"\";s:8:\"lastname\";s:0:\"\";s:5:\"email\";s:0:\"\";s:5:\"group\";s:1:\"0\";s:10:\"adressType\";s:15:\"default_billing\";s:9:\"telephone\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:0:\"\";s:6:\"region\";s:0:\"\";s:10:\"created_at\";a:2:{s:4:\"from\";s:0:\"\";s:2:\"to\";s:0:\"\";}}}}','import','customer',0,'interactive');
-/*!40000 ALTER TABLE `shop_dataflow_profile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_dataflow_profile_history`
 --
 
@@ -5187,16 +3650,6 @@ CREATE TABLE `shop_dataflow_profile_history` (
   CONSTRAINT `FK_9FEEEF5DAB1413F338428748821E9B0A` FOREIGN KEY (`profile_id`) REFERENCES `shop_dataflow_profile` (`profile_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Dataflow Profile History';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_dataflow_profile_history`
---
-
-LOCK TABLES `shop_dataflow_profile_history` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_profile_history` DISABLE KEYS */;
-INSERT INTO `shop_dataflow_profile_history` VALUES (1,1,'create',0,'2015-07-01 04:29:41'),(2,2,'create',0,'2015-07-01 04:29:41'),(3,3,'create',0,'2015-07-01 04:29:41'),(4,4,'create',0,'2015-07-01 04:29:41'),(5,5,'create',0,'2015-07-01 04:29:41'),(6,6,'create',0,'2015-07-01 04:29:41');
-/*!40000 ALTER TABLE `shop_dataflow_profile_history` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_dataflow_session`
@@ -5218,15 +3671,6 @@ CREATE TABLE `shop_dataflow_session` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_dataflow_session`
---
-
-LOCK TABLES `shop_dataflow_session` WRITE;
-/*!40000 ALTER TABLE `shop_dataflow_session` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_dataflow_session` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_design_change`
 --
 
@@ -5246,15 +3690,6 @@ CREATE TABLE `shop_design_change` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_design_change`
---
-
-LOCK TABLES `shop_design_change` WRITE;
-/*!40000 ALTER TABLE `shop_design_change` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_design_change` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_directory_country`
 --
 
@@ -5268,16 +3703,6 @@ CREATE TABLE `shop_directory_country` (
   PRIMARY KEY (`country_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Directory Country';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_directory_country`
---
-
-LOCK TABLES `shop_directory_country` WRITE;
-/*!40000 ALTER TABLE `shop_directory_country` DISABLE KEYS */;
-INSERT INTO `shop_directory_country` VALUES ('AD','AD','AND'),('AE','AE','ARE'),('AF','AF','AFG'),('AG','AG','ATG'),('AI','AI','AIA'),('AL','AL','ALB'),('AM','AM','ARM'),('AN','AN','ANT'),('AO','AO','AGO'),('AQ','AQ','ATA'),('AR','AR','ARG'),('AS','AS','ASM'),('AT','AT','AUT'),('AU','AU','AUS'),('AW','AW','ABW'),('AX','AX','ALA'),('AZ','AZ','AZE'),('BA','BA','BIH'),('BB','BB','BRB'),('BD','BD','BGD'),('BE','BE','BEL'),('BF','BF','BFA'),('BG','BG','BGR'),('BH','BH','BHR'),('BI','BI','BDI'),('BJ','BJ','BEN'),('BL','BL','BLM'),('BM','BM','BMU'),('BN','BN','BRN'),('BO','BO','BOL'),('BR','BR','BRA'),('BS','BS','BHS'),('BT','BT','BTN'),('BV','BV','BVT'),('BW','BW','BWA'),('BY','BY','BLR'),('BZ','BZ','BLZ'),('CA','CA','CAN'),('CC','CC','CCK'),('CD','CD','COD'),('CF','CF','CAF'),('CG','CG','COG'),('CH','CH','CHE'),('CI','CI','CIV'),('CK','CK','COK'),('CL','CL','CHL'),('CM','CM','CMR'),('CN','CN','CHN'),('CO','CO','COL'),('CR','CR','CRI'),('CU','CU','CUB'),('CV','CV','CPV'),('CX','CX','CXR'),('CY','CY','CYP'),('CZ','CZ','CZE'),('DE','DE','DEU'),('DJ','DJ','DJI'),('DK','DK','DNK'),('DM','DM','DMA'),('DO','DO','DOM'),('DZ','DZ','DZA'),('EC','EC','ECU'),('EE','EE','EST'),('EG','EG','EGY'),('EH','EH','ESH'),('ER','ER','ERI'),('ES','ES','ESP'),('ET','ET','ETH'),('FI','FI','FIN'),('FJ','FJ','FJI'),('FK','FK','FLK'),('FM','FM','FSM'),('FO','FO','FRO'),('FR','FR','FRA'),('GA','GA','GAB'),('GB','GB','GBR'),('GD','GD','GRD'),('GE','GE','GEO'),('GF','GF','GUF'),('GG','GG','GGY'),('GH','GH','GHA'),('GI','GI','GIB'),('GL','GL','GRL'),('GM','GM','GMB'),('GN','GN','GIN'),('GP','GP','GLP'),('GQ','GQ','GNQ'),('GR','GR','GRC'),('GS','GS','SGS'),('GT','GT','GTM'),('GU','GU','GUM'),('GW','GW','GNB'),('GY','GY','GUY'),('HK','HK','HKG'),('HM','HM','HMD'),('HN','HN','HND'),('HR','HR','HRV'),('HT','HT','HTI'),('HU','HU','HUN'),('ID','ID','IDN'),('IE','IE','IRL'),('IL','IL','ISR'),('IM','IM','IMN'),('IN','IN','IND'),('IO','IO','IOT'),('IQ','IQ','IRQ'),('IR','IR','IRN'),('IS','IS','ISL'),('IT','IT','ITA'),('JE','JE','JEY'),('JM','JM','JAM'),('JO','JO','JOR'),('JP','JP','JPN'),('KE','KE','KEN'),('KG','KG','KGZ'),('KH','KH','KHM'),('KI','KI','KIR'),('KM','KM','COM'),('KN','KN','KNA'),('KP','KP','PRK'),('KR','KR','KOR'),('KW','KW','KWT'),('KY','KY','CYM'),('KZ','KZ','KAZ'),('LA','LA','LAO'),('LB','LB','LBN'),('LC','LC','LCA'),('LI','LI','LIE'),('LK','LK','LKA'),('LR','LR','LBR'),('LS','LS','LSO'),('LT','LT','LTU'),('LU','LU','LUX'),('LV','LV','LVA'),('LY','LY','LBY'),('MA','MA','MAR'),('MC','MC','MCO'),('MD','MD','MDA'),('ME','ME','MNE'),('MF','MF','MAF'),('MG','MG','MDG'),('MH','MH','MHL'),('MK','MK','MKD'),('ML','ML','MLI'),('MM','MM','MMR'),('MN','MN','MNG'),('MO','MO','MAC'),('MP','MP','MNP'),('MQ','MQ','MTQ'),('MR','MR','MRT'),('MS','MS','MSR'),('MT','MT','MLT'),('MU','MU','MUS'),('MV','MV','MDV'),('MW','MW','MWI'),('MX','MX','MEX'),('MY','MY','MYS'),('MZ','MZ','MOZ'),('NA','NA','NAM'),('NC','NC','NCL'),('NE','NE','NER'),('NF','NF','NFK'),('NG','NG','NGA'),('NI','NI','NIC'),('NL','NL','NLD'),('NO','NO','NOR'),('NP','NP','NPL'),('NR','NR','NRU'),('NU','NU','NIU'),('NZ','NZ','NZL'),('OM','OM','OMN'),('PA','PA','PAN'),('PE','PE','PER'),('PF','PF','PYF'),('PG','PG','PNG'),('PH','PH','PHL'),('PK','PK','PAK'),('PL','PL','POL'),('PM','PM','SPM'),('PN','PN','PCN'),('PR','PR','PRI'),('PS','PS','PSE'),('PT','PT','PRT'),('PW','PW','PLW'),('PY','PY','PRY'),('QA','QA','QAT'),('RE','RE','REU'),('RO','RO','ROU'),('RS','RS','SRB'),('RU','RU','RUS'),('RW','RW','RWA'),('SA','SA','SAU'),('SB','SB','SLB'),('SC','SC','SYC'),('SD','SD','SDN'),('SE','SE','SWE'),('SG','SG','SGP'),('SH','SH','SHN'),('SI','SI','SVN'),('SJ','SJ','SJM'),('SK','SK','SVK'),('SL','SL','SLE'),('SM','SM','SMR'),('SN','SN','SEN'),('SO','SO','SOM'),('SR','SR','SUR'),('ST','ST','STP'),('SV','SV','SLV'),('SY','SY','SYR'),('SZ','SZ','SWZ'),('TC','TC','TCA'),('TD','TD','TCD'),('TF','TF','ATF'),('TG','TG','TGO'),('TH','TH','THA'),('TJ','TJ','TJK'),('TK','TK','TKL'),('TL','TL','TLS'),('TM','TM','TKM'),('TN','TN','TUN'),('TO','TO','TON'),('TR','TR','TUR'),('TT','TT','TTO'),('TV','TV','TUV'),('TW','TW','TWN'),('TZ','TZ','TZA'),('UA','UA','UKR'),('UG','UG','UGA'),('UM','UM','UMI'),('US','US','USA'),('UY','UY','URY'),('UZ','UZ','UZB'),('VA','VA','VAT'),('VC','VC','VCT'),('VE','VE','VEN'),('VG','VG','VGB'),('VI','VI','VIR'),('VN','VN','VNM'),('VU','VU','VUT'),('WF','WF','WLF'),('WS','WS','WSM'),('YE','YE','YEM'),('YT','YT','MYT'),('ZA','ZA','ZAF'),('ZM','ZM','ZMB'),('ZW','ZW','ZWE');
-/*!40000 ALTER TABLE `shop_directory_country` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_directory_country_format`
@@ -5297,15 +3722,6 @@ CREATE TABLE `shop_directory_country_format` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_directory_country_format`
---
-
-LOCK TABLES `shop_directory_country_format` WRITE;
-/*!40000 ALTER TABLE `shop_directory_country_format` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_directory_country_format` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_directory_country_region`
 --
 
@@ -5321,16 +3737,6 @@ CREATE TABLE `shop_directory_country_region` (
   KEY `IDX_SHOP_DIRECTORY_COUNTRY_REGION_COUNTRY_ID` (`country_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=485 DEFAULT CHARSET=utf8 COMMENT='Directory Country Region';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_directory_country_region`
---
-
-LOCK TABLES `shop_directory_country_region` WRITE;
-/*!40000 ALTER TABLE `shop_directory_country_region` DISABLE KEYS */;
-INSERT INTO `shop_directory_country_region` VALUES (1,'US','AL','Alabama'),(2,'US','AK','Alaska'),(3,'US','AS','American Samoa'),(4,'US','AZ','Arizona'),(5,'US','AR','Arkansas'),(6,'US','AF','Armed Forces Africa'),(7,'US','AA','Armed Forces Americas'),(8,'US','AC','Armed Forces Canada'),(9,'US','AE','Armed Forces Europe'),(10,'US','AM','Armed Forces Middle East'),(11,'US','AP','Armed Forces Pacific'),(12,'US','CA','California'),(13,'US','CO','Colorado'),(14,'US','CT','Connecticut'),(15,'US','DE','Delaware'),(16,'US','DC','District of Columbia'),(17,'US','FM','Federated States Of Micronesia'),(18,'US','FL','Florida'),(19,'US','GA','Georgia'),(20,'US','GU','Guam'),(21,'US','HI','Hawaii'),(22,'US','ID','Idaho'),(23,'US','IL','Illinois'),(24,'US','IN','Indiana'),(25,'US','IA','Iowa'),(26,'US','KS','Kansas'),(27,'US','KY','Kentucky'),(28,'US','LA','Louisiana'),(29,'US','ME','Maine'),(30,'US','MH','Marshall Islands'),(31,'US','MD','Maryland'),(32,'US','MA','Massachusetts'),(33,'US','MI','Michigan'),(34,'US','MN','Minnesota'),(35,'US','MS','Mississippi'),(36,'US','MO','Missouri'),(37,'US','MT','Montana'),(38,'US','NE','Nebraska'),(39,'US','NV','Nevada'),(40,'US','NH','New Hampshire'),(41,'US','NJ','New Jersey'),(42,'US','NM','New Mexico'),(43,'US','NY','New York'),(44,'US','NC','North Carolina'),(45,'US','ND','North Dakota'),(46,'US','MP','Northern Mariana Islands'),(47,'US','OH','Ohio'),(48,'US','OK','Oklahoma'),(49,'US','OR','Oregon'),(50,'US','PW','Palau'),(51,'US','PA','Pennsylvania'),(52,'US','PR','Puerto Rico'),(53,'US','RI','Rhode Island'),(54,'US','SC','South Carolina'),(55,'US','SD','South Dakota'),(56,'US','TN','Tennessee'),(57,'US','TX','Texas'),(58,'US','UT','Utah'),(59,'US','VT','Vermont'),(60,'US','VI','Virgin Islands'),(61,'US','VA','Virginia'),(62,'US','WA','Washington'),(63,'US','WV','West Virginia'),(64,'US','WI','Wisconsin'),(65,'US','WY','Wyoming'),(66,'CA','AB','Alberta'),(67,'CA','BC','British Columbia'),(68,'CA','MB','Manitoba'),(69,'CA','NL','Newfoundland and Labrador'),(70,'CA','NB','New Brunswick'),(71,'CA','NS','Nova Scotia'),(72,'CA','NT','Northwest Territories'),(73,'CA','NU','Nunavut'),(74,'CA','ON','Ontario'),(75,'CA','PE','Prince Edward Island'),(76,'CA','QC','Quebec'),(77,'CA','SK','Saskatchewan'),(78,'CA','YT','Yukon Territory'),(79,'DE','NDS','Niedersachsen'),(80,'DE','BAW','Baden-Württemberg'),(81,'DE','BAY','Bayern'),(82,'DE','BER','Berlin'),(83,'DE','BRG','Brandenburg'),(84,'DE','BRE','Bremen'),(85,'DE','HAM','Hamburg'),(86,'DE','HES','Hessen'),(87,'DE','MEC','Mecklenburg-Vorpommern'),(88,'DE','NRW','Nordrhein-Westfalen'),(89,'DE','RHE','Rheinland-Pfalz'),(90,'DE','SAR','Saarland'),(91,'DE','SAS','Sachsen'),(92,'DE','SAC','Sachsen-Anhalt'),(93,'DE','SCN','Schleswig-Holstein'),(94,'DE','THE','Thüringen'),(95,'AT','WI','Wien'),(96,'AT','NO','Niederösterreich'),(97,'AT','OO','Oberösterreich'),(98,'AT','SB','Salzburg'),(99,'AT','KN','Kärnten'),(100,'AT','ST','Steiermark'),(101,'AT','TI','Tirol'),(102,'AT','BL','Burgenland'),(103,'AT','VB','Voralberg'),(104,'CH','AG','Aargau'),(105,'CH','AI','Appenzell Innerrhoden'),(106,'CH','AR','Appenzell Ausserrhoden'),(107,'CH','BE','Bern'),(108,'CH','BL','Basel-Landschaft'),(109,'CH','BS','Basel-Stadt'),(110,'CH','FR','Freiburg'),(111,'CH','GE','Genf'),(112,'CH','GL','Glarus'),(113,'CH','GR','Graubünden'),(114,'CH','JU','Jura'),(115,'CH','LU','Luzern'),(116,'CH','NE','Neuenburg'),(117,'CH','NW','Nidwalden'),(118,'CH','OW','Obwalden'),(119,'CH','SG','St. Gallen'),(120,'CH','SH','Schaffhausen'),(121,'CH','SO','Solothurn'),(122,'CH','SZ','Schwyz'),(123,'CH','TG','Thurgau'),(124,'CH','TI','Tessin'),(125,'CH','UR','Uri'),(126,'CH','VD','Waadt'),(127,'CH','VS','Wallis'),(128,'CH','ZG','Zug'),(129,'CH','ZH','Zürich'),(130,'ES','A Coruсa','A Coruña'),(131,'ES','Alava','Alava'),(132,'ES','Albacete','Albacete'),(133,'ES','Alicante','Alicante'),(134,'ES','Almeria','Almeria'),(135,'ES','Asturias','Asturias'),(136,'ES','Avila','Avila'),(137,'ES','Badajoz','Badajoz'),(138,'ES','Baleares','Baleares'),(139,'ES','Barcelona','Barcelona'),(140,'ES','Burgos','Burgos'),(141,'ES','Caceres','Caceres'),(142,'ES','Cadiz','Cadiz'),(143,'ES','Cantabria','Cantabria'),(144,'ES','Castellon','Castellon'),(145,'ES','Ceuta','Ceuta'),(146,'ES','Ciudad Real','Ciudad Real'),(147,'ES','Cordoba','Cordoba'),(148,'ES','Cuenca','Cuenca'),(149,'ES','Girona','Girona'),(150,'ES','Granada','Granada'),(151,'ES','Guadalajara','Guadalajara'),(152,'ES','Guipuzcoa','Guipuzcoa'),(153,'ES','Huelva','Huelva'),(154,'ES','Huesca','Huesca'),(155,'ES','Jaen','Jaen'),(156,'ES','La Rioja','La Rioja'),(157,'ES','Las Palmas','Las Palmas'),(158,'ES','Leon','Leon'),(159,'ES','Lleida','Lleida'),(160,'ES','Lugo','Lugo'),(161,'ES','Madrid','Madrid'),(162,'ES','Malaga','Malaga'),(163,'ES','Melilla','Melilla'),(164,'ES','Murcia','Murcia'),(165,'ES','Navarra','Navarra'),(166,'ES','Ourense','Ourense'),(167,'ES','Palencia','Palencia'),(168,'ES','Pontevedra','Pontevedra'),(169,'ES','Salamanca','Salamanca'),(170,'ES','Santa Cruz de Tenerife','Santa Cruz de Tenerife'),(171,'ES','Segovia','Segovia'),(172,'ES','Sevilla','Sevilla'),(173,'ES','Soria','Soria'),(174,'ES','Tarragona','Tarragona'),(175,'ES','Teruel','Teruel'),(176,'ES','Toledo','Toledo'),(177,'ES','Valencia','Valencia'),(178,'ES','Valladolid','Valladolid'),(179,'ES','Vizcaya','Vizcaya'),(180,'ES','Zamora','Zamora'),(181,'ES','Zaragoza','Zaragoza'),(182,'FR','1','Ain'),(183,'FR','2','Aisne'),(184,'FR','3','Allier'),(185,'FR','4','Alpes-de-Haute-Provence'),(186,'FR','5','Hautes-Alpes'),(187,'FR','6','Alpes-Maritimes'),(188,'FR','7','Ardèche'),(189,'FR','8','Ardennes'),(190,'FR','9','Ariège'),(191,'FR','10','Aube'),(192,'FR','11','Aude'),(193,'FR','12','Aveyron'),(194,'FR','13','Bouches-du-Rhône'),(195,'FR','14','Calvados'),(196,'FR','15','Cantal'),(197,'FR','16','Charente'),(198,'FR','17','Charente-Maritime'),(199,'FR','18','Cher'),(200,'FR','19','Corrèze'),(201,'FR','2A','Corse-du-Sud'),(202,'FR','2B','Haute-Corse'),(203,'FR','21','Côte-d\'Or'),(204,'FR','22','Côtes-d\'Armor'),(205,'FR','23','Creuse'),(206,'FR','24','Dordogne'),(207,'FR','25','Doubs'),(208,'FR','26','Drôme'),(209,'FR','27','Eure'),(210,'FR','28','Eure-et-Loir'),(211,'FR','29','Finistère'),(212,'FR','30','Gard'),(213,'FR','31','Haute-Garonne'),(214,'FR','32','Gers'),(215,'FR','33','Gironde'),(216,'FR','34','Hérault'),(217,'FR','35','Ille-et-Vilaine'),(218,'FR','36','Indre'),(219,'FR','37','Indre-et-Loire'),(220,'FR','38','Isère'),(221,'FR','39','Jura'),(222,'FR','40','Landes'),(223,'FR','41','Loir-et-Cher'),(224,'FR','42','Loire'),(225,'FR','43','Haute-Loire'),(226,'FR','44','Loire-Atlantique'),(227,'FR','45','Loiret'),(228,'FR','46','Lot'),(229,'FR','47','Lot-et-Garonne'),(230,'FR','48','Lozère'),(231,'FR','49','Maine-et-Loire'),(232,'FR','50','Manche'),(233,'FR','51','Marne'),(234,'FR','52','Haute-Marne'),(235,'FR','53','Mayenne'),(236,'FR','54','Meurthe-et-Moselle'),(237,'FR','55','Meuse'),(238,'FR','56','Morbihan'),(239,'FR','57','Moselle'),(240,'FR','58','Nièvre'),(241,'FR','59','Nord'),(242,'FR','60','Oise'),(243,'FR','61','Orne'),(244,'FR','62','Pas-de-Calais'),(245,'FR','63','Puy-de-Dôme'),(246,'FR','64','Pyrénées-Atlantiques'),(247,'FR','65','Hautes-Pyrénées'),(248,'FR','66','Pyrénées-Orientales'),(249,'FR','67','Bas-Rhin'),(250,'FR','68','Haut-Rhin'),(251,'FR','69','Rhône'),(252,'FR','70','Haute-Saône'),(253,'FR','71','Saône-et-Loire'),(254,'FR','72','Sarthe'),(255,'FR','73','Savoie'),(256,'FR','74','Haute-Savoie'),(257,'FR','75','Paris'),(258,'FR','76','Seine-Maritime'),(259,'FR','77','Seine-et-Marne'),(260,'FR','78','Yvelines'),(261,'FR','79','Deux-Sèvres'),(262,'FR','80','Somme'),(263,'FR','81','Tarn'),(264,'FR','82','Tarn-et-Garonne'),(265,'FR','83','Var'),(266,'FR','84','Vaucluse'),(267,'FR','85','Vendée'),(268,'FR','86','Vienne'),(269,'FR','87','Haute-Vienne'),(270,'FR','88','Vosges'),(271,'FR','89','Yonne'),(272,'FR','90','Territoire-de-Belfort'),(273,'FR','91','Essonne'),(274,'FR','92','Hauts-de-Seine'),(275,'FR','93','Seine-Saint-Denis'),(276,'FR','94','Val-de-Marne'),(277,'FR','95','Val-d\'Oise'),(278,'RO','AB','Alba'),(279,'RO','AR','Arad'),(280,'RO','AG','Argeş'),(281,'RO','BC','Bacău'),(282,'RO','BH','Bihor'),(283,'RO','BN','Bistriţa-Năsăud'),(284,'RO','BT','Botoşani'),(285,'RO','BV','Braşov'),(286,'RO','BR','Brăila'),(287,'RO','B','Bucureşti'),(288,'RO','BZ','Buzău'),(289,'RO','CS','Caraş-Severin'),(290,'RO','CL','Călăraşi'),(291,'RO','CJ','Cluj'),(292,'RO','CT','Constanţa'),(293,'RO','CV','Covasna'),(294,'RO','DB','Dâmboviţa'),(295,'RO','DJ','Dolj'),(296,'RO','GL','Galaţi'),(297,'RO','GR','Giurgiu'),(298,'RO','GJ','Gorj'),(299,'RO','HR','Harghita'),(300,'RO','HD','Hunedoara'),(301,'RO','IL','Ialomiţa'),(302,'RO','IS','Iaşi'),(303,'RO','IF','Ilfov'),(304,'RO','MM','Maramureş'),(305,'RO','MH','Mehedinţi'),(306,'RO','MS','Mureş'),(307,'RO','NT','Neamţ'),(308,'RO','OT','Olt'),(309,'RO','PH','Prahova'),(310,'RO','SM','Satu-Mare'),(311,'RO','SJ','Sălaj'),(312,'RO','SB','Sibiu'),(313,'RO','SV','Suceava'),(314,'RO','TR','Teleorman'),(315,'RO','TM','Timiş'),(316,'RO','TL','Tulcea'),(317,'RO','VS','Vaslui'),(318,'RO','VL','Vâlcea'),(319,'RO','VN','Vrancea'),(320,'FI','Lappi','Lappi'),(321,'FI','Pohjois-Pohjanmaa','Pohjois-Pohjanmaa'),(322,'FI','Kainuu','Kainuu'),(323,'FI','Pohjois-Karjala','Pohjois-Karjala'),(324,'FI','Pohjois-Savo','Pohjois-Savo'),(325,'FI','Etelä-Savo','Etelä-Savo'),(326,'FI','Etelä-Pohjanmaa','Etelä-Pohjanmaa'),(327,'FI','Pohjanmaa','Pohjanmaa'),(328,'FI','Pirkanmaa','Pirkanmaa'),(329,'FI','Satakunta','Satakunta'),(330,'FI','Keski-Pohjanmaa','Keski-Pohjanmaa'),(331,'FI','Keski-Suomi','Keski-Suomi'),(332,'FI','Varsinais-Suomi','Varsinais-Suomi'),(333,'FI','Etelä-Karjala','Etelä-Karjala'),(334,'FI','Päijät-Häme','Päijät-Häme'),(335,'FI','Kanta-Häme','Kanta-Häme'),(336,'FI','Uusimaa','Uusimaa'),(337,'FI','Itä-Uusimaa','Itä-Uusimaa'),(338,'FI','Kymenlaakso','Kymenlaakso'),(339,'FI','Ahvenanmaa','Ahvenanmaa'),(340,'EE','EE-37','Harjumaa'),(341,'EE','EE-39','Hiiumaa'),(342,'EE','EE-44','Ida-Virumaa'),(343,'EE','EE-49','Jõgevamaa'),(344,'EE','EE-51','Järvamaa'),(345,'EE','EE-57','Läänemaa'),(346,'EE','EE-59','Lääne-Virumaa'),(347,'EE','EE-65','Põlvamaa'),(348,'EE','EE-67','Pärnumaa'),(349,'EE','EE-70','Raplamaa'),(350,'EE','EE-74','Saaremaa'),(351,'EE','EE-78','Tartumaa'),(352,'EE','EE-82','Valgamaa'),(353,'EE','EE-84','Viljandimaa'),(354,'EE','EE-86','Võrumaa'),(355,'LV','LV-DGV','Daugavpils'),(356,'LV','LV-JEL','Jelgava'),(357,'LV','Jēkabpils','Jēkabpils'),(358,'LV','LV-JUR','Jūrmala'),(359,'LV','LV-LPX','Liepāja'),(360,'LV','LV-LE','Liepājas novads'),(361,'LV','LV-REZ','Rēzekne'),(362,'LV','LV-RIX','Rīga'),(363,'LV','LV-RI','Rīgas novads'),(364,'LV','Valmiera','Valmiera'),(365,'LV','LV-VEN','Ventspils'),(366,'LV','Aglonas novads','Aglonas novads'),(367,'LV','LV-AI','Aizkraukles novads'),(368,'LV','Aizputes novads','Aizputes novads'),(369,'LV','Aknīstes novads','Aknīstes novads'),(370,'LV','Alojas novads','Alojas novads'),(371,'LV','Alsungas novads','Alsungas novads'),(372,'LV','LV-AL','Alūksnes novads'),(373,'LV','Amatas novads','Amatas novads'),(374,'LV','Apes novads','Apes novads'),(375,'LV','Auces novads','Auces novads'),(376,'LV','Babītes novads','Babītes novads'),(377,'LV','Baldones novads','Baldones novads'),(378,'LV','Baltinavas novads','Baltinavas novads'),(379,'LV','LV-BL','Balvu novads'),(380,'LV','LV-BU','Bauskas novads'),(381,'LV','Beverīnas novads','Beverīnas novads'),(382,'LV','Brocēnu novads','Brocēnu novads'),(383,'LV','Burtnieku novads','Burtnieku novads'),(384,'LV','Carnikavas novads','Carnikavas novads'),(385,'LV','Cesvaines novads','Cesvaines novads'),(386,'LV','Ciblas novads','Ciblas novads'),(387,'LV','LV-CE','Cēsu novads'),(388,'LV','Dagdas novads','Dagdas novads'),(389,'LV','LV-DA','Daugavpils novads'),(390,'LV','LV-DO','Dobeles novads'),(391,'LV','Dundagas novads','Dundagas novads'),(392,'LV','Durbes novads','Durbes novads'),(393,'LV','Engures novads','Engures novads'),(394,'LV','Garkalnes novads','Garkalnes novads'),(395,'LV','Grobiņas novads','Grobiņas novads'),(396,'LV','LV-GU','Gulbenes novads'),(397,'LV','Iecavas novads','Iecavas novads'),(398,'LV','Ikšķiles novads','Ikšķiles novads'),(399,'LV','Ilūkstes novads','Ilūkstes novads'),(400,'LV','Inčukalna novads','Inčukalna novads'),(401,'LV','Jaunjelgavas novads','Jaunjelgavas novads'),(402,'LV','Jaunpiebalgas novads','Jaunpiebalgas novads'),(403,'LV','Jaunpils novads','Jaunpils novads'),(404,'LV','LV-JL','Jelgavas novads'),(405,'LV','LV-JK','Jēkabpils novads'),(406,'LV','Kandavas novads','Kandavas novads'),(407,'LV','Kokneses novads','Kokneses novads'),(408,'LV','Krimuldas novads','Krimuldas novads'),(409,'LV','Krustpils novads','Krustpils novads'),(410,'LV','LV-KR','Krāslavas novads'),(411,'LV','LV-KU','Kuldīgas novads'),(412,'LV','Kārsavas novads','Kārsavas novads'),(413,'LV','Lielvārdes novads','Lielvārdes novads'),(414,'LV','LV-LM','Limbažu novads'),(415,'LV','Lubānas novads','Lubānas novads'),(416,'LV','LV-LU','Ludzas novads'),(417,'LV','Līgatnes novads','Līgatnes novads'),(418,'LV','Līvānu novads','Līvānu novads'),(419,'LV','LV-MA','Madonas novads'),(420,'LV','Mazsalacas novads','Mazsalacas novads'),(421,'LV','Mālpils novads','Mālpils novads'),(422,'LV','Mārupes novads','Mārupes novads'),(423,'LV','Naukšēnu novads','Naukšēnu novads'),(424,'LV','Neretas novads','Neretas novads'),(425,'LV','Nīcas novads','Nīcas novads'),(426,'LV','LV-OG','Ogres novads'),(427,'LV','Olaines novads','Olaines novads'),(428,'LV','Ozolnieku novads','Ozolnieku novads'),(429,'LV','LV-PR','Preiļu novads'),(430,'LV','Priekules novads','Priekules novads'),(431,'LV','Priekuļu novads','Priekuļu novads'),(432,'LV','Pārgaujas novads','Pārgaujas novads'),(433,'LV','Pāvilostas novads','Pāvilostas novads'),(434,'LV','Pļaviņu novads','Pļaviņu novads'),(435,'LV','Raunas novads','Raunas novads'),(436,'LV','Riebiņu novads','Riebiņu novads'),(437,'LV','Rojas novads','Rojas novads'),(438,'LV','Ropažu novads','Ropažu novads'),(439,'LV','Rucavas novads','Rucavas novads'),(440,'LV','Rugāju novads','Rugāju novads'),(441,'LV','Rundāles novads','Rundāles novads'),(442,'LV','LV-RE','Rēzeknes novads'),(443,'LV','Rūjienas novads','Rūjienas novads'),(444,'LV','Salacgrīvas novads','Salacgrīvas novads'),(445,'LV','Salas novads','Salas novads'),(446,'LV','Salaspils novads','Salaspils novads'),(447,'LV','LV-SA','Saldus novads'),(448,'LV','Saulkrastu novads','Saulkrastu novads'),(449,'LV','Siguldas novads','Siguldas novads'),(450,'LV','Skrundas novads','Skrundas novads'),(451,'LV','Skrīveru novads','Skrīveru novads'),(452,'LV','Smiltenes novads','Smiltenes novads'),(453,'LV','Stopiņu novads','Stopiņu novads'),(454,'LV','Strenču novads','Strenču novads'),(455,'LV','Sējas novads','Sējas novads'),(456,'LV','LV-TA','Talsu novads'),(457,'LV','LV-TU','Tukuma novads'),(458,'LV','Tērvetes novads','Tērvetes novads'),(459,'LV','Vaiņodes novads','Vaiņodes novads'),(460,'LV','LV-VK','Valkas novads'),(461,'LV','LV-VM','Valmieras novads'),(462,'LV','Varakļānu novads','Varakļānu novads'),(463,'LV','Vecpiebalgas novads','Vecpiebalgas novads'),(464,'LV','Vecumnieku novads','Vecumnieku novads'),(465,'LV','LV-VE','Ventspils novads'),(466,'LV','Viesītes novads','Viesītes novads'),(467,'LV','Viļakas novads','Viļakas novads'),(468,'LV','Viļānu novads','Viļānu novads'),(469,'LV','Vārkavas novads','Vārkavas novads'),(470,'LV','Zilupes novads','Zilupes novads'),(471,'LV','Ādažu novads','Ādažu novads'),(472,'LV','Ērgļu novads','Ērgļu novads'),(473,'LV','Ķeguma novads','Ķeguma novads'),(474,'LV','Ķekavas novads','Ķekavas novads'),(475,'LT','LT-AL','Alytaus Apskritis'),(476,'LT','LT-KU','Kauno Apskritis'),(477,'LT','LT-KL','Klaipėdos Apskritis'),(478,'LT','LT-MR','Marijampolės Apskritis'),(479,'LT','LT-PN','Panevėžio Apskritis'),(480,'LT','LT-SA','Šiaulių Apskritis'),(481,'LT','LT-TA','Tauragės Apskritis'),(482,'LT','LT-TE','Telšių Apskritis'),(483,'LT','LT-UT','Utenos Apskritis'),(484,'LT','LT-VL','Vilniaus Apskritis');
-/*!40000 ALTER TABLE `shop_directory_country_region` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_directory_country_region_name`
@@ -5350,16 +3756,6 @@ CREATE TABLE `shop_directory_country_region_name` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_directory_country_region_name`
---
-
-LOCK TABLES `shop_directory_country_region_name` WRITE;
-/*!40000 ALTER TABLE `shop_directory_country_region_name` DISABLE KEYS */;
-INSERT INTO `shop_directory_country_region_name` VALUES ('en_US',1,'Alabama'),('en_US',2,'Alaska'),('en_US',3,'American Samoa'),('en_US',4,'Arizona'),('en_US',5,'Arkansas'),('en_US',6,'Armed Forces Africa'),('en_US',7,'Armed Forces Americas'),('en_US',8,'Armed Forces Canada'),('en_US',9,'Armed Forces Europe'),('en_US',10,'Armed Forces Middle East'),('en_US',11,'Armed Forces Pacific'),('en_US',12,'California'),('en_US',13,'Colorado'),('en_US',14,'Connecticut'),('en_US',15,'Delaware'),('en_US',16,'District of Columbia'),('en_US',17,'Federated States Of Micronesia'),('en_US',18,'Florida'),('en_US',19,'Georgia'),('en_US',20,'Guam'),('en_US',21,'Hawaii'),('en_US',22,'Idaho'),('en_US',23,'Illinois'),('en_US',24,'Indiana'),('en_US',25,'Iowa'),('en_US',26,'Kansas'),('en_US',27,'Kentucky'),('en_US',28,'Louisiana'),('en_US',29,'Maine'),('en_US',30,'Marshall Islands'),('en_US',31,'Maryland'),('en_US',32,'Massachusetts'),('en_US',33,'Michigan'),('en_US',34,'Minnesota'),('en_US',35,'Mississippi'),('en_US',36,'Missouri'),('en_US',37,'Montana'),('en_US',38,'Nebraska'),('en_US',39,'Nevada'),('en_US',40,'New Hampshire'),('en_US',41,'New Jersey'),('en_US',42,'New Mexico'),('en_US',43,'New York'),('en_US',44,'North Carolina'),('en_US',45,'North Dakota'),('en_US',46,'Northern Mariana Islands'),('en_US',47,'Ohio'),('en_US',48,'Oklahoma'),('en_US',49,'Oregon'),('en_US',50,'Palau'),('en_US',51,'Pennsylvania'),('en_US',52,'Puerto Rico'),('en_US',53,'Rhode Island'),('en_US',54,'South Carolina'),('en_US',55,'South Dakota'),('en_US',56,'Tennessee'),('en_US',57,'Texas'),('en_US',58,'Utah'),('en_US',59,'Vermont'),('en_US',60,'Virgin Islands'),('en_US',61,'Virginia'),('en_US',62,'Washington'),('en_US',63,'West Virginia'),('en_US',64,'Wisconsin'),('en_US',65,'Wyoming'),('en_US',66,'Alberta'),('en_US',67,'British Columbia'),('en_US',68,'Manitoba'),('en_US',69,'Newfoundland and Labrador'),('en_US',70,'New Brunswick'),('en_US',71,'Nova Scotia'),('en_US',72,'Northwest Territories'),('en_US',73,'Nunavut'),('en_US',74,'Ontario'),('en_US',75,'Prince Edward Island'),('en_US',76,'Quebec'),('en_US',77,'Saskatchewan'),('en_US',78,'Yukon Territory'),('en_US',79,'Niedersachsen'),('en_US',80,'Baden-Württemberg'),('en_US',81,'Bayern'),('en_US',82,'Berlin'),('en_US',83,'Brandenburg'),('en_US',84,'Bremen'),('en_US',85,'Hamburg'),('en_US',86,'Hessen'),('en_US',87,'Mecklenburg-Vorpommern'),('en_US',88,'Nordrhein-Westfalen'),('en_US',89,'Rheinland-Pfalz'),('en_US',90,'Saarland'),('en_US',91,'Sachsen'),('en_US',92,'Sachsen-Anhalt'),('en_US',93,'Schleswig-Holstein'),('en_US',94,'Thüringen'),('en_US',95,'Wien'),('en_US',96,'Niederösterreich'),('en_US',97,'Oberösterreich'),('en_US',98,'Salzburg'),('en_US',99,'Kärnten'),('en_US',100,'Steiermark'),('en_US',101,'Tirol'),('en_US',102,'Burgenland'),('en_US',103,'Voralberg'),('en_US',104,'Aargau'),('en_US',105,'Appenzell Innerrhoden'),('en_US',106,'Appenzell Ausserrhoden'),('en_US',107,'Bern'),('en_US',108,'Basel-Landschaft'),('en_US',109,'Basel-Stadt'),('en_US',110,'Freiburg'),('en_US',111,'Genf'),('en_US',112,'Glarus'),('en_US',113,'Graubünden'),('en_US',114,'Jura'),('en_US',115,'Luzern'),('en_US',116,'Neuenburg'),('en_US',117,'Nidwalden'),('en_US',118,'Obwalden'),('en_US',119,'St. Gallen'),('en_US',120,'Schaffhausen'),('en_US',121,'Solothurn'),('en_US',122,'Schwyz'),('en_US',123,'Thurgau'),('en_US',124,'Tessin'),('en_US',125,'Uri'),('en_US',126,'Waadt'),('en_US',127,'Wallis'),('en_US',128,'Zug'),('en_US',129,'Zürich'),('en_US',130,'A Coruña'),('en_US',131,'Alava'),('en_US',132,'Albacete'),('en_US',133,'Alicante'),('en_US',134,'Almeria'),('en_US',135,'Asturias'),('en_US',136,'Avila'),('en_US',137,'Badajoz'),('en_US',138,'Baleares'),('en_US',139,'Barcelona'),('en_US',140,'Burgos'),('en_US',141,'Caceres'),('en_US',142,'Cadiz'),('en_US',143,'Cantabria'),('en_US',144,'Castellon'),('en_US',145,'Ceuta'),('en_US',146,'Ciudad Real'),('en_US',147,'Cordoba'),('en_US',148,'Cuenca'),('en_US',149,'Girona'),('en_US',150,'Granada'),('en_US',151,'Guadalajara'),('en_US',152,'Guipuzcoa'),('en_US',153,'Huelva'),('en_US',154,'Huesca'),('en_US',155,'Jaen'),('en_US',156,'La Rioja'),('en_US',157,'Las Palmas'),('en_US',158,'Leon'),('en_US',159,'Lleida'),('en_US',160,'Lugo'),('en_US',161,'Madrid'),('en_US',162,'Malaga'),('en_US',163,'Melilla'),('en_US',164,'Murcia'),('en_US',165,'Navarra'),('en_US',166,'Ourense'),('en_US',167,'Palencia'),('en_US',168,'Pontevedra'),('en_US',169,'Salamanca'),('en_US',170,'Santa Cruz de Tenerife'),('en_US',171,'Segovia'),('en_US',172,'Sevilla'),('en_US',173,'Soria'),('en_US',174,'Tarragona'),('en_US',175,'Teruel'),('en_US',176,'Toledo'),('en_US',177,'Valencia'),('en_US',178,'Valladolid'),('en_US',179,'Vizcaya'),('en_US',180,'Zamora'),('en_US',181,'Zaragoza'),('en_US',182,'Ain'),('en_US',183,'Aisne'),('en_US',184,'Allier'),('en_US',185,'Alpes-de-Haute-Provence'),('en_US',186,'Hautes-Alpes'),('en_US',187,'Alpes-Maritimes'),('en_US',188,'Ardèche'),('en_US',189,'Ardennes'),('en_US',190,'Ariège'),('en_US',191,'Aube'),('en_US',192,'Aude'),('en_US',193,'Aveyron'),('en_US',194,'Bouches-du-Rhône'),('en_US',195,'Calvados'),('en_US',196,'Cantal'),('en_US',197,'Charente'),('en_US',198,'Charente-Maritime'),('en_US',199,'Cher'),('en_US',200,'Corrèze'),('en_US',201,'Corse-du-Sud'),('en_US',202,'Haute-Corse'),('en_US',203,'Côte-d\'Or'),('en_US',204,'Côtes-d\'Armor'),('en_US',205,'Creuse'),('en_US',206,'Dordogne'),('en_US',207,'Doubs'),('en_US',208,'Drôme'),('en_US',209,'Eure'),('en_US',210,'Eure-et-Loir'),('en_US',211,'Finistère'),('en_US',212,'Gard'),('en_US',213,'Haute-Garonne'),('en_US',214,'Gers'),('en_US',215,'Gironde'),('en_US',216,'Hérault'),('en_US',217,'Ille-et-Vilaine'),('en_US',218,'Indre'),('en_US',219,'Indre-et-Loire'),('en_US',220,'Isère'),('en_US',221,'Jura'),('en_US',222,'Landes'),('en_US',223,'Loir-et-Cher'),('en_US',224,'Loire'),('en_US',225,'Haute-Loire'),('en_US',226,'Loire-Atlantique'),('en_US',227,'Loiret'),('en_US',228,'Lot'),('en_US',229,'Lot-et-Garonne'),('en_US',230,'Lozère'),('en_US',231,'Maine-et-Loire'),('en_US',232,'Manche'),('en_US',233,'Marne'),('en_US',234,'Haute-Marne'),('en_US',235,'Mayenne'),('en_US',236,'Meurthe-et-Moselle'),('en_US',237,'Meuse'),('en_US',238,'Morbihan'),('en_US',239,'Moselle'),('en_US',240,'Nièvre'),('en_US',241,'Nord'),('en_US',242,'Oise'),('en_US',243,'Orne'),('en_US',244,'Pas-de-Calais'),('en_US',245,'Puy-de-Dôme'),('en_US',246,'Pyrénées-Atlantiques'),('en_US',247,'Hautes-Pyrénées'),('en_US',248,'Pyrénées-Orientales'),('en_US',249,'Bas-Rhin'),('en_US',250,'Haut-Rhin'),('en_US',251,'Rhône'),('en_US',252,'Haute-Saône'),('en_US',253,'Saône-et-Loire'),('en_US',254,'Sarthe'),('en_US',255,'Savoie'),('en_US',256,'Haute-Savoie'),('en_US',257,'Paris'),('en_US',258,'Seine-Maritime'),('en_US',259,'Seine-et-Marne'),('en_US',260,'Yvelines'),('en_US',261,'Deux-Sèvres'),('en_US',262,'Somme'),('en_US',263,'Tarn'),('en_US',264,'Tarn-et-Garonne'),('en_US',265,'Var'),('en_US',266,'Vaucluse'),('en_US',267,'Vendée'),('en_US',268,'Vienne'),('en_US',269,'Haute-Vienne'),('en_US',270,'Vosges'),('en_US',271,'Yonne'),('en_US',272,'Territoire-de-Belfort'),('en_US',273,'Essonne'),('en_US',274,'Hauts-de-Seine'),('en_US',275,'Seine-Saint-Denis'),('en_US',276,'Val-de-Marne'),('en_US',277,'Val-d\'Oise'),('en_US',278,'Alba'),('en_US',279,'Arad'),('en_US',280,'Argeş'),('en_US',281,'Bacău'),('en_US',282,'Bihor'),('en_US',283,'Bistriţa-Năsăud'),('en_US',284,'Botoşani'),('en_US',285,'Braşov'),('en_US',286,'Brăila'),('en_US',287,'Bucureşti'),('en_US',288,'Buzău'),('en_US',289,'Caraş-Severin'),('en_US',290,'Călăraşi'),('en_US',291,'Cluj'),('en_US',292,'Constanţa'),('en_US',293,'Covasna'),('en_US',294,'Dâmboviţa'),('en_US',295,'Dolj'),('en_US',296,'Galaţi'),('en_US',297,'Giurgiu'),('en_US',298,'Gorj'),('en_US',299,'Harghita'),('en_US',300,'Hunedoara'),('en_US',301,'Ialomiţa'),('en_US',302,'Iaşi'),('en_US',303,'Ilfov'),('en_US',304,'Maramureş'),('en_US',305,'Mehedinţi'),('en_US',306,'Mureş'),('en_US',307,'Neamţ'),('en_US',308,'Olt'),('en_US',309,'Prahova'),('en_US',310,'Satu-Mare'),('en_US',311,'Sălaj'),('en_US',312,'Sibiu'),('en_US',313,'Suceava'),('en_US',314,'Teleorman'),('en_US',315,'Timiş'),('en_US',316,'Tulcea'),('en_US',317,'Vaslui'),('en_US',318,'Vâlcea'),('en_US',319,'Vrancea'),('en_US',320,'Lappi'),('en_US',321,'Pohjois-Pohjanmaa'),('en_US',322,'Kainuu'),('en_US',323,'Pohjois-Karjala'),('en_US',324,'Pohjois-Savo'),('en_US',325,'Etelä-Savo'),('en_US',326,'Etelä-Pohjanmaa'),('en_US',327,'Pohjanmaa'),('en_US',328,'Pirkanmaa'),('en_US',329,'Satakunta'),('en_US',330,'Keski-Pohjanmaa'),('en_US',331,'Keski-Suomi'),('en_US',332,'Varsinais-Suomi'),('en_US',333,'Etelä-Karjala'),('en_US',334,'Päijät-Häme'),('en_US',335,'Kanta-Häme'),('en_US',336,'Uusimaa'),('en_US',337,'Itä-Uusimaa'),('en_US',338,'Kymenlaakso'),('en_US',339,'Ahvenanmaa'),('en_US',340,'Harjumaa'),('en_US',341,'Hiiumaa'),('en_US',342,'Ida-Virumaa'),('en_US',343,'Jõgevamaa'),('en_US',344,'Järvamaa'),('en_US',345,'Läänemaa'),('en_US',346,'Lääne-Virumaa'),('en_US',347,'Põlvamaa'),('en_US',348,'Pärnumaa'),('en_US',349,'Raplamaa'),('en_US',350,'Saaremaa'),('en_US',351,'Tartumaa'),('en_US',352,'Valgamaa'),('en_US',353,'Viljandimaa'),('en_US',354,'Võrumaa'),('en_US',355,'Daugavpils'),('en_US',356,'Jelgava'),('en_US',357,'Jēkabpils'),('en_US',358,'Jūrmala'),('en_US',359,'Liepāja'),('en_US',360,'Liepājas novads'),('en_US',361,'Rēzekne'),('en_US',362,'Rīga'),('en_US',363,'Rīgas novads'),('en_US',364,'Valmiera'),('en_US',365,'Ventspils'),('en_US',366,'Aglonas novads'),('en_US',367,'Aizkraukles novads'),('en_US',368,'Aizputes novads'),('en_US',369,'Aknīstes novads'),('en_US',370,'Alojas novads'),('en_US',371,'Alsungas novads'),('en_US',372,'Alūksnes novads'),('en_US',373,'Amatas novads'),('en_US',374,'Apes novads'),('en_US',375,'Auces novads'),('en_US',376,'Babītes novads'),('en_US',377,'Baldones novads'),('en_US',378,'Baltinavas novads'),('en_US',379,'Balvu novads'),('en_US',380,'Bauskas novads'),('en_US',381,'Beverīnas novads'),('en_US',382,'Brocēnu novads'),('en_US',383,'Burtnieku novads'),('en_US',384,'Carnikavas novads'),('en_US',385,'Cesvaines novads'),('en_US',386,'Ciblas novads'),('en_US',387,'Cēsu novads'),('en_US',388,'Dagdas novads'),('en_US',389,'Daugavpils novads'),('en_US',390,'Dobeles novads'),('en_US',391,'Dundagas novads'),('en_US',392,'Durbes novads'),('en_US',393,'Engures novads'),('en_US',394,'Garkalnes novads'),('en_US',395,'Grobiņas novads'),('en_US',396,'Gulbenes novads'),('en_US',397,'Iecavas novads'),('en_US',398,'Ikšķiles novads'),('en_US',399,'Ilūkstes novads'),('en_US',400,'Inčukalna novads'),('en_US',401,'Jaunjelgavas novads'),('en_US',402,'Jaunpiebalgas novads'),('en_US',403,'Jaunpils novads'),('en_US',404,'Jelgavas novads'),('en_US',405,'Jēkabpils novads'),('en_US',406,'Kandavas novads'),('en_US',407,'Kokneses novads'),('en_US',408,'Krimuldas novads'),('en_US',409,'Krustpils novads'),('en_US',410,'Krāslavas novads'),('en_US',411,'Kuldīgas novads'),('en_US',412,'Kārsavas novads'),('en_US',413,'Lielvārdes novads'),('en_US',414,'Limbažu novads'),('en_US',415,'Lubānas novads'),('en_US',416,'Ludzas novads'),('en_US',417,'Līgatnes novads'),('en_US',418,'Līvānu novads'),('en_US',419,'Madonas novads'),('en_US',420,'Mazsalacas novads'),('en_US',421,'Mālpils novads'),('en_US',422,'Mārupes novads'),('en_US',423,'Naukšēnu novads'),('en_US',424,'Neretas novads'),('en_US',425,'Nīcas novads'),('en_US',426,'Ogres novads'),('en_US',427,'Olaines novads'),('en_US',428,'Ozolnieku novads'),('en_US',429,'Preiļu novads'),('en_US',430,'Priekules novads'),('en_US',431,'Priekuļu novads'),('en_US',432,'Pārgaujas novads'),('en_US',433,'Pāvilostas novads'),('en_US',434,'Pļaviņu novads'),('en_US',435,'Raunas novads'),('en_US',436,'Riebiņu novads'),('en_US',437,'Rojas novads'),('en_US',438,'Ropažu novads'),('en_US',439,'Rucavas novads'),('en_US',440,'Rugāju novads'),('en_US',441,'Rundāles novads'),('en_US',442,'Rēzeknes novads'),('en_US',443,'Rūjienas novads'),('en_US',444,'Salacgrīvas novads'),('en_US',445,'Salas novads'),('en_US',446,'Salaspils novads'),('en_US',447,'Saldus novads'),('en_US',448,'Saulkrastu novads'),('en_US',449,'Siguldas novads'),('en_US',450,'Skrundas novads'),('en_US',451,'Skrīveru novads'),('en_US',452,'Smiltenes novads'),('en_US',453,'Stopiņu novads'),('en_US',454,'Strenču novads'),('en_US',455,'Sējas novads'),('en_US',456,'Talsu novads'),('en_US',457,'Tukuma novads'),('en_US',458,'Tērvetes novads'),('en_US',459,'Vaiņodes novads'),('en_US',460,'Valkas novads'),('en_US',461,'Valmieras novads'),('en_US',462,'Varakļānu novads'),('en_US',463,'Vecpiebalgas novads'),('en_US',464,'Vecumnieku novads'),('en_US',465,'Ventspils novads'),('en_US',466,'Viesītes novads'),('en_US',467,'Viļakas novads'),('en_US',468,'Viļānu novads'),('en_US',469,'Vārkavas novads'),('en_US',470,'Zilupes novads'),('en_US',471,'Ādažu novads'),('en_US',472,'Ērgļu novads'),('en_US',473,'Ķeguma novads'),('en_US',474,'Ķekavas novads'),('en_US',475,'Alytaus Apskritis'),('en_US',476,'Kauno Apskritis'),('en_US',477,'Klaipėdos Apskritis'),('en_US',478,'Marijampolės Apskritis'),('en_US',479,'Panevėžio Apskritis'),('en_US',480,'Šiaulių Apskritis'),('en_US',481,'Tauragės Apskritis'),('en_US',482,'Telšių Apskritis'),('en_US',483,'Utenos Apskritis'),('en_US',484,'Vilniaus Apskritis');
-/*!40000 ALTER TABLE `shop_directory_country_region_name` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_directory_currency_rate`
 --
 
@@ -5374,16 +3770,6 @@ CREATE TABLE `shop_directory_currency_rate` (
   KEY `IDX_SHOP_DIRECTORY_CURRENCY_RATE_CURRENCY_TO` (`currency_to`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Directory Currency Rate';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_directory_currency_rate`
---
-
-LOCK TABLES `shop_directory_currency_rate` WRITE;
-/*!40000 ALTER TABLE `shop_directory_currency_rate` DISABLE KEYS */;
-INSERT INTO `shop_directory_currency_rate` VALUES ('EUR','EUR',1.000000000000),('EUR','USD',1.415000000000),('USD','EUR',0.706700000000),('USD','USD',1.000000000000);
-/*!40000 ALTER TABLE `shop_directory_currency_rate` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_downloadable_link`
@@ -5412,15 +3798,6 @@ CREATE TABLE `shop_downloadable_link` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_downloadable_link`
---
-
-LOCK TABLES `shop_downloadable_link` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_link` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_link` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_downloadable_link_price`
 --
 
@@ -5439,15 +3816,6 @@ CREATE TABLE `shop_downloadable_link_price` (
   CONSTRAINT `FK_SHOP_DL_LNK_PRICE_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Downloadable Link Price Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_downloadable_link_price`
---
-
-LOCK TABLES `shop_downloadable_link_price` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_link_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_link_price` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_downloadable_link_purchased`
@@ -5475,15 +3843,6 @@ CREATE TABLE `shop_downloadable_link_purchased` (
   CONSTRAINT `FK_SHOP_DL_LNK_PURCHASED_ORDER_ID_SHOP_SALES_FLAT_ORDER_ENTT_ID` FOREIGN KEY (`order_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Downloadable Link Purchased Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_downloadable_link_purchased`
---
-
-LOCK TABLES `shop_downloadable_link_purchased` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_link_purchased` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_link_purchased` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_downloadable_link_purchased_item`
@@ -5519,15 +3878,6 @@ CREATE TABLE `shop_downloadable_link_purchased_item` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_downloadable_link_purchased_item`
---
-
-LOCK TABLES `shop_downloadable_link_purchased_item` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_link_purchased_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_link_purchased_item` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_downloadable_link_title`
 --
 
@@ -5547,15 +3897,6 @@ CREATE TABLE `shop_downloadable_link_title` (
   CONSTRAINT `FK_SHOP_DL_LNK_TTL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Link Title Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_downloadable_link_title`
---
-
-LOCK TABLES `shop_downloadable_link_title` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_link_title` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_link_title` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_downloadable_sample`
@@ -5578,15 +3919,6 @@ CREATE TABLE `shop_downloadable_sample` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_downloadable_sample`
---
-
-LOCK TABLES `shop_downloadable_sample` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_sample` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_sample` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_downloadable_sample_title`
 --
 
@@ -5606,15 +3938,6 @@ CREATE TABLE `shop_downloadable_sample_title` (
   CONSTRAINT `FK_SHOP_DL_SAMPLE_TTL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Downloadable Sample Title Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_downloadable_sample_title`
---
-
-LOCK TABLES `shop_downloadable_sample_title` WRITE;
-/*!40000 ALTER TABLE `shop_downloadable_sample_title` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_downloadable_sample_title` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_attribute`
@@ -5649,16 +3972,6 @@ CREATE TABLE `shop_eav_attribute` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_attribute`
---
-
-LOCK TABLES `shop_eav_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_eav_attribute` DISABLE KEYS */;
-INSERT INTO `shop_eav_attribute` VALUES (1,1,'website_id',NULL,'customer/customer_attribute_backend_website','static',NULL,NULL,'select','Associate to Website',NULL,'customer/customer_attribute_source_website',1,0,NULL,0,NULL),(2,1,'store_id',NULL,'customer/customer_attribute_backend_store','static',NULL,NULL,'select','Create In',NULL,'customer/customer_attribute_source_store',1,0,NULL,0,NULL),(3,1,'created_in',NULL,NULL,'varchar',NULL,NULL,'text','Created From',NULL,NULL,0,0,NULL,0,NULL),(4,1,'prefix',NULL,NULL,'varchar',NULL,NULL,'text','Prefix',NULL,NULL,0,0,NULL,0,NULL),(5,1,'firstname',NULL,NULL,'varchar',NULL,NULL,'text','First Name',NULL,NULL,1,0,NULL,0,NULL),(6,1,'middlename',NULL,NULL,'varchar',NULL,NULL,'text','Middle Name/Initial',NULL,NULL,0,0,NULL,0,NULL),(7,1,'lastname',NULL,NULL,'varchar',NULL,NULL,'text','Last Name',NULL,NULL,1,0,NULL,0,NULL),(8,1,'suffix',NULL,NULL,'varchar',NULL,NULL,'text','Suffix',NULL,NULL,0,0,NULL,0,NULL),(9,1,'email',NULL,NULL,'static',NULL,NULL,'text','Email',NULL,NULL,1,0,NULL,0,NULL),(10,1,'group_id',NULL,NULL,'static',NULL,NULL,'select','Group',NULL,'customer/customer_attribute_source_group',1,0,NULL,0,NULL),(11,1,'dob',NULL,'eav/entity_attribute_backend_datetime','datetime',NULL,'eav/entity_attribute_frontend_datetime','date','Date Of Birth',NULL,NULL,0,0,NULL,0,NULL),(12,1,'password_hash',NULL,'customer/customer_attribute_backend_password','varchar',NULL,NULL,'hidden',NULL,NULL,NULL,0,0,NULL,0,NULL),(13,1,'default_billing',NULL,'customer/customer_attribute_backend_billing','int',NULL,NULL,'text','Default Billing Address',NULL,NULL,0,0,NULL,0,NULL),(14,1,'default_shipping',NULL,'customer/customer_attribute_backend_shipping','int',NULL,NULL,'text','Default Shipping Address',NULL,NULL,0,0,NULL,0,NULL),(15,1,'taxvat',NULL,NULL,'varchar',NULL,NULL,'text','Tax/VAT Number',NULL,NULL,0,0,NULL,0,NULL),(16,1,'confirmation',NULL,NULL,'varchar',NULL,NULL,'text','Is Confirmed',NULL,NULL,0,0,NULL,0,NULL),(17,1,'created_at',NULL,NULL,'static',NULL,NULL,'datetime','Created At',NULL,NULL,0,0,NULL,0,NULL),(18,1,'gender',NULL,NULL,'int',NULL,NULL,'select','Gender',NULL,'eav/entity_attribute_source_table',0,0,NULL,0,NULL),(19,2,'prefix',NULL,NULL,'varchar',NULL,NULL,'text','Prefix',NULL,NULL,0,0,NULL,0,NULL),(20,2,'firstname',NULL,NULL,'varchar',NULL,NULL,'text','First Name',NULL,NULL,1,0,NULL,0,NULL),(21,2,'middlename',NULL,NULL,'varchar',NULL,NULL,'text','Middle Name/Initial',NULL,NULL,0,0,NULL,0,NULL),(22,2,'lastname',NULL,NULL,'varchar',NULL,NULL,'text','Last Name',NULL,NULL,1,0,NULL,0,NULL),(23,2,'suffix',NULL,NULL,'varchar',NULL,NULL,'text','Suffix',NULL,NULL,0,0,NULL,0,NULL),(24,2,'company',NULL,NULL,'varchar',NULL,NULL,'text','Company',NULL,NULL,0,0,NULL,0,NULL),(25,2,'street',NULL,'customer/entity_address_attribute_backend_street','text',NULL,NULL,'multiline','Street Address',NULL,NULL,1,0,NULL,0,NULL),(26,2,'city',NULL,NULL,'varchar',NULL,NULL,'text','City',NULL,NULL,1,0,NULL,0,NULL),(27,2,'country_id',NULL,NULL,'varchar',NULL,NULL,'select','Country',NULL,'customer/entity_address_attribute_source_country',1,0,NULL,0,NULL),(28,2,'region',NULL,'customer/entity_address_attribute_backend_region','varchar',NULL,NULL,'text','State/Province',NULL,NULL,0,0,NULL,0,NULL),(29,2,'region_id',NULL,NULL,'int',NULL,NULL,'hidden','State/Province',NULL,'customer/entity_address_attribute_source_region',0,0,NULL,0,NULL),(30,2,'postcode',NULL,NULL,'varchar',NULL,NULL,'text','Zip/Postal Code',NULL,NULL,1,0,NULL,0,NULL),(31,2,'telephone',NULL,NULL,'varchar',NULL,NULL,'text','Telephone',NULL,NULL,1,0,NULL,0,NULL),(32,2,'fax',NULL,NULL,'varchar',NULL,NULL,'text','Fax',NULL,NULL,0,0,NULL,0,NULL),(33,1,'rp_token',NULL,NULL,'varchar',NULL,NULL,'hidden',NULL,NULL,NULL,0,0,NULL,0,NULL),(34,1,'rp_token_created_at',NULL,NULL,'datetime',NULL,NULL,'date',NULL,NULL,NULL,0,0,NULL,0,NULL),(35,1,'disable_auto_group_change',NULL,'customer/attribute_backend_data_boolean','static',NULL,NULL,'boolean','Disable Automatic Group Change Based on VAT ID',NULL,NULL,0,0,NULL,0,NULL),(36,2,'vat_id',NULL,NULL,'varchar',NULL,NULL,'text','VAT number',NULL,NULL,0,0,NULL,0,NULL),(37,2,'vat_is_valid',NULL,NULL,'int',NULL,NULL,'text','VAT number validity',NULL,NULL,0,0,NULL,0,NULL),(38,2,'vat_request_id',NULL,NULL,'varchar',NULL,NULL,'text','VAT number validation request ID',NULL,NULL,0,0,NULL,0,NULL),(39,2,'vat_request_date',NULL,NULL,'varchar',NULL,NULL,'text','VAT number validation request date',NULL,NULL,0,0,NULL,0,NULL),(40,2,'vat_request_success',NULL,NULL,'int',NULL,NULL,'text','VAT number validation request success',NULL,NULL,0,0,NULL,0,NULL),(41,3,'name',NULL,NULL,'varchar',NULL,NULL,'text','Name',NULL,NULL,1,0,NULL,0,NULL),(42,3,'is_active',NULL,NULL,'int',NULL,NULL,'select','Is Active',NULL,'eav/entity_attribute_source_boolean',1,0,NULL,0,NULL),(43,3,'url_key',NULL,'catalog/category_attribute_backend_urlkey','varchar',NULL,NULL,'text','URL Key',NULL,NULL,0,0,NULL,0,NULL),(44,3,'description',NULL,NULL,'text',NULL,NULL,'textarea','Description',NULL,NULL,0,0,NULL,0,NULL),(45,3,'image',NULL,'catalog/category_attribute_backend_image','varchar',NULL,NULL,'image','Image',NULL,NULL,0,0,NULL,0,NULL),(46,3,'meta_title',NULL,NULL,'varchar',NULL,NULL,'text','Page Title',NULL,NULL,0,0,NULL,0,NULL),(47,3,'meta_keywords',NULL,NULL,'text',NULL,NULL,'textarea','Meta Keywords',NULL,NULL,0,0,NULL,0,NULL),(48,3,'meta_description',NULL,NULL,'text',NULL,NULL,'textarea','Meta Description',NULL,NULL,0,0,NULL,0,NULL),(49,3,'display_mode',NULL,NULL,'varchar',NULL,NULL,'select','Display Mode',NULL,'catalog/category_attribute_source_mode',0,0,NULL,0,NULL),(50,3,'landing_page',NULL,NULL,'int',NULL,NULL,'select','CMS Block',NULL,'catalog/category_attribute_source_page',0,0,NULL,0,NULL),(51,3,'is_anchor',NULL,NULL,'int',NULL,NULL,'select','Is Anchor',NULL,'eav/entity_attribute_source_boolean',0,0,NULL,0,NULL),(52,3,'path',NULL,NULL,'static',NULL,NULL,'text','Path',NULL,NULL,0,0,NULL,0,NULL),(53,3,'position',NULL,NULL,'static',NULL,NULL,'text','Position',NULL,NULL,0,0,NULL,0,NULL),(54,3,'all_children',NULL,NULL,'text',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(55,3,'path_in_store',NULL,NULL,'text',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(56,3,'children',NULL,NULL,'text',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(57,3,'url_path',NULL,NULL,'varchar',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(58,3,'custom_design',NULL,NULL,'varchar',NULL,NULL,'select','Custom Design',NULL,'core/design_source_design',0,0,NULL,0,NULL),(59,3,'custom_design_from',NULL,'eav/entity_attribute_backend_datetime','datetime',NULL,NULL,'date','Active From',NULL,NULL,0,0,NULL,0,NULL),(60,3,'custom_design_to',NULL,'eav/entity_attribute_backend_datetime','datetime',NULL,NULL,'date','Active To',NULL,NULL,0,0,NULL,0,NULL),(61,3,'page_layout',NULL,NULL,'varchar',NULL,NULL,'select','Page Layout',NULL,'catalog/category_attribute_source_layout',0,0,NULL,0,NULL),(62,3,'custom_layout_update',NULL,'catalog/attribute_backend_customlayoutupdate','text',NULL,NULL,'textarea','Custom Layout Update',NULL,NULL,0,0,NULL,0,NULL),(63,3,'level',NULL,NULL,'static',NULL,NULL,'text','Level',NULL,NULL,0,0,NULL,0,NULL),(64,3,'children_count',NULL,NULL,'static',NULL,NULL,'text','Children Count',NULL,NULL,0,0,NULL,0,NULL),(65,3,'available_sort_by',NULL,'catalog/category_attribute_backend_sortby','text',NULL,NULL,'multiselect','Available Product Listing Sort By',NULL,'catalog/category_attribute_source_sortby',1,0,NULL,0,NULL),(66,3,'default_sort_by',NULL,'catalog/category_attribute_backend_sortby','varchar',NULL,NULL,'select','Default Product Listing Sort By',NULL,'catalog/category_attribute_source_sortby',1,0,NULL,0,NULL),(67,3,'include_in_menu',NULL,NULL,'int',NULL,NULL,'select','Include in Navigation Menu',NULL,'eav/entity_attribute_source_boolean',1,0,'1',0,NULL),(68,3,'custom_use_parent_settings',NULL,NULL,'int',NULL,NULL,'select','Use Parent Category Settings',NULL,'eav/entity_attribute_source_boolean',0,0,NULL,0,NULL),(69,3,'custom_apply_to_products',NULL,NULL,'int',NULL,NULL,'select','Apply To Products',NULL,'eav/entity_attribute_source_boolean',0,0,NULL,0,NULL),(70,3,'filter_price_range',NULL,NULL,'decimal',NULL,NULL,'text','Layered Navigation Price Step',NULL,NULL,0,0,NULL,0,NULL),(71,4,'name',NULL,NULL,'varchar',NULL,NULL,'text','Name',NULL,NULL,1,0,NULL,0,NULL),(72,4,'description',NULL,NULL,'text',NULL,NULL,'textarea','Description',NULL,NULL,1,0,NULL,0,NULL),(73,4,'short_description',NULL,NULL,'text',NULL,NULL,'textarea','Short Description',NULL,NULL,1,0,NULL,0,NULL),(74,4,'sku',NULL,'catalog/product_attribute_backend_sku','static',NULL,NULL,'text','SKU',NULL,NULL,1,0,NULL,1,NULL),(75,4,'price',NULL,'catalog/product_attribute_backend_price','decimal',NULL,NULL,'price','Price',NULL,NULL,1,0,NULL,0,NULL),(76,4,'special_price',NULL,'catalog/product_attribute_backend_price','decimal',NULL,NULL,'price','Special Price',NULL,NULL,0,0,NULL,0,NULL),(77,4,'special_from_date',NULL,'catalog/product_attribute_backend_startdate_specialprice','datetime',NULL,NULL,'date','Special Price From Date',NULL,NULL,0,0,NULL,0,NULL),(78,4,'special_to_date',NULL,'eav/entity_attribute_backend_datetime','datetime',NULL,NULL,'date','Special Price To Date',NULL,NULL,0,0,NULL,0,NULL),(79,4,'cost',NULL,'catalog/product_attribute_backend_price','decimal',NULL,NULL,'price','Cost',NULL,NULL,0,1,NULL,0,NULL),(80,4,'weight',NULL,NULL,'decimal',NULL,NULL,'weight','Weight',NULL,NULL,1,0,NULL,0,NULL),(81,4,'manufacturer',NULL,NULL,'int',NULL,NULL,'select','Manufacturer',NULL,NULL,0,1,NULL,0,NULL),(82,4,'meta_title',NULL,NULL,'varchar',NULL,NULL,'text','Meta Title',NULL,NULL,0,0,NULL,0,NULL),(83,4,'meta_keyword',NULL,NULL,'text',NULL,NULL,'textarea','Meta Keywords',NULL,NULL,0,0,NULL,0,NULL),(84,4,'meta_description',NULL,NULL,'varchar',NULL,NULL,'textarea','Meta Description',NULL,NULL,0,0,NULL,0,'Maximum 255 chars'),(85,4,'image',NULL,NULL,'varchar',NULL,'catalog/product_attribute_frontend_image','media_image','Base Image',NULL,NULL,0,0,NULL,0,NULL),(86,4,'small_image',NULL,NULL,'varchar',NULL,'catalog/product_attribute_frontend_image','media_image','Small Image',NULL,NULL,0,0,NULL,0,NULL),(87,4,'thumbnail',NULL,NULL,'varchar',NULL,'catalog/product_attribute_frontend_image','media_image','Thumbnail',NULL,NULL,0,0,NULL,0,NULL),(88,4,'media_gallery',NULL,'catalog/product_attribute_backend_media','varchar',NULL,NULL,'gallery','Media Gallery',NULL,NULL,0,0,NULL,0,NULL),(89,4,'old_id',NULL,NULL,'int',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(90,4,'group_price',NULL,'catalog/product_attribute_backend_groupprice','decimal',NULL,NULL,'text','Group Price',NULL,NULL,0,0,NULL,0,NULL),(91,4,'tier_price',NULL,'catalog/product_attribute_backend_tierprice','decimal',NULL,NULL,'text','Tier Price',NULL,NULL,0,0,NULL,0,NULL),(92,4,'color',NULL,NULL,'int',NULL,NULL,'select','Color',NULL,NULL,0,1,NULL,0,NULL),(93,4,'news_from_date',NULL,'catalog/product_attribute_backend_startdate','datetime',NULL,NULL,'date','Set Product as New from Date',NULL,NULL,0,0,NULL,0,NULL),(94,4,'news_to_date',NULL,'eav/entity_attribute_backend_datetime','datetime',NULL,NULL,'date','Set Product as New to Date',NULL,NULL,0,0,NULL,0,NULL),(95,4,'gallery',NULL,NULL,'varchar',NULL,NULL,'gallery','Image Gallery',NULL,NULL,0,0,NULL,0,NULL),(96,4,'status',NULL,NULL,'int',NULL,NULL,'select','Status',NULL,'catalog/product_status',1,0,NULL,0,NULL),(97,4,'url_key',NULL,'catalog/product_attribute_backend_urlkey','varchar',NULL,NULL,'text','URL Key',NULL,NULL,0,0,NULL,0,NULL),(98,4,'url_path',NULL,NULL,'varchar',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(99,4,'minimal_price',NULL,NULL,'decimal',NULL,NULL,'price','Minimal Price',NULL,NULL,0,0,NULL,0,NULL),(100,4,'is_recurring',NULL,NULL,'int',NULL,NULL,'select','Enable Recurring Profile',NULL,'eav/entity_attribute_source_boolean',0,0,NULL,0,'Products with recurring profile participate in catalog as nominal items.'),(101,4,'recurring_profile',NULL,'catalog/product_attribute_backend_recurring','text',NULL,NULL,'text','Recurring Payment Profile',NULL,NULL,0,0,NULL,0,NULL),(102,4,'visibility',NULL,NULL,'int',NULL,NULL,'select','Visibility',NULL,'catalog/product_visibility',1,0,'4',0,NULL),(103,4,'custom_design',NULL,NULL,'varchar',NULL,NULL,'select','Custom Design',NULL,'core/design_source_design',0,0,NULL,0,NULL),(104,4,'custom_design_from',NULL,'catalog/product_attribute_backend_startdate','datetime',NULL,NULL,'date','Active From',NULL,NULL,0,0,NULL,0,NULL),(105,4,'custom_design_to',NULL,'eav/entity_attribute_backend_datetime','datetime',NULL,NULL,'date','Active To',NULL,NULL,0,0,NULL,0,NULL),(106,4,'custom_layout_update',NULL,'catalog/attribute_backend_customlayoutupdate','text',NULL,NULL,'textarea','Custom Layout Update',NULL,NULL,0,0,NULL,0,NULL),(107,4,'page_layout',NULL,NULL,'varchar',NULL,NULL,'select','Page Layout',NULL,'catalog/product_attribute_source_layout',0,0,NULL,0,NULL),(108,4,'category_ids',NULL,NULL,'static',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(109,4,'options_container',NULL,NULL,'varchar',NULL,NULL,'select','Display Product Options In',NULL,'catalog/entity_product_attribute_design_options_container',0,0,'container1',0,NULL),(110,4,'required_options',NULL,NULL,'static',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(111,4,'has_options',NULL,NULL,'static',NULL,NULL,'text',NULL,NULL,NULL,0,0,NULL,0,NULL),(112,4,'image_label',NULL,NULL,'varchar',NULL,NULL,'text','Image Label',NULL,NULL,0,0,NULL,0,NULL),(113,4,'small_image_label',NULL,NULL,'varchar',NULL,NULL,'text','Small Image Label',NULL,NULL,0,0,NULL,0,NULL),(114,4,'thumbnail_label',NULL,NULL,'varchar',NULL,NULL,'text','Thumbnail Label',NULL,NULL,0,0,NULL,0,NULL),(115,4,'created_at',NULL,'eav/entity_attribute_backend_time_created','static',NULL,NULL,'text',NULL,NULL,NULL,1,0,NULL,0,NULL),(116,4,'updated_at',NULL,'eav/entity_attribute_backend_time_updated','static',NULL,NULL,'text',NULL,NULL,NULL,1,0,NULL,0,NULL),(117,4,'country_of_manufacture',NULL,NULL,'varchar',NULL,NULL,'select','Country of Manufacture',NULL,'catalog/product_attribute_source_countryofmanufacture',0,0,NULL,0,NULL),(118,4,'msrp_enabled',NULL,'catalog/product_attribute_backend_msrp','varchar',NULL,NULL,'select','Apply MAP',NULL,'catalog/product_attribute_source_msrp_type_enabled',0,0,'2',0,NULL),(119,4,'msrp_display_actual_price_type',NULL,'catalog/product_attribute_backend_boolean','varchar',NULL,NULL,'select','Display Actual Price',NULL,'catalog/product_attribute_source_msrp_type_price',0,0,'4',0,NULL),(120,4,'msrp',NULL,'catalog/product_attribute_backend_price','decimal',NULL,NULL,'price','Manufacturer\'s Suggested Retail Price',NULL,NULL,0,0,NULL,0,NULL),(121,4,'tax_class_id',NULL,NULL,'int',NULL,NULL,'select','Tax Class',NULL,'tax/class_source_product',1,0,NULL,0,NULL),(122,4,'gift_message_available',NULL,'catalog/product_attribute_backend_boolean','varchar',NULL,NULL,'select','Allow Gift Message',NULL,'eav/entity_attribute_source_boolean',0,0,NULL,0,NULL),(123,4,'price_type',NULL,NULL,'int',NULL,NULL,NULL,NULL,NULL,NULL,1,0,NULL,0,NULL),(124,4,'sku_type',NULL,NULL,'int',NULL,NULL,NULL,NULL,NULL,NULL,1,0,NULL,0,NULL),(125,4,'weight_type',NULL,NULL,'int',NULL,NULL,NULL,NULL,NULL,NULL,1,0,NULL,0,NULL),(126,4,'price_view',NULL,NULL,'int',NULL,NULL,'select','Price View',NULL,'bundle/product_attribute_source_price_view',1,0,NULL,0,NULL),(127,4,'shipment_type',NULL,NULL,'int',NULL,NULL,NULL,'Shipment',NULL,NULL,1,0,NULL,0,NULL),(128,4,'links_purchased_separately',NULL,NULL,'int',NULL,NULL,NULL,'Links can be purchased separately',NULL,NULL,1,0,NULL,0,NULL),(129,4,'samples_title',NULL,NULL,'varchar',NULL,NULL,NULL,'Samples title',NULL,NULL,1,0,NULL,0,NULL),(130,4,'links_title',NULL,NULL,'varchar',NULL,NULL,NULL,'Links title',NULL,NULL,1,0,NULL,0,NULL),(131,4,'links_exist',NULL,NULL,'int',NULL,NULL,NULL,NULL,NULL,NULL,0,0,'0',0,NULL);
-/*!40000 ALTER TABLE `shop_eav_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_attribute_group`
 --
 
@@ -5677,16 +3990,6 @@ CREATE TABLE `shop_eav_attribute_group` (
   CONSTRAINT `FK_SHOP_EAV_ATTR_GROUP_ATTR_SET_ID_SHOP_EAV_ATTR_SET_ATTR_SET_ID` FOREIGN KEY (`attribute_set_id`) REFERENCES `shop_eav_attribute_set` (`attribute_set_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Group';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_attribute_group`
---
-
-LOCK TABLES `shop_eav_attribute_group` WRITE;
-/*!40000 ALTER TABLE `shop_eav_attribute_group` DISABLE KEYS */;
-INSERT INTO `shop_eav_attribute_group` VALUES (1,1,'General',1,1),(2,2,'General',1,1),(3,3,'General',10,1),(4,3,'General Information',2,0),(5,3,'Display Settings',20,0),(6,3,'Custom Design',30,0),(7,4,'General',1,1),(8,4,'Prices',2,0),(9,4,'Meta Information',3,0),(10,4,'Images',4,0),(11,4,'Recurring Profile',5,0),(12,4,'Design',6,0),(13,5,'General',1,1),(14,6,'General',1,1),(15,7,'General',1,1),(16,8,'General',1,1),(17,4,'Gift Options',7,0);
-/*!40000 ALTER TABLE `shop_eav_attribute_group` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_attribute_label`
@@ -5710,15 +4013,6 @@ CREATE TABLE `shop_eav_attribute_label` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_attribute_label`
---
-
-LOCK TABLES `shop_eav_attribute_label` WRITE;
-/*!40000 ALTER TABLE `shop_eav_attribute_label` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_attribute_label` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_attribute_option`
 --
 
@@ -5734,16 +4028,6 @@ CREATE TABLE `shop_eav_attribute_option` (
   CONSTRAINT `FK_SHOP_EAV_ATTR_OPT_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Option';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_attribute_option`
---
-
-LOCK TABLES `shop_eav_attribute_option` WRITE;
-/*!40000 ALTER TABLE `shop_eav_attribute_option` DISABLE KEYS */;
-INSERT INTO `shop_eav_attribute_option` VALUES (1,18,0),(2,18,1);
-/*!40000 ALTER TABLE `shop_eav_attribute_option` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_attribute_option_value`
@@ -5766,16 +4050,6 @@ CREATE TABLE `shop_eav_attribute_option_value` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_attribute_option_value`
---
-
-LOCK TABLES `shop_eav_attribute_option_value` WRITE;
-/*!40000 ALTER TABLE `shop_eav_attribute_option_value` DISABLE KEYS */;
-INSERT INTO `shop_eav_attribute_option_value` VALUES (1,1,0,'Male'),(2,2,0,'Female');
-/*!40000 ALTER TABLE `shop_eav_attribute_option_value` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_attribute_set`
 --
 
@@ -5793,16 +4067,6 @@ CREATE TABLE `shop_eav_attribute_set` (
   CONSTRAINT `FK_E90016AE973D46AA35C85FF9A098624F` FOREIGN KEY (`entity_type_id`) REFERENCES `shop_eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Eav Attribute Set';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_attribute_set`
---
-
-LOCK TABLES `shop_eav_attribute_set` WRITE;
-/*!40000 ALTER TABLE `shop_eav_attribute_set` DISABLE KEYS */;
-INSERT INTO `shop_eav_attribute_set` VALUES (1,1,'Default',1),(2,2,'Default',1),(3,3,'Default',1),(4,4,'Default',1),(5,5,'Default',1),(6,6,'Default',1),(7,7,'Default',1),(8,8,'Default',1);
-/*!40000 ALTER TABLE `shop_eav_attribute_set` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_entity`
@@ -5830,15 +4094,6 @@ CREATE TABLE `shop_eav_entity` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_entity`
---
-
-LOCK TABLES `shop_eav_entity` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_entity_attribute`
 --
 
@@ -5861,16 +4116,6 @@ CREATE TABLE `shop_eav_entity_attribute` (
   CONSTRAINT `FK_SHOP_EAV_ENTT_ATTR_ATTR_ID_SHOP_EAV_ATTR_ATTR_ID` FOREIGN KEY (`attribute_id`) REFERENCES `shop_eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8 COMMENT='Eav Entity Attributes';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_entity_attribute`
---
-
-LOCK TABLES `shop_eav_entity_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_attribute` DISABLE KEYS */;
-INSERT INTO `shop_eav_entity_attribute` VALUES (1,1,1,1,1,10),(2,1,1,1,2,0),(3,1,1,1,3,20),(4,1,1,1,4,30),(5,1,1,1,5,40),(6,1,1,1,6,50),(7,1,1,1,7,60),(8,1,1,1,8,70),(9,1,1,1,9,80),(10,1,1,1,10,25),(11,1,1,1,11,90),(12,1,1,1,12,0),(13,1,1,1,13,0),(14,1,1,1,14,0),(15,1,1,1,15,100),(16,1,1,1,16,0),(17,1,1,1,17,86),(18,1,1,1,18,110),(19,2,2,2,19,10),(20,2,2,2,20,20),(21,2,2,2,21,30),(22,2,2,2,22,40),(23,2,2,2,23,50),(24,2,2,2,24,60),(25,2,2,2,25,70),(26,2,2,2,26,80),(27,2,2,2,27,90),(28,2,2,2,28,100),(29,2,2,2,29,100),(30,2,2,2,30,110),(31,2,2,2,31,120),(32,2,2,2,32,130),(33,1,1,1,33,111),(34,1,1,1,34,112),(35,1,1,1,35,28),(36,2,2,2,36,140),(37,2,2,2,37,132),(38,2,2,2,38,133),(39,2,2,2,39,134),(40,2,2,2,40,135),(41,3,3,4,41,1),(42,3,3,4,42,2),(43,3,3,4,43,3),(44,3,3,4,44,4),(45,3,3,4,45,5),(46,3,3,4,46,6),(47,3,3,4,47,7),(48,3,3,4,48,8),(49,3,3,5,49,10),(50,3,3,5,50,20),(51,3,3,5,51,30),(52,3,3,4,52,12),(53,3,3,4,53,13),(54,3,3,4,54,14),(55,3,3,4,55,15),(56,3,3,4,56,16),(57,3,3,4,57,17),(58,3,3,6,58,10),(59,3,3,6,59,30),(60,3,3,6,60,40),(61,3,3,6,61,50),(62,3,3,6,62,60),(63,3,3,4,63,24),(64,3,3,4,64,25),(65,3,3,5,65,40),(66,3,3,5,66,50),(67,3,3,4,67,10),(68,3,3,6,68,5),(69,3,3,6,69,6),(70,3,3,5,70,51),(71,4,4,7,71,1),(72,4,4,7,72,2),(73,4,4,7,73,3),(74,4,4,7,74,4),(75,4,4,8,75,1),(76,4,4,8,76,3),(77,4,4,8,77,4),(78,4,4,8,78,5),(79,4,4,8,79,6),(80,4,4,7,80,5),(81,4,4,9,82,1),(82,4,4,9,83,2),(83,4,4,9,84,3),(84,4,4,10,85,1),(85,4,4,10,86,2),(86,4,4,10,87,3),(87,4,4,10,88,4),(88,4,4,7,89,6),(89,4,4,8,90,2),(90,4,4,8,91,7),(91,4,4,7,93,7),(92,4,4,7,94,8),(93,4,4,10,95,5),(94,4,4,7,96,9),(95,4,4,7,97,10),(96,4,4,7,98,11),(97,4,4,8,99,8),(98,4,4,11,100,1),(99,4,4,11,101,2),(100,4,4,7,102,12),(101,4,4,12,103,1),(102,4,4,12,104,2),(103,4,4,12,105,3),(104,4,4,12,106,4),(105,4,4,12,107,5),(106,4,4,7,108,13),(107,4,4,12,109,6),(108,4,4,7,110,14),(109,4,4,7,111,15),(110,4,4,7,112,16),(111,4,4,7,113,17),(112,4,4,7,114,18),(113,4,4,7,115,19),(114,4,4,7,116,20),(115,4,4,7,117,21),(116,4,4,8,118,9),(117,4,4,8,119,10),(118,4,4,8,120,11),(119,4,4,8,121,12),(120,4,4,17,122,1),(121,4,4,7,123,22),(122,4,4,7,124,23),(123,4,4,7,125,24),(124,4,4,8,126,13),(125,4,4,7,127,25),(126,4,4,7,128,26),(127,4,4,7,129,27),(128,4,4,7,130,28),(129,4,4,7,131,29);
-/*!40000 ALTER TABLE `shop_eav_entity_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_entity_datetime`
@@ -5901,15 +4146,6 @@ CREATE TABLE `shop_eav_entity_datetime` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_entity_datetime`
---
-
-LOCK TABLES `shop_eav_entity_datetime` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_datetime` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity_datetime` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_entity_decimal`
 --
 
@@ -5936,15 +4172,6 @@ CREATE TABLE `shop_eav_entity_decimal` (
   CONSTRAINT `FK_SHOP_EAV_ENTITY_DECIMAL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Entity Value Prefix';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_entity_decimal`
---
-
-LOCK TABLES `shop_eav_entity_decimal` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_decimal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity_decimal` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_entity_int`
@@ -5975,15 +4202,6 @@ CREATE TABLE `shop_eav_entity_int` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_entity_int`
---
-
-LOCK TABLES `shop_eav_entity_int` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_int` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity_int` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_entity_store`
 --
 
@@ -6001,17 +4219,8 @@ CREATE TABLE `shop_eav_entity_store` (
   KEY `IDX_SHOP_EAV_ENTITY_STORE_STORE_ID` (`store_id`),
   CONSTRAINT `FK_5AEADFDFF922CE9FF66314A519F6F6ED` FOREIGN KEY (`entity_type_id`) REFERENCES `shop_eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_EAV_ENTITY_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Entity Store';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Eav Entity Store';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_entity_store`
---
-
-LOCK TABLES `shop_eav_entity_store` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_store` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_entity_text`
@@ -6038,15 +4247,6 @@ CREATE TABLE `shop_eav_entity_text` (
   CONSTRAINT `FK_SHOP_EAV_ENTITY_TEXT_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Entity Value Prefix';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_entity_text`
---
-
-LOCK TABLES `shop_eav_entity_text` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_text` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity_text` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_entity_type`
@@ -6078,16 +4278,6 @@ CREATE TABLE `shop_eav_entity_type` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_entity_type`
---
-
-LOCK TABLES `shop_eav_entity_type` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_type` DISABLE KEYS */;
-INSERT INTO `shop_eav_entity_type` VALUES (1,'customer','customer/customer','customer/attribute','customer/entity',NULL,NULL,1,'default',1,'eav/entity_increment_numeric',0,8,'0','customer/eav_attribute','customer/attribute_collection'),(2,'customer_address','customer/address','customer/attribute','customer/address_entity',NULL,NULL,1,'default',2,NULL,0,8,'0','customer/eav_attribute','customer/address_attribute_collection'),(3,'catalog_category','catalog/category','catalog/resource_eav_attribute','catalog/category',NULL,NULL,1,'default',3,NULL,0,8,'0','catalog/eav_attribute','catalog/category_attribute_collection'),(4,'catalog_product','catalog/product','catalog/resource_eav_attribute','catalog/product',NULL,NULL,1,'default',4,NULL,0,8,'0','catalog/eav_attribute','catalog/product_attribute_collection'),(5,'order','sales/order',NULL,'sales/order',NULL,NULL,1,'default',0,'eav/entity_increment_numeric',1,8,'0',NULL,NULL),(6,'invoice','sales/order_invoice',NULL,'sales/invoice',NULL,NULL,1,'default',0,'eav/entity_increment_numeric',1,8,'0',NULL,NULL),(7,'creditmemo','sales/order_creditmemo',NULL,'sales/creditmemo',NULL,NULL,1,'default',0,'eav/entity_increment_numeric',1,8,'0',NULL,NULL),(8,'shipment','sales/order_shipment',NULL,'sales/shipment',NULL,NULL,1,'default',0,'eav/entity_increment_numeric',1,8,'0',NULL,NULL);
-/*!40000 ALTER TABLE `shop_eav_entity_type` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_entity_varchar`
 --
 
@@ -6116,15 +4306,6 @@ CREATE TABLE `shop_eav_entity_varchar` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_entity_varchar`
---
-
-LOCK TABLES `shop_eav_entity_varchar` WRITE;
-/*!40000 ALTER TABLE `shop_eav_entity_varchar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_eav_entity_varchar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_form_element`
 --
 
@@ -6149,16 +4330,6 @@ CREATE TABLE `shop_eav_form_element` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_form_element`
---
-
-LOCK TABLES `shop_eav_form_element` WRITE;
-/*!40000 ALTER TABLE `shop_eav_form_element` DISABLE KEYS */;
-INSERT INTO `shop_eav_form_element` VALUES (1,1,NULL,20,0),(2,1,NULL,22,1),(3,1,NULL,24,2),(4,1,NULL,9,3),(5,1,NULL,25,4),(6,1,NULL,26,5),(7,1,NULL,28,6),(8,1,NULL,30,7),(9,1,NULL,27,8),(10,1,NULL,31,9),(11,1,NULL,32,10),(12,2,NULL,20,0),(13,2,NULL,22,1),(14,2,NULL,24,2),(15,2,NULL,9,3),(16,2,NULL,25,4),(17,2,NULL,26,5),(18,2,NULL,28,6),(19,2,NULL,30,7),(20,2,NULL,27,8),(21,2,NULL,31,9),(22,2,NULL,32,10),(23,3,NULL,20,0),(24,3,NULL,22,1),(25,3,NULL,24,2),(26,3,NULL,25,3),(27,3,NULL,26,4),(28,3,NULL,28,5),(29,3,NULL,30,6),(30,3,NULL,27,7),(31,3,NULL,31,8),(32,3,NULL,32,9),(33,4,NULL,20,0),(34,4,NULL,22,1),(35,4,NULL,24,2),(36,4,NULL,25,3),(37,4,NULL,26,4),(38,4,NULL,28,5),(39,4,NULL,30,6),(40,4,NULL,27,7),(41,4,NULL,31,8),(42,4,NULL,32,9),(43,5,1,5,0),(44,5,1,7,1),(45,5,1,9,2),(46,5,2,24,0),(47,5,2,31,1),(48,5,2,25,2),(49,5,2,26,3),(50,5,2,28,4),(51,5,2,30,5),(52,5,2,27,6);
-/*!40000 ALTER TABLE `shop_eav_form_element` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_form_fieldset`
 --
 
@@ -6178,16 +4349,6 @@ CREATE TABLE `shop_eav_form_fieldset` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_form_fieldset`
---
-
-LOCK TABLES `shop_eav_form_fieldset` WRITE;
-/*!40000 ALTER TABLE `shop_eav_form_fieldset` DISABLE KEYS */;
-INSERT INTO `shop_eav_form_fieldset` VALUES (1,5,'general',1),(2,5,'address',2);
-/*!40000 ALTER TABLE `shop_eav_form_fieldset` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_form_fieldset_label`
 --
 
@@ -6205,16 +4366,6 @@ CREATE TABLE `shop_eav_form_fieldset_label` (
   CONSTRAINT `FK_SHOP_EAV_FORM_FSET_LBL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Form Fieldset Label';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_form_fieldset_label`
---
-
-LOCK TABLES `shop_eav_form_fieldset_label` WRITE;
-/*!40000 ALTER TABLE `shop_eav_form_fieldset_label` DISABLE KEYS */;
-INSERT INTO `shop_eav_form_fieldset_label` VALUES (1,0,'Personal Information'),(2,0,'Address Information');
-/*!40000 ALTER TABLE `shop_eav_form_fieldset_label` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_eav_form_type`
@@ -6238,16 +4389,6 @@ CREATE TABLE `shop_eav_form_type` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_eav_form_type`
---
-
-LOCK TABLES `shop_eav_form_type` WRITE;
-/*!40000 ALTER TABLE `shop_eav_form_type` DISABLE KEYS */;
-INSERT INTO `shop_eav_form_type` VALUES (1,'checkout_onepage_register','checkout_onepage_register',1,'',0),(2,'checkout_onepage_register_guest','checkout_onepage_register_guest',1,'',0),(3,'checkout_onepage_billing_address','checkout_onepage_billing_address',1,'',0),(4,'checkout_onepage_shipping_address','checkout_onepage_shipping_address',1,'',0),(5,'checkout_multishipping_register','checkout_multishipping_register',1,'',0);
-/*!40000 ALTER TABLE `shop_eav_form_type` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_eav_form_type_entity`
 --
 
@@ -6263,16 +4404,6 @@ CREATE TABLE `shop_eav_form_type_entity` (
   CONSTRAINT `FK_SHOP_EAV_FORM_TYPE_ENTITY_TYPE_ID_SHOP_EAV_FORM_TYPE_TYPE_ID` FOREIGN KEY (`type_id`) REFERENCES `shop_eav_form_type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Eav Form Type Entity';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_eav_form_type_entity`
---
-
-LOCK TABLES `shop_eav_form_type_entity` WRITE;
-/*!40000 ALTER TABLE `shop_eav_form_type_entity` DISABLE KEYS */;
-INSERT INTO `shop_eav_form_type_entity` VALUES (1,1),(2,1),(5,1),(1,2),(2,2),(3,2),(4,2),(5,2);
-/*!40000 ALTER TABLE `shop_eav_form_type_entity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_gift_message`
@@ -6292,15 +4423,6 @@ CREATE TABLE `shop_gift_message` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_gift_message`
---
-
-LOCK TABLES `shop_gift_message` WRITE;
-/*!40000 ALTER TABLE `shop_gift_message` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_gift_message` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_importexport_importdata`
 --
 
@@ -6315,15 +4437,6 @@ CREATE TABLE `shop_importexport_importdata` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Import Data Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_importexport_importdata`
---
-
-LOCK TABLES `shop_importexport_importdata` WRITE;
-/*!40000 ALTER TABLE `shop_importexport_importdata` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_importexport_importdata` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_index_event`
@@ -6342,18 +4455,8 @@ CREATE TABLE `shop_index_event` (
   `new_data` mediumtext COMMENT 'New Data',
   PRIMARY KEY (`event_id`),
   UNIQUE KEY `UNQ_SHOP_INDEX_EVENT_TYPE_ENTITY_ENTITY_PK` (`type`,`entity`,`entity_pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Index Event';
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='Index Event';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_index_event`
---
-
-LOCK TABLES `shop_index_event` WRITE;
-/*!40000 ALTER TABLE `shop_index_event` DISABLE KEYS */;
-INSERT INTO `shop_index_event` VALUES (1,'save','catalog_category',1,'2015-07-01 04:29:43',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),(2,'save','catalog_category',2,'2015-07-01 04:29:43',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}'),(3,'save','cataloginventory_stock_item',1,'2015-07-01 04:37:28',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:0;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),(4,'catalog_reindex_price','catalog_product',1,'2015-07-01 04:37:28',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:0;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:0;s:37:\"catalog_category_product_match_result\";b:0;s:35:\"catalogsearch_fulltext_match_result\";b:0;}'),(5,'save','catalog_product',1,'2015-07-01 04:37:28',NULL,'a:5:{s:35:\"cataloginventory_stock_match_result\";b:1;s:34:\"catalog_product_price_match_result\";b:1;s:24:\"catalog_url_match_result\";b:1;s:37:\"catalog_category_product_match_result\";b:1;s:35:\"catalogsearch_fulltext_match_result\";b:1;}');
-/*!40000 ALTER TABLE `shop_index_event` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_index_process`
@@ -6375,16 +4478,6 @@ CREATE TABLE `shop_index_process` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_index_process`
---
-
-LOCK TABLES `shop_index_process` WRITE;
-/*!40000 ALTER TABLE `shop_index_process` DISABLE KEYS */;
-INSERT INTO `shop_index_process` VALUES (1,'catalog_product_attribute','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time'),(2,'catalog_product_price','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time'),(3,'catalog_url','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time'),(4,'catalog_product_flat','pending','2015-07-01 04:32:39','2015-07-01 04:32:39','real_time'),(5,'catalog_category_flat','pending','2015-07-01 04:32:39','2015-07-01 04:32:39','real_time'),(6,'catalog_category_product','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time'),(7,'catalogsearch_fulltext','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time'),(8,'cataloginventory_stock','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time'),(9,'tag_summary','pending','2015-07-01 04:37:28','2015-07-01 04:37:28','real_time');
-/*!40000 ALTER TABLE `shop_index_process` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_index_process_event`
 --
 
@@ -6401,15 +4494,6 @@ CREATE TABLE `shop_index_process_event` (
   CONSTRAINT `FK_SHOP_INDEX_PROCESS_EVENT_EVENT_ID_SHOP_INDEX_EVENT_EVENT_ID` FOREIGN KEY (`event_id`) REFERENCES `shop_index_event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Index Process Event';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_index_process_event`
---
-
-LOCK TABLES `shop_index_process_event` WRITE;
-/*!40000 ALTER TABLE `shop_index_process_event` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_index_process_event` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_log_customer`
@@ -6431,15 +4515,6 @@ CREATE TABLE `shop_log_customer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_log_customer`
---
-
-LOCK TABLES `shop_log_customer` WRITE;
-/*!40000 ALTER TABLE `shop_log_customer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_log_customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_log_quote`
 --
 
@@ -6454,15 +4529,6 @@ CREATE TABLE `shop_log_quote` (
   PRIMARY KEY (`quote_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log Quotes Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_log_quote`
---
-
-LOCK TABLES `shop_log_quote` WRITE;
-/*!40000 ALTER TABLE `shop_log_quote` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_log_quote` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_log_summary`
@@ -6483,15 +4549,6 @@ CREATE TABLE `shop_log_summary` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_log_summary`
---
-
-LOCK TABLES `shop_log_summary` WRITE;
-/*!40000 ALTER TABLE `shop_log_summary` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_log_summary` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_log_summary_type`
 --
 
@@ -6506,16 +4563,6 @@ CREATE TABLE `shop_log_summary_type` (
   PRIMARY KEY (`type_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Log Summary Types Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_log_summary_type`
---
-
-LOCK TABLES `shop_log_summary_type` WRITE;
-/*!40000 ALTER TABLE `shop_log_summary_type` DISABLE KEYS */;
-INSERT INTO `shop_log_summary_type` VALUES (1,'hour',1,'HOUR'),(2,'day',1,'DAY');
-/*!40000 ALTER TABLE `shop_log_summary_type` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_log_url`
@@ -6534,16 +4581,6 @@ CREATE TABLE `shop_log_url` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_log_url`
---
-
-LOCK TABLES `shop_log_url` WRITE;
-/*!40000 ALTER TABLE `shop_log_url` DISABLE KEYS */;
-INSERT INTO `shop_log_url` VALUES (1,1,'2015-07-01 04:31:09'),(2,1,'2015-07-01 04:35:32'),(3,1,'2015-07-01 04:37:43'),(4,1,'2015-07-01 04:37:46'),(5,1,'2015-07-01 04:37:47'),(6,1,'2015-07-01 04:37:50'),(7,1,'2015-07-01 04:37:52'),(8,1,'2015-07-01 04:38:29'),(9,1,'2015-07-01 04:38:30'),(10,1,'2015-07-01 04:38:32'),(11,1,'2015-07-01 04:38:35'),(12,1,'2015-07-01 04:38:36'),(13,1,'2015-07-01 04:38:40'),(14,1,'2015-07-01 04:38:41'),(15,1,'2015-07-01 04:38:42'),(16,1,'2015-07-01 04:38:48'),(17,1,'2015-07-01 04:38:52'),(18,1,'2015-07-01 04:38:53'),(19,1,'2015-07-01 04:38:57'),(20,1,'2015-07-01 04:38:58'),(21,1,'2015-07-01 04:39:22'),(22,1,'2015-07-01 04:39:22'),(23,2,'2015-07-01 04:49:35'),(24,2,'2015-07-01 04:49:48'),(25,2,'2015-07-01 04:49:53'),(26,2,'2015-07-01 04:56:31'),(27,2,'2015-07-01 04:56:41'),(28,2,'2015-07-01 04:56:44'),(29,2,'2015-07-01 05:37:22'),(30,2,'2015-07-01 05:37:33'),(31,2,'2015-07-01 05:37:33'),(32,3,'2015-07-01 07:12:11'),(33,4,'2015-07-01 07:19:42'),(34,4,'2015-07-01 07:20:43'),(35,4,'2015-07-01 07:22:23'),(36,4,'2015-07-01 07:22:50');
-/*!40000 ALTER TABLE `shop_log_url` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_log_url_info`
 --
 
@@ -6555,18 +4592,8 @@ CREATE TABLE `shop_log_url_info` (
   `url` varchar(255) DEFAULT NULL COMMENT 'URL',
   `referer` varchar(255) DEFAULT NULL COMMENT 'Referrer',
   PRIMARY KEY (`url_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Log URL Info Table';
+) ENGINE=InnoDB AUTO_INCREMENT=1870 DEFAULT CHARSET=utf8 COMMENT='Log URL Info Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_log_url_info`
---
-
-LOCK TABLES `shop_log_url_info` WRITE;
-/*!40000 ALTER TABLE `shop_log_url_info` DISABLE KEYS */;
-INSERT INTO `shop_log_url_info` VALUES (1,'http://local.ship.net/index.php/','http://local.ship.net/index.php/install/wizard/end/'),(2,'http://local.ship.net/customer/account/login/','http://local.ship.net/index.php/'),(3,'http://local.ship.net/catalogsearch/ajax/suggest/?q=bot','http://local.ship.net/customer/account/login/'),(4,'http://local.ship.net/catalogsearch/ajax/suggest/?q=botelya','http://local.ship.net/customer/account/login/'),(5,'http://local.ship.net/catalogsearch/result/?q=botelya','http://local.ship.net/customer/account/login/'),(6,'http://local.ship.net/','http://local.ship.net/catalogsearch/result/?q=botelya'),(7,'http://local.ship.net/','http://local.ship.net/catalogsearch/result/?q=botelya'),(8,'http://local.ship.net/catalogsearch/ajax/suggest/?q=botel','http://local.ship.net/'),(9,'http://local.ship.net/catalogsearch/ajax/suggest/?q=botelya','http://local.ship.net/'),(10,'http://local.ship.net/catalogsearch/result/?q=botelya','http://local.ship.net/'),(11,'http://local.ship.net/catalogsearch/ajax/suggest/?q=bote','http://local.ship.net/catalogsearch/result/?q=botelya'),(12,'http://local.ship.net/catalogsearch/result/?q=bote','http://local.ship.net/catalogsearch/result/?q=botelya'),(13,'http://local.ship.net/catalogsearch/ajax/suggest/?q=bit','http://local.ship.net/catalogsearch/result/?q=bote'),(14,'http://local.ship.net/catalogsearch/ajax/suggest/?q=bot','http://local.ship.net/catalogsearch/result/?q=bote'),(15,'http://local.ship.net/catalogsearch/result/?q=bot','http://local.ship.net/catalogsearch/result/?q=bote'),(16,'http://local.ship.net/','http://local.ship.net/catalogsearch/result/?q=bot'),(17,'http://local.ship.net/poll/vote/add/poll_id/1/','http://local.ship.net/'),(18,'http://local.ship.net/','http://local.ship.net/'),(19,'http://local.ship.net/','http://local.ship.net/'),(20,'http://local.ship.net/','http://local.ship.net/'),(21,'http://local.ship.net/',NULL),(22,'http://local.ship.net/catalog/product/view/id/1',NULL),(23,'http://local.ship.net/',NULL),(24,'http://local.ship.net/customer/account/login/','http://local.ship.net/'),(25,'http://local.ship.net/customer/account/create/','http://local.ship.net/customer/account/login/'),(26,'http://local.ship.net/sample-page/?___store=default','http://local.ship.net/index.php/admin/cms_page/index/key/3553439b9968f49615061f0bf6423620/'),(27,'http://local.ship.net/sample-page/?___store=default','http://local.ship.net/index.php/admin/cms_page/index/key/3553439b9968f49615061f0bf6423620/'),(28,'http://local.ship.net/sample-page/?___store=default','http://local.ship.net/index.php/admin/cms_page/index/key/3553439b9968f49615061f0bf6423620/'),(29,'http://local.ship.net/',NULL),(30,'http://local.ship.net/poll/vote/add/poll_id/1/','http://local.ship.net/'),(31,'http://local.ship.net/','http://local.ship.net/'),(32,'http://local.ship.net/',NULL),(33,'http://local.ship.net/',NULL),(34,'http://local.ship.net/',NULL),(35,'http://local.ship.net/',NULL),(36,'http://local.ship.net/',NULL);
-/*!40000 ALTER TABLE `shop_log_url_info` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_log_visitor`
@@ -6583,18 +4610,8 @@ CREATE TABLE `shop_log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Last URL ID',
   `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store ID',
   PRIMARY KEY (`visitor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Log Visitors Table';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='Log Visitors Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_log_visitor`
---
-
-LOCK TABLES `shop_log_visitor` WRITE;
-/*!40000 ALTER TABLE `shop_log_visitor` DISABLE KEYS */;
-INSERT INTO `shop_log_visitor` VALUES (1,'gh0omlicol9nf2dt1hrb1k4531','2015-07-01 04:31:09','2015-07-01 04:39:22',22,1),(2,'cej0ip0tdut59tui0oji5tp490','2015-07-01 04:49:35','2015-07-01 05:37:33',31,1),(3,'ddo7fhtipsjfq12i9uncl395c3','2015-07-01 07:12:11','2015-07-01 07:12:11',32,1),(4,'q01372p5jje2uvt73acm02sfa5','2015-07-01 07:19:42','2015-07-01 07:22:50',36,1);
-/*!40000 ALTER TABLE `shop_log_visitor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_log_visitor_info`
@@ -6614,16 +4631,6 @@ CREATE TABLE `shop_log_visitor_info` (
   PRIMARY KEY (`visitor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log Visitor Info Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_log_visitor_info`
---
-
-LOCK TABLES `shop_log_visitor_info` WRITE;
-/*!40000 ALTER TABLE `shop_log_visitor_info` DISABLE KEYS */;
-INSERT INTO `shop_log_visitor_info` VALUES (1,'http://local.ship.net/index.php/install/wizard/end/','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3',NULL,'en-us',2130706433,2130706433),(2,NULL,'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',NULL,'en-US,en;q=0.8',3232300551,3232300546),(3,NULL,'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3',NULL,'en-us',2130706433,2130706433),(4,NULL,'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',NULL,'en-US,en;q=0.8',3232300551,3232300546);
-/*!40000 ALTER TABLE `shop_log_visitor_info` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_log_visitor_online`
@@ -6648,15 +4655,6 @@ CREATE TABLE `shop_log_visitor_online` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_log_visitor_online`
---
-
-LOCK TABLES `shop_log_visitor_online` WRITE;
-/*!40000 ALTER TABLE `shop_log_visitor_online` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_log_visitor_online` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_newsletter_problem`
 --
 
@@ -6676,15 +4674,6 @@ CREATE TABLE `shop_newsletter_problem` (
   CONSTRAINT `FK_SHOP_NLTTR_PROBLEM_QUEUE_ID_SHOP_NLTTR_QUEUE_QUEUE_ID` FOREIGN KEY (`queue_id`) REFERENCES `shop_newsletter_queue` (`queue_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Problems';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_newsletter_problem`
---
-
-LOCK TABLES `shop_newsletter_problem` WRITE;
-/*!40000 ALTER TABLE `shop_newsletter_problem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_newsletter_problem` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_newsletter_queue`
@@ -6712,15 +4701,6 @@ CREATE TABLE `shop_newsletter_queue` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_newsletter_queue`
---
-
-LOCK TABLES `shop_newsletter_queue` WRITE;
-/*!40000 ALTER TABLE `shop_newsletter_queue` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_newsletter_queue` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_newsletter_queue_link`
 --
 
@@ -6742,15 +4722,6 @@ CREATE TABLE `shop_newsletter_queue_link` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_newsletter_queue_link`
---
-
-LOCK TABLES `shop_newsletter_queue_link` WRITE;
-/*!40000 ALTER TABLE `shop_newsletter_queue_link` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_newsletter_queue_link` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_newsletter_queue_store_link`
 --
 
@@ -6766,15 +4737,6 @@ CREATE TABLE `shop_newsletter_queue_store_link` (
   CONSTRAINT `FK_SHOP_NLTTR_QUEUE_STORE_LNK_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Queue Store Link';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_newsletter_queue_store_link`
---
-
-LOCK TABLES `shop_newsletter_queue_store_link` WRITE;
-/*!40000 ALTER TABLE `shop_newsletter_queue_store_link` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_newsletter_queue_store_link` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_newsletter_subscriber`
@@ -6797,15 +4759,6 @@ CREATE TABLE `shop_newsletter_subscriber` (
   CONSTRAINT `FK_SHOP_NEWSLETTER_SUBSCRIBER_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Subscriber';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_newsletter_subscriber`
---
-
-LOCK TABLES `shop_newsletter_subscriber` WRITE;
-/*!40000 ALTER TABLE `shop_newsletter_subscriber` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_newsletter_subscriber` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_newsletter_template`
@@ -6835,16 +4788,6 @@ CREATE TABLE `shop_newsletter_template` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_newsletter_template`
---
-
-LOCK TABLES `shop_newsletter_template` WRITE;
-/*!40000 ALTER TABLE `shop_newsletter_template` DISABLE KEYS */;
-INSERT INTO `shop_newsletter_template` VALUES (1,'Example Newsletter Template','{{template config_path=\"design/email/header\"}}\n{{inlinecss file=\"email-inline.css\"}}\n\n<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n<tr>\n    <td class=\"full\">\n        <table class=\"columns\">\n            <tr>\n                <td class=\"email-heading\">\n                    <h1>Welcome</h1>\n                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n                    sed do eiusmod tempor incididunt ut labore et.</p>\n                </td>\n                <td class=\"store-info\">\n                    <h4>Contact Us</h4>\n                    <p>\n                        {{depend store_phone}}\n                        <b>Call Us:</b>\n                        <a href=\"tel:{{var phone}}\">{{var store_phone}}</a><br>\n                        {{/depend}}\n                        {{depend store_hours}}\n                        <span class=\"no-link\">{{var store_hours}}</span><br>\n                        {{/depend}}\n                        {{depend store_email}}\n                        <b>Email:</b> <a href=\"mailto:{{var store_email}}\">{{var store_email}}</a>\n                        {{/depend}}\n                    </p>\n                </td>\n            </tr>\n        </table>\n    </td>\n</tr>\n<tr>\n    <td class=\"full\">\n        <table class=\"columns\">\n            <tr>\n                <td>\n                    <img width=\"600\" src=\"http://placehold.it/600x200\" class=\"main-image\">\n                </td>\n                <td class=\"expander\"></td>\n            </tr>\n        </table>\n        <table class=\"columns\">\n            <tr>\n                <td class=\"panel\">\n                    <p>Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra\n                    vitae. <a href=\"#\">Click it! &raquo;</a></p>\n                </td>\n                <td class=\"expander\"></td>\n            </tr>\n        </table>\n    </td>\n</tr>\n<tr>\n    <td>\n        <table class=\"row\">\n            <tr>\n                <td class=\"half left wrapper\">\n                    <table class=\"columns\">\n                        <tr>\n                            <td>\n                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor\n                                incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n                                sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet.</p>\n                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor\n                                incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed\n                                do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet.</p>\n                                <table class=\"button\">\n                                    <tr>\n                                        <td>\n                                            <a href=\"#\">Click Me!</a>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </td>\n                            <td class=\"expander\"></td>\n                        </tr>\n                    </table>\n                </td>\n                <td class=\"half right wrapper last\">\n                    <table class=\"columns\">\n                        <tr>\n                            <td class=\"panel sidebar-links\">\n                                <h6>Header Thing</h6>\n                                <p>Sub-head or something</p>\n                                <table>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <hr/>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <hr/>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <hr/>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <hr/>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <hr/>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <hr/>\n                                        </td>\n                                    </tr>\n                                    <tr>\n                                        <td>\n                                            <p><a href=\"#\">Just a Plain Link &raquo;</a></p>\n                                        </td>\n                                    </tr>\n                                    <tr><td>&nbsp;</td></tr>\n                                </table>\n                            </td>\n                            <td class=\"expander\"></td>\n                        </tr>\n                    </table>\n                    <br>\n                    <table class=\"columns\">\n                        <tr>\n                            <td class=\"panel\">\n                                <h6>Connect With Us:</h6>\n                                <table class=\"social-button facebook\">\n                                    <tr>\n                                        <td>\n                                            <a href=\"#\">Facebook</a>\n                                        </td>\n                                    </tr>\n                                </table>\n                                <hr>\n                                <table class=\"social-button twitter\">\n                                    <tr>\n                                        <td>\n                                            <a href=\"#\">Twitter</a>\n                                        </td>\n                                    </tr>\n                                </table>\n                                <hr>\n                                <table class=\"social-button google-plus\">\n                                    <tr>\n                                        <td>\n                                            <a href=\"#\">Google +</a>\n                                        </td>\n                                    </tr>\n                                </table>\n                                <br>\n                                <h6>Contact Info:</h6>\n                                {{depend store_phone}}\n                                <p>\n                                    <b>Call Us:</b>\n                                    <a href=\"tel:{{var phone}}\">{{var store_phone}}</a>\n                                </p>\n                                {{/depend}}\n                                {{depend store_hours}}\n                                <p><span class=\"no-link\">{{var store_hours}}</span><br></p>\n                                {{/depend}}\n                                {{depend store_email}}\n                                <p><b>Email:</b> <a href=\"mailto:{{var store_email}}\">{{var store_email}}</a></p>\n                                {{/depend}}\n                            </td>\n                            <td class=\"expander\"></td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n        </table>\n        <table class=\"row\">\n            <tr>\n                <td class=\"full wrapper\">\n                    {{block type=\"catalog/product_new\" template=\"email/catalog/product/new.phtml\" products_count=\"4\"\n                    column_count=\"4\" }}\n                </td>\n            </tr>\n        </table>\n        <table class=\"row\">\n            <tr>\n                <td class=\"full wrapper last\">\n                    <table class=\"columns\">\n                        <tr>\n                            <td align=\"center\">\n                                <center>\n                                    <p><a href=\"#\">Terms</a> | <a href=\"#\">Privacy</a> | <a href=\"#\">Unsubscribe</a></p>\n                                </center>\n                            </td>\n                            <td class=\"expander\"></td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n        </table>\n    </td>\n</tr>\n</table>\n\n{{template config_path=\"design/email/footer\"}}',NULL,NULL,2,'Example Subject','Owner','owner@example.com',1,'2015-07-01 04:29:44','2015-07-01 04:29:44');
-/*!40000 ALTER TABLE `shop_newsletter_template` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_oauth_consumer`
 --
 
@@ -6869,15 +4812,6 @@ CREATE TABLE `shop_oauth_consumer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_oauth_consumer`
---
-
-LOCK TABLES `shop_oauth_consumer` WRITE;
-/*!40000 ALTER TABLE `shop_oauth_consumer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_oauth_consumer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_oauth_nonce`
 --
 
@@ -6890,15 +4824,6 @@ CREATE TABLE `shop_oauth_nonce` (
   UNIQUE KEY `UNQ_SHOP_SHOP_OAUTH_NONCE_NONCE` (`nonce`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='shop_oauth_nonce';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_oauth_nonce`
---
-
-LOCK TABLES `shop_oauth_nonce` WRITE;
-/*!40000 ALTER TABLE `shop_oauth_nonce` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_oauth_nonce` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_oauth_token`
@@ -6932,15 +4857,6 @@ CREATE TABLE `shop_oauth_token` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_oauth_token`
---
-
-LOCK TABLES `shop_oauth_token` WRITE;
-/*!40000 ALTER TABLE `shop_oauth_token` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_oauth_token` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_paypal_cert`
 --
 
@@ -6957,15 +4873,6 @@ CREATE TABLE `shop_paypal_cert` (
   CONSTRAINT `FK_SHOP_PAYPAL_CERT_WEBSITE_ID_SHOP_CORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Paypal Certificate Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_paypal_cert`
---
-
-LOCK TABLES `shop_paypal_cert` WRITE;
-/*!40000 ALTER TABLE `shop_paypal_cert` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_paypal_cert` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_paypal_payment_transaction`
@@ -6985,15 +4892,6 @@ CREATE TABLE `shop_paypal_payment_transaction` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_paypal_payment_transaction`
---
-
-LOCK TABLES `shop_paypal_payment_transaction` WRITE;
-/*!40000 ALTER TABLE `shop_paypal_payment_transaction` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_paypal_payment_transaction` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_paypal_settlement_report`
 --
 
@@ -7010,15 +4908,6 @@ CREATE TABLE `shop_paypal_settlement_report` (
   UNIQUE KEY `UNQ_SHOP_PAYPAL_SETTLEMENT_REPORT_REPORT_DATE_ACCOUNT_ID` (`report_date`,`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Paypal Settlement Report Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_paypal_settlement_report`
---
-
-LOCK TABLES `shop_paypal_settlement_report` WRITE;
-/*!40000 ALTER TABLE `shop_paypal_settlement_report` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_paypal_settlement_report` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_paypal_settlement_report_row`
@@ -7054,15 +4943,6 @@ CREATE TABLE `shop_paypal_settlement_report_row` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_paypal_settlement_report_row`
---
-
-LOCK TABLES `shop_paypal_settlement_report_row` WRITE;
-/*!40000 ALTER TABLE `shop_paypal_settlement_report_row` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_paypal_settlement_report_row` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_persistent_session`
 --
 
@@ -7085,15 +4965,6 @@ CREATE TABLE `shop_persistent_session` (
   CONSTRAINT `FK_SHOP_PERSISTENT_SESS_WS_ID_SHOP_CORE_WS_WS_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Persistent Session';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_persistent_session`
---
-
-LOCK TABLES `shop_persistent_session` WRITE;
-/*!40000 ALTER TABLE `shop_persistent_session` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_persistent_session` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_poll`
@@ -7119,16 +4990,6 @@ CREATE TABLE `shop_poll` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_poll`
---
-
-LOCK TABLES `shop_poll` WRITE;
-/*!40000 ALTER TABLE `shop_poll` DISABLE KEYS */;
-INSERT INTO `shop_poll` VALUES (1,'What is your favorite color',9,0,'2015-07-01 04:29:44',NULL,1,0,NULL);
-/*!40000 ALTER TABLE `shop_poll` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_poll_answer`
 --
 
@@ -7148,16 +5009,6 @@ CREATE TABLE `shop_poll_answer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_poll_answer`
---
-
-LOCK TABLES `shop_poll_answer` WRITE;
-/*!40000 ALTER TABLE `shop_poll_answer` DISABLE KEYS */;
-INSERT INTO `shop_poll_answer` VALUES (1,1,'Green',4,0),(2,1,'Red',1,0),(3,1,'Black',0,0),(4,1,'Magenta',4,0);
-/*!40000 ALTER TABLE `shop_poll_answer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_poll_store`
 --
 
@@ -7173,16 +5024,6 @@ CREATE TABLE `shop_poll_store` (
   CONSTRAINT `FK_SHOP_POLL_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Poll Store';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_poll_store`
---
-
-LOCK TABLES `shop_poll_store` WRITE;
-/*!40000 ALTER TABLE `shop_poll_store` DISABLE KEYS */;
-INSERT INTO `shop_poll_store` VALUES (1,1);
-/*!40000 ALTER TABLE `shop_poll_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_poll_vote`
@@ -7203,16 +5044,6 @@ CREATE TABLE `shop_poll_vote` (
   CONSTRAINT `FK_SHOP_POLL_VOTE_POLL_ANSWER_ID_SHOP_POLL_ANSWER_ANSWER_ID` FOREIGN KEY (`poll_answer_id`) REFERENCES `shop_poll_answer` (`answer_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Poll Vote';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_poll_vote`
---
-
-LOCK TABLES `shop_poll_vote` WRITE;
-/*!40000 ALTER TABLE `shop_poll_vote` DISABLE KEYS */;
-INSERT INTO `shop_poll_vote` VALUES (1,1,4,2130706433,NULL,'2015-07-01 04:38:52'),(2,1,4,3232300546,NULL,'2015-07-01 05:37:33');
-/*!40000 ALTER TABLE `shop_poll_vote` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_product_alert_price`
@@ -7242,15 +5073,6 @@ CREATE TABLE `shop_product_alert_price` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_product_alert_price`
---
-
-LOCK TABLES `shop_product_alert_price` WRITE;
-/*!40000 ALTER TABLE `shop_product_alert_price` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_product_alert_price` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_product_alert_stock`
 --
 
@@ -7277,15 +5099,6 @@ CREATE TABLE `shop_product_alert_stock` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_product_alert_stock`
---
-
-LOCK TABLES `shop_product_alert_stock` WRITE;
-/*!40000 ALTER TABLE `shop_product_alert_stock` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_product_alert_stock` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_rating`
 --
 
@@ -7305,16 +5118,6 @@ CREATE TABLE `shop_rating` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_rating`
---
-
-LOCK TABLES `shop_rating` WRITE;
-/*!40000 ALTER TABLE `shop_rating` DISABLE KEYS */;
-INSERT INTO `shop_rating` VALUES (1,1,'Quality',0),(2,1,'Value',0),(3,1,'Price',0);
-/*!40000 ALTER TABLE `shop_rating` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_rating_entity`
 --
 
@@ -7328,16 +5131,6 @@ CREATE TABLE `shop_rating_entity` (
   UNIQUE KEY `UNQ_SHOP_RATING_ENTITY_ENTITY_CODE` (`entity_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Rating entities';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_rating_entity`
---
-
-LOCK TABLES `shop_rating_entity` WRITE;
-/*!40000 ALTER TABLE `shop_rating_entity` DISABLE KEYS */;
-INSERT INTO `shop_rating_entity` VALUES (1,'product'),(2,'product_review'),(3,'review');
-/*!40000 ALTER TABLE `shop_rating_entity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_rating_option`
@@ -7357,16 +5150,6 @@ CREATE TABLE `shop_rating_option` (
   CONSTRAINT `FK_SHOP_RATING_OPTION_RATING_ID_SHOP_RATING_RATING_ID` FOREIGN KEY (`rating_id`) REFERENCES `shop_rating` (`rating_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Rating options';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_rating_option`
---
-
-LOCK TABLES `shop_rating_option` WRITE;
-/*!40000 ALTER TABLE `shop_rating_option` DISABLE KEYS */;
-INSERT INTO `shop_rating_option` VALUES (1,1,'1',1,1),(2,1,'2',2,2),(3,1,'3',3,3),(4,1,'4',4,4),(5,1,'5',5,5),(6,2,'1',1,1),(7,2,'2',2,2),(8,2,'3',3,3),(9,2,'4',4,4),(10,2,'5',5,5),(11,3,'1',1,1),(12,3,'2',2,2),(13,3,'3',3,3),(14,3,'4',4,4),(15,3,'5',5,5);
-/*!40000 ALTER TABLE `shop_rating_option` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_rating_option_vote`
@@ -7395,15 +5178,6 @@ CREATE TABLE `shop_rating_option_vote` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_rating_option_vote`
---
-
-LOCK TABLES `shop_rating_option_vote` WRITE;
-/*!40000 ALTER TABLE `shop_rating_option_vote` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_rating_option_vote` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_rating_option_vote_aggregated`
 --
 
@@ -7428,15 +5202,6 @@ CREATE TABLE `shop_rating_option_vote_aggregated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_rating_option_vote_aggregated`
---
-
-LOCK TABLES `shop_rating_option_vote_aggregated` WRITE;
-/*!40000 ALTER TABLE `shop_rating_option_vote_aggregated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_rating_option_vote_aggregated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_rating_store`
 --
 
@@ -7452,15 +5217,6 @@ CREATE TABLE `shop_rating_store` (
   CONSTRAINT `FK_SHOP_RATING_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Rating Store';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_rating_store`
---
-
-LOCK TABLES `shop_rating_store` WRITE;
-/*!40000 ALTER TABLE `shop_rating_store` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_rating_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_rating_title`
@@ -7479,15 +5235,6 @@ CREATE TABLE `shop_rating_title` (
   CONSTRAINT `FK_SHOP_RATING_TITLE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Rating Title';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_rating_title`
---
-
-LOCK TABLES `shop_rating_title` WRITE;
-/*!40000 ALTER TABLE `shop_rating_title` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_rating_title` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_report_compared_product_index`
@@ -7516,15 +5263,6 @@ CREATE TABLE `shop_report_compared_product_index` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_report_compared_product_index`
---
-
-LOCK TABLES `shop_report_compared_product_index` WRITE;
-/*!40000 ALTER TABLE `shop_report_compared_product_index` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_report_compared_product_index` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_report_event`
 --
 
@@ -7547,18 +5285,8 @@ CREATE TABLE `shop_report_event` (
   KEY `IDX_SHOP_REPORT_EVENT_STORE_ID` (`store_id`),
   CONSTRAINT `FK_F70D770663EE4FD32FD560C8A3E8E110` FOREIGN KEY (`event_type_id`) REFERENCES `shop_report_event_types` (`event_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_REPORT_EVENT_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Reports Event Table';
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='Reports Event Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_report_event`
---
-
-LOCK TABLES `shop_report_event` WRITE;
-/*!40000 ALTER TABLE `shop_report_event` DISABLE KEYS */;
-INSERT INTO `shop_report_event` VALUES (1,'2015-07-01 04:39:22',1,1,1,1,1);
-/*!40000 ALTER TABLE `shop_report_event` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_report_event_types`
@@ -7574,16 +5302,6 @@ CREATE TABLE `shop_report_event_types` (
   PRIMARY KEY (`event_type_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Reports Event Type Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_report_event_types`
---
-
-LOCK TABLES `shop_report_event_types` WRITE;
-/*!40000 ALTER TABLE `shop_report_event_types` DISABLE KEYS */;
-INSERT INTO `shop_report_event_types` VALUES (1,'catalog_product_view',0),(2,'sendfriend_product',0),(3,'catalog_product_compare_add_product',0),(4,'checkout_cart_add_product',0),(5,'wishlist_add_product',0),(6,'wishlist_share',0);
-/*!40000 ALTER TABLE `shop_report_event_types` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_report_viewed_product_aggregated_daily`
@@ -7611,15 +5329,6 @@ CREATE TABLE `shop_report_viewed_product_aggregated_daily` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_report_viewed_product_aggregated_daily`
---
-
-LOCK TABLES `shop_report_viewed_product_aggregated_daily` WRITE;
-/*!40000 ALTER TABLE `shop_report_viewed_product_aggregated_daily` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_report_viewed_product_aggregated_daily` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_report_viewed_product_aggregated_monthly`
 --
 
@@ -7643,15 +5352,6 @@ CREATE TABLE `shop_report_viewed_product_aggregated_monthly` (
   CONSTRAINT `FK_A7048B1EE2A884EB82A52681009E9DE5` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Most Viewed Products Aggregated Monthly';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_report_viewed_product_aggregated_monthly`
---
-
-LOCK TABLES `shop_report_viewed_product_aggregated_monthly` WRITE;
-/*!40000 ALTER TABLE `shop_report_viewed_product_aggregated_monthly` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_report_viewed_product_aggregated_monthly` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_report_viewed_product_aggregated_yearly`
@@ -7679,15 +5379,6 @@ CREATE TABLE `shop_report_viewed_product_aggregated_yearly` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_report_viewed_product_aggregated_yearly`
---
-
-LOCK TABLES `shop_report_viewed_product_aggregated_yearly` WRITE;
-/*!40000 ALTER TABLE `shop_report_viewed_product_aggregated_yearly` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_report_viewed_product_aggregated_yearly` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_report_viewed_product_index`
 --
 
@@ -7710,18 +5401,8 @@ CREATE TABLE `shop_report_viewed_product_index` (
   CONSTRAINT `FK_SHOP_REPORT_VIEWED_PRD_IDX_CSTR_ID_SHOP_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_REPORT_VIEWED_PRD_IDX_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_REPORT_VIEWED_PRD_IDX_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Reports Viewed Product Index Table';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='Reports Viewed Product Index Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_report_viewed_product_index`
---
-
-LOCK TABLES `shop_report_viewed_product_index` WRITE;
-/*!40000 ALTER TABLE `shop_report_viewed_product_index` DISABLE KEYS */;
-INSERT INTO `shop_report_viewed_product_index` VALUES (1,1,NULL,1,1,'2015-07-01 04:39:22');
-/*!40000 ALTER TABLE `shop_report_viewed_product_index` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_review`
@@ -7744,15 +5425,6 @@ CREATE TABLE `shop_review` (
   CONSTRAINT `FK_SHOP_REVIEW_STATUS_ID_SHOP_REVIEW_STATUS_STATUS_ID` FOREIGN KEY (`status_id`) REFERENCES `shop_review_status` (`status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Review base information';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_review`
---
-
-LOCK TABLES `shop_review` WRITE;
-/*!40000 ALTER TABLE `shop_review` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_review` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_review_detail`
@@ -7780,15 +5452,6 @@ CREATE TABLE `shop_review_detail` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_review_detail`
---
-
-LOCK TABLES `shop_review_detail` WRITE;
-/*!40000 ALTER TABLE `shop_review_detail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_review_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_review_entity`
 --
 
@@ -7801,16 +5464,6 @@ CREATE TABLE `shop_review_entity` (
   PRIMARY KEY (`entity_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Review entities';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_review_entity`
---
-
-LOCK TABLES `shop_review_entity` WRITE;
-/*!40000 ALTER TABLE `shop_review_entity` DISABLE KEYS */;
-INSERT INTO `shop_review_entity` VALUES (1,'product'),(2,'customer'),(3,'category');
-/*!40000 ALTER TABLE `shop_review_entity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_review_entity_summary`
@@ -7833,15 +5486,6 @@ CREATE TABLE `shop_review_entity_summary` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_review_entity_summary`
---
-
-LOCK TABLES `shop_review_entity_summary` WRITE;
-/*!40000 ALTER TABLE `shop_review_entity_summary` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_review_entity_summary` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_review_status`
 --
 
@@ -7854,16 +5498,6 @@ CREATE TABLE `shop_review_status` (
   PRIMARY KEY (`status_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Review statuses';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_review_status`
---
-
-LOCK TABLES `shop_review_status` WRITE;
-/*!40000 ALTER TABLE `shop_review_status` DISABLE KEYS */;
-INSERT INTO `shop_review_status` VALUES (1,'Approved'),(2,'Pending'),(3,'Not Approved');
-/*!40000 ALTER TABLE `shop_review_status` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_review_store`
@@ -7881,15 +5515,6 @@ CREATE TABLE `shop_review_store` (
   CONSTRAINT `FK_SHOP_REVIEW_STORE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Review Store';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_review_store`
---
-
-LOCK TABLES `shop_review_store` WRITE;
-/*!40000 ALTER TABLE `shop_review_store` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_review_store` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_bestsellers_aggregated_daily`
@@ -7917,15 +5542,6 @@ CREATE TABLE `shop_sales_bestsellers_aggregated_daily` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_bestsellers_aggregated_daily`
---
-
-LOCK TABLES `shop_sales_bestsellers_aggregated_daily` WRITE;
-/*!40000 ALTER TABLE `shop_sales_bestsellers_aggregated_daily` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_bestsellers_aggregated_daily` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_bestsellers_aggregated_monthly`
 --
 
@@ -7949,15 +5565,6 @@ CREATE TABLE `shop_sales_bestsellers_aggregated_monthly` (
   CONSTRAINT `FK_D58D1CE272427225A3F873362A3F101F` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Bestsellers Aggregated Monthly';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_bestsellers_aggregated_monthly`
---
-
-LOCK TABLES `shop_sales_bestsellers_aggregated_monthly` WRITE;
-/*!40000 ALTER TABLE `shop_sales_bestsellers_aggregated_monthly` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_bestsellers_aggregated_monthly` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_bestsellers_aggregated_yearly`
@@ -7985,15 +5592,6 @@ CREATE TABLE `shop_sales_bestsellers_aggregated_yearly` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_bestsellers_aggregated_yearly`
---
-
-LOCK TABLES `shop_sales_bestsellers_aggregated_yearly` WRITE;
-/*!40000 ALTER TABLE `shop_sales_bestsellers_aggregated_yearly` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_bestsellers_aggregated_yearly` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_billing_agreement`
 --
 
@@ -8019,15 +5617,6 @@ CREATE TABLE `shop_sales_billing_agreement` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_billing_agreement`
---
-
-LOCK TABLES `shop_sales_billing_agreement` WRITE;
-/*!40000 ALTER TABLE `shop_sales_billing_agreement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_billing_agreement` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_billing_agreement_order`
 --
 
@@ -8043,15 +5632,6 @@ CREATE TABLE `shop_sales_billing_agreement_order` (
   CONSTRAINT `FK_420C8A680C0A2EC6646EA037DF4D2FDE` FOREIGN KEY (`order_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Billing Agreement Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_billing_agreement_order`
---
-
-LOCK TABLES `shop_sales_billing_agreement_order` WRITE;
-/*!40000 ALTER TABLE `shop_sales_billing_agreement_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_billing_agreement_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_creditmemo`
@@ -8122,15 +5702,6 @@ CREATE TABLE `shop_sales_flat_creditmemo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_flat_creditmemo`
---
-
-LOCK TABLES `shop_sales_flat_creditmemo` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_flat_creditmemo_comment`
 --
 
@@ -8150,15 +5721,6 @@ CREATE TABLE `shop_sales_flat_creditmemo_comment` (
   CONSTRAINT `FK_C4854C2A51ADCC489AB2CE34F9C6D343` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_creditmemo` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Creditmemo Comment';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_creditmemo_comment`
---
-
-LOCK TABLES `shop_sales_flat_creditmemo_comment` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo_comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_creditmemo_grid`
@@ -8207,15 +5769,6 @@ CREATE TABLE `shop_sales_flat_creditmemo_grid` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_flat_creditmemo_grid`
---
-
-LOCK TABLES `shop_sales_flat_creditmemo_grid` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo_grid` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo_grid` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_flat_creditmemo_item`
 --
 
@@ -8261,15 +5814,6 @@ CREATE TABLE `shop_sales_flat_creditmemo_item` (
   CONSTRAINT `FK_AC585D8C2E9A264876C069C8888C155D` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_creditmemo` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Creditmemo Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_creditmemo_item`
---
-
-LOCK TABLES `shop_sales_flat_creditmemo_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_creditmemo_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_invoice`
@@ -8336,15 +5880,6 @@ CREATE TABLE `shop_sales_flat_invoice` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_flat_invoice`
---
-
-LOCK TABLES `shop_sales_flat_invoice` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_flat_invoice_comment`
 --
 
@@ -8364,15 +5899,6 @@ CREATE TABLE `shop_sales_flat_invoice_comment` (
   CONSTRAINT `FK_A97CABCBDFE92D6B6D8F0D0CC83858C3` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_invoice` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Invoice Comment';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_invoice_comment`
---
-
-LOCK TABLES `shop_sales_flat_invoice_comment` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice_comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_invoice_grid`
@@ -8411,15 +5937,6 @@ CREATE TABLE `shop_sales_flat_invoice_grid` (
   CONSTRAINT `FK_AD561D31F8D8FC3A9E3059BB4C51819B` FOREIGN KEY (`entity_id`) REFERENCES `shop_sales_flat_invoice` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Invoice Grid';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_invoice_grid`
---
-
-LOCK TABLES `shop_sales_flat_invoice_grid` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice_grid` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice_grid` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_invoice_item`
@@ -8467,15 +5984,6 @@ CREATE TABLE `shop_sales_flat_invoice_item` (
   CONSTRAINT `FK_8167B528BE872724C249A4B21D390D8A` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_invoice` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Invoice Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_invoice_item`
---
-
-LOCK TABLES `shop_sales_flat_invoice_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_invoice_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_order`
@@ -8634,17 +6142,8 @@ CREATE TABLE `shop_sales_flat_order` (
   KEY `IDX_SHOP_SALES_FLAT_ORDER_UPDATED_AT` (`updated_at`),
   CONSTRAINT `FK_SHOP_SALES_FLAT_ORDER_CSTR_ID_SHOP_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_SALES_FLAT_ORDER_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_order`
---
-
-LOCK TABLES `shop_sales_flat_order` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_order_address`
@@ -8683,17 +6182,8 @@ CREATE TABLE `shop_sales_flat_order_address` (
   PRIMARY KEY (`entity_id`),
   KEY `IDX_SHOP_SALES_FLAT_ORDER_ADDRESS_PARENT_ID` (`parent_id`),
   CONSTRAINT `FK_1EC23C02F498914ACABC2AC7D8DA6C89` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Address';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Address';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_order_address`
---
-
-LOCK TABLES `shop_sales_flat_order_address` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_order_address` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_order_address` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_order_grid`
@@ -8737,15 +6227,6 @@ CREATE TABLE `shop_sales_flat_order_grid` (
   CONSTRAINT `FK_SHOP_SALES_FLAT_ORDER_GRID_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Grid';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_order_grid`
---
-
-LOCK TABLES `shop_sales_flat_order_grid` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_order_grid` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_order_grid` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_order_item`
@@ -8841,17 +6322,8 @@ CREATE TABLE `shop_sales_flat_order_item` (
   KEY `IDX_SHOP_SALES_FLAT_ORDER_ITEM_STORE_ID` (`store_id`),
   CONSTRAINT `FK_54D40BBA1E9EB4647B7B42A2E666B8B2` FOREIGN KEY (`order_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_SALES_FLAT_ORDER_ITEM_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Item';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_order_item`
---
-
-LOCK TABLES `shop_sales_flat_order_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_order_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_order_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_order_payment`
@@ -8919,17 +6391,8 @@ CREATE TABLE `shop_sales_flat_order_payment` (
   PRIMARY KEY (`entity_id`),
   KEY `IDX_SHOP_SALES_FLAT_ORDER_PAYMENT_PARENT_ID` (`parent_id`),
   CONSTRAINT `FK_84A5FF95427A90AF772BEF774D5A94D1` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Payment';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Payment';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_order_payment`
---
-
-LOCK TABLES `shop_sales_flat_order_payment` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_order_payment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_order_payment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_order_status_history`
@@ -8951,17 +6414,8 @@ CREATE TABLE `shop_sales_flat_order_status_history` (
   KEY `IDX_SHOP_SALES_FLAT_ORDER_STATUS_HISTORY_PARENT_ID` (`parent_id`),
   KEY `IDX_SHOP_SALES_FLAT_ORDER_STATUS_HISTORY_CREATED_AT` (`created_at`),
   CONSTRAINT `FK_49E7CFF47DC9DBE2BD8921228BA66D1B` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Status History';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Order Status History';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_order_status_history`
---
-
-LOCK TABLES `shop_sales_flat_order_status_history` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_order_status_history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_order_status_history` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote`
@@ -9026,17 +6480,8 @@ CREATE TABLE `shop_sales_flat_quote` (
   KEY `IDX_SHOP_SALES_FLAT_QUOTE_CUSTOMER_ID_STORE_ID_IS_ACTIVE` (`customer_id`,`store_id`,`is_active`),
   KEY `IDX_SHOP_SALES_FLAT_QUOTE_STORE_ID` (`store_id`),
   CONSTRAINT `FK_SHOP_SALES_FLAT_QUOTE_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote`
---
-
-LOCK TABLES `shop_sales_flat_quote` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote_address`
@@ -9111,17 +6556,8 @@ CREATE TABLE `shop_sales_flat_quote_address` (
   PRIMARY KEY (`address_id`),
   KEY `IDX_SHOP_SALES_FLAT_QUOTE_ADDRESS_QUOTE_ID` (`quote_id`),
   CONSTRAINT `FK_ABAC574E0238F1BBD4DE550647C6D648` FOREIGN KEY (`quote_id`) REFERENCES `shop_sales_flat_quote` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Address';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Address';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote_address`
---
-
-LOCK TABLES `shop_sales_flat_quote_address` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_address` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_address` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote_address_item`
@@ -9180,15 +6616,6 @@ CREATE TABLE `shop_sales_flat_quote_address_item` (
   CONSTRAINT `FK_BF3A21DD8821C8C34443112A24A190F3` FOREIGN KEY (`quote_address_id`) REFERENCES `shop_sales_flat_quote_address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Address Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote_address_item`
---
-
-LOCK TABLES `shop_sales_flat_quote_address_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_address_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_address_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote_item`
@@ -9260,17 +6687,8 @@ CREATE TABLE `shop_sales_flat_quote_item` (
   CONSTRAINT `FK_9BFC96711CEFD75316DFA6BE1833865F` FOREIGN KEY (`parent_item_id`) REFERENCES `shop_sales_flat_quote_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_SALES_FLAT_QUOTE_ITEM_PRD_ID_SHOP_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`product_id`) REFERENCES `shop_catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SHOP_SALES_FLAT_QUOTE_ITEM_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Item';
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote_item`
---
-
-LOCK TABLES `shop_sales_flat_quote_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote_item_option`
@@ -9288,17 +6706,8 @@ CREATE TABLE `shop_sales_flat_quote_item_option` (
   PRIMARY KEY (`option_id`),
   KEY `IDX_SHOP_SALES_FLAT_QUOTE_ITEM_OPTION_ITEM_ID` (`item_id`),
   CONSTRAINT `FK_EE8FD488DC474C4968E58CA21573DC18` FOREIGN KEY (`item_id`) REFERENCES `shop_sales_flat_quote_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Item Option';
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Item Option';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote_item_option`
---
-
-LOCK TABLES `shop_sales_flat_quote_item_option` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_item_option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_item_option` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote_payment`
@@ -9333,17 +6742,8 @@ CREATE TABLE `shop_sales_flat_quote_payment` (
   PRIMARY KEY (`payment_id`),
   KEY `IDX_SHOP_SALES_FLAT_QUOTE_PAYMENT_QUOTE_ID` (`quote_id`),
   CONSTRAINT `FK_982F97B1DD50A2C4C5556F85B966EE15` FOREIGN KEY (`quote_id`) REFERENCES `shop_sales_flat_quote` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Payment';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Payment';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote_payment`
---
-
-LOCK TABLES `shop_sales_flat_quote_payment` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_payment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_payment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_quote_shipping_rate`
@@ -9368,17 +6768,8 @@ CREATE TABLE `shop_sales_flat_quote_shipping_rate` (
   PRIMARY KEY (`rate_id`),
   KEY `IDX_SHOP_SALES_FLAT_QUOTE_SHIPPING_RATE_ADDRESS_ID` (`address_id`),
   CONSTRAINT `FK_6A95BDD8AB25746F794DA7D8F43BF858` FOREIGN KEY (`address_id`) REFERENCES `shop_sales_flat_quote_address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Shipping Rate';
+) ENGINE=InnoDB AUTO_INCREMENT=409 DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Shipping Rate';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_quote_shipping_rate`
---
-
-LOCK TABLES `shop_sales_flat_quote_shipping_rate` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_shipping_rate` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_quote_shipping_rate` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_shipment`
@@ -9416,15 +6807,6 @@ CREATE TABLE `shop_sales_flat_shipment` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_flat_shipment`
---
-
-LOCK TABLES `shop_sales_flat_shipment` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_flat_shipment_comment`
 --
 
@@ -9444,15 +6826,6 @@ CREATE TABLE `shop_sales_flat_shipment_comment` (
   CONSTRAINT `FK_C3E139EA22BBE8286C66295164270BC4` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_shipment` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Shipment Comment';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_shipment_comment`
---
-
-LOCK TABLES `shop_sales_flat_shipment_comment` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_shipment_grid`
@@ -9488,15 +6861,6 @@ CREATE TABLE `shop_sales_flat_shipment_grid` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_flat_shipment_grid`
---
-
-LOCK TABLES `shop_sales_flat_shipment_grid` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_grid` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_grid` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_flat_shipment_item`
 --
 
@@ -9521,15 +6885,6 @@ CREATE TABLE `shop_sales_flat_shipment_item` (
   CONSTRAINT `FK_F792E3C550AF25789F409966D084DC3D` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_flat_shipment` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Shipment Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_flat_shipment_item`
---
-
-LOCK TABLES `shop_sales_flat_shipment_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_flat_shipment_track`
@@ -9559,15 +6914,6 @@ CREATE TABLE `shop_sales_flat_shipment_track` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_flat_shipment_track`
---
-
-LOCK TABLES `shop_sales_flat_shipment_track` WRITE;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_track` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_flat_shipment_track` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_invoiced_aggregated`
 --
 
@@ -9592,15 +6938,6 @@ CREATE TABLE `shop_sales_invoiced_aggregated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_invoiced_aggregated`
---
-
-LOCK TABLES `shop_sales_invoiced_aggregated` WRITE;
-/*!40000 ALTER TABLE `shop_sales_invoiced_aggregated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_invoiced_aggregated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_invoiced_aggregated_order`
 --
 
@@ -9623,15 +6960,6 @@ CREATE TABLE `shop_sales_invoiced_aggregated_order` (
   CONSTRAINT `FK_8967B27511F3C1BE6CB635EDF56342A6` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Invoiced Aggregated Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_invoiced_aggregated_order`
---
-
-LOCK TABLES `shop_sales_invoiced_aggregated_order` WRITE;
-/*!40000 ALTER TABLE `shop_sales_invoiced_aggregated_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_invoiced_aggregated_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_order_aggregated_created`
@@ -9669,15 +6997,6 @@ CREATE TABLE `shop_sales_order_aggregated_created` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_order_aggregated_created`
---
-
-LOCK TABLES `shop_sales_order_aggregated_created` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_aggregated_created` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_order_aggregated_created` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_order_aggregated_updated`
 --
 
@@ -9713,15 +7032,6 @@ CREATE TABLE `shop_sales_order_aggregated_updated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_order_aggregated_updated`
---
-
-LOCK TABLES `shop_sales_order_aggregated_updated` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_aggregated_updated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_order_aggregated_updated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_order_status`
 --
 
@@ -9734,16 +7044,6 @@ CREATE TABLE `shop_sales_order_status` (
   PRIMARY KEY (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Order Status Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_order_status`
---
-
-LOCK TABLES `shop_sales_order_status` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_status` DISABLE KEYS */;
-INSERT INTO `shop_sales_order_status` VALUES ('canceled','Canceled'),('closed','Closed'),('complete','Complete'),('fraud','Suspected Fraud'),('holded','On Hold'),('payment_review','Payment Review'),('paypal_canceled_reversal','PayPal Canceled Reversal'),('paypal_reversed','PayPal Reversed'),('pending','Pending'),('pending_payment','Pending Payment'),('pending_paypal','Pending PayPal'),('processing','Processing');
-/*!40000 ALTER TABLE `shop_sales_order_status` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_order_status_label`
@@ -9764,15 +7064,6 @@ CREATE TABLE `shop_sales_order_status_label` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_order_status_label`
---
-
-LOCK TABLES `shop_sales_order_status_label` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_status_label` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_order_status_label` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_order_status_state`
 --
 
@@ -9787,16 +7078,6 @@ CREATE TABLE `shop_sales_order_status_state` (
   CONSTRAINT `FK_SHOP_SALES_ORDER_STS_STATE_STS_SHOP_SALES_ORDER_STS_STS` FOREIGN KEY (`status`) REFERENCES `shop_sales_order_status` (`status`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Order Status Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_order_status_state`
---
-
-LOCK TABLES `shop_sales_order_status_state` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_status_state` DISABLE KEYS */;
-INSERT INTO `shop_sales_order_status_state` VALUES ('canceled','canceled',1),('closed','closed',1),('complete','complete',1),('fraud','payment_review',0),('holded','holded',1),('payment_review','payment_review',1),('pending','new',1),('pending_payment','pending_payment',1),('processing','processing',1);
-/*!40000 ALTER TABLE `shop_sales_order_status_state` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_order_tax`
@@ -9824,15 +7105,6 @@ CREATE TABLE `shop_sales_order_tax` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_order_tax`
---
-
-LOCK TABLES `shop_sales_order_tax` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_tax` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_order_tax` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_order_tax_item`
 --
 
@@ -9852,15 +7124,6 @@ CREATE TABLE `shop_sales_order_tax_item` (
   CONSTRAINT `FK_SHOP_SALES_ORDER_TAX_ITEM_TAX_ID_SHOP_SALES_ORDER_TAX_TAX_ID` FOREIGN KEY (`tax_id`) REFERENCES `shop_sales_order_tax` (`tax_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Order Tax Item';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_order_tax_item`
---
-
-LOCK TABLES `shop_sales_order_tax_item` WRITE;
-/*!40000 ALTER TABLE `shop_sales_order_tax_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_order_tax_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_payment_transaction`
@@ -9888,17 +7151,8 @@ CREATE TABLE `shop_sales_payment_transaction` (
   CONSTRAINT `FK_0F0B75C0C0BED10BB4A6E254DA19EC18` FOREIGN KEY (`payment_id`) REFERENCES `shop_sales_flat_order_payment` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_4E77F5503907DE5EB29EC2F6FFDF3745` FOREIGN KEY (`order_id`) REFERENCES `shop_sales_flat_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_AAC08A7F70B11CC6106919D6EE493899` FOREIGN KEY (`parent_id`) REFERENCES `shop_sales_payment_transaction` (`transaction_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Payment Transaction';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Sales Payment Transaction';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_payment_transaction`
---
-
-LOCK TABLES `shop_sales_payment_transaction` WRITE;
-/*!40000 ALTER TABLE `shop_sales_payment_transaction` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_payment_transaction` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_recurring_profile`
@@ -9951,15 +7205,6 @@ CREATE TABLE `shop_sales_recurring_profile` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_recurring_profile`
---
-
-LOCK TABLES `shop_sales_recurring_profile` WRITE;
-/*!40000 ALTER TABLE `shop_sales_recurring_profile` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_recurring_profile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_recurring_profile_order`
 --
 
@@ -9977,15 +7222,6 @@ CREATE TABLE `shop_sales_recurring_profile_order` (
   CONSTRAINT `FK_D166F0E6E09F51A95D2F366065F8A5D1` FOREIGN KEY (`profile_id`) REFERENCES `shop_sales_recurring_profile` (`profile_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Recurring Profile Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_recurring_profile_order`
---
-
-LOCK TABLES `shop_sales_recurring_profile_order` WRITE;
-/*!40000 ALTER TABLE `shop_sales_recurring_profile_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_recurring_profile_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_refunded_aggregated`
@@ -10011,15 +7247,6 @@ CREATE TABLE `shop_sales_refunded_aggregated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_refunded_aggregated`
---
-
-LOCK TABLES `shop_sales_refunded_aggregated` WRITE;
-/*!40000 ALTER TABLE `shop_sales_refunded_aggregated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_refunded_aggregated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_refunded_aggregated_order`
 --
 
@@ -10041,15 +7268,6 @@ CREATE TABLE `shop_sales_refunded_aggregated_order` (
   CONSTRAINT `FK_79FE3C7B523EC70309BC44ED0EDA4AB8` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Refunded Aggregated Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_refunded_aggregated_order`
---
-
-LOCK TABLES `shop_sales_refunded_aggregated_order` WRITE;
-/*!40000 ALTER TABLE `shop_sales_refunded_aggregated_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_refunded_aggregated_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_sales_shipping_aggregated`
@@ -10075,15 +7293,6 @@ CREATE TABLE `shop_sales_shipping_aggregated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_sales_shipping_aggregated`
---
-
-LOCK TABLES `shop_sales_shipping_aggregated` WRITE;
-/*!40000 ALTER TABLE `shop_sales_shipping_aggregated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_shipping_aggregated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sales_shipping_aggregated_order`
 --
 
@@ -10105,15 +7314,6 @@ CREATE TABLE `shop_sales_shipping_aggregated_order` (
   CONSTRAINT `FK_708DF48A5B8ED247B6D4BCE32B9BBB22` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Shipping Aggregated Order';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sales_shipping_aggregated_order`
---
-
-LOCK TABLES `shop_sales_shipping_aggregated_order` WRITE;
-/*!40000 ALTER TABLE `shop_sales_shipping_aggregated_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sales_shipping_aggregated_order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_salesrule`
@@ -10153,15 +7353,6 @@ CREATE TABLE `shop_salesrule` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_salesrule`
---
-
-LOCK TABLES `shop_salesrule` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_salesrule_coupon`
 --
 
@@ -10188,15 +7379,6 @@ CREATE TABLE `shop_salesrule_coupon` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_salesrule_coupon`
---
-
-LOCK TABLES `shop_salesrule_coupon` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_coupon` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_coupon` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_salesrule_coupon_usage`
 --
 
@@ -10214,15 +7396,6 @@ CREATE TABLE `shop_salesrule_coupon_usage` (
   CONSTRAINT `FK_SHOP_SALESRULE_COUPON_USAGE_CSTR_ID_SHOP_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Salesrule Coupon Usage';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_salesrule_coupon_usage`
---
-
-LOCK TABLES `shop_salesrule_coupon_usage` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_coupon_usage` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_coupon_usage` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_salesrule_customer`
@@ -10245,15 +7418,6 @@ CREATE TABLE `shop_salesrule_customer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_salesrule_customer`
---
-
-LOCK TABLES `shop_salesrule_customer` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_customer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_salesrule_customer_group`
 --
 
@@ -10270,15 +7434,6 @@ CREATE TABLE `shop_salesrule_customer_group` (
   CONSTRAINT `FK_SHOP_SALESRULE_CUSTOMER_GROUP_RULE_ID_SHOP_SALESRULE_RULE_ID` FOREIGN KEY (`rule_id`) REFERENCES `shop_salesrule` (`rule_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Rules To Customer Groups Relations';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_salesrule_customer_group`
---
-
-LOCK TABLES `shop_salesrule_customer_group` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_customer_group` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_customer_group` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_salesrule_label`
@@ -10300,15 +7455,6 @@ CREATE TABLE `shop_salesrule_label` (
   CONSTRAINT `FK_SHOP_SALESRULE_LABEL_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Salesrule Label';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_salesrule_label`
---
-
-LOCK TABLES `shop_salesrule_label` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_label` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_label` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_salesrule_product_attribute`
@@ -10334,15 +7480,6 @@ CREATE TABLE `shop_salesrule_product_attribute` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_salesrule_product_attribute`
---
-
-LOCK TABLES `shop_salesrule_product_attribute` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_product_attribute` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_product_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_salesrule_website`
 --
 
@@ -10361,15 +7498,6 @@ CREATE TABLE `shop_salesrule_website` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_salesrule_website`
---
-
-LOCK TABLES `shop_salesrule_website` WRITE;
-/*!40000 ALTER TABLE `shop_salesrule_website` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_salesrule_website` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sendfriend_log`
 --
 
@@ -10386,15 +7514,6 @@ CREATE TABLE `shop_sendfriend_log` (
   KEY `IDX_SHOP_SENDFRIEND_LOG_TIME` (`time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Send to friend function log storage table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sendfriend_log`
---
-
-LOCK TABLES `shop_sendfriend_log` WRITE;
-/*!40000 ALTER TABLE `shop_sendfriend_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sendfriend_log` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_shipping_tablerate`
@@ -10419,15 +7538,6 @@ CREATE TABLE `shop_shipping_tablerate` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_shipping_tablerate`
---
-
-LOCK TABLES `shop_shipping_tablerate` WRITE;
-/*!40000 ALTER TABLE `shop_shipping_tablerate` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_shipping_tablerate` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_sitemap`
 --
 
@@ -10446,15 +7556,6 @@ CREATE TABLE `shop_sitemap` (
   CONSTRAINT `FK_SHOP_SITEMAP_STORE_ID_SHOP_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `shop_core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Google Sitemap';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_sitemap`
---
-
-LOCK TABLES `shop_sitemap` WRITE;
-/*!40000 ALTER TABLE `shop_sitemap` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_sitemap` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_tag`
@@ -10478,15 +7579,6 @@ CREATE TABLE `shop_tag` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tag`
---
-
-LOCK TABLES `shop_tag` WRITE;
-/*!40000 ALTER TABLE `shop_tag` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tag` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tag_properties`
 --
 
@@ -10503,15 +7595,6 @@ CREATE TABLE `shop_tag_properties` (
   CONSTRAINT `FK_SHOP_TAG_PROPERTIES_TAG_ID_SHOP_TAG_TAG_ID` FOREIGN KEY (`tag_id`) REFERENCES `shop_tag` (`tag_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tag Properties';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_tag_properties`
---
-
-LOCK TABLES `shop_tag_properties` WRITE;
-/*!40000 ALTER TABLE `shop_tag_properties` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tag_properties` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_tag_relation`
@@ -10542,15 +7625,6 @@ CREATE TABLE `shop_tag_relation` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tag_relation`
---
-
-LOCK TABLES `shop_tag_relation` WRITE;
-/*!40000 ALTER TABLE `shop_tag_relation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tag_relation` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tag_summary`
 --
 
@@ -10573,15 +7647,6 @@ CREATE TABLE `shop_tag_summary` (
   CONSTRAINT `FK_SHOP_TAG_SUMMARY_TAG_ID_SHOP_TAG_TAG_ID` FOREIGN KEY (`tag_id`) REFERENCES `shop_tag` (`tag_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tag Summary';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_tag_summary`
---
-
-LOCK TABLES `shop_tag_summary` WRITE;
-/*!40000 ALTER TABLE `shop_tag_summary` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tag_summary` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_tax_calculation`
@@ -10610,16 +7675,6 @@ CREATE TABLE `shop_tax_calculation` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tax_calculation`
---
-
-LOCK TABLES `shop_tax_calculation` WRITE;
-/*!40000 ALTER TABLE `shop_tax_calculation` DISABLE KEYS */;
-INSERT INTO `shop_tax_calculation` VALUES (1,1,1,3,2),(2,2,1,3,2);
-/*!40000 ALTER TABLE `shop_tax_calculation` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tax_calculation_rate`
 --
 
@@ -10644,16 +7699,6 @@ CREATE TABLE `shop_tax_calculation_rate` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tax_calculation_rate`
---
-
-LOCK TABLES `shop_tax_calculation_rate` WRITE;
-/*!40000 ALTER TABLE `shop_tax_calculation_rate` DISABLE KEYS */;
-INSERT INTO `shop_tax_calculation_rate` VALUES (1,'US',12,'*','US-CA-*-Rate 1',8.2500,NULL,NULL,NULL),(2,'US',43,'*','US-NY-*-Rate 1',8.3750,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `shop_tax_calculation_rate` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tax_calculation_rate_title`
 --
 
@@ -10675,15 +7720,6 @@ CREATE TABLE `shop_tax_calculation_rate_title` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tax_calculation_rate_title`
---
-
-LOCK TABLES `shop_tax_calculation_rate_title` WRITE;
-/*!40000 ALTER TABLE `shop_tax_calculation_rate_title` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tax_calculation_rate_title` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tax_calculation_rule`
 --
 
@@ -10703,16 +7739,6 @@ CREATE TABLE `shop_tax_calculation_rule` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tax_calculation_rule`
---
-
-LOCK TABLES `shop_tax_calculation_rule` WRITE;
-/*!40000 ALTER TABLE `shop_tax_calculation_rule` DISABLE KEYS */;
-INSERT INTO `shop_tax_calculation_rule` VALUES (1,'Retail Customer-Taxable Goods-Rate 1',1,1,0);
-/*!40000 ALTER TABLE `shop_tax_calculation_rule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tax_class`
 --
 
@@ -10726,16 +7752,6 @@ CREATE TABLE `shop_tax_class` (
   PRIMARY KEY (`class_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Tax Class';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_tax_class`
---
-
-LOCK TABLES `shop_tax_class` WRITE;
-/*!40000 ALTER TABLE `shop_tax_class` DISABLE KEYS */;
-INSERT INTO `shop_tax_class` VALUES (2,'Taxable Goods','PRODUCT'),(3,'Retail Customer','CUSTOMER'),(4,'Shipping','PRODUCT');
-/*!40000 ALTER TABLE `shop_tax_class` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_tax_order_aggregated_created`
@@ -10761,15 +7777,6 @@ CREATE TABLE `shop_tax_order_aggregated_created` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tax_order_aggregated_created`
---
-
-LOCK TABLES `shop_tax_order_aggregated_created` WRITE;
-/*!40000 ALTER TABLE `shop_tax_order_aggregated_created` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tax_order_aggregated_created` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_tax_order_aggregated_updated`
 --
 
@@ -10793,15 +7800,6 @@ CREATE TABLE `shop_tax_order_aggregated_updated` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_tax_order_aggregated_updated`
---
-
-LOCK TABLES `shop_tax_order_aggregated_updated` WRITE;
-/*!40000 ALTER TABLE `shop_tax_order_aggregated_updated` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_tax_order_aggregated_updated` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_weee_discount`
 --
 
@@ -10821,15 +7819,6 @@ CREATE TABLE `shop_weee_discount` (
   CONSTRAINT `FK_SHOP_WEEE_DISCOUNT_WEBSITE_ID_SHOP_CORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `shop_core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Weee Discount';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_weee_discount`
---
-
-LOCK TABLES `shop_weee_discount` WRITE;
-/*!40000 ALTER TABLE `shop_weee_discount` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_weee_discount` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_weee_tax`
@@ -10860,15 +7849,6 @@ CREATE TABLE `shop_weee_tax` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_weee_tax`
---
-
-LOCK TABLES `shop_weee_tax` WRITE;
-/*!40000 ALTER TABLE `shop_weee_tax` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_weee_tax` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_widget`
 --
 
@@ -10884,15 +7864,6 @@ CREATE TABLE `shop_widget` (
   KEY `IDX_SHOP_WIDGET_WIDGET_CODE` (`widget_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Preconfigured Widgets';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_widget`
---
-
-LOCK TABLES `shop_widget` WRITE;
-/*!40000 ALTER TABLE `shop_widget` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_widget` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_widget_instance`
@@ -10912,15 +7883,6 @@ CREATE TABLE `shop_widget_instance` (
   PRIMARY KEY (`instance_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Instances of Widget for Package Theme';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_widget_instance`
---
-
-LOCK TABLES `shop_widget_instance` WRITE;
-/*!40000 ALTER TABLE `shop_widget_instance` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_widget_instance` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_widget_instance_page`
@@ -10945,15 +7907,6 @@ CREATE TABLE `shop_widget_instance_page` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_widget_instance_page`
---
-
-LOCK TABLES `shop_widget_instance_page` WRITE;
-/*!40000 ALTER TABLE `shop_widget_instance_page` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_widget_instance_page` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_widget_instance_page_layout`
 --
 
@@ -10970,15 +7923,6 @@ CREATE TABLE `shop_widget_instance_page_layout` (
   CONSTRAINT `FK_FC583A8FA76A6881CF455163FCC558A7` FOREIGN KEY (`page_id`) REFERENCES `shop_widget_instance_page` (`page_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Layout updates';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_widget_instance_page_layout`
---
-
-LOCK TABLES `shop_widget_instance_page_layout` WRITE;
-/*!40000 ALTER TABLE `shop_widget_instance_page_layout` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_widget_instance_page_layout` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_wishlist`
@@ -10999,15 +7943,6 @@ CREATE TABLE `shop_wishlist` (
   CONSTRAINT `FK_SHOP_WISHLIST_CUSTOMER_ID_SHOP_CUSTOMER_ENTITY_ENTITY_ID` FOREIGN KEY (`customer_id`) REFERENCES `shop_customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Wishlist main Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_wishlist`
---
-
-LOCK TABLES `shop_wishlist` WRITE;
-/*!40000 ALTER TABLE `shop_wishlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_wishlist` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `shop_wishlist_item`
@@ -11035,15 +7970,6 @@ CREATE TABLE `shop_wishlist_item` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_wishlist_item`
---
-
-LOCK TABLES `shop_wishlist_item` WRITE;
-/*!40000 ALTER TABLE `shop_wishlist_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_wishlist_item` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `shop_wishlist_item_option`
 --
 
@@ -11061,15 +7987,6 @@ CREATE TABLE `shop_wishlist_item_option` (
   CONSTRAINT `FK_3E143B1B04D70B59F08F99BE7D8C2195` FOREIGN KEY (`wishlist_item_id`) REFERENCES `shop_wishlist_item` (`wishlist_item_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Wishlist Item Option Table';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_wishlist_item_option`
---
-
-LOCK TABLES `shop_wishlist_item_option` WRITE;
-/*!40000 ALTER TABLE `shop_wishlist_item_option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shop_wishlist_item_option` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -11080,4 +7997,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-02 21:01:05
+-- Dump completed on 2015-07-04 16:52:08
