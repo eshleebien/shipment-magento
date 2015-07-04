@@ -502,7 +502,6 @@ a {
 
 a:hover {
   color: #2e8ab8;
-  text-decoration: underline;
 }
 
 a:focus {
@@ -1292,7 +1291,6 @@ a.button:hover {
 .main-container,
 .footer-container {
   position: relative;
-  max-width: 1260px;
   margin: 0 auto;
   padding: 15px;
 }
@@ -1302,11 +1300,20 @@ a.button:hover {
   display: table;
   clear: both;
 }
+.main-container {
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.checkout-onepage-index .main-container {
+  margin: 65px 0 0 0;
+}
 
 @media only screen and (min-width: 480px) {
   .main-container,
   .footer-container {
-    padding: 30px;
   }
 }
 .footer-container {
@@ -1567,7 +1574,6 @@ a.button:hover {
  * Messages
  */
 .messages {
-  margin-bottom: 10px;
 }
 
 .messages li li {
@@ -2049,12 +2055,10 @@ span.weee {
 }
 
 .std ul {
-  list-style: disc outside;
   margin-bottom: 1.5em;
 }
 
 .std ul li {
-  margin-left: 2em;
 }
 
 .std .note {
@@ -3242,13 +3246,12 @@ body {
   display: block;
   float: left;
   width: 65%;
-  min-width: 100px;
   min-height: 44px;
   text-align: center;
-  padding: 10px;
 }
 .logo img {
   max-width: 100%;
+  width: 65px;
 }
 .logo .small {
   display: block;
@@ -3263,8 +3266,7 @@ body {
 
 @media only screen and (min-width: 771px) {
   .logo {
-    max-width: 300px;
-    min-height: 90px;
+    min-height: 55px;
   }
   .logo .small {
     display: none;
@@ -3778,7 +3780,7 @@ a.skip-link {
 
 #header-account a:hover {
   color: #3399cc;
-}
+} 
 
 /* ============================================ *
  * Header - Cart
@@ -3805,10 +3807,13 @@ a.skip-link {
     display: block;
     position: absolute;
     z-index: 200;
-    top: 40px;
+    top: 60px;
     right: 0;
     width: 320px;
     background: white;
+    max-height: 320px;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 /* -------------------------------------------- *
@@ -7184,7 +7189,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* One Page Checkout */
 .block-progress {
   border: 0;
-  margin: 0;
+  margin: 30px 0 0 0;
   border-left: 1px solid #cccccc;
   padding-left: 20px;
 }
@@ -9259,6 +9264,7 @@ div.paypal-logo span > img {
  * ============================================ */
 .header-minicart {
   display: inline-block;
+  margin-top: 10px;
 }
 @media only screen and (max-width: 770px) {
   .header-minicart {
@@ -10596,4 +10602,22 @@ div.calendar table td.button {
   background: inherit;
   color: inherit;
   text-transform: none;
+}
+
+/* minicart loader */
+#loader {
+  float: left;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: white;
+  opacity: 0.5;
+}
+
+#loader > img {
+  padding-top: 50%;
+  padding-left: 50%;
+  margin-top: -24px;
+  margin-left: -24px;
 }

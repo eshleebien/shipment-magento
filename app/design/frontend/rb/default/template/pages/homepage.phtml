@@ -1,4 +1,42 @@
-<div>
-	Jon do the sample page here.
-	
-</div>
+<link rel="stylesheet" href="skin/frontend/rb/default/css/animation.css">
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+<script>
+    if (/mobile/i.test(navigator.userAgent)) document.documentElement.className += ' w-mobile';
+</script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(14.5515512, 121.0438436);
+  var mapOptions = {
+    zoom: 18,
+    center: myLatlng
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading" style="color:#414141;">King David</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>King David</b> Fineries produces unique and bespoke vapor cocktails that are catered to the most discerning of palates and cannot be found anywhere.</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Uluru (Ayers Rock)'
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    //infowindow.open(map,marker);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">

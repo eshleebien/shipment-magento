@@ -39,12 +39,52 @@
     }
 ?>
 
-<a href="<?php echo $this->helper('checkout/cart')->getCartUrl(); ?>" data-target-element="#header-cart" class="skip-link skip-cart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
+<a href="javascript:toggleCart()" data-target-element="#header-cart" class="skip-link skip-cart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
     <span class="icon"></span>
     <span class="label"><?php echo $this->__('Cart'); ?></span>
     <span class="count"><?php echo $_cartQty; ?></span>
 </a>
 
 <div id="header-cart" class="block block-cart skip-content">
+	<div id="loader" hidden>
+		<img src="/skin/frontend/rb/default/images/ajax-loader.gif">
+	</div>
     <?php echo $this->getChildHtml('minicart_content');?>
 </div>
+<script type="text/javascript">
+	function toggleCart() {
+		if(jQuery('#header-cart').hasClass('skip-active')) {
+			jQuery('#header-cart').removeClass('skip-active');
+		} else {
+			jQuery('#header-cart').addClass('skip-active');
+		}
+	}
+
+	function changeItemQuantity( id , num ) {
+        var qty_id = "qinput-" + id;
+        var currentVal = parseInt( jQuery("#" + qty_id).val() );
+        jQuery('#loader').show();
+        if ( currentVal != NaN )
+        {
+        console.log('asdasd');
+            jQuery("#" + qty_id).val(currentVal + num);
+            jQuery.ajax({
+            	type: "POST",
+            	url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
+            	data: jQuery("#update_item_" + id).serialize(),
+            	success: function(data) {
+            		jQuery(".count").text(parseInt(jQuery(".count").text()) + num);
+            		var start = data.indexOf('<!-- sub total -->'),
+                        end = data.indexOf('<!-- end sub total -->');
+                    data = data.substr(start + 18, end - start - 18);
+                    jQuery("#subtotal_hack").html(data);
+            		jQuery('#loader').hide();
+            	},
+            	error: function(data) {
+            		console.log('erere');
+            	}
+            });
+        }
+        return false;
+    }
+</script>
