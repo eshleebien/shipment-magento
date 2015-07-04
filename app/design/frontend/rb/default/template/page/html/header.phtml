@@ -36,20 +36,29 @@
             <div class="w-col w-col-9">
                 <div class="w-nav navbar" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
                     <div class="w-container nav">
+                        <?php $request = $_SERVER['REQUEST_URI']; ?>
                         <nav class="w-nav-menu nav-menu" role="navigation">
-                            <a class="w-nav-link menu-li" href="#home">HOME</a>
-                            <a class="w-nav-link menu-li" href="#about">ABOUT</a>
-                            <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
-                            <a class="w-nav-link menu-li" href="#visitors">VISITORS</a>
-                            <a class="w-nav-link menu-li" href="#contact">CONTACT</a>
-                            <div class="header-minicart">
+                            <?php if($request ==='/'): ?>
+                                <a class="w-nav-link menu-li" href="#home">HOME</a>
+                                <a class="w-nav-link menu-li" href="#about">ABOUT</a>
+                                <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
+                                <a class="w-nav-link menu-li" href="#visitors">VISITORS</a>
+                                <a class="w-nav-link menu-li" href="#contact">CONTACT US</a>
+                            <?php else: ?>
+                                <a class="w-nav-link menu-li" href="/#home">HOME</a>
+                                <a class="w-nav-link menu-li" href="/#about">ABOUT</a>
+                                <a class="w-nav-link menu-li" href="/#product">PRODUCT</a>
+                                <a class="w-nav-link menu-li" href="/#visitors">VISITORS</a>
+                                <a class="w-nav-link menu-li" href="/#contact">CONTACT US</a>
+                            <?php endif ?>
+                            <div class="header-minicart" id="not-mob-cart">
                                 <!-- Cart -->
                                     <?php echo $this->getChildHtml('minicart_head'); ?>
                                 <!-- End Cart -->
                             </div>
                         </nav>
                         <div class="w-nav-button">
-                           <div class="header-minicart" onclick="pushActive();">
+                           <div class="header-minicart" id="mob-cart" onclick="pushActive();">
                                 <!-- Cart -->
                                     <?php echo $this->getChildHtml('minicart_head'); ?>
                                 <!-- End Cart -->
