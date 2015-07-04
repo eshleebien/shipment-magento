@@ -1307,6 +1307,10 @@ a.button:hover {
     margin: 0;
 }
 
+.checkout-onepage-index .main-container {
+  margin: 65px 0 0 0;
+}
+
 @media only screen and (min-width: 480px) {
   .main-container,
   .footer-container {
@@ -7186,7 +7190,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* One Page Checkout */
 .block-progress {
   border: 0;
-  margin: 0;
+  margin: 30px 0 0 0;
   border-left: 1px solid #cccccc;
   padding-left: 20px;
 }
