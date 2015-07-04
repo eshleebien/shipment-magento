@@ -1570,7 +1570,6 @@ a.button:hover {
  * Messages
  */
 .messages {
-  margin-bottom: 10px;
 }
 
 .messages li li {
@@ -3777,7 +3776,7 @@ a.skip-link {
 
 #header-account a:hover {
   color: #3399cc;
-}
+} 
 
 /* ============================================ *
  * Header - Cart
@@ -3804,7 +3803,7 @@ a.skip-link {
     display: block;
     position: absolute;
     z-index: 200;
-    top: 40px;
+    top: 60px;
     right: 0;
     width: 320px;
     background: white;

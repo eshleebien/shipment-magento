@@ -86,7 +86,7 @@ p {
   background-color: #ed5565;
   box-shadow: none;
   color: white;
-}
+} 
 .header {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -97,23 +97,61 @@ p {
   background-image: linear-gradient(white, white);
   box-shadow: none;
 }
+.w-nav-button {
+  padding: 0 !important;
+}
+.w-icon-nav-menu {
+  float: right !important;
+  height: 60px;
+  line-height: 60px !important;
+}
+.w-nav-menu-nav {
+  background: #323232;
+  position: fixed;
+  width: 150px;
+  z-index: 99;
+  right: -999px;
+  -webkit-transition: all 800ms ease;
+  -o-transition: all 800ms ease;
+  transition: all 800ms ease;
+}
+.w-nav-menu-nav .w-nav-link{
+  font-family: Lato, Calibri, Arial, sans-serif;
+  display: block;
+  padding: 0 20px;
+  text-align: left;
+  color: #fff;
+  font-size: 0.7em;
+  height: 40px;
+  line-height: 40px;
+}
+.w-icon-nav-menu.active .w-nav-menu-nav{
+  right: 0px;
+}
+.w-nav-button .header-minicart{
+  float: left;
+}
+.w-nav-button .header-minicart #header-cart.skip-active{
+  border: solid 1px #cccccc;
+  display: block !important;
+  position: fixed;
+  z-index: 9999;
+  top: 60px;
+  right: 0;
+  width: 291px;
+  background: white;
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
+.w-nav-button .header-minicart a{
+  width: 65px;
+}
+  
 /* default */
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-
-@font-face {
-  font-family: 'codropsicons';
-  src:url('../fonts/codropsicons/codropsicons.eot');
-  src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/codropsicons/codropsicons.woff') format('woff'),
-    url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
-    url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
 
 a {
   color: #888;
@@ -1451,6 +1489,15 @@ font-size: 18px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+.service-parlex .services-column .long-description {
+  display: none;
+}
+.service-parlex .services-column .service-head{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
 .service-parlex .services-column .description{
   color: #fff;
   text-align: center;
@@ -1458,7 +1505,6 @@ font-size: 18px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 205px;
   display: block;
 }
 .service-parlex .services-column .price{
@@ -1484,7 +1530,7 @@ font-size: 18px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  width: 85px;
+  width: 82px;
 }
 
 .service-parlex .info-button{

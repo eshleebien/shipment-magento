@@ -54,7 +54,7 @@
             <div class="services-text">“ THE FIRST AND ONLY COCKTAIL E-LIQUID PRODUCT IN THE PHILIPPINES ”
             </div>
 
-            <div class="w-row">
+            <div class="w-row grid">
                 <?php // List mode ?>
                 <?php if($this->getMode()!='grid'): ?>
                 <?php $_iterator = 0; ?>
@@ -77,6 +77,7 @@
                         <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
                             <h4 class="service-head"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h4>
                             <span class="description"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></span>
+                            <span class="long-description"><?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'short_description') ?></span>
                             <span class="price"><?php echo $this->getPriceHtml($_product, true) ?></span>
                             <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                                     <!--hack -->
@@ -169,7 +170,7 @@
     function showModal(id) {
         var imgSrc = $('#'+id).find(".product-image-size").attr('src'),
             title = $('#'+id).find(".service-head").html(),
-            description = $('#'+id).find(".description").html(),
+            description = $('#'+id).find(".long-description").html(),
             price = $('#'+id).find(".price").find(".price").html();
             console.log(price);
 
