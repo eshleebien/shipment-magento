@@ -30,13 +30,9 @@
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <li class="item" xmlns="http://www.w3.org/1999/html">
-    <?php if ($this->hasProductUrl()): ?>
-        <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
-    <?php else: ?>
         <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></span>
-    <?php endif; ?>
     <div class="product-details">
-        <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
+        <p class="product-name"><?php echo $this->escapeHtml($this->getProductName()) ?></p>
 
         <table class="info-wrapper">
             <tbody>
@@ -126,43 +122,24 @@
                 <tr class="qty-wrapper">
                     <th><?php echo $this->__('Qty'); ?></th>
                     <td>
+                        <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post" id="update_item_<?php echo $_item->getId(); ?>">
                         <input
                             id="qinput-<?php echo $_item->getId(); ?>"
                             data-link="<?php echo $this->getAjaxUpdateUrl() ?>"
                             data-item-id="<?php echo $_item->getId(); ?>"
-                            class="qty cart-item-quantity input-text" name=""
+                            class="qty cart-item-quantity input-text" readonly name="cart[<?php echo $_item->getId(); ?>][qty]"
                             value="<?php echo $this->getQty()?>"
-                            <?php if ($this->isOnCheckoutPage()) echo 'disabled'; ?>
                             />
+                            <?php echo $this->getBlockHtml('formkey'); ?>
+                            <input type="text" name="update_cart_action" value="update_qty" hidden>
+                        </form>
+                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, 1 );">up</a>
+                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, -1 );" >down</a>
 
-                        <button id="qbutton-<?php echo $_item->getId(); ?>"
-                                data-item-id="<?php echo $_item->getId(); ?>"
-                                disabled="disabled"
-                                data-update
-                                class="button quantity-button">
-                            <?php echo $this->__('ok'); ?>
-                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
-
-        <?php if ($isVisibleProduct): ?>
-        <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item') ?>" class="btn-edit">
-            <?php echo $this->__('Edit item')?>
-        </a>
-            |
-            <?php if (!$this->isOnCheckoutPage()): ?>
-                <a href="<?php echo $this->getAjaxDeleteUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>"
-                   data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
-                   class="remove">
-                    <?php echo $this->__('Remove Item') ?>
-                </a>
-            <?php else: ?>
-                <span><?php echo $this->__('Remove Item') ?></span>
-            <?php endif; ?>
-        <?php endif ?>
-
 
 
         <?php if ($_options = $this->getOptionList()):?>

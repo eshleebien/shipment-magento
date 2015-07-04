@@ -44,7 +44,7 @@ if(empty($_cartQty)) {
 
     <p class="block-subtitle">
         <?php echo $this->__('Recently added item(s)') ?>
-        <a class="close skip-link-close" href="#" title="<?php echo $this->__('Close'); ?>">&times;</a>
+        <a class="close skip-link-close" href="javascript:toggleCart()" title="<?php echo $this->__('Close'); ?>">&times;</a>
     </p>
 
     <?php $_items = $this->getRecentItems() ?>
