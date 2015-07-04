@@ -134,7 +134,7 @@ p {
 .w-nav-button .header-minicart #header-cart.skip-active{
   border: solid 1px #cccccc;
   display: block !important;
-  position: fixed;
+  position: absolute;
   z-index: 9999;
   top: 60px;
   right: 0;

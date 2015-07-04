@@ -46,6 +46,9 @@
 </a>
 
 <div id="header-cart" class="block block-cart skip-content">
+	<div id="loader" hidden>
+		<img src="/skin/frontend/rb/default/images/ajax-loader.gif">
+	</div>
     <?php echo $this->getChildHtml('minicart_content');?>
 </div>
 <script type="text/javascript">
@@ -56,4 +59,32 @@
 			jQuery('#header-cart').addClass('skip-active');
 		}
 	}
+
+	function changeItemQuantity( id , num ) {
+        var qty_id = "qinput-" + id;
+        var currentVal = parseInt( jQuery("#" + qty_id).val() );
+        jQuery('#loader').show();
+        if ( currentVal != NaN )
+        {
+        console.log('asdasd');
+            jQuery("#" + qty_id).val(currentVal + num);
+            jQuery.ajax({
+            	type: "POST",
+            	url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
+            	data: jQuery("#update_item_" + id).serialize(),
+            	success: function(data) {
+            		jQuery(".count").text(parseInt(jQuery(".count").text()) + num);
+            		var start = data.indexOf('<!-- sub total -->'),
+                        end = data.indexOf('<!-- end sub total -->');
+                    data = data.substr(start + 18, end - start - 18);
+                    jQuery("#subtotal_hack").html(data);
+            		jQuery('#loader').hide();
+            	},
+            	error: function(data) {
+            		console.log('erere');
+            	}
+            });
+        }
+        return false;
+    }
 </script>
