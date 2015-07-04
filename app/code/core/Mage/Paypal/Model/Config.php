@@ -223,11 +223,12 @@ class Mage_Paypal_Model_Config
 
     /**
      * Currency codes supported by PayPal methods
+     * [Esh] Added Philippine Pesos
      *
      * @var array
      */
     protected $_supportedCurrencyCodes = array('AUD', 'CAD', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'ILS', 'JPY', 'MXN',
-        'NOK', 'NZD', 'PLN', 'GBP', 'SGD', 'SEK', 'CHF', 'USD', 'TWD', 'THB');
+        'NOK', 'NZD', 'PLN', 'GBP', 'SGD', 'SEK', 'CHF', 'USD', 'TWD', 'THB', 'PHP');
 
     /**
      * Merchant country supported by PayPal
