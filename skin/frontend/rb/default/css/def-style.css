@@ -135,7 +135,7 @@ p {
   border: solid 1px #cccccc;
   display: block !important;
   position: absolute;
-  z-index: 9999;
+  z-index: 99;
   top: 60px;
   right: 0;
   width: 291px;
