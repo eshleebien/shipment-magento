@@ -235,7 +235,10 @@ class Mage_Paypal_Model_Api_Standard extends Mage_Paypal_Model_Api_Abstract
         $this->_importStreetFromAddress($address, $request, 'address1', 'address2');
         $this->_applyCountryWorkarounds($request);
 
-        $request['address_override'] = 1;
+        /*
+         * Changed to 0 to prevent shipping problems
+         */
+        $request['address_override'] = 0;
     }
 
     /**
