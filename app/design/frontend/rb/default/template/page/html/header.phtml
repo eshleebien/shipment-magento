@@ -59,9 +59,7 @@
                         </nav>
                         <div class="w-nav-button">
                            <div class="header-minicart" id="mob-cart" onclick="pushActive();">
-                                <!-- Cart -->
                                     <?php echo $this->getChildHtml('minicart_head'); ?>
-                                <!-- End Cart -->
                             </div>
                             <div class="w-icon-nav-menu" onclick='activate();'>
                                 <nav class="w-nav-menu-nav nav-menu" role="navigation">
@@ -83,11 +81,67 @@
 <?php echo $this->getChildHtml('topContainer'); ?>
 
 <script type="text/javascript">
-function activate(th) {
-    jQuery('.w-icon-nav-menu').toggleClass('active');
-}
-function pushActive(){
-    jQuery('.w-nav-button').find('#header-cart').toggleClass('skip-active');
-}
+    function activate(th) {
+        jQuery('.w-icon-nav-menu').toggleClass('active');
+    }
 
+    function pushActive(){
+        jQuery('.w-nav-button').find('#header-cart').toggleClass('skip-active');
+    }
+
+    function changeItemQuantity( id , num ) {
+        var qty_id = "qinput-" + id;
+        var currentVal = parseInt( jQuery("#" + qty_id).val() );
+        jQuery('#not-mob-cart #loader').show();
+        jQuery('#mob-cart #loader').show();
+        console.log('numbver', num);
+
+        if ( currentVal != NaN )
+        {
+        console.log('asdasd');
+            jQuery("#not-mob-cart #" + qty_id).val(num);
+            jQuery("#mob-cart #" + qty_id).val(num);
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
+                data: jQuery("#update_item_" + id).serialize(),
+                success: function(data) {
+                    var start = data.indexOf('<!-- Cart -->');
+                    var end = data.indexOf('<!-- End Cart -->');
+                    data = data.substr(start + 13, end - start - 13);
+                    jQuery(".header-minicart").html(data);
+                    jQuery('#not-mob-cart #loader').hide();
+                    jQuery('#mob-cart #loader').hide();
+                    jQuery('#header-cart').addClass('skip-active');
+                },
+                error: function(data) {
+                    console.log('erere');
+                }
+            });
+        }
+        return false;
+    }
+
+    function removeItem(link) {
+        if(link) {
+            jQuery('#not-mob-cart #loader').show();
+            jQuery('#mob-cart #loader').show();
+            jQuery.ajax({
+                type: "GET",
+                url: link,
+                success: function(data) {
+                    var start = data.indexOf('<!-- Cart -->');
+                    var end = data.indexOf('<!-- End Cart -->');
+                    data = data.substr(start + 13, end - start - 13);
+                    jQuery(".header-minicart").html(data);
+                    jQuery('#not-mob-cart #loader').hide();
+                    jQuery('#mob-cart #loader').hide();
+                    jQuery('#header-cart').addClass('skip-active');
+                },
+                error: function(data) {
+                    console.log('erere');
+                }
+            });
+        }
+    }
 </script>
