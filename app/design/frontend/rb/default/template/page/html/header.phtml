@@ -38,7 +38,7 @@
                     <div class="w-container nav">
                         <?php $request = $_SERVER['REQUEST_URI']; ?>
                         <nav class="w-nav-menu nav-menu" role="navigation">
-                            <?php if($request ==='/'): ?>
+                            <?php if($request ==='/' || strrpos($request, "?") >= 1): ?>
                                 <a class="w-nav-link menu-li" href="#home">HOME</a>
                                 <a class="w-nav-link menu-li" href="#about">ABOUT</a>
                                 <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
@@ -90,15 +90,15 @@
     }
 
     function changeItemQuantity( id , num ) {
-        var qty_id = "qinput-" + id;
-        var currentVal = parseInt( jQuery("#" + qty_id).val() );
+        var qty_id = "qinput-" + id,
+            currentVal = parseInt( jQuery("#" + qty_id).val() );
+
         jQuery('#not-mob-cart #loader').show();
         jQuery('#mob-cart #loader').show();
-        console.log('numbver', num);
+        jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+        jQuery('#mob-cart #header-cart').addClass('skip-active');
 
-        if ( currentVal != NaN )
-        {
-        console.log('asdasd');
+        if ( currentVal != NaN ) {
             jQuery("#not-mob-cart #" + qty_id).val(num);
             jQuery("#mob-cart #" + qty_id).val(num);
             jQuery.ajax({
@@ -106,13 +106,15 @@
                 url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
                 data: jQuery("#update_item_" + id).serialize(),
                 success: function(data) {
-                    var start = data.indexOf('<!-- Cart -->');
-                    var end = data.indexOf('<!-- End Cart -->');
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+
                     data = data.substr(start + 13, end - start - 13);
                     jQuery(".header-minicart").html(data);
                     jQuery('#not-mob-cart #loader').hide();
                     jQuery('#mob-cart #loader').hide();
-                    jQuery('#header-cart').addClass('skip-active');
+                    jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+                    jQuery('#mob-cart #header-cart').addClass('skip-active');
                 },
                 error: function(data) {
                     console.log('erere');
@@ -123,20 +125,24 @@
     }
 
     function removeItem(link) {
-        if(link) {
+        if (link) {
             jQuery('#not-mob-cart #loader').show();
             jQuery('#mob-cart #loader').show();
+            jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+            jQuery('#mob-cart #header-cart').addClass('skip-active');
             jQuery.ajax({
                 type: "GET",
                 url: link,
                 success: function(data) {
-                    var start = data.indexOf('<!-- Cart -->');
-                    var end = data.indexOf('<!-- End Cart -->');
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+
                     data = data.substr(start + 13, end - start - 13);
                     jQuery(".header-minicart").html(data);
                     jQuery('#not-mob-cart #loader').hide();
                     jQuery('#mob-cart #loader').hide();
-                    jQuery('#header-cart').addClass('skip-active');
+                    jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+                    jQuery('#mob-cart #header-cart').addClass('skip-active');
                 },
                 error: function(data) {
                     console.log('erere');
