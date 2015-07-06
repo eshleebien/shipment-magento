@@ -133,16 +133,8 @@
                             value="<?php echo $this->getQty()?>"
                             />
 
-                            <!-- Remove button -->
-                            <?php if (!$this->isOnCheckoutPage()): ?>
-                                <a href="javascript:removeItem('<?php echo $this->getDeleteUrl() ?>')" title="<?php echo $this->__('Remove This Item') ?>"
-                                   data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
-                                   class="remove"><span>
-                                    <?php echo $this->__('Remove Item') ?>
-                                </span></a>
-                            <?php else: ?>
-                                <span><?php echo $this->__('Remove Item') ?></span>
-                            <?php endif; ?>
+                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())+1 );" class="up-arrow"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())-1 );" class="down-arrow" ><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
 
                             <?php echo $this->getBlockHtml('formkey'); ?>
                             <input type="text" name="update_cart_action" value="update_qty" hidden>
@@ -153,6 +145,16 @@
             </tbody>
         </table>
 
+        <!-- Remove button -->
+        <?php if (!$this->isOnCheckoutPage()): ?>
+            <a href="javascript:removeItem('<?php echo $this->getDeleteUrl() ?>')" title="<?php echo $this->__('Remove This Item') ?>"
+               data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
+               class="remove">
+                <?php echo $this->__('Remove Item') ?>
+            </a>
+        <?php else: ?>
+            <span><?php echo $this->__('Remove Item') ?></span>
+        <?php endif; ?>
 
         <?php if ($_options = $this->getOptionList()):?>
         <div class="truncated">
