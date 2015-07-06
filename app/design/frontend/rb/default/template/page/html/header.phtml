@@ -90,15 +90,15 @@
     }
 
     function changeItemQuantity( id , num ) {
-        var qty_id = "qinput-" + id;
-        var currentVal = parseInt( jQuery("#" + qty_id).val() );
+        var qty_id = "qinput-" + id,
+            currentVal = parseInt( jQuery("#" + qty_id).val() );
+
         jQuery('#not-mob-cart #loader').show();
         jQuery('#mob-cart #loader').show();
         jQuery('#not-mob-cart #header-cart').addClass('skip-active');
         jQuery('#mob-cart #header-cart').addClass('skip-active');
 
-        if ( currentVal != NaN )
-        {
+        if ( currentVal != NaN ) {
             jQuery("#not-mob-cart #" + qty_id).val(num);
             jQuery("#mob-cart #" + qty_id).val(num);
             jQuery.ajax({
@@ -106,8 +106,9 @@
                 url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
                 data: jQuery("#update_item_" + id).serialize(),
                 success: function(data) {
-                    var start = data.indexOf('<!-- Cart -->');
-                    var end = data.indexOf('<!-- End Cart -->');
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+
                     data = data.substr(start + 13, end - start - 13);
                     jQuery(".header-minicart").html(data);
                     jQuery('#not-mob-cart #loader').hide();
@@ -124,7 +125,7 @@
     }
 
     function removeItem(link) {
-        if(link) {
+        if (link) {
             jQuery('#not-mob-cart #loader').show();
             jQuery('#mob-cart #loader').show();
             jQuery('#not-mob-cart #header-cart').addClass('skip-active');
@@ -133,8 +134,9 @@
                 type: "GET",
                 url: link,
                 success: function(data) {
-                    var start = data.indexOf('<!-- Cart -->');
-                    var end = data.indexOf('<!-- End Cart -->');
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+
                     data = data.substr(start + 13, end - start - 13);
                     jQuery(".header-minicart").html(data);
                     jQuery('#not-mob-cart #loader').hide();
