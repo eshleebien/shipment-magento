@@ -124,8 +124,7 @@
                     <td>
                         <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post" id="update_item_<?php echo $_item->getId(); ?>">
                         <input
-                            type="number"
-                            onBlur="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val()) )"
+                            type="text"
                             id="qinput-<?php echo $_item->getId(); ?>"
                             data-link="<?php echo $this->getAjaxUpdateUrl() ?>"
                             data-item-id="<?php echo $_item->getId(); ?>"
