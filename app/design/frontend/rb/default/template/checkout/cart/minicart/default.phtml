@@ -124,23 +124,16 @@
                     <td>
                         <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post" id="update_item_<?php echo $_item->getId(); ?>">
                         <input
+                            type="number"
+                            onBlur="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val()) )"
                             id="qinput-<?php echo $_item->getId(); ?>"
                             data-link="<?php echo $this->getAjaxUpdateUrl() ?>"
                             data-item-id="<?php echo $_item->getId(); ?>"
                             class="qty cart-item-quantity input-text" name="cart[<?php echo $_item->getId(); ?>][qty]"
                             value="<?php echo $this->getQty()?>"
                             />
-                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())+1 );" class="up-arrow"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
-                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())-1 );" class="down-arrow" ><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
-                            <?php echo $this->getBlockHtml('formkey'); ?>
-                            <input type="text" name="update_cart_action" value="update_qty" hidden>
-                            <br />
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val()) );" class="btn-edit"><?php echo $this->__('Update Quantity') ?></a>|
+
+                            <!-- Remove button -->
                             <?php if (!$this->isOnCheckoutPage()): ?>
                                 <a href="javascript:removeItem('<?php echo $this->getDeleteUrl() ?>')" title="<?php echo $this->__('Remove This Item') ?>"
                                    data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
@@ -150,6 +143,15 @@
                             <?php else: ?>
                                 <span><?php echo $this->__('Remove Item') ?></span>
                             <?php endif; ?>
+
+                            <?php echo $this->getBlockHtml('formkey'); ?>
+                            <input type="text" name="update_cart_action" value="update_qty" hidden>
+                            <br />
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
         <?php if ($_options = $this->getOptionList()):?>
