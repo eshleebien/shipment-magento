@@ -96,9 +96,7 @@
         jQuery('#mob-cart #loader').show();
         console.log('numbver', num);
 
-        if ( currentVal != NaN )
-        {
-        console.log('asdasd');
+        if ( currentVal != NaN ) {
             jQuery("#not-mob-cart #" + qty_id).val(num);
             jQuery("#mob-cart #" + qty_id).val(num);
             jQuery.ajax({
