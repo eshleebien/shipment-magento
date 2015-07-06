@@ -13571,9 +13571,6 @@ html { overflow-y: scroll; }
  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details a.remove {
       padding-left: 5px;
   }
-  .w-nav-menu .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a {
-    margin-left: 20px;
-  }
   .w-nav-menu .header-minicart .subtotal {
     line-height: 1.8em;
   }
@@ -13583,7 +13580,14 @@ html { overflow-y: scroll; }
   .w-nav-menu .header-minicart .subtotal span.label{
     color: #636363 !important;
   }
+  div#mail_us_form #contactForm input[type=text]{
+    width: 100%;
+  }
 @media screen and (max-width: 499px) {
+  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
+      font-size: 0.8em;
+      display: block;
+  }
   .wrapper {
     width: 100%;
     min-width: 100%; 
@@ -13667,8 +13671,20 @@ html { overflow-y: scroll; }
   .sp-slideshow input + label {
     display: none;
   }
+  div#mail_us_form {
+    width: 96%;
+    left: 2%;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 10px;
+  }
+
 }
 @media only screen and (min-width: 500px){
+  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
+      font-size: 0.8em;
+      display: block;
+  }
   .fixed-header {
     position: fixed;
     top: 0;
@@ -13748,6 +13764,13 @@ html { overflow-y: scroll; }
         width: 97%;
         font-size: 1.8em;
   }
+  div#mail_us_form {
+    width: 70%;
+    left: 13%;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 10px;
+  }
 }
 @media screen and (max-width: 767px){
   .fixed-header .w-col.w-col-9 {
@@ -13768,6 +13791,10 @@ html { overflow-y: scroll; }
   }
 }
 @media only screen and (min-width: 771px){
+  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
+      font-size: 0.9em;
+      display: inline;
+  }
   .w-col.logo {
     padding: 5px;
   }
@@ -13803,9 +13830,8 @@ html { overflow-y: scroll; }
     margin-bottom: 1.5em
   }
   .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a{
-    width: 50px;
-    margin-left: 35px;
-    font-size: 1.3em;
+      width: 120px;
+      font-size: 1.3em;
   }
   .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.up-arrow {
   position: absolute;
@@ -13852,6 +13878,13 @@ html { overflow-y: scroll; }
   }
   #service-modal .details {
       width: 65%;
+  }
+  div#mail_us_form {
+    left: 33%;
+    width: 420px;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 12px;
   }
 }
 @media only screen and (min-width: 992px){

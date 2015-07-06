@@ -137,9 +137,9 @@
                             <?php if (!$this->isOnCheckoutPage()): ?>
                                 <a href="javascript:removeItem('<?php echo $this->getDeleteUrl() ?>')" title="<?php echo $this->__('Remove This Item') ?>"
                                    data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
-                                   class="remove">
+                                   class="remove"><span>
                                     <?php echo $this->__('Remove Item') ?>
-                                </a>
+                                </span></a>
                             <?php else: ?>
                                 <span><?php echo $this->__('Remove Item') ?></span>
                             <?php endif; ?>
