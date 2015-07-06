@@ -2664,7 +2664,8 @@ input[type=search],
 input[type=number],
 input[type=password],
 input[type=tel],
-input[type=text] {
+input[type=text],
+textarea.input-text {
   width: 365px;
   max-width: 100%;
 }
@@ -9841,6 +9842,30 @@ div.paypal-logo span > img {
   margin: 0;
 }
 
+div#mail_us_form {
+  position: fixed;
+  top: 100px;
+  background-color: white;
+  width: 24%;
+  display: none;
+  z-index: 4;
+  border-radius: 7px;
+  padding: 0 10px 15px 0;
+  left: 41%;
+}
+
+div#modalOverlay {
+  position: fixed;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  display: none;
+  z-index: 3;
+}
+
 @media only screen and (max-width: 770px) {
   #contactForm {
     padding-left: 0;
@@ -11444,11 +11469,15 @@ floating
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body, html { font-size: 100%; padding: 0; margin: 0; height: 100%; }
-
+*:focus {
+  outline: 0;
+}
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
-
+@-ms-viewport{
+  width: device-width;
+}
 body {
   overflow-x: visible;
   overflow-y: visible;
@@ -12668,7 +12697,7 @@ box-shadow: 5px 5px 0px #20AE61;
   background-color: #323A45;
 }
 .parlex8-back {
-  padding-top: 15px;
+  padding: 15px 10px 0 10px;
   background-color: #ffce54;
 }
 .contact-heading {
@@ -13542,9 +13571,6 @@ html { overflow-y: scroll; }
  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details a.remove {
       padding-left: 5px;
   }
-  .w-nav-menu .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a {
-    margin-left: 20px;
-  }
   .w-nav-menu .header-minicart .subtotal {
     line-height: 1.8em;
   }
@@ -13554,7 +13580,14 @@ html { overflow-y: scroll; }
   .w-nav-menu .header-minicart .subtotal span.label{
     color: #636363 !important;
   }
+  div#mail_us_form #contactForm input[type=text]{
+    width: 100%;
+  }
 @media screen and (max-width: 499px) {
+  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
+      font-size: 0.8em;
+      display: block;
+  }
   .wrapper {
     width: 100%;
     min-width: 100%; 
@@ -13638,8 +13671,20 @@ html { overflow-y: scroll; }
   .sp-slideshow input + label {
     display: none;
   }
+  div#mail_us_form {
+    width: 96%;
+    left: 2%;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 10px;
+  }
+
 }
 @media only screen and (min-width: 500px){
+  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
+      font-size: 0.8em;
+      display: block;
+  }
   .fixed-header {
     position: fixed;
     top: 0;
@@ -13719,6 +13764,13 @@ html { overflow-y: scroll; }
         width: 97%;
         font-size: 1.8em;
   }
+  div#mail_us_form {
+    width: 70%;
+    left: 13%;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 10px;
+  }
 }
 @media screen and (max-width: 767px){
   .fixed-header .w-col.w-col-9 {
@@ -13739,6 +13791,10 @@ html { overflow-y: scroll; }
   }
 }
 @media only screen and (min-width: 771px){
+  .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
+      font-size: 0.9em;
+      display: inline;
+  }
   .w-col.logo {
     padding: 5px;
   }
@@ -13774,9 +13830,8 @@ html { overflow-y: scroll; }
     margin-bottom: 1.5em
   }
   .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a{
-    width: 50px;
-    margin-left: 35px;
-    font-size: 1.3em;
+      width: 120px;
+      font-size: 1.3em;
   }
   .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.up-arrow {
   position: absolute;
@@ -13823,6 +13878,13 @@ html { overflow-y: scroll; }
   }
   #service-modal .details {
       width: 65%;
+  }
+  div#mail_us_form {
+    left: 33%;
+    width: 420px;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 12px;
   }
 }
 @media only screen and (min-width: 992px){
