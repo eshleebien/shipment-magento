@@ -2,11 +2,15 @@
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body, html { font-size: 100%; padding: 0; margin: 0; height: 100%; }
-
+*:focus {
+  outline: 0;
+}
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
-
+@-ms-viewport{
+  width: device-width;
+}
 body {
   overflow-x: visible;
   overflow-y: visible;
@@ -1226,7 +1230,7 @@ box-shadow: 5px 5px 0px #20AE61;
   background-color: #323A45;
 }
 .parlex8-back {
-  padding-top: 15px;
+  padding: 15px 10px 0 10px;
   background-color: #ffce54;
 }
 .contact-heading {
@@ -2112,6 +2116,9 @@ html { overflow-y: scroll; }
   .w-nav-menu .header-minicart .subtotal span.label{
     color: #636363 !important;
   }
+  div#mail_us_form #contactForm input[type=text]{
+    width: 100%;
+  }
 @media screen and (max-width: 499px) {
   .wrapper {
     width: 100%;
@@ -2196,6 +2203,14 @@ html { overflow-y: scroll; }
   .sp-slideshow input + label {
     display: none;
   }
+  div#mail_us_form {
+    width: 96%;
+    left: 2%;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 10px;
+  }
+
 }
 @media only screen and (min-width: 500px){
   .fixed-header {
@@ -2276,6 +2291,13 @@ html { overflow-y: scroll; }
   #service-modal .details  #price-tag {
         width: 97%;
         font-size: 1.8em;
+  }
+  div#mail_us_form {
+    width: 70%;
+    left: 13%;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 10px;
   }
 }
 @media screen and (max-width: 767px){
@@ -2381,6 +2403,13 @@ html { overflow-y: scroll; }
   }
   #service-modal .details {
       width: 65%;
+  }
+  div#mail_us_form {
+    left: 33%;
+    width: 420px;
+  }
+  div#mail_us_form #contactForm {
+    padding-left: 12px;
   }
 }
 @media only screen and (min-width: 992px){
