@@ -130,8 +130,8 @@
                             class="qty cart-item-quantity input-text" name="cart[<?php echo $_item->getId(); ?>][qty]"
                             value="<?php echo $this->getQty()?>"
                             />
-                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())+1 );" style="position: absolute; margin-top: -8px;"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
-                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())-1 );" style="position: absolute; margin-top: 8px;" ><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())+1 );" class="up-arrow"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+                            <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())-1 );" class="down-arrow" ><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
                             <?php echo $this->getBlockHtml('formkey'); ?>
                             <input type="text" name="update_cart_action" value="update_qty" hidden>
                             <br />
