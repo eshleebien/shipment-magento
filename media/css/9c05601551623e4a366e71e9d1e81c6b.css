@@ -11469,7 +11469,7 @@ floating
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body, html { font-size: 100%; padding: 0; margin: 0; height: 100%; }
-*:focus {
+*:focus, a:focus {
   outline: 0;
 }
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
@@ -12124,7 +12124,6 @@ input.sp-selector-5:checked ~ .sp-content .sp-slider > li:nth-child(5){
   background-image: linear-gradient(#800b36, rgba(128, 11, 54, 0.50) 56%);
 }
 .wrap {
-  margin-top: 40px;
   margin-bottom: 40px;
   padding: 20px 10px;
   border-bottom: 0px none black;
@@ -12153,9 +12152,10 @@ input.sp-selector-5:checked ~ .sp-content .sp-slider > li:nth-child(5){
   margin-top: 20px;
   margin-bottom: 20px;
   color: white;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 25px;
   text-align: center;
+  text-shadow:  0px 2px 1px #000;;
 }
 .sepreater {
   display: block;
@@ -12352,9 +12352,11 @@ box-shadow: 5px 5px 0px #20AE61;
 }
 .service-heading {
   color: white;
+  text-shadow: 0px 2px 2px #000;
 }
 .portfolio-heading {
   color: white;
+  text-shadow: 0px 2px 2px #000;
 }
 .parlex4 {
   background-image: none;
@@ -12395,6 +12397,8 @@ box-shadow: 5px 5px 0px #20AE61;
   margin-bottom: 20px;
   color: white;
   text-align: center;
+  text-shadow: 0px 1px 1px #000;
+  font-size: 18px;
 }
 .plan1 {
   padding-left: 0px;
@@ -12625,14 +12629,19 @@ box-shadow: 5px 5px 0px #20AE61;
   margin: 20px auto;
   padding-left: 0px;
   color: white;
+  font-size: 20px;
   text-align: center;
+  text-shadow:  0px 2px 1px #000;
 }
 .about-heading {
   color: white;
+  text-shadow:  0px 2px 2px #000;;
 }
 .about-des {
   color: white;
   text-align: center;
+  text-shadow:  0px 2px 1px #000;
+  font-size: 16px;
 }
 .about-img {
   display: block;
@@ -12702,6 +12711,7 @@ box-shadow: 5px 5px 0px #20AE61;
 }
 .contact-heading {
   color: white;
+  text-shadow: 0px 2px 2px #000;
 }
 .contact-para {
   margin-top: 20px;
@@ -12770,17 +12780,20 @@ margin-left: 15px;
 }
 .contact-col-head {
   color: white;
+  text-shadow: 0px 2px 2px #000;
 }
 .contact-col-text {
   border-right: 4px solid white;
   border-left: 4px none white;
   color: white;
   text-align: center;
+  text-shadow: 0px 1px 1px #000;
 }
 .contact-col-text-bar-last {
   border-right: 0px none white;
   color: white;
   text-align: center;
+  text-shadow: 0px 1px 1px #000;
 }
 .footer-parlex {
   background-image: url('http://local.ship.net/skin/frontend/rb/default/css/../images/fotterback.png');
@@ -13027,6 +13040,7 @@ font-size: 18px;
 
 .service-parlex .info-button-details{
   background: #A1A1A1;
+  margin-bottom: 3px;
 }
 
 .service-parlex .info-button-details:hover{
@@ -13678,7 +13692,15 @@ html { overflow-y: scroll; }
   div#mail_us_form #contactForm {
     padding-left: 10px;
   }
-
+  .hi-icon {
+    margin: 0;
+  }
+  .contact-col-text {
+    border: none;
+  }
+  .contact-parlex .parlex8-back .contact-col3{
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 500px){
   .w-nav-button .header-minicart #header-cart.skip-active .item .product-details .info-wrapper form a.remove span{
@@ -13891,6 +13913,12 @@ html { overflow-y: scroll; }
   #service-modal {
       left: 35%;
   }
+}
+@media (min-width: 1200px){
+  .container {
+    width: 100%;
+  }
+
 }
 
  @font-face {
