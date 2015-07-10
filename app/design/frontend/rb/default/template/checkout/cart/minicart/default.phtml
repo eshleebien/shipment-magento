@@ -130,6 +130,7 @@
                             data-item-id="<?php echo $_item->getId(); ?>"
                             class="qty cart-item-quantity input-text" name="cart[<?php echo $_item->getId(); ?>][qty]"
                             value="<?php echo $this->getQty()?>"
+                            onchange="changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val()))"
                             />
 
                             <a href="javascript:changeItemQuantity( <?php echo $_item->getId() ?>, parseInt(jQuery('#qinput-<?php echo $_item->getId(); ?>').val())+1 );" class="up-arrow"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
