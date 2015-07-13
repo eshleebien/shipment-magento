@@ -8,7 +8,7 @@ jQuery(window).scroll(function( about ) {
 
     var topOfWindow = jQuery(window).scrollTop();
 
-      if (imagePos < topOfWindow+600) {
+      if (imagePos < topOfWindow+300) {
 
         jQuery(this).addClass("fadeIn");
 
