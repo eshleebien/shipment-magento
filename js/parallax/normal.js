@@ -924,7 +924,7 @@ king_david.define('king_david-maps', function ($, _) {
   function initMaps() {
     $maps = $doc.find(namespace);
     if ($maps.length) {
-      king_david.script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=_wf_maps_loaded');
+//      king_david.script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=_wf_maps_loaded');
       window._wf_maps_loaded = function () {
         delete window._wf_maps_loaded;
         google = window.google;

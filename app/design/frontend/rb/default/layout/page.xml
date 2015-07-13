@@ -62,7 +62,6 @@
                 <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.addListener.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
-                <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.swipe.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/slideshow.js</name></action>
@@ -80,6 +79,7 @@
                  <action method="addItem"><type>skin_css</type><name>css/animation.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                  <action method="addItem"><type>skin_css</type><name>css/def-style.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                  <action method="addItem"><type>skin_css</type><name>css/def-normal.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
+                 <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
                 <!-- Sets viewport meta tag using text block -->
                 <block type="core/text" name="head.viewport">
                     <action method="setText"><text><![CDATA[<meta name="viewport" content="initial-scale=1.0, width=device-width" />]]>&#10;</text></action>
