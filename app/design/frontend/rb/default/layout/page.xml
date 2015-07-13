@@ -79,6 +79,7 @@
                  <action method="addItem"><type>skin_css</type><name>css/animation.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                  <action method="addItem"><type>skin_css</type><name>css/def-style.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                  <action method="addItem"><type>skin_css</type><name>css/def-normal.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
+                 <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
                 <!-- Sets viewport meta tag using text block -->
                 <block type="core/text" name="head.viewport">
                     <action method="setText"><text><![CDATA[<meta name="viewport" content="initial-scale=1.0, width=device-width" />]]>&#10;</text></action>
@@ -145,7 +146,6 @@
                 <block type="page/template_links" name="footer_links2" as="footer_links2" template="page/template/links.phtml">
                     <action method="setTitle"><title>Account</title></action>
                 </block>
-                <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
                 <!-- This static block can be created and populated in admin. The footer_links cms block can be used as a starting point. -->
                 <!--<block type="cms/block" name="footer_social_links">
                     <action method="setBlockId"><block_id>footer_social_links</block_id></action>
