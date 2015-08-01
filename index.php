@@ -84,4 +84,15 @@ $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : ''
 /* Run store or run website */
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 
-Mage::run($mageRunCode, $mageRunType);
+/* dirty work around below */
+//Mage::run($mageRunCode, $mageRunType);
+
+$serverName = $_SERVER['HTTP_HOST'];
+switch ($serverName) {
+    case $serverName == 'staging.shop.esh.ph':
+        Mage::run('mwlandingview', 'store');
+        break;
+    default:
+        Mage::run('default', 'store');
+        break;
+}

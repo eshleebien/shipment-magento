@@ -13,7 +13,7 @@ var/thumb/**
 media/catalog/product/cache
 media/catalog/category/
 media/wysiwyg/
-media/css/
+media/css/*
 media/js/
 .idea
 app/etc/local.xml
