@@ -79,17 +79,19 @@ if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
 umask(0);
 
 /* Store or website code */
-$mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
+$mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : null;
 
 /* Run store or run website */
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 
 /* dirty work around below */
-//Mage::run($mageRunCode, $mageRunType);
+if ($mageRunCode) {
+    Mage::run($mageRunCode, $mageRunType);
+}
 
 $serverName = $_SERVER['HTTP_HOST'];
 switch ($serverName) {
-    case $serverName == 'staging.shop.esh.ph':
+    case $serverName == 'staging.shop.esh.ph': // don't forget to change this url
         Mage::run('mwlandingview', 'store');
         break;
     default:
