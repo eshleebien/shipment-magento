@@ -1,0 +1,153 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<div class="fixed-header">
+    <div class="w-container container">
+        <div class="w-row">
+            <div class="w-col w-col-3 logo">
+                <a href="/"><img class="logo" src="/skin/frontend/rb/default/images/logo.png" alt="Elegance"></a>
+            </div>
+            <div class="w-col w-col-9">
+                <div class="w-nav navbar" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
+                    <div class="w-container nav">
+                        <?php $request = $_SERVER['REQUEST_URI']; ?>
+                        <nav class="w-nav-menu nav-menu" role="navigation">
+                            <?php if($request ==='/' || strrpos($request, "?") >= 1): ?>
+                                <a class="w-nav-link menu-li" href="#home">HOME</a>
+                                <a class="w-nav-link menu-li" href="#about">ABOUT</a>
+                                <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
+                                <a class="w-nav-link menu-li" href="#visitors">VISITORS</a>
+                                <a class="w-nav-link menu-li" href="#contact">CONTACT US</a>
+                            <?php else: ?>
+                                <a class="w-nav-link menu-li" href="/#home">HOME</a>
+                                <a class="w-nav-link menu-li" href="/#about">ABOUT</a>
+                                <a class="w-nav-link menu-li" href="/#product">PRODUCT</a>
+                                <a class="w-nav-link menu-li" href="/#visitors">VISITORS</a>
+                                <a class="w-nav-link menu-li" href="/#contact">CONTACT US</a>
+                            <?php endif ?>
+                            <div class="header-minicart" id="not-mob-cart">
+                                <!-- Cart -->
+                                    <?php echo $this->getChildHtml('minicart_head'); ?>
+                                <!-- End Cart -->
+                            </div>
+                        </nav>
+                        <div class="w-nav-button">
+                           <div class="header-minicart" id="mob-cart" onclick="pushActive();">
+                                    <?php echo $this->getChildHtml('minicart_head'); ?>
+                            </div>
+                            <div class="w-icon-nav-menu" onclick='activate();'>
+                                <nav class="w-nav-menu-nav nav-menu" role="navigation">
+                                    <a class="w-nav-link menu-li" href="#home">HOME</a>
+                                    <a class="w-nav-link menu-li" href="#about">ABOUT</a>
+                                    <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
+                                    <a class="w-nav-link menu-li" href="#visitors">VISITORS</a>
+                                    <a class="w-nav-link menu-li" href="#contact">CONTACT</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="messages_product_view"><ul class="messages"><li class="success-msg"></li></ul></div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo $this->getChildHtml('topContainer'); ?>
+
+<script type="text/javascript">
+    function activate(th) {
+        jQuery('.w-icon-nav-menu').toggleClass('active');
+    }
+
+    function pushActive(){
+        jQuery('.w-nav-button').find('#header-cart').toggleClass('skip-active');
+    }
+
+    function changeItemQuantity( id , num ) {
+        var qty_id = "qinput-" + id,
+            currentVal = parseInt( jQuery("#" + qty_id).val() );
+
+        jQuery('#not-mob-cart #loader').show();
+        jQuery('#mob-cart #loader').show();
+        jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+        jQuery('#mob-cart #header-cart').addClass('skip-active');
+
+        if ( currentVal != NaN ) {
+            jQuery("#not-mob-cart #" + qty_id).val(num);
+            jQuery("#mob-cart #" + qty_id).val(num);
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
+                data: jQuery("#update_item_" + id).serialize(),
+                success: function(data) {
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+
+                    data = data.substr(start + 13, end - start - 13);
+                    jQuery(".header-minicart").html(data);
+                    jQuery('#not-mob-cart #loader').hide();
+                    jQuery('#mob-cart #loader').hide();
+                    jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+                    jQuery('#mob-cart #header-cart').addClass('skip-active');
+                },
+                error: function(data) {
+                    console.log('erere');
+                }
+            });
+        }
+        return false;
+    }
+
+    function removeItem(link) {
+        if (link) {
+            jQuery('#not-mob-cart #loader').show();
+            jQuery('#mob-cart #loader').show();
+            jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+            jQuery('#mob-cart #header-cart').addClass('skip-active');
+            jQuery.ajax({
+                type: "GET",
+                url: link,
+                success: function(data) {
+                    var start = data.indexOf('<!-- Cart -->'),
+                        end = data.indexOf('<!-- End Cart -->');
+
+                    data = data.substr(start + 13, end - start - 13);
+                    jQuery(".header-minicart").html(data);
+                    jQuery('#not-mob-cart #loader').hide();
+                    jQuery('#mob-cart #loader').hide();
+                    jQuery('#not-mob-cart #header-cart').addClass('skip-active');
+                    jQuery('#mob-cart #header-cart').addClass('skip-active');
+                },
+                error: function(data) {
+                    console.log('erere');
+                }
+            });
+        }
+    }
+</script>
