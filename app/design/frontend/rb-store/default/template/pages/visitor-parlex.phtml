@@ -1,0 +1,103 @@
+<div class="portfolio-parlex" id="visitors">
+    <div class="parlex3-back">
+        <div class="w-container">
+            <div class="wrap">
+                <div class="portfolio">
+                    <h1 class="portfolio-heading">The Visitors</h1>
+                    <div class="sepreater"></div>
+                </div>
+                <p class="porfolio-paragraph">ASK THEM HOW WAS THEIR EXPERIENCE TO US
+                <br>We do what we love. Our visitors love what we do.</p>
+                <div class="container">
+                    <ul class="grid cs-style-1 zoom-gallery">
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/engineer.jpg" data-source="skin/frontend/rb/default/images/engineer.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/engineer.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/glass.jpg" data-source="skin/frontend/rb/default/images/glass.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/glass.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/vapes.jpg" data-source="skin/frontend/rb/default/images/vapes.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/vapes.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/team.jpg" data-source="skin/frontend/rb/default/images/team.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/team.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                        <li>
+                        <figure>
+                            <a href="skin/frontend/rb/default/images/vape_liquor.jpg" data-source="skin/frontend/rb/default/images/vape_liquor.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                <img src="skin/frontend/rb/default/images/vape_liquor.jpg" class="portfolio-images">
+                            </a>
+                        </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/vape_liquid.jpg" data-source="skin/frontend/rb/default/images/vape_liquid.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/vape_liquid.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/vape.jpg" data-source="skin/frontend/rb/default/images/vape.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/vape.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <a href="skin/frontend/rb/default/images/vapes.jpg" data-source="skin/frontend/rb/default/images/vapes.jpg" title="Into The Blue" style="width:193px;height:125px;">
+                                    <img src="skin/frontend/rb/default/images/vapes.jpg" class="portfolio-images">
+                                </a>
+                            </figure>
+                        </li>
+                    </ul>
+                </div><!-- /container -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+jQuery(document).ready(function() {
+    jQuery('.zoom-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+            verticalFit: true,
+            titleSrc: function(item) {
+                return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.el.attr('data-source')+'" target="_blank">image source</a>';
+            }
+        },
+        gallery: {
+            enabled: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300, // don't foget to change the duration also in CSS
+            opener: function(element) {
+                return element.find('img');
+            }
+        }
+    });
+});
+
+</script>

@@ -91,7 +91,7 @@ if ($mageRunCode) {
 
 $serverName = $_SERVER['HTTP_HOST'];
 switch ($serverName) {
-    case $serverName == 'staging.shop.esh.ph': // don't forget to change this url
+    case $serverName == 'projshipment.com': // don't forget to change this url
         Mage::run('mwlandingview', 'store');
         break;
     default:
