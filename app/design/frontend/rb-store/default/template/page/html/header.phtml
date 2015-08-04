@@ -27,127 +27,78 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-<div class="fixed-header">
-    <div class="w-container container">
-        <div class="w-row">
-            <div class="w-col w-col-3 logo">
-                <a href="/"><img class="logo" src="/skin/frontend/rb/default/images/logo.png" alt="Elegance"></a>
-            </div>
-            <div class="w-col w-col-9">
-                <div class="w-nav navbar" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
-                    <div class="w-container nav">
-                        <?php $request = $_SERVER['REQUEST_URI']; ?>
-                        <nav class="w-nav-menu nav-menu" role="navigation">
-                            <?php if($request ==='/' || strrpos($request, "?") >= 1): ?>
-                                <a class="w-nav-link menu-li" href="#home">HOME</a>
-                                <a class="w-nav-link menu-li" href="#about">ABOUT</a>
-                                <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
-                                <a class="w-nav-link menu-li" href="#visitors">VISITORS</a>
-                                <a class="w-nav-link menu-li" href="#contact">CONTACT US</a>
-                            <?php else: ?>
-                                <a class="w-nav-link menu-li" href="/#home">HOME</a>
-                                <a class="w-nav-link menu-li" href="/#about">ABOUT</a>
-                                <a class="w-nav-link menu-li" href="/#product">PRODUCT</a>
-                                <a class="w-nav-link menu-li" href="/#visitors">VISITORS</a>
-                                <a class="w-nav-link menu-li" href="/#contact">CONTACT US</a>
-                            <?php endif ?>
-                            <div class="header-minicart" id="not-mob-cart">
-                                <!-- Cart -->
-                                    <?php echo $this->getChildHtml('minicart_head'); ?>
-                                <!-- End Cart -->
-                            </div>
-                        </nav>
-                        <div class="w-nav-button">
-                           <div class="header-minicart" id="mob-cart" onclick="pushActive();">
-                                    <?php echo $this->getChildHtml('minicart_head'); ?>
-                            </div>
-                            <div class="w-icon-nav-menu" onclick='activate();'>
-                                <nav class="w-nav-menu-nav nav-menu" role="navigation">
-                                    <a class="w-nav-link menu-li" href="#home">HOME</a>
-                                    <a class="w-nav-link menu-li" href="#about">ABOUT</a>
-                                    <a class="w-nav-link menu-li" href="#product">PRODUCT</a>
-                                    <a class="w-nav-link menu-li" href="#visitors">VISITORS</a>
-                                    <a class="w-nav-link menu-li" href="#contact">CONTACT</a>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="messages_product_view"><ul class="messages"><li class="success-msg"></li></ul></div>
-            </div>
-        </div>
+
+<div class="header-language-background">
+    <div class="header-language-container">
+        <!--div class="store-language-container">
+            <?php //echo $this->getChildHtml('store_language') ?>
+        </div-->
+
+        <?php echo $this->getChildHtml('currency_switcher') ?>
+
+        <!--p class="welcome-msg"><?php //echo $this->getChildHtml('welcome') ?> <?php //echo $this->getAdditionalHtml() ?></p-->
     </div>
 </div>
+
+<header id="header" class="page-header">
+    <div class="page-header-container">
+        <a class="logo" href="<?php echo $this->getUrl('') ?>">
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
+            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />
+        </a>
+
+        <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
+              // See app.js for details ?>
+        <div class="store-language-container"></div>
+
+        <!-- Skip Links -->
+
+        <div class="skip-links">
+            <a href="#header-nav" class="skip-link skip-nav">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Menu'); ?></span>
+            </a>
+
+            <a href="#header-search" class="skip-link skip-search">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Search'); ?></span>
+            </a>
+
+            <div class="account-cart-wrapper">
+                <a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" data-target-element="#header-account" class="skip-link skip-account">
+                    <span class="icon"></span>
+                    <span class="label"><?php echo $this->__('Account'); ?></span>
+                </a>
+
+                <!-- Cart -->
+
+                <div class="header-minicart">
+                    <?php echo $this->getChildHtml('minicart_head'); ?>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Navigation -->
+
+        <div id="header-nav" class="skip-content">
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </div>
+
+        <!-- Search -->
+
+        <div id="header-search" class="skip-content">
+            <?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+
+        <!-- Account -->
+
+        <div id="header-account" class="skip-content">
+            <?php echo $this->getChildHtml('topLinks') ?>
+        </div>
+    </div>
+</header>
+
+
 <?php echo $this->getChildHtml('topContainer'); ?>
-
-<script type="text/javascript">
-    function activate(th) {
-        jQuery('.w-icon-nav-menu').toggleClass('active');
-    }
-
-    function pushActive(){
-        jQuery('.w-nav-button').find('#header-cart').toggleClass('skip-active');
-    }
-
-    function changeItemQuantity( id , num ) {
-        var qty_id = "qinput-" + id,
-            currentVal = parseInt( jQuery("#" + qty_id).val() );
-
-        jQuery('#not-mob-cart #loader').show();
-        jQuery('#mob-cart #loader').show();
-        jQuery('#not-mob-cart #header-cart').addClass('skip-active');
-        jQuery('#mob-cart #header-cart').addClass('skip-active');
-
-        if ( currentVal != NaN ) {
-            jQuery("#not-mob-cart #" + qty_id).val(num);
-            jQuery("#mob-cart #" + qty_id).val(num);
-            jQuery.ajax({
-                type: "POST",
-                url: "<?php echo $this->getUrl('checkout/cart/updatePost') ?>",
-                data: jQuery("#update_item_" + id).serialize(),
-                success: function(data) {
-                    var start = data.indexOf('<!-- Cart -->'),
-                        end = data.indexOf('<!-- End Cart -->');
-
-                    data = data.substr(start + 13, end - start - 13);
-                    jQuery(".header-minicart").html(data);
-                    jQuery('#not-mob-cart #loader').hide();
-                    jQuery('#mob-cart #loader').hide();
-                    jQuery('#not-mob-cart #header-cart').addClass('skip-active');
-                    jQuery('#mob-cart #header-cart').addClass('skip-active');
-                },
-                error: function(data) {
-                    console.log('erere');
-                }
-            });
-        }
-        return false;
-    }
-
-    function removeItem(link) {
-        if (link) {
-            jQuery('#not-mob-cart #loader').show();
-            jQuery('#mob-cart #loader').show();
-            jQuery('#not-mob-cart #header-cart').addClass('skip-active');
-            jQuery('#mob-cart #header-cart').addClass('skip-active');
-            jQuery.ajax({
-                type: "GET",
-                url: link,
-                success: function(data) {
-                    var start = data.indexOf('<!-- Cart -->'),
-                        end = data.indexOf('<!-- End Cart -->');
-
-                    data = data.substr(start + 13, end - start - 13);
-                    jQuery(".header-minicart").html(data);
-                    jQuery('#not-mob-cart #loader').hide();
-                    jQuery('#mob-cart #loader').hide();
-                    jQuery('#not-mob-cart #header-cart').addClass('skip-active');
-                    jQuery('#mob-cart #header-cart').addClass('skip-active');
-                },
-                error: function(data) {
-                    console.log('erere');
-                }
-            });
-        }
-    }
-</script>
