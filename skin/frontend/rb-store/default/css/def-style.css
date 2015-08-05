@@ -1333,9 +1333,6 @@ margin-left: 15px;
   background-attachment: fixed;
   background-size: cover;
   background-position: center bottom;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
 }
 .parlex9-back {
   background-color: rgba(0, 0, 0, 0.89);

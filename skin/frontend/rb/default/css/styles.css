@@ -4507,10 +4507,9 @@ p.product-name a:hover {
 }
 .products-list > li .product-image {
   float: left;
-  width: 33.33333%;
 }
 .products-list > li .product-image img {
-  width: 100%;
+  width: 75px;;
   max-width: 100%;
 }
 .products-list > li:last-child {

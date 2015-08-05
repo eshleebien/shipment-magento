@@ -1,0 +1,49 @@
+.div-wrapper {
+	width: 1260px;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+.intro {
+	background: url('/skin/frontend/rb/default/images/bg/space.jpg');
+	height: 738px;
+    background-attachment: fixed;
+}
+.intro .logo-intro {
+	padding-top: 10%;
+	text-align: center;
+}
+.intro .logo-intro img{
+	width: 400px;
+}
+.clouds {
+	position: relative;
+	background: #DCDDCD;
+	height: 170px;
+
+}
+.clouds .lower-clouds {
+	background: url('/skin/frontend/rb/default/images/clouds/3.png');
+	height: 68px;
+    position: absolute;
+    top: -68px;
+    width: 100%;
+}
+.clouds .grey-clouds {
+    position: absolute;
+    z-index: 1;
+    top: -135px;
+    left: 135px;
+}
+.clouds .middle-clouds {
+	position: absolute;
+    z-index: 2;
+    top: -40px;
+    left: 210px;
+}
+.clouds .higher-clouds {
+    position: absolute;
+    z-index: 3;
+    top: -18px;
+    left: 210px;
+}
